@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8aapx9yhptPIi59WK7NU5U62Q7kD/F8RFnWJJOqAqe4yf6ZAUzMqg9ERUNASNUJ+XtBOtyXNOSDlZfQfzDp1cA==",
+  "success": true,
+  "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\AntDesign.Abstractions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\benve\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\benve\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
