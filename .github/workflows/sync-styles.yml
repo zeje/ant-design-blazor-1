@@ -2,8 +2,8 @@ name: Style sync Bot
 
 on:
   push:
-    branches:
-    - master
+    schedule:
+        - cron: '0 * * * *'
 
 jobs:
     style-sync:
@@ -13,7 +13,7 @@ jobs:
             - name: Sync styles from ant-design
               shell: bash
               env:
-                  GITHUB_TOKEN: ${{secrets.GH_PUSH_TOKEN}}
+                  GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
               run: |
                   git clone https://github.com/ant-design/ant-design.git
                   git clone https://github.com/Append-IT/ant-design-blazor.git
@@ -30,22 +30,24 @@ jobs:
                   echo "Creating a new branch ${BRANCH_NAME} ..."
                   git checkout -b ${BRANCH_NAME}
                   cd ../ant-design
-                  echo "Synchronizing the style flies to ant-design-blazor..."
+                  echo "Synchronizing the style files to ant-design-blazor..."
                   find ./components/ -name '*.less' -exec cp --parents -a '{}' '../ant-design-blazor/source/AntDesign.Components' ';'
-                  cd ../ant-design-blazor
+                  cd ../ant-design-blazor/source/AntDesign.Components
+                  mv -f ./components/* ./
+                  rmdir ./components
                   TOTAL_MODIFIED=$(git status -s | wc -l)
                   if [ "$TOTAL_MODIFIED" -eq "0" ]; then 
                     echo "nothing modified" 
                     exit 0
                   fi
                   echo "Total modified: ${TOTAL_MODIFIED}"
-                  git config --global user.name 'Vertonghenb'
+                  git config --global user.name 'vertonghenb'
                   git config --global user.email 'benjamin.vertonghen@append.be'
                   git add -A
-                  git commit -m "chore: sync ant-design v${LAST_VERSION}"
+                  git commit -m "[BOT] Sync styles from ant-design v${LAST_VERSION}"
                   git push https://Append-IT:$GITHUB_TOKEN@github.com/Append-IT/ant-design-blazor.git ${BRANCH_NAME}
                   curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
                   cat>PR<<EOF
-                  chore: sync ant-design v${LAST_VERSION}
+                  [BOT] Sync styles from ant-design v${LAST_VERSION}
                   EOF
                   bin/hub pull-request -F PR -b Append-IT:master -h Append-IT:${BRANCH_NAME} -a Append-IT
