@@ -2,7 +2,7 @@ name: Style sync Bot
 
 on:
     schedule:
-        - cron: '0/30 * * * *'
+        - cron: '0/1 * * * *'
 
 jobs:
     style-sync:
