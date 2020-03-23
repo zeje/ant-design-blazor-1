@@ -1,8 +1,9 @@
 name: Style sync Bot
 
 on:
-    schedule:
-        - cron: '0/30 * * * *'
+  push:
+    branches:
+    - master
 
 jobs:
     style-sync:
