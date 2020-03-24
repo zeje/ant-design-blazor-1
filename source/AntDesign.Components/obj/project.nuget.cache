@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0lSWvClvo9iS/AySma4nsYkI0xQM5zyx+WIbLOcvG9P57A/tPsp3XEMf56XCQ/+32sVmfGZC1+sviK3UCKiv7w==",
+  "dgSpecHash": "pN2xFDgk14JYpwZ/WGbLQ56jHWen71Cahqdr1A2HdogjpkJxs8b5wHX9CnH4igkyURwTrW6TG3QLIvC9BfEaCA==",
   "success": true,
   "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\AntDesign.Components.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\benve\\.nuget\\packages\\buildwebcompiler\\1.12.394\\buildwebcompiler.1.12.394.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.2\\microsoft.aspnetcore.authorization.3.1.2.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.2\\microsoft.aspnetcore.components.3.1.2.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.1.2\\microsoft.aspnetcore.components.analyzers.3.1.2.nupkg.sha512",

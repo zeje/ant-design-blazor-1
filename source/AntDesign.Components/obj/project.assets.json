@@ -2,6 +2,12 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "BuildWebCompiler/1.12.394": {
+        "type": "package",
+        "build": {
+          "build/BuildWebCompiler.targets": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/3.1.2": {
         "type": "package",
         "dependencies": {
@@ -275,6 +281,29 @@
     }
   },
   "libraries": {
+    "BuildWebCompiler/1.12.394": {
+      "sha512": "DR+O3YlBd2uwCC5xVk4+ouQhUEcAs4HywFqrXb5eBhe9pTti5tzFcflk93biWtfNpxD0fl3lCEd6wTr3Ztxtjw==",
+      "type": "package",
+      "path": "buildwebcompiler/1.12.394",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/BuildWebCompiler.targets",
+        "buildwebcompiler.1.12.394.nupkg.sha512",
+        "buildwebcompiler.nuspec",
+        "tools/net46/NUglify.dll",
+        "tools/net46/Newtonsoft.Json.dll",
+        "tools/net46/WebCompiler.exe",
+        "tools/netcoreapp2.0/NUglify.dll",
+        "tools/netcoreapp2.0/Newtonsoft.Json.dll",
+        "tools/netcoreapp2.0/WebCompiler.dll",
+        "tools/netcoreapp2.0/WebCompiler.runtimeconfig.json",
+        "tools/netstandard2.0/NUglify.dll",
+        "tools/netstandard2.0/Newtonsoft.Json.dll",
+        "tools/netstandard2.0/WebCompiler.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/3.1.2": {
       "sha512": "bbu9qMsOdmNjLLaRawhT3OfjFHleK9D2ICGfmjvkMVNyfx42P5NgypOlqKgK6SDoqtex3DisWd4E3nePtohPCw==",
       "type": "package",
@@ -928,6 +957,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "BuildWebCompiler >= 1.12.394",
       "Microsoft.AspNetCore.Components >= 3.1.2",
       "Microsoft.AspNetCore.Components.Web >= 3.1.2",
       "NETStandard.Library >= 2.0.3"
@@ -970,6 +1000,10 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "BuildWebCompiler": {
+            "target": "Package",
+            "version": "[1.12.394, )"
+          },
           "Microsoft.AspNetCore.Components": {
             "target": "Package",
             "version": "[3.1.2, )"
