@@ -1,0 +1,21 @@
+﻿<Codebox Title="Loading"
+         Description="A loading indicator can be added to a button by setting the <code>loading</code> property on the Button."
+         id="components-button-demo-loading">
+    <Demo>
+        <Button Type="ButtonType.Primary" Loading>Loading</Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Small" Loading>Loading</Button>
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Loading="isLoading" OnClick="startLoading">Click me!</Button>
+    </Demo>
+</Codebox>
+
+@code{
+    bool isLoading = false;
+    async Task startLoading()
+    {
+        isLoading = true;
+        await Task.Delay(3000);
+        isLoading = false;
+    }
+}

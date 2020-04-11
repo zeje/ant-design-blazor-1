@@ -1,7 +1,17 @@
 ﻿<Codebox Title="Type"
-         Description="There are `primary` button, `default` button, `dashed` button and `link` button in antd.">
+         Description="There are <code>primary</code> button, <code>default</code> button, <code>dashed</code> button and <code>link</code> button in antd.">
     <Demo>
-        <button type="button" class="ant-btn ant-btn-primary"><span>Primary</span></button>        
+        <Button Type="@ButtonType.Primary">Primary</Button>
+        <Button>Default</Button>
+        <Button Type="@ButtonType.Dashed">Dashed</Button>
+        <Button Type="@ButtonType.Link">Link</Button>
         <br />
     </Demo>
 </Codebox>
+
+@code{
+    void DoSomething()
+    {
+        Console.WriteLine("test");
+    }
+}

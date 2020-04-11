@@ -5,7 +5,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace AntDesign.Components
+namespace Append.AntDesign.Components
 {
     #line hidden
     using System;

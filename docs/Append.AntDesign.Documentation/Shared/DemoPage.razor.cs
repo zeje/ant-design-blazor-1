@@ -18,7 +18,26 @@ namespace Append.AntDesign.Documentation.Shared
             using StreamReader reader = new StreamReader(stream);
 
             string result = reader.ReadToEnd();
-            return (MarkupString)Markdown.ToHtml(result, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+            var indexOfAPI = result.IndexOf("# API");
+            var beforeAPI = result.Substring(0, indexOfAPI);
+            var afterApi = result.Substring(indexOfAPI);
+
+            return (MarkupString)Markdown.ToHtml(beforeAPI, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+        }
+        public MarkupString LoadMarkdownDocumentation2()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"Append.AntDesign.Documentation.Components.{ComponentName}.Index.md";
+
+            using Stream stream = assembly.GetManifestResourceStream(resourceName);
+            using StreamReader reader = new StreamReader(stream);
+
+            string result = reader.ReadToEnd();
+            var indexOfAPI = result.IndexOf("# API");
+            var beforeAPI = result.Substring(0, indexOfAPI);
+            var afterApi = result.Substring(indexOfAPI);
+
+            return (MarkupString)Markdown.ToHtml(afterApi, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
         }
     }
 }

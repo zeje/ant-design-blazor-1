@@ -10,5 +10,8 @@ namespace Append.AntDesign.Documentation.Shared
         [Parameter] public RenderFragment Demo { get; set; }
         [Parameter] public string Title { get; set; }
         [Parameter] public string Description { get; set; }
+
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> Attributes { get; set; }
     }
 }
