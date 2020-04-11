@@ -184,9 +184,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\AntDesign.Abstractions.csproj",
-      "projectName": "AntDesign.Abstractions",
-      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\AntDesign.Abstractions.csproj",
+      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\Append.AntDesign.Abstractions.csproj",
+      "projectName": "Append.AntDesign.Abstractions",
+      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\Append.AntDesign.Abstractions.csproj",
       "packagesPath": "C:\\Users\\benve\\.nuget\\packages\\",
       "outputPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Abstractions\\obj\\",
       "projectStyle": "PackageReference",

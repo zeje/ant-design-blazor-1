@@ -184,9 +184,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\AntDesign.Services.csproj",
-      "projectName": "AntDesign.Services",
-      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\AntDesign.Services.csproj",
+      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\Append.AntDesign.Services.csproj",
+      "projectName": "Append.AntDesign.Services",
+      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\Append.AntDesign.Services.csproj",
       "packagesPath": "C:\\Users\\benve\\.nuget\\packages\\",
       "outputPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "pN2xFDgk14JYpwZ/WGbLQ56jHWen71Cahqdr1A2HdogjpkJxs8b5wHX9CnH4igkyURwTrW6TG3QLIvC9BfEaCA==",
+  "dgSpecHash": "l8z+2MtebFX1qdjQ5u9sYqDbTl7/bD2zVHJWPQsLeQo+OfFNJuXpj9O6+MsksgmmBgUzVavOp5IACxb7/NcJ0Q==",
   "success": true,
-  "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\AntDesign.Components.csproj",
+  "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\Append.AntDesign.Components.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\benve\\.nuget\\packages\\buildwebcompiler\\1.12.394\\buildwebcompiler.1.12.394.nupkg.sha512",
+    "C:\\Users\\benve\\.nuget\\packages\\ardalis.guardclauses\\1.2.4\\ardalis.guardclauses.1.2.4.nupkg.sha512",
+    "C:\\Users\\benve\\.nuget\\packages\\ardalis.smartenum\\1.0.8\\ardalis.smartenum.1.0.8.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.2\\microsoft.aspnetcore.authorization.3.1.2.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.2\\microsoft.aspnetcore.components.3.1.2.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.1.2\\microsoft.aspnetcore.components.analyzers.3.1.2.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+B+qA/JFTVO8vBPJvTtjQJmo/1b+QKK39s2ea4X0/bPHd+J2zeLmq8KlYDLbs52tbJnkzepoGvyIcStdx0ThnA==",
+  "dgSpecHash": "5Oq6Yf0TC41txt/j8iVRF2ZVBAKZF1F/jQHQblgCTzrJE8LmKyUqx9QErAeprioenRkc6Wpu8GbB4uefubh08w==",
   "success": true,
-  "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\AntDesign.Services.csproj",
+  "projectFilePath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Services\\Append.AntDesign.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\benve\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\benve\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

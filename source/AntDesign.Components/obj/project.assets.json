@@ -2,10 +2,28 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "BuildWebCompiler/1.12.394": {
+      "Ardalis.GuardClauses/1.2.4": {
         "type": "package",
-        "build": {
-          "build/BuildWebCompiler.targets": {}
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Ardalis.GuardClauses.dll": {}
+        }
+      },
+      "Ardalis.SmartEnum/1.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Ardalis.GuardClauses": "1.2.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ardalis.SmartEnum.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.SmartEnum.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authorization/3.1.2": {
@@ -277,31 +295,49 @@
         "runtime": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
+      },
+      "Append.AntDesign.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Ardalis.SmartEnum": "1.0.8"
+        },
+        "compile": {
+          "bin/placeholder/Append.AntDesign.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Append.AntDesign.Core.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "BuildWebCompiler/1.12.394": {
-      "sha512": "DR+O3YlBd2uwCC5xVk4+ouQhUEcAs4HywFqrXb5eBhe9pTti5tzFcflk93biWtfNpxD0fl3lCEd6wTr3Ztxtjw==",
+    "Ardalis.GuardClauses/1.2.4": {
+      "sha512": "gRVXr3Jt0EwnLgG+R8JKEOwEiwU0bZ/ogNY+Gd7RYv4qNdH/ooKOOF4q88QDI50N4BH/TboIoX5/ipGXQhMgGA==",
       "type": "package",
-      "path": "buildwebcompiler/1.12.394",
-      "hasTools": true,
+      "path": "ardalis.guardclauses/1.2.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "build/BuildWebCompiler.targets",
-        "buildwebcompiler.1.12.394.nupkg.sha512",
-        "buildwebcompiler.nuspec",
-        "tools/net46/NUglify.dll",
-        "tools/net46/Newtonsoft.Json.dll",
-        "tools/net46/WebCompiler.exe",
-        "tools/netcoreapp2.0/NUglify.dll",
-        "tools/netcoreapp2.0/Newtonsoft.Json.dll",
-        "tools/netcoreapp2.0/WebCompiler.dll",
-        "tools/netcoreapp2.0/WebCompiler.runtimeconfig.json",
-        "tools/netstandard2.0/NUglify.dll",
-        "tools/netstandard2.0/Newtonsoft.Json.dll",
-        "tools/netstandard2.0/WebCompiler.dll"
+        "ardalis.guardclauses.1.2.4.nupkg.sha512",
+        "ardalis.guardclauses.nuspec",
+        "lib/net40/Ardalis.GuardClauses.dll",
+        "lib/netstandard1.1/Ardalis.GuardClauses.dll"
+      ]
+    },
+    "Ardalis.SmartEnum/1.0.8": {
+      "sha512": "DlKK9uZrkDd2BVIYT40Ke6Yc54icE/Usfi8O9zTXY547nYXFj7lwxf5OwyZ07NQ8rc7kN5PTraOAN+3E8mZGWQ==",
+      "type": "package",
+      "path": "ardalis.smartenum/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ardalis.smartenum.1.0.8.nupkg.sha512",
+        "ardalis.smartenum.nuspec",
+        "lib/net461/Ardalis.SmartEnum.dll",
+        "lib/net461/Ardalis.SmartEnum.xml",
+        "lib/netstandard2.0/Ardalis.SmartEnum.dll",
+        "lib/netstandard2.0/Ardalis.SmartEnum.xml"
       ]
     },
     "Microsoft.AspNetCore.Authorization/3.1.2": {
@@ -953,11 +989,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Append.AntDesign.Core/1.0.0": {
+      "type": "project",
+      "path": "../Append.AntDesign.Core/Append.AntDesign.Core.csproj",
+      "msbuildProject": "../Append.AntDesign.Core/Append.AntDesign.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "BuildWebCompiler >= 1.12.394",
+      "Append.AntDesign.Core >= 1.0.0",
       "Microsoft.AspNetCore.Components >= 3.1.2",
       "Microsoft.AspNetCore.Components.Web >= 3.1.2",
       "NETStandard.Library >= 2.0.3"
@@ -969,9 +1010,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\AntDesign.Components.csproj",
-      "projectName": "AntDesign.Components",
-      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\AntDesign.Components.csproj",
+      "projectUniqueName": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\Append.AntDesign.Components.csproj",
+      "projectName": "Append.AntDesign.Components",
+      "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\Append.AntDesign.Components.csproj",
       "packagesPath": "C:\\Users\\benve\\.nuget\\packages\\",
       "outputPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\AntDesign.Components\\obj\\",
       "projectStyle": "PackageReference",
@@ -988,7 +1029,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\source\\Append-IT\\ant-design-blazor\\source\\Append.AntDesign.Core\\Append.AntDesign.Core.csproj": {
+              "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\Append.AntDesign.Core\\Append.AntDesign.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1000,10 +1045,6 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "BuildWebCompiler": {
-            "target": "Package",
-            "version": "[1.12.394, )"
-          },
           "Microsoft.AspNetCore.Components": {
             "target": "Package",
             "version": "[3.1.2, )"
