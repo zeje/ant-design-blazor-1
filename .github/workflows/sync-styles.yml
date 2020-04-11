@@ -33,6 +33,8 @@ jobs:
                   echo "Synchronizing the style files to ant-design-blazor..."
                   find ./components/ -name '*.less' -exec cp --parents -a '{}' '../ant-design-blazor/source/Append.AntDesign.Styling/' ';'
                   cd ../ant-design-blazor/source/Append.AntDesign.Styling
+                  cp -rl ./components ./
+                  rm -r ./components
                   TOTAL_MODIFIED=$(git status -s | wc -l)
                   if [ "$TOTAL_MODIFIED" -eq "0" ]; then 
                     echo "nothing modified" 
