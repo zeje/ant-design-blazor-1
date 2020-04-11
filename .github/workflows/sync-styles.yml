@@ -32,7 +32,7 @@ jobs:
                   cd ../ant-design
                   echo "Synchronizing the style files to ant-design-blazor..."
                   find ./components/ -name '*.less' -exec cp --parents -a '{}' '../ant-design-blazor/source/AntDesign.Components' ';'
-                  cd ../ant-design-blazor/source/AntDesign.Components
+                  cd ../ant-design-blazor/source/AntDesign.Styling
                   cp -rl ./components ./
                   rm -r ./components
                   TOTAL_MODIFIED=$(git status -s | wc -l)
