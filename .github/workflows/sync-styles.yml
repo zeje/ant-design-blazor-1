@@ -31,8 +31,8 @@ jobs:
                   git checkout -b ${BRANCH_NAME}
                   cd ../ant-design
                   echo "Synchronizing the style files to ant-design-blazor..."
-                  find ./components/ -name '*.less' -exec cp --parents -a '{}' '../ant-design-blazor/' ';'
-                  cd ../ant-design-blazor
+                  find ./components/ -name '*.less' -exec cp --parents -a '{}' '../ant-design-blazor/source/Append.AntDesign.Styling/' ';'
+                  cd ../ant-design-blazor/source/Append.AntDesign.Styling
                   TOTAL_MODIFIED=$(git status -s | wc -l)
                   if [ "$TOTAL_MODIFIED" -eq "0" ]; then 
                     echo "nothing modified" 
