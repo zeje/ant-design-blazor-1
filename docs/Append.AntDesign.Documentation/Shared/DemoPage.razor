@@ -9,7 +9,9 @@
     <h2>Examples</h2>
     @foreach (var example in Examples)
     {
-        @BuildExample(example);
+        <CascadingValue Value="@ComponentName">
+            @BuildExample(example);
+        </CascadingValue>
         <br />
     }
 </section>
