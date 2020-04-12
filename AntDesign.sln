@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Styling", "source\Append.AntDesign.Styling\Append.AntDesign.Styling.csproj", "{939D2067-434B-4F96-B5C1-B7F7B46F8A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Append.AntDesign.Core", "source\Append.AntDesign.Core\Append.AntDesign.Core.csproj", "{3239E21A-3CA7-4ED6-AF26-301FAEA9616E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Core", "source\Append.AntDesign.Core\Append.AntDesign.Core.csproj", "{3239E21A-3CA7-4ED6-AF26-301FAEA9616E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

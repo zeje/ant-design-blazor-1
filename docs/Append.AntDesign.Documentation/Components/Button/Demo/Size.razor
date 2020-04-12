@@ -1,17 +1,38 @@
 ﻿<Codebox Title="Size"
          Description="Ant Design supports a default button <code>size</code> as well as a <code>large</code> and <code>small</code> size. If a <code>large</code> or <code>small</code> button is desired, set the <code>size</code> property to either <code>large</code> or <code>small</code> respectively. Omit the <code>size</code> property for a button with the default size.">
     <Demo>
-        <Button Type="@ButtonType.Primary" Size="ButtonSize.Default">Default</Button>
-        <Button Type="@ButtonType.Primary" Size="ButtonSize.Small">Small</Button>
-        <Button Type="@ButtonType.Primary" Size="ButtonSize.Middle">Middle</Button>
-        <Button Type="@ButtonType.Primary" Size="ButtonSize.Large">Large</Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large" Label="Large Primary" />
+        <Button Type="ButtonType.Default" Size="ButtonSize.Large" Label="Large Default" />
+        <Button Type="ButtonType.Dashed" Size="ButtonSize.Large" Label="Large Dashed" />
+        <Button Type="ButtonType.Link" Size="ButtonSize.Large" Label="Large Link" />
         <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Default" Label="Default Primary" />
+        <Button Type="ButtonType.Default" Size="ButtonSize.Default" Label="Default Default" />
+        <Button Type="ButtonType.Dashed" Size="ButtonSize.Default" Label="Default Dashed" />
+        <Button Type="ButtonType.Link" Size="ButtonSize.Default" Label="Default Link" />
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Small" Label="Small Primary" />
+        <Button Type="ButtonType.Default" Size="ButtonSize.Small" Label="Small Default" />
+        <Button Type="ButtonType.Dashed" Size="ButtonSize.Small" Label="Small Dashed" />
+        <Button Type="ButtonType.Link" Size="ButtonSize.Small" Label="Small Link" />
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large" Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large" Shape="ButtonShape.Round">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large" Shape="ButtonShape.Round" Label="Download">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="ButtonSize.Large" Label="Download">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
     </Demo>
 </Codebox>
-
-@code{
-    void DoSomething()
-    {
-        Console.WriteLine("test");
-    }
-}

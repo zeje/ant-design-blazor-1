@@ -1,17 +1,9 @@
-﻿<Codebox Title="Type"
+﻿<Codebox Title="Type" id="components-button-demo-block"
          Description="There are <code>primary</code> button, <code>default</code> button, <code>dashed</code> button and <code>link</code> button in antd.">
     <Demo>
-        <Button Type="@ButtonType.Primary">Primary</Button>
-        <Button>Default</Button>
-        <Button Type="@ButtonType.Dashed">Dashed</Button>
-        <Button Type="@ButtonType.Link">Link</Button>
-        <br />
+        <Button Type="@ButtonType.Primary" Label="Primary"/>
+        <Button Label="Default"/>
+        <Button Type="@ButtonType.Dashed" Label="Dashed"/>
+        <Button Type="@ButtonType.Link" Label="Link" Class="abc"/>
     </Demo>
 </Codebox>
-
-@code{
-    void DoSomething()
-    {
-        Console.WriteLine("test");
-    }
-}

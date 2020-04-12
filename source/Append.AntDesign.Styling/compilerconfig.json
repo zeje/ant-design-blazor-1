@@ -1,6 +1,6 @@
 ﻿[
   {
     "outputFile": "../AntDesign.Components/wwwroot/css/ant-design-blazor.css",
-    "inputFile": "ant-design-blazor.less"
+    "inputFile": "./components/ant-design-blazor.less"
   }
 ]

@@ -1,0 +1,51 @@
+﻿<Codebox Title="Actions" id="components-button-demo-actions"
+         Description="You can hook your own actions and asynchronise actions by specifying an <code>OnClick</code> handler/delegate.">
+    <Demo>
+        <p>Current Count: @counter</p>
+        <Button Type="@ButtonType.Primary" Label="Count Up" OnClick="CountUp" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Plus"/>
+        </Button>
+
+        <Button Label="Count Down" OnClick="CountDown" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Minus" />
+        </Button>
+
+        <br />
+
+        <Button Type="@ButtonType.Primary" Label="Count Up Async" OnClick="CountUpAsync" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Plus" />
+        </Button>
+
+        <Button Label="Count Down Async" OnClick="CountDownAsync" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Minus" />
+        </Button>
+
+    </Demo>
+</Codebox>
+
+@code{
+    private int counter;
+    private bool isLoading;
+    private void CountUp()
+    {
+        counter++;
+    }
+    private void CountDown()
+    {
+        counter--;
+    }
+    private async Task CountUpAsync()
+    {
+        isLoading = true;
+        await Task.Delay(1000);
+        counter++;
+        isLoading = false;
+    }
+    private async Task CountDownAsync()
+    {
+        isLoading = true;
+        await Task.Delay(1000);
+        counter--;
+        isLoading = false;
+    }
+}

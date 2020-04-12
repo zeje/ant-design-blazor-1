@@ -22,6 +22,7 @@ namespace Append.AntDesign.Documentation.Wasm
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseStaticWebAssets();
                     webBuilder.UseStartup<Startup>();
                 });
     }

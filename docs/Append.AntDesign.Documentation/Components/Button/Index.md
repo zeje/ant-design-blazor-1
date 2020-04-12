@@ -24,19 +24,21 @@ To get a customized button, just set `type`/`shape`/`size`/`loading`/`disabled`.
 
 | Property | Description | Type | Default | Version |
 | --- | --- | --- | --- | --- |
-| disabled | disabled state of button | boolean | `false` |  |
-| ghost | make background transparent and invert text and border colors | boolean | `false` |  |
-| href | redirect url of link button | string | - |  |
-| htmlType | set the original html `type` of `button`, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) | string | `button` |  |
-| icon | set the icon component of button | ReactNode | - |  |
-| loading | set the loading status of button | boolean \| { delay: number } | `false` |  |
-| shape | can be set to `circle`, `round` or omitted | string | - |  |
-| size | set the size of button | `large` \| `middle` \| `small` |  |  |
-| target | same as target attribute of a, works when href is specified | string | - |  |
-| type | can be set to `primary` `ghost` `dashed` `link` or omitted (meaning `default`) | string | `default` |  |
-| onClick | set the handler to handle `click` event | (event) => void | - |  |
-| block | option to fit button width to its parent width | boolean | `false` |  |
-| danger | set the danger status of button | boolean | `false` |  |
+| Disabled | disabled state of button | boolean | `false` |  |
+| Ghost | make background transparent and invert text and border colors | boolean | `false` |  |
+| Href | redirect url of link button, which will render the button as an `<a>` tag. | string | - |  |
+| HtmlType | set the original html `type` of `button`, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) | string | `button` |  |
+| Icon | set the icon component of button | RenderFragment | - |  |
+| Loading | set the loading status of button | boolean | `false` |  |
+| Shape | can be set to `circle`, `round` or omitted | `ButtonShape` | - |  |
+| Size | set the size of button | `ButtonSize` | `middle` |  |
+| Target | same as target attribute of a, works when href is specified | `string` | - |  |
+| Type | can be set to `primary` `ghost` `dashed` `link` or omitted (meaning `default`) | `ButtonType` | `default` |  |
+| OnClick | set the handler to handle `click` event | `EventCallback` | - |  |
+| Block | option to fit button width to its parent width | `boolean` | `false` |  |
+| Danger | set the danger status of button | `boolean` | `false` |  |
+| Style | Style of the html `button` or `a` element | `string` | - |  |
+| Class | Additional classes for the html `button` or `a` element | `string` | - |  |
 
 It accepts all props which native buttons support.
 
