@@ -23,6 +23,7 @@ namespace Append.AntDesign.Components
             public static Outlined Plus = new Outlined(nameof(Plus).ToLower(), 5);
             public static Outlined Minus = new Outlined(nameof(Minus).ToLower(), 6);
             public static Outlined Loading = new Outlined(nameof(Loading).ToLower(), 7);
+            public static Outlined Edit = new Outlined(nameof(Edit).ToLower(), 8);
             public Outlined(string name, int value) : base(name, value)
             {
             }

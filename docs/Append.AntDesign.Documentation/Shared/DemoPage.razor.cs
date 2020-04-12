@@ -2,13 +2,17 @@
 using Microsoft.AspNetCore.Components;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Append.AntDesign.Documentation.Shared
 {
     public partial class DemoPage
     {
+        private string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/Index.md";
+
         [Parameter] public string ComponentName { get; set; }
+        [Parameter] public Type[] Examples { get; set; }
         public MarkupString LoadMarkdownDocumentation()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -24,7 +28,7 @@ namespace Append.AntDesign.Documentation.Shared
 
             return (MarkupString)Markdown.ToHtml(beforeAPI, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
         }
-        public MarkupString LoadMarkdownDocumentation2()
+        public MarkupString LoadMarkdownApiDocumentation()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"Append.AntDesign.Documentation.Components.{ComponentName}.Index.md";
@@ -39,5 +43,32 @@ namespace Append.AntDesign.Documentation.Shared
 
             return (MarkupString)Markdown.ToHtml(afterApi, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
         }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            GetAllExamples();
+        }
+
+        private void GetAllExamples()
+        {
+            var namespaceOfTheExamples = $"Append.AntDesign.Documentation.Components.{ComponentName}.Demo";
+
+            Examples = GetTypesInNamespace(Assembly.GetExecutingAssembly(), namespaceOfTheExamples);
+        }
+
+        private Type[] GetTypesInNamespace(Assembly assembly, string nameSpace)
+        {
+            return
+              assembly.GetTypes()
+                      .Where(t => string.Equals(t.Namespace, nameSpace, StringComparison.Ordinal)
+                        && t.BaseType == typeof(ComponentBase))
+                      .ToArray();
+        }
+        private RenderFragment BuildExample(Type example) => builder =>
+        {
+            builder.OpenComponent(0, example);
+            builder.CloseComponent();
+        };
     }
 }
