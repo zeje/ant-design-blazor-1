@@ -1,0 +1,8 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+    <div class="@classes" role="separator" style="@Style" @attributes="@Attributes">
+        @if (!string.IsNullOrEmpty(Label))
+        {
+            <span class="ant-divider-inner-text">@Label</span>
+        }
+    </div>

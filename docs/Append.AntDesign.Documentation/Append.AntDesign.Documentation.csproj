@@ -11,11 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Components\Divider\Index.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Components\Button\Index.md" />
+    <EmbeddedResource Include="Components\Divider\Index.md" />
   </ItemGroup>
 
   <ItemGroup>
