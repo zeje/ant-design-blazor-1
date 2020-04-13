@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
+using System.Collections.Concurrent;
 using System.Xml.Linq;
 
 namespace Append.AntDesign.Components
@@ -18,6 +19,8 @@ namespace Append.AntDesign.Components
 
         private MarkupString svg;
         [Inject] private NavigationManager NavigationManager { get; set; }
+        private static readonly ConcurrentDictionary<IconType, XDocument> SvgCache = new ConcurrentDictionary<IconType, XDocument>();
+
 
         protected override void OnInitialized()
         {
@@ -26,11 +29,25 @@ namespace Append.AntDesign.Components
                 throw new ArgumentException($"Parameter {nameof(Type)} was not provided, you should provide which icon you'd like to see.");
             DetermineTheme();
 
-            var xdoc = ReadSvgFile();
-            AddSvgStyles(xdoc);
-            SetTwoToneColors(xdoc);
-            svg = (MarkupString)xdoc.ToString();
+            var xdoc = LoadSvg();
+            XDocument currentIcon = new XDocument(xdoc);
+            AddSvgStyles(currentIcon);
+            SetTwoToneColors(currentIcon);
+            svg = (MarkupString)currentIcon.ToString();
         }
+
+        private XDocument LoadSvg()
+        {
+            XDocument xdoc = null;
+            if (SvgCache.TryGetValue(Type, out xdoc))
+                return xdoc;
+
+            xdoc = ReadSvgFile();
+            SvgCache.TryAdd(Type, xdoc);
+            return xdoc;
+        }
+
+
         private XDocument ReadSvgFile()
         {
             var baseUrl = NavigationManager.BaseUri;
