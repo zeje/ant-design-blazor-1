@@ -1,9 +1,13 @@
-﻿<Codebox Title="Actions" id="components-button-demo-actions"
-         Description="You can hook your own actions and asynchronise actions by specifying an <code>OnClick</code> handler/delegate.">
+﻿<Codebox Title="Actions" id="components-button-demo-actions">
+    <Description>
+        <p>
+            You can hook your own actions and asynchronise actions by specifying an <code>OnClick</code> handler/delegate.
+        </p>
+    </Description>
     <Demo>
         <p>Current Count: @counter</p>
         <Button Type="@ButtonType.Primary" Label="Count Up" OnClick="CountUp" Loading="isLoading">
-            <Icon Type="IconType.Outlined.Plus"/>
+            <Icon Type="IconType.Outlined.Plus" />
         </Button>
 
         <Button Label="Count Down" OnClick="CountDown" Loading="isLoading">

@@ -1,0 +1,34 @@
+﻿@using System.Reflection
+<Codebox Title="TwoTone" id="components-icon-demo-twotone">
+    <Description>
+        <p>TwoTone icon set</p>
+    </Description>
+    <Demo>
+        <ul class="anticons-list">
+            @foreach (var item in GetIcons())
+            {
+                <li class="two-tone">
+                    <Icon Type="item" />
+                    <span class="anticon-class">
+                        <span class="ant-badge">@item.UnnormalisedName</span>
+                    </span>
+                </li>
+            }
+        </ul>
+    </Demo>
+</Codebox>
+
+@code{
+    private IEnumerable<IconType> GetIcons()
+    {
+        return typeof(IconType.TwoTone).GetFields(BindingFlags.Public | BindingFlags.Static)
+                          .Where(f => f.FieldType == typeof(IconType.TwoTone))
+                          .Select(x => (IconType)x.GetValue(null));
+    }
+}
+<style>
+    ul.anticons-list li.two-tone:hover {
+        color: #fff;
+        background-color: #8ecafe;
+    }
+</style>
