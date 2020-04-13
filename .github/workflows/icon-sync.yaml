@@ -1,0 +1,51 @@
+name: Icon Sync Bot
+
+on:
+  push:
+    schedule:
+        - cron: '0 * * * *'
+
+jobs:
+    style-sync:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Sync icons from ant-design-icons
+              shell: bash
+              env:
+                  GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+              run: |
+                  git clone https://github.com/ant-design/ant-design-icons.git
+                  git clone https://github.com/Append-IT/ant-design-blazor.git
+                  cd ant-design-icons
+                  LAST_VERSION=$(git describe --abbrev=0 --tags | sed 's/* //'  )
+                  echo "Last Version of ant-design-icons: ${LAST_VERSION}"
+                  git checkout ${LAST_VERSION}
+                  cd ../ant-design-blazor
+                  BRANCH_NAME="sync-icons/${LAST_VERSION}"
+                  if [ $( git branch -a | egrep "remotes/origin/${BRANCH_NAME}" | wc -l) -gt 0 ]; then
+                    echo "Branch ${BRANCH_NAME} already exists."
+                    exit 0
+                  fi
+                  echo "Creating a new branch ${BRANCH_NAME} ..."
+                  git checkout -b ${BRANCH_NAME}
+                  cd ../ant-design-icons
+                  echo "Synchronizing the SVG icon files to ant-design-blazor..."
+                  rsync -av ./packages/icons-svg/svg/. ../ant-design-blazor/source/AntDesign.Components/wwwroot/icons
+                  cd ../ant-design-blazor/source/AntDesign.Components/wwwroot/icons
+                  TOTAL_MODIFIED=$(git status -s | wc -l)
+                  if [ "$TOTAL_MODIFIED" -eq "0" ]; then 
+                    echo "nothing modified" 
+                    exit 0
+                  fi
+                  echo "Total modified: ${TOTAL_MODIFIED}"
+                  git config --global user.name 'vertonghenb'
+                  git config --global user.email 'benjamin.vertonghen@append.be'
+                  git add -A
+                  git commit -m "[BOT] Sync Icons from ant-design-icons v${LAST_VERSION}"
+                  git push https://Append-IT:$GITHUB_TOKEN@github.com/Append-IT/ant-design-blazor.git ${BRANCH_NAME}
+                  curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+                  cat>PR<<EOF
+                  [BOT] Sync Icons from ant-design-icons v${LAST_VERSION}
+                  EOF
+                  bin/hub pull-request -F PR -b Append-IT:master -h Append-IT:${BRANCH_NAME} -a Append-IT 
