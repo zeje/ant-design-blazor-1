@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Concurrent;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Append.AntDesign.Components
 {
     public partial class Icon
     {
+        [Inject] public HttpClient HttpClient { get; set; }
         [Parameter] public string Width { get; set; } = "1em";
         [Parameter] public string Height { get; set; } = "1em";
         [Parameter] public string Fill { get; set; } = "currentColor";
@@ -30,33 +33,42 @@ namespace Append.AntDesign.Components
 
         }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            base.OnParametersSet();
             DetermineTheme();
-            var xdoc = LoadSvg();
+            var xdoc = await LoadSvg();
             XDocument currentIcon = new XDocument(xdoc);
             AddSvgStyles(currentIcon);
             SetTwoToneColors(currentIcon);
             svg = (MarkupString)currentIcon.ToString();
+
         }
 
-        private XDocument LoadSvg()
+        private async Task<XDocument> LoadSvg()
         {
             XDocument xdoc = null;
             if (SvgCache.TryGetValue(Type, out xdoc))
                 return xdoc;
 
-            xdoc = ReadSvgFile();
+            xdoc = await ReadSvgFile();
             SvgCache.TryAdd(Type, xdoc);
             return xdoc;
         }
 
 
-        private XDocument ReadSvgFile()
+        private async Task<XDocument> ReadSvgFile()
         {
-            var baseUrl = NavigationManager.BaseUri;
-            return XDocument.Load($"{baseUrl}_content/Append.AntDesign.Components/icons/{Theme}/{NormalizedFilename()}.svg");
+            try
+            {
+                var svgString = await HttpClient.GetStringAsync($"_content/Append.AntDesign.Components/icons/{Theme}/{NormalizedFilename()}.svg");
+                return XDocument.Parse(svgString);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentOutOfRangeException($"Icon file '{Theme}/{NormalizedFilename()}'.svg was not found.",ex);
+            }
+
+
         }
         private void DetermineTheme()
         {
@@ -76,7 +88,7 @@ namespace Append.AntDesign.Components
             xdoc.Root.SetAttributeValue("height", Height);
             xdoc.Root.SetAttributeValue("fill", Fill);
             xdoc.Root.SetAttributeValue("aria-hidden", true);
-            if(Type == IconType.Outlined.Loading)
+            if (Type == IconType.Outlined.Loading)
             {
                 xdoc.Root.SetAttributeValue("viewBox", "0 0 1024 1024");
             }

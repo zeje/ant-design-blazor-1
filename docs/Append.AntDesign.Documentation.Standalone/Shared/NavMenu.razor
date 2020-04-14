@@ -1,37 +1,236 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Append.AntDesign.Documentation.Standalone</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿@using Append.AntDesign.Components
+<section class="main-menu-inner" style="max-height:calc(100vh - 64px);margin-top:-40px;">
+    <Menu Class="aside-container" style="padding-top:20px;padding-bottom:20px;">
+        <MenuItemGroup>
+            <Title>General</Title>
+            <Children>
+                <NavLink href="button">
+                    <MenuItem Key="Button">Button</MenuItem>
+                </NavLink>
+                <NavLink href="icon">
+                    <MenuItem Key="Icon">Icon</MenuItem>
+                </NavLink>
+                <NavLink href="typography">
+                    <MenuItem Key="Typography" Disabled>Typography</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
+        <MenuItemGroup>
+            <Title>Layout</Title>
+            <Children>
+                <NavLink href="grid">
+                    <MenuItem Key="Grid" Disabled>Grid</MenuItem>
+                </NavLink>
+                <NavLink href="layout">
+                    <MenuItem Key="Layout" Disabled>Layout</MenuItem>
+                </NavLink>
+                <NavLink href="space">
+                    <MenuItem Key="Space" Disabled>Space</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
 
-@code {
-    private bool collapseNavMenu = true;
+        <MenuItemGroup>
+            <Title>Navigation</Title>
+            <Children>
+                <NavLink href="affix">
+                    <MenuItem Key="Affix" Disabled>Affix</MenuItem>
+                </NavLink>
+                <NavLink href="breadcrumb">
+                    <MenuItem Key="Breadcrumb" Disabled>Breadcrumb</MenuItem>
+                </NavLink>
+                <NavLink href="dropdown">
+                    <MenuItem Key="Dropdown" Disabled>Dropdown</MenuItem>
+                </NavLink>
+                <NavLink href="menu">
+                    <MenuItem Key="Menu">Menu</MenuItem>
+                </NavLink>
+                <NavLink href="pagination">
+                    <MenuItem Key="pagination" Disabled>Pagination</MenuItem>
+                </NavLink>
+                <NavLink href="page-header">
+                    <MenuItem Key="PageHeader" Disabled>PageHeader</MenuItem>
+                </NavLink>
+                <NavLink href="steps">
+                    <MenuItem Key="Steps" Disabled>Steps</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+        <MenuItemGroup>
+            <Title>Data Entry</Title>
+            <Children>
+                <NavLink href="auto-complete">
+                    <MenuItem Key="AutoComplete" Disabled>AutoComplete</MenuItem>
+                </NavLink>
+                <NavLink href="checkbox">
+                    <MenuItem Key="Checkbox" Disabled>Checkbox</MenuItem>
+                </NavLink>
+                <NavLink href="cascader">
+                    <MenuItem Key="Cascader" Disabled>Cascader</MenuItem>
+                </NavLink>
+                <NavLink href="date-picker">
+                    <MenuItem Key="DatePicker" Disabled>DatePicker</MenuItem>
+                </NavLink>
+                <NavLink href="time-picker">
+                    <MenuItem Key="TimePicker" Disabled>TimePicker</MenuItem>
+                </NavLink>
+                <NavLink href="form">
+                    <MenuItem Key="Form" Disabled>Form</MenuItem>
+                </NavLink>
+                <NavLink href="input-number">
+                    <MenuItem Key="InputNumber" Disabled>InputNumber</MenuItem>
+                </NavLink>
+                <NavLink href="input">
+                    <MenuItem Key="Input" Disabled>Input</MenuItem>
+                </NavLink>
+                <NavLink href="mentions">
+                    <MenuItem Key="Mentions" Disabled>Mentions</MenuItem>
+                </NavLink>
+                <NavLink href="rate">
+                    <MenuItem Key="Rate" Disabled>Rate</MenuItem>
+                </NavLink>
+                <NavLink href="radio">
+                    <MenuItem Key="Radio" Disabled>Radio</MenuItem>
+                </NavLink>
+                <NavLink href="switch">
+                    <MenuItem Key="Switch" Disabled>Switch</MenuItem>
+                </NavLink>
+                <NavLink href="slider">
+                    <MenuItem Key="Slider" Disabled>Slider</MenuItem>
+                </NavLink>
+                <NavLink href="select">
+                    <MenuItem Key="Select" Disabled>Select</MenuItem>
+                </NavLink>
+                <NavLink href="tree-select">
+                    <MenuItem Key="TreeSelect" Disabled>TreeSelect</MenuItem>
+                </NavLink>
+                <NavLink href="transfer">
+                    <MenuItem Key="Transfer" Disabled>Transfer</MenuItem>
+                </NavLink>
+                <NavLink href="upload">
+                    <MenuItem Key="Upload" Disabled>Upload</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
+        <MenuItemGroup>
+            <Title>Data Display</Title>
+            <Children>
+                <NavLink href="avatar">
+                    <MenuItem Key="avatar" Disabled>Avatar</MenuItem>
+                </NavLink>
+                <NavLink href="badge">
+                    <MenuItem Key="Badge" Disabled>Badge</MenuItem>
+                </NavLink>
+                <NavLink href="comment">
+                    <MenuItem Key="Comment" Disabled>Comment</MenuItem>
+                </NavLink>
+                <NavLink href="collapse">
+                    <MenuItem Key="Collapse" Disabled>Collapse</MenuItem>
+                </NavLink>
+                <NavLink href="carousel">
+                    <MenuItem Key="Carousel" Disabled>Carousel</MenuItem>
+                </NavLink>
+                <NavLink href="card">
+                    <MenuItem Key="Card" Disabled>Card</MenuItem>
+                </NavLink>
+                <NavLink href="calendar">
+                    <MenuItem Key="Calendar" Disabled>Calendar</MenuItem>
+                </NavLink>
+                <NavLink href="descriptions">
+                    <MenuItem Key="Descriptions" Disabled>Descriptions</MenuItem>
+                </NavLink>
+                <NavLink href="empty">
+                    <MenuItem Key="Empty" Disabled>Empty</MenuItem>
+                </NavLink>
+                <NavLink href="list">
+                    <MenuItem Key="List" Disabled>List</MenuItem>
+                </NavLink>
+                <NavLink href="popover">
+                    <MenuItem Key="Popover" Disabled>Popover</MenuItem>
+                </NavLink>
+                <NavLink href="statistic">
+                    <MenuItem Key="Statistic" Disabled>Statistic</MenuItem>
+                </NavLink>
+                <NavLink href="tree">
+                    <MenuItem Key="Tree" Disabled>Tree</MenuItem>
+                </NavLink>
+                <NavLink href="tooltip">
+                    <MenuItem Key="Tooltip" Disabled>Tooltip</MenuItem>
+                </NavLink>
+                <NavLink href="timeline">
+                    <MenuItem Key="Timeline" Disabled>Timeline</MenuItem>
+                </NavLink>
+                <NavLink href="tag">
+                    <MenuItem Key="Tag" Disabled>Tag</MenuItem>
+                </NavLink>
+                <NavLink href="tabs">
+                    <MenuItem Key="Tabs" Disabled>Tabs</MenuItem>
+                </NavLink>
+                <NavLink href="table">
+                    <MenuItem Key="Table" Disabled>Table</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
+
+        <MenuItemGroup>
+            <Title>Feedback</Title>
+            <Children>
+                <NavLink href="alert">
+                    <MenuItem Key="Alert" Disabled>Alert</MenuItem>
+                </NavLink>
+                <NavLink href="drawer">
+                    <MenuItem Key="Drawer" Disabled>Drawer</MenuItem>
+                </NavLink>
+                <NavLink href="modal">
+                    <MenuItem Key="Modal" Disabled>Modal</MenuItem>
+                </NavLink>
+                <NavLink href="message">
+                    <MenuItem Key="Message" Disabled>Message</MenuItem>
+                </NavLink>
+                <NavLink href="notification">
+                    <MenuItem Key="Notification" Disabled>Notification</MenuItem>
+                </NavLink>
+                <NavLink href="progress">
+                    <MenuItem Key="Progress" Disabled>Progress</MenuItem>
+                </NavLink>
+                <NavLink href="popconfirm">
+                    <MenuItem Key="Popconfirm" Disabled>Popconfirm</MenuItem>
+                </NavLink>
+                <NavLink href="result">
+                    <MenuItem Key="Result" Disabled>Result</MenuItem>
+                </NavLink>
+                <NavLink href="spin">
+                    <MenuItem Key="Spin" Disabled>Spin</MenuItem>
+                </NavLink>
+                <NavLink href="skeleton">
+                    <MenuItem Key="Skeleton" Disabled>Skeleton</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
+
+
+        <MenuItemGroup>
+            <Title>Other</Title>
+            <Children>
+                <NavLink href="anchor">
+                    <MenuItem Key="Anchor" Disabled>Anchor</MenuItem>
+                </NavLink>
+                <NavLink href="back-top">
+                    <MenuItem Key="BackTop" Disabled>BackTop</MenuItem>
+                </NavLink>
+                <NavLink href="divider">
+                    <MenuItem Key="Divider">Divider</MenuItem>
+                </NavLink>
+            </Children>
+        </MenuItemGroup>
+    </Menu>
+</section>
+
+<style>
+    .aside-container .ant-menu-item-group-list {
+        padding-left: 30px;
     }
-}
+</style>

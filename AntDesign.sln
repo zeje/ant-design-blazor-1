@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Abstractio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Services", "source\AntDesign.Services\Append.AntDesign.Services.csproj", "{94754618-3127-48A7-A57B-FB7F0DEE675B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation.Wasm", "docs\Append.AntDesign.Documentation.Wasm\Append.AntDesign.Documentation.Wasm.csproj", "{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation", "docs\Append.AntDesign.Documentation\Append.AntDesign.Documentation.csproj", "{05FDA977-143A-4B74-ADA3-D2AA3A73BB18}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Styling", "source\Append.AntDesign.Styling\Append.AntDesign.Styling.csproj", "{939D2067-434B-4F96-B5C1-B7F7B46F8A4C}"
@@ -30,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastru
 		infrastructure\index.html = infrastructure\index.html
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Append.AntDesign.Documentation.Standalone", "docs\Append.AntDesign.Documentation.Standalone\Append.AntDesign.Documentation.Standalone.csproj", "{5BD635E4-0398-4CA4-8760-0F10D9A0943D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation.Standalone", "docs\Append.AntDesign.Documentation.Standalone\Append.AntDesign.Documentation.Standalone.csproj", "{5BD635E4-0398-4CA4-8760-0F10D9A0943D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +48,6 @@ Global
 		{94754618-3127-48A7-A57B-FB7F0DEE675B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94754618-3127-48A7-A57B-FB7F0DEE675B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94754618-3127-48A7-A57B-FB7F0DEE675B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05FDA977-143A-4B74-ADA3-D2AA3A73BB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05FDA977-143A-4B74-ADA3-D2AA3A73BB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05FDA977-143A-4B74-ADA3-D2AA3A73BB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -78,7 +72,6 @@ Global
 		{CE803B3F-85E5-4F31-9867-F53D3DD26B66} = {C844DC29-F7DF-4B90-B31A-E49424420FC8}
 		{3DC3C035-6F85-46BE-A813-C05794E22724} = {C844DC29-F7DF-4B90-B31A-E49424420FC8}
 		{94754618-3127-48A7-A57B-FB7F0DEE675B} = {C844DC29-F7DF-4B90-B31A-E49424420FC8}
-		{A7C0AC6A-4E09-4EE2-B406-29ED4D4A83E7} = {844DD10F-A948-4BBB-9A36-F77ED04F05E0}
 		{05FDA977-143A-4B74-ADA3-D2AA3A73BB18} = {844DD10F-A948-4BBB-9A36-F77ED04F05E0}
 		{939D2067-434B-4F96-B5C1-B7F7B46F8A4C} = {C844DC29-F7DF-4B90-B31A-E49424420FC8}
 		{3239E21A-3CA7-4ED6-AF26-301FAEA9616E} = {C844DC29-F7DF-4B90-B31A-E49424420FC8}
