@@ -23,6 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Styling", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Core", "source\Append.AntDesign.Core\Append.AntDesign.Core.csproj", "{3239E21A-3CA7-4ED6-AF26-301FAEA9616E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{2DE6608D-CAEB-4F58-B7C5-90E849FB4F8D}"
+	ProjectSection(SolutionItems) = preProject
+		infrastructure\.nojekyll = infrastructure\.nojekyll
+		infrastructure\404.html = infrastructure\404.html
+		infrastructure\index.html = infrastructure\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
