@@ -17,7 +17,7 @@ jobs:
                   cp -rf infrastructure/* ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
                   cd ./docs/Append.AntDesign.Documentation.Standalone
                   dotnet build
-                  dotnet publish -c Release -o build
+                  dotnet publish -c Release
 
         - name: Deploy to Github Pages
           uses: JamesIves/github-pages-deploy-action@3.4.8
@@ -25,4 +25,4 @@ jobs:
             ACCESS_TOKEN: ${{secrets.GH_TOKEN}}
             BASE_BRANCH: master
             BRANCH: gh-pages
-            FOLDER: build/wwwroot
+            FOLDER: docs\Append.AntDesign.Documentation.Standalone\bin\release\netstandard2.1\wwwroot
