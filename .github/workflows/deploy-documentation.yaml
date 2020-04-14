@@ -25,4 +25,4 @@ jobs:
             ACCESS_TOKEN: ${{secrets.GH_TOKEN}}
             BASE_BRANCH: master
             BRANCH: gh-pages
-            FOLDER: docs\Append.AntDesign.Documentation.Standalone\bin\release\netstandard2.1\wwwroot
+            FOLDER: docs/Append.AntDesign.Documentation.Standalone/bin/release/netstandard2.1/wwwroot
