@@ -1,9 +1,8 @@
 name: Icon Sync Bot
 
 on:
-  push:
-    schedule:
-        - cron: '0 * * * *'
+  schedule:
+  - cron: "0 2 * * 1-5"
 
 jobs:
     style-sync:
