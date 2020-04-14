@@ -1,0 +1,35 @@
+﻿@inherits AntComponent
+@namespace Append.AntDesign.Components
+
+<li class="@classes" role="menuitem" @key="Key" @onmouseover="HandleMouseOver" @onmouseout="HandleMouseOut" style="position:relative;">
+    <div class="ant-menu-submenu-title" role="button"
+         @onclick="HandleOnTitleClick"
+         aria-expanded="@isOpen"
+         aria-haspopup="true">
+        <span>
+            @Title
+        </span>
+        <i class="ant-menu-submenu-arrow"></i>
+    </div>
+    <ul direction="ltr" class="@subMenuClasses" role="menu">
+        <CascadingValue Value="this">
+            @Children
+        </CascadingValue>
+    </ul>
+</li>
+
+<style>
+    .ant-menu-vertical.ant-menu-sub, 
+    .ant-menu-vertical.ant-menu-sub:not(.zoom-big-enter-active):not(.zoom-big-leave-active), .ant-menu-vertical-left.ant-menu-sub:not(.zoom-big-enter-active):not(.zoom-big-leave-active), .ant-menu-vertical-right.ant-menu-sub:not(.zoom-big-enter-active):not(.zoom-big-leave-active) {
+        overflow: initial;
+    }
+    .ant-menu.ant-menu-sub.ant-menu-vertical.ant-menu-submenu-popup{
+        top:0;
+        left:100%;
+    }
+    .ant-menu-submenu.ant-menu-submenu-horizontal > .ant-menu.ant-menu-sub.ant-menu-vertical.ant-menu-submenu-popup{
+        top:50px;
+        left:initial;
+        min-width:100%
+    }
+</style>

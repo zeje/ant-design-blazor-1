@@ -4,16 +4,31 @@
 
 Navigation is an important part of any website, as a good navigation setup allows users to move around the site quickly and efficiently. Ant Design offers top and side navigation options. Top navigation provides all the categories and functions of the website. Side navigation provides the multi-level structure of the website.
 
-More layouts with navigation: [Layout](/components/layout).
-
 ## API
 
 ```razor
-<Menu>
-  <MenuItem>Menu</MenuItem>
-  <SubMenu title="SubMenu">
-    <MenuItem>SubMenuItem</MenuItem>
-  </SubMenu>
+<Menu >
+    <MenuItem Key="mail">
+        <Icon Type="IconType.Outlined.Mail" />
+        <span>Navigation One</span>
+    </MenuItem>
+    <SubMenu Key="sub1">
+        <Title>
+            <Icon Type="IconType.Outlined.Setting" />
+            <span>Navigation Three - Submenu</span>
+        </Title>
+        <Children>
+            <MenuItem Key="setting:1">Option 1</MenuItem>
+            <MenuItem Key="setting:2">Option 2</MenuItem>
+            <MenuItem Key="setting:3">Option 3</MenuItem>
+            <MenuItem Key="setting:4">Option 4</MenuItem>
+        </Children>
+    </SubMenu>
+    <MenuItem Key="antdesign">
+        <a href="https://ant.design" target="_blank">
+            Navigation Four - Link
+        </a>
+    </MenuItem>
 </Menu>
 ```
 
@@ -23,52 +38,37 @@ More layouts with navigation: [Layout](/components/layout).
 | --- | --- | --- | --- | --- |
 | defaultOpenKeys | Array with the keys of default opened sub menus | string\[] |  |  |
 | defaultSelectedKeys | Array with the keys of default selected menu items | string\[] |  |  |
-| forceSubMenuRender | Render submenu into DOM before it becomes visible | boolean | false |  |
 | inlineCollapsed | Specifies the collapsed status when menu is inline mode | boolean | - |  |
-| inlineIndent | Indent (in pixels) of inline menu items on each level | number | 24 |  |
-| mode | Type of menu; `vertical`, `horizontal`, or `inline` | `vertical` \| `horizontal` \| `inline` | `vertical` |  |
-| multiple | Allows selection of multiple items | boolean | false |  |
-| openKeys | Array with the keys of currently opened sub-menus | string\[] |  |  |
+| Mode | Type of menu; `vertical`, `horizontal`, or `inline` | MenuMode | MenuMode.Inline |  |
 | selectable | Allows selecting menu items | boolean | true |  |
-| selectedKeys | Array with the keys of currently selected menu items | string\[] |  |  |
-| style | Style of the root node | object |  |  |
-| subMenuCloseDelay | Delay time to hide submenu when mouse leaves (in seconds) | number | 0.1 |  |
-| subMenuOpenDelay | Delay time to show submenu when mouse enters, (in seconds) | number | 0 |  |
-| theme | Color theme of the menu | `light` \| `dark` | `light` |  |
+| Accordion | Closes all non-parents when a submenu is clicked | boolean | false |  |
+| Style | Style of the root node | string |  |  |
+| Theme | Color theme of the menu | MenuTheme | MenuTheme.Light |  |
 | onClick | Called when a menu item is clicked | function({ item, key, keyPath, domEvent }) | - |  |
-| onDeselect | Called when a menu item is deselected (multiple mode only) | function({ item, key, keyPath, selectedKeys, domEvent }) | - |  |
 | onOpenChange | Called when sub-menus are opened or closed | function(openKeys: string\[]) | noop |  |
 | onSelect | Called when a menu item is selected | function({ item, key, keyPath, selectedKeys, domEvent }) | none |  |
-| overflowedIndicator | Customized icon when menu is collapsed | ReactNode | - |  |
 
-> More options in [rc-menu](https://github.com/react-component/menu#api)
-
-### Menu.Item
+### MenuItem
 
 | Param    | Description                          | Type    | Default value | Version |
 | -------- | ------------------------------------ | ------- | ------------- | ------- |
-| disabled | Whether menu item is disabled        | boolean | false         |         |
-| key      | Unique ID of the menu item           | string  |               |         |
-| title    | Set display title for collapsed item | string  |               |         |
+| Disabled | Whether menu item is disabled        | boolean | false         |         |
+| Key      | Unique ID of the menu item           | string  |               |         |
+| Title    | Set display title for collapsed item | RenderFragment  |               |         |
 
-### Menu.SubMenu
+### SubMenu
 
 | Param | Description | Type | Default value | Version |
 | --- | --- | --- | --- | --- |
-| popupClassName | Sub-menu class name | string |  |  |
-| children | Sub-menus or sub-menu items | Array&lt;MenuItem\|SubMenu> |  |  |
-| disabled | Whether sub-menu is disabled | boolean | false |  |
-| key | Unique ID of the sub-menu | string |  |  |
-| title | Title of the sub-menu | string\|ReactNode |  |  |
-| onTitleClick | Callback executed when the sub-menu title is clicked | function({ key, domEvent }) |  |  |
+| Children | Sub-menus or sub-menu items | RenderFragment |  |  |
+| Disabled | Whether sub-menu is disabled | bool | false |  |
+| Key | Unique ID of the sub-menu | string |  |  |
+| Title | Title of the sub-menu | RenderFragment |  |  |
+| OnTitleClick | Callback executed when the sub-menu title is clicked | function({ key, domEvent }) |  |  |
 
-### Menu.ItemGroup
+### MenuItemGroup
 
 | Param    | Description        | Type              | Default value | Version |
 | -------- | ------------------ | ----------------- | ------------- | ------- |
-| children | sub-menu items     | MenuItem\[]       |               |         |
-| title    | title of the group | string\|ReactNode |               |         |
-
-### Menu.Divider
-
-Divider line in between menu items, only used in vertical popup Menu or Dropdown Menu.
+| Children | sub-menu items     | RenderFragment  |               |         |
+| Title    | title of the group | RenderFragment  |               |         |

@@ -6,15 +6,15 @@
         </a>
     </h1>
     @LoadMarkdownDocumentation()
-    <h2>Examples</h2>
-    @foreach (var example in Examples)
-    {
-        <CascadingValue Value="@ComponentName">
-            @BuildExample(example)
-        </CascadingValue>
-        <br />
-    }
 </section>
+<h2>Examples</h2>
+@foreach (var example in Examples)
+{
+    <CascadingValue Value="@ComponentName">
+        @BuildExample(example)
+    </CascadingValue>
+    <br />
+}
 
 <section class="markdown api-container">
     @LoadMarkdownApiDocumentation()

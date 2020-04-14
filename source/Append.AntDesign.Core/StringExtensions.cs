@@ -10,5 +10,9 @@ namespace Append.AntDesign.Core
 
             return value;
         }
+        public static string AddCssClass(this string value, string cssClass)
+        {
+            return $"{value} {cssClass}";
+        }
     }
 }

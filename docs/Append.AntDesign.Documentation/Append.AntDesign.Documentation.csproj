@@ -45,7 +45,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Components\Menu\Demo\" />
     <Folder Include="Style\Template\" />
   </ItemGroup>
 

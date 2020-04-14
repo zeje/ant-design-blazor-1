@@ -1,3 +1,36 @@
 ﻿@inherits AntComponent
 @namespace Append.AntDesign.Components
 
+<ul class="@classes" direction="ltr" role="menu" style="@Style" @attributes="@Attributes">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</ul>
+
+<style>
+    .ant-menu.ant-menu-inline > .ant-menu-item,
+    .ant-menu-submenu.ant-menu-submenu-inline > .ant-menu-submenu-title {
+        padding-left: 24px;
+    }
+    .ant-menu-sub.ant-menu-inline > .ant-menu-item,
+    .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title,
+    .ant-menu.ant-menu-sub.ant-menu-inline > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item {
+        padding-left: 48px;
+    }
+    .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu.ant-menu-sub.ant-menu-inline > .ant-menu-item {
+        padding-left: 72px;
+    }
+    a.active > .ant-menu-item {
+        background-color: #e6f7ff;
+        color: #1890ff;
+    }
+    .ant-menu-inline a.active > .ant-menu-item::after, .ant-menu-inline a.active > .ant-menu-item::after {
+        transform: scaleY(1);
+        opacity: 1;
+        transition: transform .15s cubic-bezier(.645,.045,.355,1),opacity .15s cubic-bezier(.645,.045,.355,1);
+    }
+    .ant-menu a,
+    .ant-menu:visited{
+        color: rgba(0,0,0,.85);
+    }
+</style>
