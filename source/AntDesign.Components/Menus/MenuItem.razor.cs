@@ -2,14 +2,12 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
-    public partial class MenuItem : IDisposable
+    public partial class MenuItem
     {
         private const string menuItemPrefix = "ant-menu-item";
         /// <summary>
@@ -17,16 +15,18 @@ namespace Append.AntDesign.Components
         /// </summary>
         private string classes =>
             menuItemPrefix
-            .AddClassWhen($"{menuItemPrefix}-selected",isSelected)
-            .AddClassWhen($"{menuItemPrefix}-disabled",Disabled)
-            + Class;
+            .AddClassWhen($"{menuItemPrefix}-selected", IsSelected)
+            .AddClassWhen($"{menuItemPrefix}-disabled", Disabled)
+            .AddCssClass(Class);
 
         [CascadingParameter] public Menu RootMenu { get; set; }
         [CascadingParameter] public SubMenu ParentMenu { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public string Key { get; set; }
         [Parameter] public bool Disabled { get; set; }
-        private bool isSelected;
+        [Parameter] public EventCallback<MouseEventArgs> OnClicked { get; set; }
+
+        public bool IsSelected { get; private set; }
 
         protected override void OnInitialized()
         {
@@ -34,33 +34,37 @@ namespace Append.AntDesign.Components
             if (string.IsNullOrWhiteSpace(Key))
                 throw new ArgumentException($"Parameter {nameof(Key)} is required for a {nameof(MenuItem)}");
 
-            RootMenu.OnItemSelected += Rerender;
+            RootMenu.MenuItems.Add(this);
 
             if (RootMenu.DefaultSelectedItems.Contains(Key))
-                isSelected = true;
+                Select();
         }
 
-        private void Rerender(string key)
+        public async Task HandleOnClick(MouseEventArgs args)
         {
-            if (key == Key)
-                isSelected = true;
-            else
-                isSelected = false;
-            
-            StateHasChanged();
-        }
+            if (!RootMenu.Selectable)
+                return;
 
-        public async Task HandleOnClick()
-        {
-            RootMenu.SelectItem(Key);
+            RootMenu.SelectItem(this);
+
+            if (OnClicked.HasDelegate)
+                await OnClicked.InvokeAsync(args);
+
+            if (ParentMenu == null)
+                return;
+
             if (RootMenu.Mode != MenuMode.Inline)
-                await ParentMenu.Collapse();
-
+            {
+                await ParentMenu?.Collapse();
+            }
         }
-
-        public void Dispose()
+        public void Select()
         {
-            RootMenu.OnItemSelected -= Rerender;
+            IsSelected = true;
+        }
+        public void Deselect()
+        {
+            IsSelected = false;
         }
     }
 }

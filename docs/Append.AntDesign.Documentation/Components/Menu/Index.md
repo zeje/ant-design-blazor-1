@@ -7,7 +7,7 @@ Navigation is an important part of any website, as a good navigation setup allow
 ## API
 
 ```razor
-<Menu >
+<Menu>
     <MenuItem Key="mail">
         <Icon Type="IconType.Outlined.Mail" />
         <span>Navigation One</span>
@@ -36,25 +36,27 @@ Navigation is an important part of any website, as a good navigation setup allow
 
 | Param | Description | Type | Default value | Version |
 | --- | --- | --- | --- | --- |
-| defaultOpenKeys | Array with the keys of default opened sub menus | string\[] |  |  |
-| defaultSelectedKeys | Array with the keys of default selected menu items | string\[] |  |  |
-| inlineCollapsed | Specifies the collapsed status when menu is inline mode | boolean | - |  |
+| DefaultOpenSubMenus | Array with the keys of default opened sub menus | IEnumerable\<string\> |  |  |
+| DefaultSelectedItems | Array with the keys of default selected menu items | IEnumerable\<string\> |  |  |
+| Collapsed | Specifies the `collapsed` status when menu is `inline` mode | boolean | - |  |
 | Mode | Type of menu; `vertical`, `horizontal`, or `inline` | MenuMode | MenuMode.Inline |  |
-| selectable | Allows selecting menu items | boolean | true |  |
+| Selectable | Allows selecting menu items | boolean | true |  |
 | Accordion | Closes all non-parents when a submenu is clicked | boolean | false |  |
-| Style | Style of the root node | string |  |  |
 | Theme | Color theme of the menu | MenuTheme | MenuTheme.Light |  |
-| onClick | Called when a menu item is clicked | function({ item, key, keyPath, domEvent }) | - |  |
-| onOpenChange | Called when sub-menus are opened or closed | function(openKeys: string\[]) | noop |  |
-| onSelect | Called when a menu item is selected | function({ item, key, keyPath, selectedKeys, domEvent }) | none |  |
+| OnMenuItemClicked | Called when a menu item is clicked | EventHandler\<MenuItem\> | - |  |
+| OnSubmenuClicked | Called when sub-menus are opened or closed | EventHandler\<SubMenu\> | noop |  |
+| Style | Style of the root node | string |  |  |
+| Class | Class of the root node | string |  |  |
+
 
 ### MenuItem
 
-| Param    | Description                          | Type    | Default value | Version |
-| -------- | ------------------------------------ | ------- | ------------- | ------- |
-| Disabled | Whether menu item is disabled        | boolean | false         |         |
-| Key      | Unique ID of the menu item           | string  |               |         |
-| Title    | Set display title for collapsed item | RenderFragment  |               |         |
+| Param     | Description                          | Type    | Default value | Version |
+| --------  | ------------------------------------ | ------- | ------------- | ------- |
+| Disabled  | Whether menu item is disabled        | boolean | false         |         |
+| Key       | Unique ID of the menu item           | string  |               |         |
+| Title     | Set display title for collapsed item | RenderFragment  |       |         |
+| OnClicked | Callback executed when item is clicked | EventCallBack\<MouseEventArgs\> |  |  |
 
 ### SubMenu
 
@@ -64,7 +66,7 @@ Navigation is an important part of any website, as a good navigation setup allow
 | Disabled | Whether sub-menu is disabled | bool | false |  |
 | Key | Unique ID of the sub-menu | string |  |  |
 | Title | Title of the sub-menu | RenderFragment |  |  |
-| OnTitleClick | Callback executed when the sub-menu title is clicked | function({ key, domEvent }) |  |  |
+| OnTitleClicked | Callback executed when the sub-menu title is clicked | EventCallBack\<MouseEventArgs\> |  |  |
 
 ### MenuItemGroup
 

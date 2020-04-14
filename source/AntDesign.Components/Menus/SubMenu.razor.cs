@@ -16,16 +16,15 @@ namespace Append.AntDesign.Components
         private string classes =>
             submenuPrefix
             .AddCssClass($"{submenuPrefix}-{RootMenu.Mode}")
-            .AddClassWhen($"{submenuPrefix}-open", isOpen)
-            + Class;
-
+            .AddClassWhen($"{submenuPrefix}-open", IsOpen)
+            .AddCssClass(Class);
 
         private string subMenuClasses =>
             "ant-menu"
             .AddCssClass("ant-menu-sub")
             .AddCssClass($"ant-menu-{(RootMenu.Mode == MenuMode.Horizontal ? MenuMode.Vertical : RootMenu.Mode)}")
             .AddClassWhen($"ant-menu-submenu-popup", RootMenu.Mode != MenuMode.Inline)
-            .AddClassWhen($"ant-menu-hidden", !isOpen);
+            .AddClassWhen($"ant-menu-hidden", !IsOpen);
 
 
         [CascadingParameter] public Menu RootMenu { get; set; }
@@ -33,34 +32,33 @@ namespace Append.AntDesign.Components
         [Parameter] public RenderFragment Title { get; set; }
         [Parameter] public RenderFragment Children { get; set; }
         [Parameter] public string Key { get; set; }
-        [Parameter] public EventCallback<MouseEventArgs> OnTitleClick { get; set; }
-        private bool isOpen;
-        public bool IsOpen => isOpen;
+        [Parameter] public EventCallback<MouseEventArgs> OnTitleClicked { get; set; }
+        public bool IsOpen { get; private set; }
 
         private async Task HandleOnTitleClick(MouseEventArgs args)
         {
             RootMenu.SelectSubmenu(this);
-            if (OnTitleClick.HasDelegate)
-                await OnTitleClick.InvokeAsync(args);
+            if (OnTitleClicked.HasDelegate)
+                await OnTitleClicked.InvokeAsync(args);
         }
-        private async Task HandleMouseOver(MouseEventArgs args)
+        private void HandleMouseOver(MouseEventArgs args)
         {
             if (RootMenu.Mode == MenuMode.Inline)
                 return;
 
-            isOpen = true;
+            IsOpen = true;
         }
-        private async Task HandleMouseOut(MouseEventArgs args)
+        private void HandleMouseOut(MouseEventArgs args)
         {
             if (RootMenu.Mode == MenuMode.Inline)
                 return;
 
-            isOpen = false;
+            IsOpen = false;
         }
         public async Task Collapse()
         {
             await Task.Delay(300);
-            isOpen = false;
+            IsOpen = false;
             StateHasChanged();
         }
         protected override void OnInitialized()
@@ -71,15 +69,15 @@ namespace Append.AntDesign.Components
 
             RootMenu.Submenus.Add(this);
             if (RootMenu.DefaultOpenSubMenus.Contains(Key))
-                isOpen = true;
+                IsOpen = true;
         }
         public void Close()
         {
-            isOpen = false;
+            IsOpen = false;
         }
         public void Open()
         {
-            isOpen = true;
+            IsOpen = true;
             if(Parent != null)
             {
                 Parent.Open();

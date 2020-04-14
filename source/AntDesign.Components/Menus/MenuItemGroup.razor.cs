@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Append.AntDesign.Core;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Append.AntDesign.Components
         /// </summary>
         private string classes =>
             menuItemGroupPrefix
-            + Class;
+            .AddCssClass(Class);
 
         [Parameter] public RenderFragment Title { get; set; }
         [Parameter] public RenderFragment Children { get; set; }

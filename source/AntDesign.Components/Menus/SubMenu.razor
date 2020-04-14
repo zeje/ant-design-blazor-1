@@ -4,14 +4,13 @@
 <li class="@classes" role="menuitem" @key="Key" @onmouseover="HandleMouseOver" @onmouseout="HandleMouseOut" style="position:relative;">
     <div class="ant-menu-submenu-title" role="button"
          @onclick="HandleOnTitleClick"
-         aria-expanded="@isOpen"
          aria-haspopup="true">
         <span>
             @Title
         </span>
         <i class="ant-menu-submenu-arrow"></i>
     </div>
-    <ul direction="ltr" class="@subMenuClasses" role="menu">
+    <ul direction="ltr" class="@subMenuClasses" role="menu" aria-expanded="@IsOpen">
         <CascadingValue Value="this">
             @Children
         </CascadingValue>

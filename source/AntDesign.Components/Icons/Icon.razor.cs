@@ -27,8 +27,13 @@ namespace Append.AntDesign.Components
             base.OnInitialized();
             if (Type == null)
                 throw new ArgumentException($"Parameter {nameof(Type)} was not provided, you should provide which icon you'd like to see.");
-            DetermineTheme();
 
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            DetermineTheme();
             var xdoc = LoadSvg();
             XDocument currentIcon = new XDocument(xdoc);
             AddSvgStyles(currentIcon);
