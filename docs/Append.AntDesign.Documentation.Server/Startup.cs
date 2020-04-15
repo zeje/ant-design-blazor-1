@@ -28,6 +28,7 @@ namespace Append.AntDesign.Documentation.Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHttpClient<IIconService, IconService>();
+            services.AddHttpClient<GitHubService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

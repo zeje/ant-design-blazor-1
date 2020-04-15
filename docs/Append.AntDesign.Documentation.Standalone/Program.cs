@@ -17,6 +17,7 @@ namespace Append.AntDesign.Documentation.Standalone
 
             builder.Services.AddBaseAddressHttpClient();
             builder.Services.AddSingleton<IIconService, IconService>();
+            builder.Services.AddSingleton<GitHubService>();
 
             await builder.Build().RunAsync();
         }

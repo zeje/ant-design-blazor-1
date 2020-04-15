@@ -1,5 +1,5 @@
 ﻿<section class="code-box" @attributes="@Attributes">
-    <section class="code-box-demo" >
+    <section class="code-box-demo @(isExpanded ? "expand" : null)">
         @Demo
     </section>
     <section class="code-box-meta markdown">
@@ -11,6 +11,27 @@
         </div>
         <div class="code-box-description">
             @Description
+        </div>
+        <div class="code-box-actions">
+            <div style="display:flex;justify-content:space-evenly;">
+                <span style="cursor:pointer" title="Edit on GitHub">
+                    <a href="@EditLink">
+                        <Icon Type="IconType.TwoTone.Edit" Width="1.5em" Height="1.5em" />
+                    </a>
+                </span>
+                <span style="cursor:pointer">
+                    <Icon Type="IconType.TwoTone.Snippets" title="Copy code" Width="1.5em" Height="1.5em" />
+                </span>
+                <span style="cursor:pointer" @onclick="ToggleExpand">
+                    <Icon Type="IconType.TwoTone.Code" title="Show code" Width="1.5em" Height="1.5em" />
+                </span>
+            </div>
+
+        </div>
+    </section>
+    <section class="highlight-wrapper @(isExpanded ? "highlight-wrapper-expand" : null)">
+        <div class="highlight">
+            <pre class="language-cs"><code>@CodeSample</code></pre>
         </div>
     </section>
 </section>
