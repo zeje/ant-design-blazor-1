@@ -33,12 +33,12 @@ namespace Append.AntDesign.Services
         {
             try
             {
-                var svgString = await Client.GetStringAsync($"_content/Append.AntDesign.Components/icons/{iconType.Theme}/{iconType.NormalisedIconFileName}.svg");
+                var svgString = await Client.GetStringAsync($"_content/Append.AntDesign/icons/{iconType.Theme}/{iconType.NormalisedIconFileName}.svg");
                 return XDocument.Parse(svgString);
             }
             catch (Exception ex)
             {
-                throw new ArgumentOutOfRangeException($"Icon file '{iconType.Theme}/{iconType.NormalisedIconFileName}'.svg was not found.", ex);
+                throw new ArgumentOutOfRangeException($"Icon file '{iconType.Theme}/{iconType.NormalisedIconFileName}.svg' was not found.", ex);
             }
         }
     }

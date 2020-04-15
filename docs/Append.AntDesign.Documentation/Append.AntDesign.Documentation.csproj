@@ -41,12 +41,12 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\source\AntDesign.Components\Append.AntDesign.Components.csproj" />
+    <Folder Include="Style\Template\" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="Style\Template\" />
+    <ProjectReference Include="..\..\source\Append.AntDesign\Append.AntDesign.csproj" />
   </ItemGroup>
 
 </Project>
