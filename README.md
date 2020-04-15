@@ -2,28 +2,13 @@
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 
-<div class="pic-plus">
+<div align="center">
   <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
-  <span>+</span>
- <img width="160" src="_content/Append.AntDesign.Documentation/images/blazor-logo.png" />
-  <span>+</span>
- <img width="160" src="_content/Append.AntDesign.Documentation/images/dotnetbot.png" />
+ <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/blazor-logo.png" />
+ <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/dotnetbot.png" />
 </div>
 
-<style>
-.pic-plus > * {
-  display: inline-block !important;
-  vertical-align: middle;
-}
-.pic-plus span {
-  font-size: 30px;
-  color: #aaa;
-  margin: 0 20px;
-}
-.pic-plus{
-    text-align:center;
-}
-</style>
+<br/>
 
 ---
 
