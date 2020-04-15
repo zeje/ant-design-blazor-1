@@ -6,14 +6,14 @@
     <Demo>
         <p>Click on one of the Themes to see them in action! </p>
         <Button Label="Filled" OnClick="_ => SelectIconType(typeof(IconType.Filled))" Type="(selectedIconType == typeof(IconType.Filled) ? ButtonType.Primary : ButtonType.Default)" />
-        <Button Label="Outline" OnClick="_ => SelectIconType(typeof(IconType.Outlined))" Type="(selectedIconType == typeof(IconType.Outlined) ? ButtonType.Primary : ButtonType.Default)" />
+        <Button Label="Outlined" OnClick="_ => SelectIconType(typeof(IconType.Outlined))" Type="(selectedIconType == typeof(IconType.Outlined) ? ButtonType.Primary : ButtonType.Default)" />
         <Button Label="TwoTone" OnClick="_ => SelectIconType(typeof(IconType.TwoTone))" Type="(selectedIconType == typeof(IconType.TwoTone) ? ButtonType.Primary : ButtonType.Default)" />
         <Divider Label="@selectedIconType.Name" />
         <ul class="anticons-list">
             @foreach (var item in icons)
             {
                 <li @key="item.Value">
-                    <Icon Type="item" Theme="theme" />
+                    <Icon Type="item" />
                     <span class="anticon-class">
                         <span class="ant-badge">@item.UnnormalisedName</span>
                     </span>
@@ -30,9 +30,6 @@
     private IconTheme theme => selectedIconType == typeof(IconType.Filled) ? IconTheme.Filled
                              : selectedIconType == typeof(IconType.Outlined) ? IconTheme.Outlined
                                                  : IconTheme.TwoTone;
-
-
-
     protected override void OnInitialized()
     {
         base.OnInitialized();
