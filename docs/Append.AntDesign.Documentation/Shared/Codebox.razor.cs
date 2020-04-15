@@ -25,7 +25,14 @@ namespace Append.AntDesign.Documentation.Shared
         private async Task ToggleExpand()
         {
             isExpanded = !isExpanded;
-            CodeSample = await GitHubService.GetSampleAsync(ComponentName,Title);
+            if(isExpanded)
+            {
+                CodeSample = await GitHubService.GetSampleAsync(ComponentName, Title);
+            }
+            else
+            {
+                CodeSample = null;
+            }
         }
 
     }

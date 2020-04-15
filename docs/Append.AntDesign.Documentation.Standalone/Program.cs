@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Append.AntDesign.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Append.AntDesign.Documentation.Standalone
 {
@@ -16,8 +17,8 @@ namespace Append.AntDesign.Documentation.Standalone
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
-            builder.Services.AddSingleton<IIconService, IconService>();
-            builder.Services.AddSingleton<GitHubService>();
+            builder.Services.AddHttpClient<IIconService, IconService>();
+            builder.Services.AddHttpClient<GitHubService>();
 
             await builder.Build().RunAsync();
         }
