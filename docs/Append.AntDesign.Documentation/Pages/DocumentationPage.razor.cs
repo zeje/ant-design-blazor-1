@@ -12,13 +12,14 @@ namespace Append.AntDesign.Documentation.Pages
 {
     public partial class DocumentationPage
     {
-        private string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Docs/{DocumentName}.md";
+        private string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Docs/{docNameOrDefault}.md";
         [Parameter] public string DocumentName { get; set; }
         private readonly Document doc = new Document();
+        private string docNameOrDefault;
 
         public async Task LoadMarkdownDocumentation()
         {
-            var docNameOrDefault = DocumentName == null ? "introduce" : DocumentName;
+            docNameOrDefault = DocumentName ?? "introduce";
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"Append.AntDesign.Documentation.Docs.{docNameOrDefault}.md";
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
