@@ -1,0 +1,12 @@
+﻿@page "/docs/{DocumentName}"
+@page "/"
+
+<section class="markdown">
+    <h1>
+        @doc.Info.Title
+        <a href="@EditLink" class="edit-button" target="_blank">
+            <Icon Type="IconType.Outlined.Edit" Theme="IconTheme.Outlined" />
+        </a>
+    </h1>
+    @doc.Content
+</section>

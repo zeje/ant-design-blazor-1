@@ -14,6 +14,7 @@
     <None Remove="Components\Divider\Index.md" />
     <None Remove="Components\Icon\Index.md" />
     <None Remove="Components\Menu\Index.md" />
+    <None Remove="Docs\introduce.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,7 @@
     <EmbeddedResource Include="Components\Divider\Index.md" />
     <EmbeddedResource Include="Components\Icon\Index.md" />
     <EmbeddedResource Include="Components\Menu\Index.md" />
+    <EmbeddedResource Include="Docs\introduce.md" />
   </ItemGroup>
 
   <ItemGroup>

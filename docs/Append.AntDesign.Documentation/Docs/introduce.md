@@ -1,4 +1,9 @@
-# Ant Design - Blazor
+﻿<!-- Metadata 
+{
+  "order": 1,
+  "title": "Ant Design - Blazor"
+}
+-->
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 
