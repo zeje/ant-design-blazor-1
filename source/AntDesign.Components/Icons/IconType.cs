@@ -3,11 +3,15 @@ using System.Linq;
 
 namespace Append.AntDesign.Components
 {
-    public class IconType : SmartEnum<IconType>
+    public abstract class IconType : SmartEnum<IconType>
     {
+        public abstract IconTheme Theme { get; protected set; }
+
         protected IconType(string name, int value) : base(name, value)
         {
         }
+        public string NormalisedIconFileName => $"{Name.Replace('_', '-')}";
+
         public string UnnormalisedName =>
                string.Join("", Name.Split('_')
                  .Select(w => w.Trim())
@@ -16,6 +20,7 @@ namespace Append.AntDesign.Components
 
         public class Filled : IconType
         {
+            public override IconTheme Theme { get; protected set; } = IconTheme.Filled;
             private Filled(string name, int value) : base(name, value)
             {
             }
@@ -241,6 +246,8 @@ namespace Append.AntDesign.Components
         }
         public class Outlined : IconType
         {
+            public override IconTheme Theme { get; protected set; } = IconTheme.Outlined;
+
             private Outlined(string name, int value) : base(name, value)
             {
             }
@@ -669,6 +676,8 @@ namespace Append.AntDesign.Components
         }
         public class TwoTone : IconType
         {
+            public override IconTheme Theme { get; protected set; } = IconTheme.TwoTone;
+
             public static string DefaultPrimaryColor { get; set; } = "#1890ff";
             public static string DefaultSecondaryColor { get; set; } = "#e6f7ff";
 

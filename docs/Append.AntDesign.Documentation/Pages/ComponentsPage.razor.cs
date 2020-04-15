@@ -10,7 +10,6 @@ namespace Append.AntDesign.Documentation.Pages
     public partial class ComponentsPage
     {
         private string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/Index.md";
-
         [Parameter] public string ComponentName { get; set; }
         public Type[] Examples { get; set; }
         public MarkupString LoadMarkdownDocumentation()
@@ -43,7 +42,7 @@ namespace Append.AntDesign.Documentation.Pages
             return (MarkupString)Markdown.ToHtml(afterApi, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
         }
 
-        protected override void OnInitialized()
+        protected override void OnParametersSet()
         {
             base.OnInitialized();
             GetAllExamples();

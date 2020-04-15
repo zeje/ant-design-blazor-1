@@ -295,19 +295,6 @@
         "runtime": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
-      },
-      "Append.AntDesign.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Ardalis.SmartEnum": "1.0.8"
-        },
-        "compile": {
-          "bin/placeholder/Append.AntDesign.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Append.AntDesign.Core.dll": {}
-        }
       }
     }
   },
@@ -989,16 +976,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Append.AntDesign.Core/1.0.0": {
-      "type": "project",
-      "path": "../Append.AntDesign.Core/Append.AntDesign.Core.csproj",
-      "msbuildProject": "../Append.AntDesign.Core/Append.AntDesign.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Append.AntDesign.Core >= 1.0.0",
+      "Ardalis.SmartEnum >= 1.0.8",
       "Microsoft.AspNetCore.Components >= 3.1.2",
       "Microsoft.AspNetCore.Components.Web >= 3.1.2",
       "NETStandard.Library >= 2.0.3"
@@ -1029,11 +1011,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {
-            "C:\\source\\Append-IT\\ant-design-blazor\\source\\Append.AntDesign.Core\\Append.AntDesign.Core.csproj": {
-              "projectPath": "C:\\source\\Append-IT\\ant-design-blazor\\source\\Append.AntDesign.Core\\Append.AntDesign.Core.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -1045,6 +1023,10 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Ardalis.SmartEnum": {
+            "target": "Package",
+            "version": "[1.0.8, )"
+          },
           "Microsoft.AspNetCore.Components": {
             "target": "Package",
             "version": "[3.1.2, )"

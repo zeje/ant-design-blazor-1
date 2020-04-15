@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Append.AntDesign.Services;
 
 namespace Append.AntDesign.Documentation.Standalone
 {
@@ -15,6 +16,7 @@ namespace Append.AntDesign.Documentation.Standalone
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
+            builder.Services.AddSingleton<IIconService, IconService>();
 
             await builder.Build().RunAsync();
         }
