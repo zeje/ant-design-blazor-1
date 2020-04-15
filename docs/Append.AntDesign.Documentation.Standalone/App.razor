@@ -1,4 +1,6 @@
-<Router AppAssembly="@typeof(Program).Assembly">
+@using Append.AntDesign.Documentation.Pages
+<Router AppAssembly="@typeof(Program).Assembly"
+        AdditionalAssemblies="new[] { typeof(ComponentsPage).Assembly }">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>

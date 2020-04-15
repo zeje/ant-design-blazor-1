@@ -5,14 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Append.AntDesign.Documentation.Shared
+namespace Append.AntDesign.Documentation.Pages
 {
-    public partial class DemoPage
+    public partial class ComponentsPage
     {
         private string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/Index.md";
 
         [Parameter] public string ComponentName { get; set; }
-        [Parameter] public Type[] Examples { get; set; }
+        public Type[] Examples { get; set; }
         public MarkupString LoadMarkdownDocumentation()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -20,7 +20,6 @@ namespace Append.AntDesign.Documentation.Shared
 
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
             using StreamReader reader = new StreamReader(stream);
-
             string result = reader.ReadToEnd();
             var indexOfAPI = result.IndexOf("# API");
             var beforeAPI = result.Substring(0, indexOfAPI);
