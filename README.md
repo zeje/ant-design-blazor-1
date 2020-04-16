@@ -15,11 +15,11 @@ Following the Ant Design specification, we developed a Blazor component library 
 ## ✨ Features
 
 - 🌈 Enterprise-class UI designed for web applications.
-- 📦 Out-of-the-box, high-quality Razor components that can be shared in a **all** hosting models.
+- 📦 Out-of-the-box, high-quality Blazor components that can be shared in **all** hosting models.
 - 🛡 Written in C# with predictable static types, JavaScript is kept to a bare minimum.
 - ⚙️ Whole package of design resources and development tools.
 - 🌍 Icons and styles are synchronized with the core libraries of Ant Design.
-- 🎨 Powerful theme customization in every detail.
+- 🎨 Powerful theme customization.
 
 ## Environment Support
 
