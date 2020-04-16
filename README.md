@@ -43,9 +43,7 @@ WebAssembly static hosting examples on GitHub Pages:
 - [GitHub](https://append-it.github.io/ant-design-blazor)
 
 ## Version
-
-- Currently not yet available, still working on the initial release.
-
+- Install-Package Append.AntDesign -Version 1.0.0
 ## Installation
 
 - Install [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) 3.1.201 or later
@@ -66,7 +64,7 @@ WebAssembly static hosting examples on GitHub Pages:
 
   ```bash
   $ cd YourCoolApp
-  $ dotnet add package AntDesignBlazor --version 0.1.0-*
+  $ dotnet add package Append.AntDesign --version 1.0.0
   ```
 
 - Register the services
