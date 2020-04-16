@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation.Standalone", "docs\Append.AntDesign.Documentation.Standalone\Append.AntDesign.Documentation.Standalone.csproj", "{5BD635E4-0398-4CA4-8760-0F10D9A0943D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Append.AntDesign.Documentation.Server", "docs\Append.AntDesign.Documentation.Server\Append.AntDesign.Documentation.Server.csproj", "{401C4C65-F6A7-4D3C-81DC-2D2C5D0CCD85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation.Server", "docs\Append.AntDesign.Documentation.Server\Append.AntDesign.Documentation.Server.csproj", "{401C4C65-F6A7-4D3C-81DC-2D2C5D0CCD85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign", "source\Append.AntDesign\Append.AntDesign.csproj", "{BE621C4A-49BC-492F-8355-407B37EBB26D}"
 EndProject
