@@ -14,16 +14,31 @@
         </div>
         <div class="code-box-actions">
             <div style="display:flex;justify-content:space-evenly;">
-                <span style="cursor:pointer" title="Edit on GitHub">
-                    <a href="@EditLink">
-                        <Icon Type="IconType.TwoTone.Edit" Width="1.5em" Height="1.5em" />
-                    </a>
+                <span style="cursor:pointer" title="">
+                    <Tooltip>
+                        <Title>Edit this demo on GitHub!</Title>
+                        <ChildContent>
+                            <a href="@EditLink">
+                                <Icon Type="IconType.TwoTone.Edit" Width="1.5em" Height="1.5em" />
+                            </a>
+                        </ChildContent>
+                    </Tooltip>
                 </span>
                 <span style="cursor:pointer">
-                    <Icon Type="IconType.TwoTone.Snippets" title="Copy code" Width="1.5em" Height="1.5em" />
+                    <Tooltip>
+                        <Title>Copy code</Title>
+                        <ChildContent>
+                            <Icon Type="IconType.TwoTone.Snippets" Width="1.5em" Height="1.5em" />
+                        </ChildContent>
+                    </Tooltip>
                 </span>
                 <span style="cursor:pointer" @onclick="ToggleExpand">
-                    <Icon Type="IconType.TwoTone.Code" title="Show code" Width="1.5em" Height="1.5em" />
+                    <Tooltip>
+                        <Title>Show code</Title>
+                        <ChildContent>
+                            <Icon Type="IconType.TwoTone.Code" Width="1.5em" Height="1.5em" />
+                        </ChildContent>
+                    </Tooltip>
                 </span>
             </div>
 
