@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Components\Alert\Index.md" />
     <None Remove="Components\Divider\Index.md" />
     <None Remove="Components\Icon\Index.md" />
     <None Remove="Components\Menu\Index.md" />
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Components\Alert\Index.md" />
     <EmbeddedResource Include="Components\Button\Index.md" />
     <EmbeddedResource Include="Components\Divider\Index.md" />
     <EmbeddedResource Include="Components\Icon\Index.md" />

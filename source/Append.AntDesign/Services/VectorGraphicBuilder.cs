@@ -48,16 +48,6 @@ namespace Append.AntDesign.Components.Services
             return this;
         }
 
-        public VectorGraphicBuilder SetClass(string classNames)
-        {
-            if (string.IsNullOrWhiteSpace(classNames))
-                return this;
-
-            xdoc.Root.SetAttributeValue("class", $"{GetRootClassAttributeValue()} {classNames}");
-
-            return this;
-        }
-
         public VectorGraphicBuilder SetStyle(string styles)
         {
             if (string.IsNullOrWhiteSpace(styles))

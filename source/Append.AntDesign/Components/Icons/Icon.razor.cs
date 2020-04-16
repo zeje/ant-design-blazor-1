@@ -42,7 +42,6 @@ namespace Append.AntDesign.Components
                                 .SetRotation(Rotate)
                                 .SetTwoToneColors(PrimaryColor, SecondaryColor)
                                 .SetStyle(Style)
-                                .SetClass(Class)
                                 .BuildIcon();
 
             svg = (MarkupString)newIcon.ToString();

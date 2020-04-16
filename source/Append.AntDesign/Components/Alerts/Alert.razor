@@ -1,0 +1,25 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<div class="@classes">
+    @BuildIcon
+    <span class="ant-alert-message">
+        @Message
+    </span>
+    <span class="ant-alert-description">
+        @Description
+    </span>
+    @if (Closable)
+    {
+        <button class="ant-alert-close-icon" tabindex="0" @onclick="HandleClose">
+            @if (CloseText != null)
+            {
+                @CloseText
+            }
+            else
+            {
+                <Icon Type="IconType.Outlined.Close" />
+            }
+        </button>
+    }
+</div>
