@@ -77,8 +77,9 @@ WebAssembly static hosting examples on GitHub Pages:
 
   ```html
     <link href="_content/ant-design-blazor/css/ant-design-blazor.css" rel="stylesheet">
+    <script defer type="text/javascript" src="https://unpkg.com/@@popperjs/core@2"></script>
+    <script defer type="text/javascript" src="_content/Append.AntDesign/js/interop.js"></script>
   ```
-    > Currently there is not JavaScript file needed.
 
 - Add namespace in `_Imports.razor`
 
