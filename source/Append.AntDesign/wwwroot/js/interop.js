@@ -1,6 +1,6 @@
 ﻿window.antdesign = {
 
-    tooltip: function (tooltip, target, placement, mouseEnterDelay, mouseLeaveDelay, triggers) {
+    tooltip: function (componentReference, tooltip, target, placement, showDelay, hideDelay, triggers) {
         let popperInstance = null;
 
         function create() {
@@ -20,15 +20,17 @@
                 tooltip.classList.remove('ant-tooltip-hidden');;
                 target.classList.add('ant-tooltip-open');;
                 create();
-            }, mouseEnterDelay);
+                componentReference.invokeMethodAsync("OnTrigger",true);
+            }, showDelay);
         }
 
         function hide() {
             setTimeout(() => {
-                tooltip.classList.add('ant-tooltip-hidden');;
-                target.classList.remove('ant-tooltip-open');;
+                tooltip.classList.add('ant-tooltip-hidden');
+                target.classList.remove('ant-tooltip-open');
+                componentReference.invokeMethodAsync("OnTrigger",false);
                 destroy();
-            }, mouseLeaveDelay);
+            }, hideDelay);
         }
         function toggle() {
             if (target.classList.contains("ant-tooltip-open")) {

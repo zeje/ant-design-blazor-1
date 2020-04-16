@@ -26,6 +26,3 @@ The following APIs are shared by Tooltip, Popconfirm, Popover.
 | OnVisibilityChanged | Callback executed when visibility of the tooltip card is changed | EventCallback\<bool\> | - |
 | Class | Addtional class name of the tooltip card | string | - |
 | OverlayStyle | Addtional style of the tooltip card  | string | - |
-## Note
-
-Please ensure that the child node of `Tooltip` accepts `onMouseEnter`, `onMouseLeave`, `onFocus`, `onClick` events.

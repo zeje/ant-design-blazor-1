@@ -4,7 +4,6 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
@@ -49,14 +48,28 @@ namespace Append.AntDesign.Components
         {
             if (firstRender)
             {
-                await JSRuntime.InvokeVoidAsync("antdesign.tooltip",
-                                                  tooltipElementReference
-                                                , childElementReference
-                                                , Placement.PopperName
-                                                , ShowDelay
-                                                , HideDelay
-                                                , Triggers.Select(x => x.Name));
+                await InitializeTooltip();
             }
+        }
+        private ValueTask InitializeTooltip()
+        {
+            var componentReference = DotNetObjectReference.Create(this);
+            return JSRuntime.InvokeVoidAsync(
+                                "antdesign.tooltip"
+                                , componentReference
+                                , tooltipElementReference
+                                , childElementReference
+                                , Placement.PopperName
+                                , ShowDelay
+                                , HideDelay
+                                , Triggers.Select(x => x.Name));
+        }
+
+        [JSInvokable]
+        public void OnTrigger(bool isVisibile)
+        {
+            if (OnVisibilityChanged.HasDelegate)
+                OnVisibilityChanged.InvokeAsync(isVisibile);
         }
     }
 }
