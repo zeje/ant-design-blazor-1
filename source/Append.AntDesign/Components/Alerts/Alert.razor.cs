@@ -1,9 +1,6 @@
 ﻿using Append.AntDesign.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Append.AntDesign.Components
 {
@@ -18,9 +15,9 @@ namespace Append.AntDesign.Components
             .AddClassWhen($"{alertPrefix}-no-icon", !ShowIcon)
             .AddClassWhen($"{alertPrefix}-closable", Closable)
             .AddClassWhen($"{alertPrefix}-with-description", Description != null)
-            .AddClassWhen($"{alertPrefix}-banner",Banner)
-            .AddClassWhen($"{alertPrefix}-closing",isClosing)
-            .AddClassWhen($"{alertPrefix}-slide-up-leave",isClosing)
+            .AddClassWhen($"{alertPrefix}-banner", Banner)
+            .AddClassWhen($"{alertPrefix}-closing", isClosing)
+            .AddClassWhen($"{alertPrefix}-slide-up-leave", isClosing)
             .AddCssClass(Class);
 
         [Parameter] public AlertType Type { get; set; } = AlertType.Info;
@@ -50,7 +47,7 @@ namespace Append.AntDesign.Components
 
         private IconType DetermineIconType()
         {
-            
+
             if (Icon != null)
                 return Icon; // Custom icon by the user
 
@@ -73,7 +70,7 @@ namespace Append.AntDesign.Components
             if (Type == AlertType.Error)
                 return IconType.Filled.Close_Circle;
 
-            if(Type == AlertType.Success)
+            if (Type == AlertType.Success)
                 return IconType.Filled.Check_Circle;
 
             if (Type == AlertType.Warning)

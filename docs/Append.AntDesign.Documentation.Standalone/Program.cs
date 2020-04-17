@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
+using Append.AntDesign.Core;
+using Append.AntDesign.Documentation.Infrastructure;
+using Append.AntDesign.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Append.AntDesign.Services;
-using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Append.AntDesign.Documentation.Standalone
 {
@@ -15,11 +15,12 @@ namespace Append.AntDesign.Documentation.Standalone
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
-
-            builder.Services.AddBaseAddressHttpClient();
-            builder.Services.AddHttpClient<IIconService, IconService>();
-            builder.Services.AddHttpClient<GitHubService>();
-
+            builder.Services.AddAntDesign();
+            builder.Services.AddAntDesignDocumentation();
+            builder.Services.AddHttpClient("app", c =>
+            {
+                c.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+            });
             await builder.Build().RunAsync();
         }
     }

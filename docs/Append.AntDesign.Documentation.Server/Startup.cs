@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Append.AntDesign.Core;
+using Append.AntDesign.Documentation.Infrastructure;
 using Append.AntDesign.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -27,8 +29,8 @@ namespace Append.AntDesign.Documentation.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddHttpClient<IIconService, IconService>();
-            services.AddHttpClient<GitHubService>();
+            services.AddAntDesign();
+            services.AddAntDesignDocumentation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastru
 		infrastructure\.nojekyll = infrastructure\.nojekyll
 		infrastructure\404.html = infrastructure\404.html
 		infrastructure\index.html = infrastructure\index.html
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Append.AntDesign.Documentation.Standalone", "docs\Append.AntDesign.Documentation.Standalone\Append.AntDesign.Documentation.Standalone.csproj", "{5BD635E4-0398-4CA4-8760-0F10D9A0943D}"

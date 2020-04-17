@@ -3,9 +3,21 @@
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 
 <div align="center">
-  <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
- <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/blazor-logo.png" />
- <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/dotnetbot.png" />
+<picture>
+    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
+    <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+</picture>
+
+<picture>
+    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
+    <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/blazor-logo.png" />
+</picture>
+
+<picture>
+    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
+    <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/dotnetbot.png" />
+</picture>
+</div>
 </div>
 
 <br/>
@@ -24,7 +36,7 @@ Following the Ant Design specification, we developed a Blazor component library 
 ## Environment Support
 
 - .NET Core 3.1
-- Blazor WebAssembly 3.2 Preview 3.
+- Blazor WebAssembly 3.2 Preview 4.
 - Support for server-side environments.
 - Support for WebAssembly static file deployments.
 - Support for 4 major browsers engines, and Internet Explorer 11+ ([Blazor server-side](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms?view=aspnetcore-3.1) only).
@@ -51,7 +63,7 @@ WebAssembly static hosting examples on GitHub Pages:
 - Install the Blazor WebAssembly Templates
 
   ```bash
-  $ dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
+  $ dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview4.20210.8
   ```
 
 - Create a Blazor WebAssembly Project
@@ -64,7 +76,7 @@ WebAssembly static hosting examples on GitHub Pages:
 
   ```bash
   $ cd YourCoolApp
-  $ dotnet add package Append.AntDesign --version 1.0.0
+  $ dotnet add package Append.AntDesign
   ```
 
 - Register the services
@@ -80,6 +92,7 @@ WebAssembly static hosting examples on GitHub Pages:
     <script defer type="text/javascript" src="https://unpkg.com/@@popperjs/core@2"></script>
     <script defer type="text/javascript" src="_content/Append.AntDesign/js/interop.js"></script>
   ```
+  > Later we'll compress and package the js files.
 
 - Add namespace in `_Imports.razor`
 

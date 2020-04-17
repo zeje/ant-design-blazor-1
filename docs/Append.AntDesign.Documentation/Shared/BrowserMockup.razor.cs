@@ -11,9 +11,9 @@ namespace Append.AntDesign.Documentation.Shared
     public partial class BrowserMockup
     {
         private string classes => "browser-mockup"
-                                  .AddClassWhen($"with-url",WithUrl);
+                                  .AddClassWhen($"with-url",WithUrl)
+                                  .AddCssClass(Class);
 
-        [Parameter] public string Style { get; set; }
         [Parameter] public string Height { get; set; }
         [Parameter] public bool WithUrl { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
