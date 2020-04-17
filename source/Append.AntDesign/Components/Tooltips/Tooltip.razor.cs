@@ -1,4 +1,4 @@
-﻿using Append.AntDesign.Core;
+using Append.AntDesign.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
@@ -59,6 +59,7 @@ namespace Append.AntDesign.Components
                                 , componentReference
                                 , tooltipElementReference
                                 , childElementReference
+                                , DefaultVisible
                                 , Placement.PopperName
                                 , ShowDelay
                                 , HideDelay
