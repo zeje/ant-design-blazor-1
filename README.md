@@ -1,23 +1,15 @@
-# Ant Design - Blazor
+<!-- Metadata 
+{
+  "order": 1,
+  "title": "Ant Design - Blazor"
+}
+-->
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
-
 <div align="center">
-<picture>
-    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
-    <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
-</picture>
-
-<picture>
-    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
-    <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/blazor-logo.png" />
-</picture>
-
-<picture>
-    <source media="(max-width: 767px)" srcset="https://nl.m.wikipedia.org/wiki/Bestand:Blank_square.svg w1">
-    <img width="160" src="docs/Append.AntDesign.Documentation/wwwroot/images/dotnetbot.png" />
-</picture>
-</div>
+ <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+ <img width="160" src="_content/Append.AntDesign.Documentation/images/blazor-logo.png" />
+ <img width="160" src="_content/Append.AntDesign.Documentation/images/dotnetbot.png" />
 </div>
 
 <br/>

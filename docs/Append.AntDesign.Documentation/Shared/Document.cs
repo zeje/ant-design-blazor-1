@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Markdig;
+using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Append.AntDesign.Documentation.Shared
@@ -15,5 +19,24 @@ namespace Append.AntDesign.Documentation.Shared
             [JsonPropertyName("order")]
             public int Order { get; set; }
         }
+    }
+    public class ComponentDocument : Document
+    {
+        public MarkupString Api { get; set; }
+        public IEnumerable<Example> Examples { get; set; }
+        public ComponentDocument(string content, string api, IEnumerable<Example> examples)
+        {
+            Content = (MarkupString)Markdown.ToHtml(content, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+            Api = (MarkupString)Markdown.ToHtml(api, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+            Examples = examples;
+        }
+    }
+    public class Example
+    {
+        public string ComponentName { get; set; }
+        public Type SampleComponent { get; set; }
+        public string SampleCode { get; set; }
+        public string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/{SampleComponent.Name}.razor";
+        public string GitHubLink => $"https://github.com/Append-IT/ant-design-blazor/blob/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/{SampleComponent.Name}.razor";
     }
 }

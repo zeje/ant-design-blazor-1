@@ -347,3 +347,7 @@ package-lock.json
 /site/**/wwwroot/docs
 
 build/
+
+docs/Append.AntDesign.Documentation/wwwroot/examples/
+
+docs/Append.AntDesign.Documentation/wwwroot/docs/

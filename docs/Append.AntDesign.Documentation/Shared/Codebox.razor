@@ -1,52 +1,64 @@
-﻿<section class="code-box" @attributes="@Attributes">
+﻿<section class="code-box" id="@($"components-{Example.ComponentName}-demo-{Example.SampleComponent.Name}")" @attributes="@Attributes">
     <section class="code-box-demo @(isExpanded ? "expand" : null)">
         @Demo
     </section>
     <section class="code-box-meta markdown">
-        <div class="code-box-title">
-            <a>@Title</a>
-            <a href="@EditLink" class="edit-button" target="_blank">
-                <Icon Type="IconType.Outlined.Edit" title="Edit this demo on GitHub!" />
-            </a>
+        <div class="code-box-title" style="display:flex">
+            <a style="margin-right:8px;">@Title</a>
+            <Tooltip>
+                <Title>Edit this demo on GitHub!</Title>
+                <ChildContent>
+                    <a href="@Example.EditLink"target="_blank">
+                        <Icon Type="IconType.Outlined.Edit" />
+                    </a>
+                </ChildContent>
+            </Tooltip>
         </div>
         <div class="code-box-description">
             @Description
         </div>
         <div class="code-box-actions">
-            <div style="display:flex;justify-content:space-evenly;">
-                <span style="cursor:pointer" title="">
+            <span class="code-box-code-action code-box-code-copy">
+                <Tooltip>
+                    <Title>Show on GitHub</Title>
+                    <ChildContent>
+                        <Icon Type="IconType.Outlined.Github" Height="1.2em" />
+                    </ChildContent>
+                </Tooltip>
+            </span>
+            <span class="code-box-code-action code-box-code-copy">
+                <Tooltip>
+                    <Title>Copy code</Title>
+                    <ChildContent>
+                        <Icon Type="IconType.Outlined.Snippets" Height="1.2em" />
+                    </ChildContent>
+                </Tooltip>
+            </span>
+            <span class="code-box-code-action code-box-code-copy" @onclick="ToggleExpand">
+                @if (isExpanded)
+                {
                     <Tooltip>
-                        <Title>Edit this demo on GitHub!</Title>
+                        <Title>Hide code</Title>
                         <ChildContent>
-                            <a href="@EditLink">
-                                <Icon Type="IconType.TwoTone.Edit" Width="1.5em" Height="1.5em" />
-                            </a>
+                            <Icon Type="IconType.Outlined.Eye_Invisible" Height="1.2em" />
                         </ChildContent>
                     </Tooltip>
-                </span>
-                <span style="cursor:pointer">
-                    <Tooltip>
-                        <Title>Copy code</Title>
-                        <ChildContent>
-                            <Icon Type="IconType.TwoTone.Snippets" Width="1.5em" Height="1.5em" />
-                        </ChildContent>
-                    </Tooltip>
-                </span>
-                <span style="cursor:pointer" @onclick="ToggleExpand">
+                }
+                else
+                {
                     <Tooltip>
                         <Title>Show code</Title>
                         <ChildContent>
-                            <Icon Type="IconType.TwoTone.Code" Width="1.5em" Height="1.5em" />
+                            <Icon Type="IconType.Outlined.Eye" Height="1.2em" />
                         </ChildContent>
                     </Tooltip>
-                </span>
-            </div>
-
+                }
+            </span>
         </div>
     </section>
     <section class="highlight-wrapper @(isExpanded ? "highlight-wrapper-expand" : null)">
         <div class="highlight">
-            <pre class="language-cs"><code>@CodeSample</code></pre>
+            <pre class="language-cs"><code>@Example.SampleCode</code></pre>
         </div>
     </section>
 </section>

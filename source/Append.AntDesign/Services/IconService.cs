@@ -13,9 +13,9 @@ namespace Append.AntDesign.Services
         private readonly HttpClient Client;
         private static readonly ConcurrentDictionary<IconType, XDocument> SvgCache = new ConcurrentDictionary<IconType, XDocument>();
 
-        public IconService(HttpClient client, NavigationManager navigationManeger)
+        public IconService(HttpClient client, NavigationManager navigationManager)
         {
-            client.BaseAddress = new Uri(navigationManeger.BaseUri);
+            client.BaseAddress = new Uri(navigationManager.BaseUri);
             Client = client;
         }
 
