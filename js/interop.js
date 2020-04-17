@@ -26,10 +26,10 @@ window.antdesign = {
 
         function show() {
             setTimeout(() => {
-                tooltip.classList.remove('ant-tooltip-hidden');;
-                target.classList.add('ant-tooltip-open');;
+                tooltip.classList.remove('ant-tooltip-hidden');
+                target.classList.add('ant-tooltip-open');
                 create();
-                componentReference.invokeMethodAsync("OnTrigger",true);
+                componentReference.invokeMethodAsync("OnTrigger", true);
             }, showDelay);
         }
 
@@ -37,7 +37,7 @@ window.antdesign = {
             setTimeout(() => {
                 tooltip.classList.add('ant-tooltip-hidden');
                 target.classList.remove('ant-tooltip-open');
-                componentReference.invokeMethodAsync("OnTrigger",false);
+                componentReference.invokeMethodAsync("OnTrigger", false);
                 destroy();
             }, hideDelay);
         }
@@ -70,7 +70,7 @@ window.antdesign = {
         });
 
         if (triggers.includes("click")) {
-            target.addEventListener("click",toggle)
+            target.addEventListener("click", toggle)
         }
         // Move the tooltip as a direct child of the body element and make sure we don't have to worry about the position of it's parent.
         document.body.appendChild(tooltip);
