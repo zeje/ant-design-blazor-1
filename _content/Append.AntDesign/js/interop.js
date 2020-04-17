@@ -1,6 +1,6 @@
-﻿window.antdesign = {
+window.antdesign = {
 
-    tooltip: function (componentReference, tooltip, target, placement, showDelay, hideDelay, triggers) {
+    tooltip: function (componentReference, tooltip, target, defaultVisible, placement, showDelay, hideDelay, triggers) {
         let popperInstance = null;
 
         function create() {
@@ -74,5 +74,9 @@
         }
         // Move the tooltip as a direct child of the body element and make sure we don't have to worry about the position of it's parent.
         document.body.appendChild(tooltip);
+
+        if (defaultVisible) {
+            show();
+        }
     },
 }
