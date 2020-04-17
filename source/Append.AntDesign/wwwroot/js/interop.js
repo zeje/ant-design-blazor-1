@@ -79,4 +79,7 @@ window.antdesign = {
             show();
         }
     },
+    copy: function (text) {
+        return navigator.clipboard.writeText(text);
+    },
 }
