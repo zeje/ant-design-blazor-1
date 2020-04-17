@@ -1,0 +1,14 @@
+﻿<Codebox Title="Label" id="components-divider-demo-label">
+    <Description>
+        <p>Divider with a label, set the <code>Orientation</code> to <code>Left | Right</code> to align it.</p>
+    </Description>
+    <Demo>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</p>
+        <Divider Label="Text aligned center" />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</p>
+        <Divider Label="Text aligned left" Orientation="DividerOrientation.Left" />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</p>
+        <Divider Label="Text aligned right" Orientation="DividerOrientation.Right" />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.</p>
+    </Demo>
+</Codebox>

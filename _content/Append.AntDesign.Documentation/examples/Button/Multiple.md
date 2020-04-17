@@ -1,0 +1,10 @@
+﻿<Codebox Title="Multiple" id="components-button-demo-multiple">
+    <Description>
+        <p>If you need several buttons, we recommend that you use 1 primary button + n secondary buttons, and if there are more than three operations, you can group some of them into <code>Dropdown.Button</code>.<br /> But the <code>Dropdown.Button</code> is still under development.</p>
+    </Description>
+    <Demo>
+        <Button Type="@ButtonType.Primary" Label="Primary" />
+        <Button Label="Secondary" />
+        <Button Label="Dropdown" Disabled />
+    </Demo>
+</Codebox>

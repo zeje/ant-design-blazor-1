@@ -1,0 +1,26 @@
+﻿<Codebox Title="Banner" id="components-alert-demo-banner">
+    <Description>
+        <p>
+            Display Alert as a banner at top of page.
+        </p>
+    </Description>
+    <Demo>
+        <BrowserMockup>
+            <Alert Type="AlertType.Warning" Banner ShowIcon>
+                <Message>Warning Text</Message>
+            </Alert>
+
+            <Alert Banner Closable ShowIcon Type="AlertType.Warning">
+                <Message>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, commodi ipsum! Dolore molestiae quos repellat rerum, eligendi culpa dignissimos? Ab illo, voluptas numquam exercitationem tempora corporis suscipit praesentium quidem? Laborum.</Message>
+            </Alert>
+
+            <Alert Type="AlertType.Warning" ShowIcon="false" Banner >
+                <Message>Warning without icon.</Message>
+            </Alert>
+
+            <Alert Type="AlertType.Error" Banner ShowIcon>
+                <Message>Error text</Message>
+            </Alert>
+        </BrowserMockup>
+    </Demo>
+</Codebox>

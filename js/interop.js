@@ -6,6 +6,15 @@
         function create() {
             popperInstance = Popper.createPopper(target, tooltip, {
                 placement: placement,
+                modifiers: {
+                    flip: {
+                        behavior: "flip"
+                    },
+                    preventOverflow: {
+                        boundary: "scrollParent"
+                    }
+
+                }
             });
         }
         function destroy() {
@@ -63,5 +72,7 @@
         if (triggers.includes("click")) {
             target.addEventListener("click",toggle)
         }
+        // Move the tooltip as a direct child of the body element and make sure we don't have to worry about the position of it's parent.
+        document.body.appendChild(tooltip);
     },
 }

@@ -1,0 +1,22 @@
+﻿<Codebox Title="Basic" id="components-icon-demo-basic">
+    <Description>
+        <p>You can use any of the items found in <code>IconType.[Theme].[IconName]</code>. You can make the icons <code>Spin</code> by setting the attribute and <code>Rotate</code> them by specifying an amount of degrees.</p>
+    </Description>
+    <Demo>
+        <div class="icon-list">
+            <Icon Type="IconType.Outlined.Home" />
+            <Icon Type="IconType.Filled.Setting" />
+            <Icon Type="IconType.Outlined.Smile" />
+            <Icon Type="IconType.Outlined.Sync" Spin />
+            <Icon Type="IconType.Outlined.Smile" Rotate="180" />
+            <Icon Type="IconType.Outlined.Loading" />
+        </div>
+    </Demo>
+</Codebox>
+
+<style>
+    .icon-list > .anticon {
+        margin-right: 6px;
+        font-size: 24px;
+    }
+</style>

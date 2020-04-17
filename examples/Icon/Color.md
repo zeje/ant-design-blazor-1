@@ -1,0 +1,38 @@
+﻿<Codebox Title="Color" id="components-icon-demo-color">
+    <Description>
+        <p>
+            You can set the color of the <code>Outline | Filled</code> icons by using the <code>Fill</code> property.
+            For <code>TwoTone</code> icons, you can use the <code>PrimaryColor</code> and <code>SecondaryColor</code>. 
+            By default the TwoTone color icons will use the <code>IconType.TwoTone.DefaultPrimaryColor</code> and <code>IconType.TwoTone.DefaultSecondaryColor</code>, which you can override by setting it explicitly as seen below.
+        </p>
+<pre>
+IconType.TwoTone.DefaultPrimaryColor = "#fff0f6";
+IconType.TwoTone.DefaultSecondaryColor = "#f6ffed";</pre>
+    </Description>
+    <Demo>
+        <p>Outlined</p>
+        <div class="icon-list">
+            <Icon Type="IconType.Outlined.Smile" Fill="#1890ff" />
+            <Icon Type="IconType.Outlined.Heart" Fill="#eb2f96" />
+            <Icon Type="IconType.Outlined.Check_Circle" Fill="#52c41a" />
+        </div>
+        <p>Filled</p>
+        <div class="icon-list">
+            <Icon Type="IconType.Filled.Smile" Fill="#1890ff" />
+            <Icon Type="IconType.Filled.Heart" Fill="red" />
+            <Icon Type="IconType.Filled.Check_Circle" Fill="#52c41a" />
+        </div>
+        <p>TwoTone</p>
+        <div class="icon-list">
+            <Icon Type="IconType.TwoTone.Smile" />
+            <Icon Type="IconType.TwoTone.Heart" PrimaryColor="#eb2f96" SecondaryColor="#fff0f6" />
+            <Icon Type="IconType.TwoTone.Check_Circle" PrimaryColor="#52c41a" SecondaryColor="#f6ffed" />
+        </div>
+    </Demo>
+</Codebox>
+<style>
+    .icon-list > .anticon {
+        margin-right: 6px;
+        font-size: 24px;
+    }
+</style>

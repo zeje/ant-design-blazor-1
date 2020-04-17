@@ -1,0 +1,46 @@
+﻿<Codebox Title="Horizontal" id="components-menu-horizontal">
+    <Description>
+        <p>
+            Horizontal menu is possible but sometimes you'd rather want a Tab control instead of a horizontal menu, you can also disable any <code>@nameof(MenuItem) | @nameof(SubMenu)</code> by specifying the <code>Disabled</code> property.
+        </p>
+    </Description>
+    <Demo>
+        <Menu Mode="MenuMode.Horizontal">
+            <MenuItem Key="mail">
+                <Icon Type="IconType.Outlined.Mail" />
+                <span>Navigation One</span>
+            </MenuItem>
+            <MenuItem Key="app" Disabled>
+                <Icon Type="IconType.Outlined.Appstore" />
+                <span>Navigation Two</span>
+            </MenuItem>
+            <SubMenu Key="sub1">
+                <Title>
+                    <Icon Type="IconType.Outlined.Setting" />
+                    <span>Navigation Three - Submenu</span>
+                </Title>
+                <Children>
+                    <MenuItemGroup>
+                        <Title>Item 1</Title>
+                        <Children>
+                            <MenuItem Key="setting:1">Option 1</MenuItem>
+                            <MenuItem Key="setting:2">Option 2</MenuItem>
+                        </Children>
+                    </MenuItemGroup>
+                    <MenuItemGroup>
+                        <Title>Item 2</Title>
+                        <Children>
+                            <MenuItem Key="setting:3">Option 3</MenuItem>
+                            <MenuItem Key="setting:4">Option 4</MenuItem>
+                        </Children>
+                    </MenuItemGroup>
+                </Children>
+            </SubMenu>
+            <MenuItem Key="antdesign">
+                <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+                    Navigation Four - Link
+                </a>
+            </MenuItem>
+        </Menu>
+    </Demo>
+</Codebox>
