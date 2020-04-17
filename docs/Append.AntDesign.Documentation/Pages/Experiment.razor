@@ -1,6 +1,6 @@
 ﻿@page "/experiment"
 
-<Tooltip DefaultVisible>
+<Tooltip DefaultVisible Triggers="@(new[] { TooltipTrigger.Click})">
     <Title>prompt text</Title>
     <ChildContent>
         <span>The tooltip is shown by default.</span>

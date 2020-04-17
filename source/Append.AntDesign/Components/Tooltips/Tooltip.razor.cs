@@ -17,7 +17,7 @@ namespace Append.AntDesign.Components
         private string classes =>
             tooltipPrefix
             .AddCssClass($"{tooltipPrefix}-placement-{Placement}")
-            .AddClassWhen("ant-tooltip-hidden", !DefaultVisible)
+            .AddCssClass($"{tooltipPrefix}-hidden")
             .AddCssClass(Class);
 
         [Inject] public IJSRuntime JSRuntime { get; set; }
