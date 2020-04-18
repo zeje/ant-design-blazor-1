@@ -1,4 +1,4 @@
-﻿@inject IClipboardService Service
+﻿@inject IClipboardService Clipboard
 <Codebox Title="Copy" id="components-tooltip-demo-copy">
     <Description>
         <p>A more advanced concept to copy code, which uses the <code>IClipboardService</code> to copy text.</p>
@@ -27,7 +27,7 @@
     bool visible = false;
     public async Task CopyCode()
     {
-        await Service.Copy("Your code to copy!");
+        await Clipboard.Copy("Your code to copy!");
         text = "Copied!";
     }
     public void HandleVisibilityChanged(bool newVisibility)
