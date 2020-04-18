@@ -1,6 +1,6 @@
 {
-  "name": "Append.AntDesign.Documentation.Standalone",
-  "short_name": "Append.AntDesign.Documentation.Standalone",
+  "name": "Ant Design Blazor - Documentation",
+  "short_name": "Ant Design - Documentation",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
