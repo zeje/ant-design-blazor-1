@@ -65,7 +65,7 @@ namespace Append.AntDesign.Documentation.Infrastructure
 
         public async Task<ComponentDocument> GetComponentDocumentation(string componentName)
         {
-            var documentation = await Client.GetStringAsync($"_content/Append.AntDesign.Documentation/examples/{componentName}/index.md");
+            var documentation = await Client.GetStringAsync($"_content/Append.AntDesign.Documentation/examples/{componentName}/Index.md");
             var indexOfAPI = documentation.IndexOf("# API");
             var beforeAPI = documentation.Substring(0, indexOfAPI);
             var afterApi = documentation.Substring(indexOfAPI);
