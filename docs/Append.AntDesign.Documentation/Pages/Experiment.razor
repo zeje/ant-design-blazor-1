@@ -1,23 +1,36 @@
 ﻿@page "/experiment"
 @inject IClipboardService Service
-<Tooltip OnVisibilityChanged="Reset" Visible="true">
-    <Title>@text</Title>
-    <ChildContent>
-        <span @onclick="Copy">Click here to copy the code!</span>
-    </ChildContent>
-</Tooltip>
-
+    <Tooltip Visible="@visible" OnVisibilityChanged="HandleVisibilityChanged">
+        <Title>@text</Title>
+        <ChildContent>
+            <Button OnClick="Copy">
+                @if (text.Equals("Copy code"))
+                {
+                    <Icon Type="IconType.Outlined.Copy" />
+                }
+                else
+                {
+                    <Icon Type="IconType.Outlined.Check" Fill="green" />
+                }
+            </Button>
+        </ChildContent>
+    </Tooltip>
 @code{
 
 
-    string text = "Copy Code";
+    string text = "Copy code";
+    bool visible = false;
     public async Task Copy()
     {
-        await Service.Copy("Testing!");
+        await Service.Copy("Your code to copy!");
         text = "Copied!";
     }
-    public void Reset(bool visibility)
+    public void HandleVisibilityChanged(bool newVisibility)
     {
-        text = "Copy Code";
+        visible = newVisibility;
+        if (!visible)
+        {
+            text = "Copy code";
+        }
     }
 }

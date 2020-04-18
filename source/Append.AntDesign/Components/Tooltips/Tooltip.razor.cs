@@ -19,8 +19,7 @@ namespace Append.AntDesign.Components
         public string Classes =>
             tooltipPrefix
             .AddCssClass($"{tooltipPrefix}-placement-{Placement}")
-            .AddClassWhen($"{tooltipPrefix}-hidden", !Visible)
-            .AddClassWhen($"{tooltipPrefix}-hidden", !isInitialized)
+            .AddClassWhen($"{tooltipPrefix}-hidden", !Visible || !isInitialized)
             .AddCssClass(Class);
 
         [Inject] public IJSRuntime JSRuntime { get; set; }
@@ -42,52 +41,42 @@ namespace Append.AntDesign.Components
                 throw new ArgumentException($"The tooltip has contradicting triggers, you cannot use the {nameof(TooltipTrigger.Focus)} and {nameof(TooltipTrigger.Click)} at the same time, choose one.");
         }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            TooltipService.RegisterTooltip(this);
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 isInitialized = true;
-                TooltipService.RegisterTooltip(this);
                 if (Visible)
                 {
-                    await Show();
-                    StateHasChanged();
+                    TooltipService.NotifyChange(this);
                 }
-                TooltipService.NotifyChange(this);
             }
-        }
-        private ValueTask CreatePopper()
-        {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.create", tooltipElementReference, childElementReference, Placement.PopperName, Key);
-        }
-
-        private ValueTask DestroyPopper()
-        {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.destroy", Key);
         }
 
         private async Task Show(bool notify = true)
         {
-            await Task.Delay(ShowDelay);
-            await CreatePopper();
             Visible = true;
-
+            TooltipService.NotifyChange(this);
+            
             if (notify && OnVisibilityChanged.HasDelegate)
                 await OnVisibilityChanged.InvokeAsync(Visible);
 
-            TooltipService.NotifyChange(this);
         }
 
         private async Task Hide(bool notify = true)
         {
-            await Task.Delay(HideDelay);
-            await DestroyPopper();
             Visible = false;
+            TooltipService.NotifyChange(this);
 
             if (notify && OnVisibilityChanged.HasDelegate)
                 await OnVisibilityChanged.InvokeAsync(Visible);
 
-            TooltipService.NotifyChange(this);
         }
 
         public async Task HandleMouseEnter()
@@ -114,10 +103,11 @@ namespace Append.AntDesign.Components
         }
         public async Task HandleFocusOut(FocusEventArgs args)
         {
-            if (!Triggers.Contains(TooltipTrigger.Focus))
-                return;
+            if (Triggers.Contains(TooltipTrigger.Focus) ||  Triggers.Contains(TooltipTrigger.Click))
+            {
+                await Hide();
+            }
 
-            await Hide();
         }
         public async Task HandleClick(MouseEventArgs args)
         {
@@ -150,7 +140,7 @@ namespace Append.AntDesign.Components
 
         public void Dispose()
         {
-            TooltipService.Unregister(this);
+            TooltipService?.Unregister(this);
         }
     }
 }
