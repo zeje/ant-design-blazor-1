@@ -9,6 +9,7 @@ namespace Append.AntDesign.Core
         {
             services.AddHttpClient<IIconService, IconService>();
             services.AddScoped<IClipboardService, ClipboardService>();
+            services.AddScoped<TooltipService>();
             return services;
         }
     }

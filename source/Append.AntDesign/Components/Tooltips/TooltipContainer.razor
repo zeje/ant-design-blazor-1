@@ -1,0 +1,14 @@
+﻿@inherits AntComponent
+@namespace Append.AntDesign.Components
+
+@foreach (var tooltip in TooltipService.Tooltips)
+{
+    <div @ref="tooltip.tooltipElementReference" id="@tooltip.Key" @key="@tooltip.Key"
+         class="@tooltip.Classes"
+         style="@Style">
+        <div class="ant-tooltip-content">
+            <div class="ant-tooltip-arrow"></div>
+            <div class="ant-tooltip-inner" role="tooltip">@tooltip.Title</div>
+        </div>
+    </div>
+}

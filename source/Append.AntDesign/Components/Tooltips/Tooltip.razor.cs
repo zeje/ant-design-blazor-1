@@ -1,4 +1,5 @@
 using Append.AntDesign.Core;
+using Append.AntDesign.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
@@ -9,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
-    public partial class Tooltip 
+    public partial class Tooltip : IDisposable
     {
-        private ElementReference tooltipElementReference;
-        private ElementReference childElementReference;
+        public ElementReference tooltipElementReference { get; set; }
+        public ElementReference childElementReference { get; set; }
         private const string tooltipPrefix = "ant-tooltip";
 
-        private string classes =>
+        public string Classes =>
             tooltipPrefix
             .AddCssClass($"{tooltipPrefix}-placement-{Placement}")
             .AddClassWhen($"{tooltipPrefix}-hidden", !Visible)
@@ -23,6 +24,7 @@ namespace Append.AntDesign.Components
             .AddCssClass(Class);
 
         [Inject] public IJSRuntime JSRuntime { get; set; }
+        [Inject] public TooltipService TooltipService { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public RenderFragment Title { get; set; }
         [Parameter] public bool Visible { get; set; }
@@ -31,7 +33,7 @@ namespace Append.AntDesign.Components
         [Parameter] public int HideDelay { get; set; } = 100;
         [Parameter] public IEnumerable<TooltipTrigger> Triggers { get; set; }
         [Parameter] public EventCallback<bool> OnVisibilityChanged { get; set; }
-        private readonly string key = Guid.NewGuid().ToString();
+        public readonly string Key = Guid.NewGuid().ToString();
         private bool isInitialized;
 
         private void CheckContradictingTriggers()
@@ -45,21 +47,23 @@ namespace Append.AntDesign.Components
             if (firstRender)
             {
                 isInitialized = true;
+                TooltipService.RegisterTooltip(this);
                 if (Visible)
                 {
                     await Show();
                     StateHasChanged();
                 }
+                TooltipService.NotifyChange(this);
             }
         }
         private ValueTask CreatePopper()
         {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.create", tooltipElementReference, childElementReference, Placement.PopperName, key);
+            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.create", tooltipElementReference, childElementReference, Placement.PopperName, Key);
         }
 
         private ValueTask DestroyPopper()
         {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.destroy", key);
+            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.destroy", Key);
         }
 
         private async Task Show(bool notify = true)
@@ -70,6 +74,8 @@ namespace Append.AntDesign.Components
 
             if (notify && OnVisibilityChanged.HasDelegate)
                 await OnVisibilityChanged.InvokeAsync(Visible);
+
+            TooltipService.NotifyChange(this);
         }
 
         private async Task Hide(bool notify = true)
@@ -77,8 +83,11 @@ namespace Append.AntDesign.Components
             await Task.Delay(HideDelay);
             await DestroyPopper();
             Visible = false;
+
             if (notify && OnVisibilityChanged.HasDelegate)
                 await OnVisibilityChanged.InvokeAsync(Visible);
+
+            TooltipService.NotifyChange(this);
         }
 
         public async Task HandleMouseEnter()
@@ -137,6 +146,11 @@ namespace Append.AntDesign.Components
                 else
                     await Hide(notify:false);
             }
+        }
+
+        public void Dispose()
+        {
+            TooltipService.Unregister(this);
         }
     }
 }

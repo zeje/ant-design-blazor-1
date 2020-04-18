@@ -27,5 +27,10 @@ window.antdesign = {
             }
             delete this.poppers[key]
         },
+    },
+    clipboard: {
+        copy: function (text) {
+            navigator.clipboard.writeText(text);
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Append.AntDesign.Services
         }
         public ValueTask Copy(string text)
         {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip", text);
+            return JSRuntime.InvokeVoidAsync("antdesign.clipboard.copy", text);
         }
     }
 }

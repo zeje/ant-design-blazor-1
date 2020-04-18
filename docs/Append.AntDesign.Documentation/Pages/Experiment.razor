@@ -1,8 +1,23 @@
 ﻿@page "/experiment"
-
-<Tooltip Visible="true">
-    <Title>prompt text</Title>
+@inject IClipboardService Service
+<Tooltip OnVisibilityChanged="Reset" Visible="true">
+    <Title>@text</Title>
     <ChildContent>
-        <span>The tooltip is shown by default.</span>
+        <span @onclick="Copy">Click here to copy the code!</span>
     </ChildContent>
 </Tooltip>
+
+@code{
+
+
+    string text = "Copy Code";
+    public async Task Copy()
+    {
+        await Service.Copy("Testing!");
+        text = "Copied!";
+    }
+    public void Reset(bool visibility)
+    {
+        text = "Copy Code";
+    }
+}
