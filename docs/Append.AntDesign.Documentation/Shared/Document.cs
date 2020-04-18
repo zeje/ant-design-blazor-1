@@ -36,6 +36,7 @@ namespace Append.AntDesign.Documentation.Shared
         public string ComponentName { get; set; }
         public Type SampleComponent { get; set; }
         public string SampleCode { get; set; }
+        public string ShowLink => $"https://github.com/Append-IT/ant-design-blazor/blob/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/{SampleComponent.Name}.razor";
         public string EditLink => $"https://github.com/Append-IT/ant-design-blazor/edit/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/{SampleComponent.Name}.razor";
         public string GitHubLink => $"https://github.com/Append-IT/ant-design-blazor/blob/master/docs/Append.AntDesign.Documentation/Components/{ComponentName}/{SampleComponent.Name}.razor";
     }

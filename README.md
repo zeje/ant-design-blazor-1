@@ -129,12 +129,6 @@ WebAssembly static hosting examples on GitHub Pages:
 
 ## Contributing
 
-If you'd like to help us improve `ant-design-blazor`, just create a [Pull Request](https://github.com/append-it/ant-design-blazor/pulls). Feel free to report bugs and issues [here](http://new-issue.ant.design/).
+If you'd like to help us improve `ant-design-blazor`, just create a [Pull Request](https://github.com/append-it/ant-design-blazor/pulls). Feel free to report bugs and issues [here](https://github.com/Append-IT/ant-design-blazor/issues/new).
 
 > If you're new to posting issues, we ask that you read [_How To Ask Questions The Smart Way_](http://www.catb.org/~esr/faqs/smart-questions.html) and [How to Ask a Question in Open Source Community](https://github.com/seajs/seajs/issues/545) and [How to Report Bugs Effectively](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) prior to posting. Well written bug reports help us help you!
-
-## Need Help?
-
-For questions on how to use `ant-design-blazor`, please post questions to [<img alt="Stack Overflow" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=2bb144720a66" width="140" />](http://stackoverflow.com/questions/tagged/ant-design-blazor) using the `ant-design-blazor` tag.
-
-As always, we encourage experienced users to help those who are not familiar with `ant-design-blazor` or `blazor` in general!
