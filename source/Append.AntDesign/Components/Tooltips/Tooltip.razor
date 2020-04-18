@@ -1,13 +1,33 @@
 ﻿@namespace Append.AntDesign.Components
 @inherits AntComponent
-
-<div @ref="tooltipElementReference" class="@classes" style="@Style" @attributes="@Attributes">
+@using Append.AntDesign.Core
+<div @ref="tooltipElementReference" id="@key"
+     class="@classes"
+     style="@Style">
     <div class="ant-tooltip-content">
         <div class="ant-tooltip-arrow"></div>
         <div class="ant-tooltip-inner" role="tooltip">@Title</div>
     </div>
 </div>
 
-<div class="ant-tooltip-wrapper" @ref="childElementReference" style="display:inline-block;overflow:hidden">
+
+<div class="ant-tooltip-child"
+     @ref="childElementReference"
+     style="display:inline-block;overflow:hidden"
+     @attributes="@Attributes"
+     @onmouseenter="HandleMouseEnter"
+     @onmouseleave="HandleMouseLeave"
+     @onclick="HandleClick"
+     @onfocusin="HandleFocusIn"
+     @onfocusout="HandleFocusOut">
     @ChildContent
 </div>
+
+
+<style>
+    .ant-tooltip-hidden {
+        visibility: hidden;
+        pointer-events: none;
+        display: initial;
+    }
+</style>
