@@ -47,7 +47,7 @@ namespace Append.AntDesign.Components
             TooltipService.RegisterTooltip(this);
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override void OnAfterRender(bool firstRender)
         {
             if (firstRender)
             {
@@ -63,7 +63,7 @@ namespace Append.AntDesign.Components
         {
             Visible = true;
             TooltipService.NotifyChange(this);
-            
+
             if (notify && OnVisibilityChanged.HasDelegate)
                 await OnVisibilityChanged.InvokeAsync(Visible);
 

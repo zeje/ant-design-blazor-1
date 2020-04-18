@@ -1,4 +1,5 @@
-﻿<section class="code-box" id="@($"components-{Example.ComponentName}-demo-{Example.SampleComponent.Name}")" @attributes="@Attributes">
+﻿@inject IClipboardService Clipboard
+<section class="code-box" id="@($"components-{Example.ComponentName}-demo-{Example.SampleComponent.Name}")" @attributes="@Attributes">
     <section class="code-box-demo @(isExpanded ? "expand" : null)">
         @Demo
     </section>
@@ -26,11 +27,18 @@
                     </ChildContent>
                 </Tooltip>
             </span>
-            <span class="code-box-code-action code-box-code-copy">
-                <Tooltip>
-                    <Title>Copy code</Title>
+            <span class="code-box-code-action code-box-code-copy" @onclick="CopyCode">
+                <Tooltip Visible="@visible" OnVisibilityChanged="HandleVisibilityChanged">
+                    <Title>@text</Title>
                     <ChildContent>
-                        <Icon Type="IconType.Outlined.Snippets" Height="1.2em" />
+                        @if (text.Equals("Copy code"))
+                        {
+                            <Icon Type="IconType.Outlined.Copy" Height="1.2em" />
+                        }
+                        else
+                        {
+                            <Icon Type="IconType.Outlined.Check_Circle" Fill="green" Height="1.2em" />
+                        }
                     </ChildContent>
                 </Tooltip>
             </span>
@@ -62,3 +70,18 @@
         </div>
     </section>
 </section>
+@code{
+    string text = "Copy code";
+    bool visible = false;
+    public async Task CopyCode()
+    {
+        await Clipboard.Copy(Example.SampleCode);
+        text = "Copied!";
+    }
+    public void HandleVisibilityChanged(bool newVisibility)
+    {
+        visible = newVisibility;
+        if (!visible)
+            text = "Copy code";
+    }
+}
