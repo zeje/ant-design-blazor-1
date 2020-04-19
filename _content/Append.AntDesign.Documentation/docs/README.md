@@ -79,15 +79,17 @@ WebAssembly static hosting examples on GitHub Pages:
 
 - Link the static files in `wwwroot/index.html` (WebAssembly) or `Pages/_Host.razor` (Server)
 
-  ```html
+```html
 <link href="_content/Append.AntDesign/css/ant-design-blazor.min.css" rel="stylesheet" />
-  ```
+```
+   
 Just above the blazor .js files 
 ```html
 <script type="text/javascript" src="https://unpkg.com/@@popperjs/core@2"></script>
 <script type="text/javascript" src="_content/Append.AntDesign/js/interop.js"></script>
 <!-- Blazor .js files --> 
 ```
+
   > Later we'll compress and package the js files.
 
 - Add namespace in `_Imports.razor`
