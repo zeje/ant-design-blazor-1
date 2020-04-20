@@ -1,4 +1,4 @@
-window.antdesign = {
+﻿window.antdesign = {
     tooltip: {
         poppers: {},
         create: function (tooltip, target, placement, key) {
@@ -9,9 +9,6 @@ window.antdesign = {
                         flip: {
                             behavior: "flip"
                         },
-                        //preventOverflow: {
-                        //    boundary: "scrollParent"
-                        //}
                     }
                 });
                 this.poppers[key] = popperInstance;
