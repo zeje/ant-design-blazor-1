@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/js/interop.js",
+    "inputFile": "wwwroot/js/interop.js"
+  },
+  {
+    "outputFile": "wwwroot/css/ant-design-blazor.css",
+    "inputFile": "wwwroot/css/ant-design-blazor.less"
+  }
+]

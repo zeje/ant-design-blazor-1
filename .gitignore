@@ -351,3 +351,10 @@ build/
 docs/Append.AntDesign.Documentation/wwwroot/examples/
 
 docs/Append.AntDesign.Documentation/wwwroot/docs/
+
+
+*.css
+
+source/Append.AntDesign/wwwroot/js/interop.min.js
+
+source/Append.AntDesign/wwwroot/js/scripts.min.js
