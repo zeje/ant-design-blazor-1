@@ -6,5 +6,10 @@
   {
     "outputFile": "wwwroot/css/ant-design-blazor.css",
     "inputFile": "wwwroot/css/ant-design-blazor.less"
+  },
+  {
+    "outputFile": "../../docs/wwwroot/css/documentation-styles.css",
+    "inputFile": "../../docs/Append.AntDesign.Documentation/style/index.less"
   }
+
 ]
