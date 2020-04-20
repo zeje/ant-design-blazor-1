@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.SmartEnum" Version="1.0.8" />
-    <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.3" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.3" />
@@ -46,7 +45,7 @@
     <!-- List all the files you want to concatenate. -->
     <ItemGroup>
       <ConcatFiles Include="wwwroot\js\libs\*.js" />
-      <ConcatFiles Include="wwwroot\js\interop.js" />
+      <ConcatFiles Include="wwwroot\js\interop.es5.min.js" />
     </ItemGroup>
 
     <!-- Read the contents of the files (preserving tabs/spaces). -->
