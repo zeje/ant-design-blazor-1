@@ -1,39 +1,33 @@
-﻿"use strict";
-
-window.antdesign = {
+﻿window.antdesign = {
     tooltip: {
         poppers: {},
-        create: function create(tooltip, target, placement, key) {
+        create: function (tooltip, target, placement, key) {
             if (this.poppers[key] === undefined) {
-                var popperInstance = Popper.createPopper(target, tooltip, {
+                let popperInstance = Popper.createPopper(target, tooltip, {
                     placement: placement,
                     modifiers: {
                         flip: {
                             behavior: "flip"
-                        }
+                        },
                     }
                 });
-                //preventOverflow: {
-                //    boundary: "scrollParent"
-                //}
                 this.poppers[key] = popperInstance;
             } else {
                 this.poppers[key].forceUpdate();
             };
         },
-        destroy: function destroy(key) {
-            var popperInstance = this.poppers[key];
+        destroy: function (key) {
+            let popperInstance = this.poppers[key];
             if (popperInstance) {
                 popperInstance.destroy();
-                popperInstance = null;
+                popperInstance = null
             }
-            delete this.poppers[key];
-        }
+            delete this.poppers[key]
+        },
     },
     clipboard: {
-        copy: function copy(text) {
+        copy: function (text) {
             navigator.clipboard.writeText(text);
         }
     }
-};
-
+}
