@@ -1,6 +1,6 @@
 ﻿[
   {
-    "outputFile": "wwwroot/js/interop.min.js",
+    "outputFile": "wwwroot/js/interop.es5.js",
     "inputFile": "wwwroot/js/interop.js"
   },
   {
