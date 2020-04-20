@@ -1,27 +1,24 @@
 ﻿@page "/components/{componentname}"
 
-@if (document != null)
+<section class="markdown">
+    <h1>
+        @ComponentName
+        <a href="@EditLink" class="edit-button" target="_blank">
+            <Icon Type="IconType.Outlined.Edit" />
+        </a>
+    </h1>
+    @document.Content
+</section>
+<h2>Examples</h2>
+@foreach (var example in examples)
 {
-    <section class="markdown">
-        <h1>
-            @ComponentName
-            <a href="@EditLink" class="edit-button" target="_blank">
-                <Icon Type="IconType.Outlined.Edit" />
-            </a>
-        </h1>
-        @document.Content
-    </section>
-    <h2>Examples</h2>
-    @foreach (var example in document.Examples)
-    {
-        <CascadingValue Value="@example">
-            @BuildExample(example)
-        </CascadingValue>
-        <br />
-    }
-
-    <section class="markdown api-container">
-        @document.Api
-    </section>
+    <CascadingValue Value="@example">
+        @BuildExample(example)
+    </CascadingValue>
+    <br />
 }
+
+<section class="markdown api-container">
+    @document.Api
+</section>
 

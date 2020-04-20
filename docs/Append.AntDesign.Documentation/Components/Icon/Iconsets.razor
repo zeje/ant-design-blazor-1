@@ -12,7 +12,7 @@
         <ul class="anticons-list">
             @foreach (var item in icons)
             {
-                <li @key="item.Value">
+                <li @key="item">
                     <Icon Type="item" />
                     <span class="anticon-class">
                         <span class="ant-badge">@item.UnnormalisedName</span>

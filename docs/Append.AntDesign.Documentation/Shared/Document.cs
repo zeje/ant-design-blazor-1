@@ -22,9 +22,13 @@ namespace Append.AntDesign.Documentation.Shared
     }
     public class ComponentDocument : Document
     {
+        public ComponentDocument()
+        {
+
+        }
         public MarkupString Api { get; set; }
-        public IEnumerable<Example> Examples { get; set; }
-        public ComponentDocument(string content, string api, IEnumerable<Example> examples)
+        public IAsyncEnumerable<Example> Examples { get; set; }
+        public ComponentDocument(string content, string api, IAsyncEnumerable<Example> examples)
         {
             Content = (MarkupString)Markdown.ToHtml(content, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
             Api = (MarkupString)Markdown.ToHtml(api, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());

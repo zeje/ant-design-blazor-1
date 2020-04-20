@@ -70,7 +70,7 @@ namespace Append.AntDesign.Documentation.Infrastructure
             var beforeAPI = documentation.Substring(0, indexOfAPI);
             var afterApi = documentation.Substring(indexOfAPI);
 
-            var examples = await GetAllExamplesForComponent(componentName);
+            var examples = GetAllExamplesForComponent(componentName);
 
             ComponentDocument doc = new ComponentDocument(beforeAPI,afterApi, examples);
             return doc;
@@ -95,21 +95,19 @@ namespace Append.AntDesign.Documentation.Infrastructure
             return originalDocumentName ?? "README";
         }
 
-        private async Task<IEnumerable<Example>> GetAllExamplesForComponent(string componentName)
+        private async IAsyncEnumerable<Example> GetAllExamplesForComponent(string componentName)
         {
             var namespaceOfTheExamples = $"Append.AntDesign.Documentation.Components.{componentName}";
             List<Example> examples = new List<Example>();
             foreach (var type in GetTypesInNamespace(Assembly.GetExecutingAssembly(), namespaceOfTheExamples))
             {
-                var example = new Example()
+                yield return new Example()
                 {
                     SampleComponent = type,
                     ComponentName = componentName,
                     SampleCode = await GetSampleAsync(componentName, type.Name),
                 };
-                examples.Add(example);
             }
-            return examples;
         }
 
         private Type[] GetTypesInNamespace(Assembly assembly, string nameSpace)
