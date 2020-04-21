@@ -12,7 +12,7 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor">
   <img alt="Nuget" src="https://img.shields.io/nuget/v/Append.AntDesign">
   
-  ![Build, Pack and Deploy](https://github.com/Append-IT/ant-design-blazor/workflows/Build,%20Pack%20and%20Deploy/badge.svg)
+  ![Build](https://github.com/Append-IT/ant-design-blazor/workflows/Build,%20Pack%20and%20Deploy/badge.svg)
 </div>
 
 ![](https://github.com/actions/append-it/ant-design-blazor/[BOT]%20Icon%20Sync/badge.svg)
