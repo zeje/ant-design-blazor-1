@@ -5,10 +5,10 @@
     </Description>
     <Demo>
         <p>Click on one of the Themes to see them in action! </p>
-        <Button Label="Filled" OnClick="_ => SelectIconType(typeof(IconType.Filled))" Type="(selectedIconType == typeof(IconType.Filled) ? ButtonType.Primary : ButtonType.Default)" />
-        <Button Label="Outlined" OnClick="_ => SelectIconType(typeof(IconType.Outlined))" Type="(selectedIconType == typeof(IconType.Outlined) ? ButtonType.Primary : ButtonType.Default)" />
-        <Button Label="TwoTone" OnClick="_ => SelectIconType(typeof(IconType.TwoTone))" Type="(selectedIconType == typeof(IconType.TwoTone) ? ButtonType.Primary : ButtonType.Default)" />
-        <Divider Label="@selectedIconType.Name" />
+        <Button Label="Filled" OnClick="_ => SelectIconType(IconTheme.Filled)" Type="(selectedTheme == IconTheme.Filled ? ButtonType.Primary : ButtonType.Default)" />
+        <Button Label="Outlined" OnClick="_ => SelectIconType(IconTheme.Outlined)" Type="(selectedTheme == IconTheme.Outlined ? ButtonType.Primary : ButtonType.Default)" />
+        <Button Label="TwoTone" OnClick="_ => SelectIconType(IconTheme.TwoTone)" Type="(selectedTheme == IconTheme.TwoTone ? ButtonType.Primary : ButtonType.Default)" />
+        <Divider Label="@selectedTheme.Name" />
         <ul class="anticons-list">
             @foreach (var item in icons)
             {
@@ -24,29 +24,19 @@
 </Codebox>
 
 @code{
-    private Type selectedIconType = typeof(IconType.Filled);
+    private IconTheme selectedTheme = IconTheme.Filled;
     private IEnumerable<IconType> icons;
 
-    private IconTheme theme => selectedIconType == typeof(IconType.Filled) ? IconTheme.Filled
-                             : selectedIconType == typeof(IconType.Outlined) ? IconTheme.Outlined
-                                                 : IconTheme.TwoTone;
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        icons = GetIcons();
+        icons = IconType.List.Where(x => x.Theme == IconTheme.Filled);
     }
 
-    private IEnumerable<IconType> GetIcons()
+    private void SelectIconType(IconTheme theme)
     {
-        return selectedIconType.GetFields(BindingFlags.Public | BindingFlags.Static)
-                          .Where(f => f.FieldType == selectedIconType)
-                          .Select(x => (IconType)x.GetValue(null));
-    }
-
-    private void SelectIconType(Type iconSet)
-    {
-        selectedIconType = iconSet;
-        icons = GetIcons();
+        selectedTheme = theme;
+        icons = IconType.List.Where(x => x.Theme == selectedTheme);
     }
 
 }
