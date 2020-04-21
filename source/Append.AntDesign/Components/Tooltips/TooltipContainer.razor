@@ -4,9 +4,8 @@
 <div class="ant-tooltip-container">
     @foreach (var tooltip in TooltipService.Tooltips)
     {
-        <div @ref="tooltip.tooltipElementReference" id="@tooltip.Key" @key="@tooltip.Key"
-             class="@tooltip.Classes"
-             style="@Style">
+        <div @ref="tooltip.tooltipElementReference" @key="@tooltip.Key"
+             class="@tooltip.Classes" @attributes="tooltip.Attributes">
             <div class="ant-tooltip-content">
                 <div class="ant-tooltip-arrow"></div>
                 <div class="ant-tooltip-inner" role="tooltip">@tooltip.Title</div>

@@ -9,7 +9,6 @@ namespace Append.AntDesign.Components
     {
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();
-        [Parameter] public string Style { get; set; }
         [Parameter] public string Class { get; set; }
     }
 }

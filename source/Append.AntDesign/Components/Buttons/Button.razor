@@ -2,7 +2,7 @@
 @inherits AntComponent
 @if (string.IsNullOrEmpty(Href))
 {
-    <button type="@HtmlType" class="@classes" @onclick="@OnClick" disabled="@Disabled" style="@Style" @attributes="@Attributes">
+    <button type="@HtmlType" class="@classes" @onclick="@OnClick" disabled="@Disabled" @attributes="@Attributes">
         @if (Loading)
         {
             <span class="ant-btn-loading-icon">
@@ -24,7 +24,7 @@
 }
 else
 {
-    <a href="@Href" class="@classes" disabled="@Disabled" target="@Target" style="@Style" @attributes="@Attributes">
+    <a href="@Href" class="@classes" disabled="@Disabled" target="@Target" @attributes="@Attributes">
         @if (Loading)
         {
             <span class="ant-btn-loading-icon">

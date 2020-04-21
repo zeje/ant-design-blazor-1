@@ -18,6 +18,8 @@ namespace Append.AntDesign.Components
         [Parameter] public bool Spin { get; set; }
         [Parameter] public int Rotate { get; set; }
         [Parameter] public IconType Type { get; set; }
+        [Parameter] public string Style { get; set; }
+
         private MarkupString svg;
 
 

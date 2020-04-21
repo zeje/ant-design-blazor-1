@@ -36,10 +36,7 @@ To get a customized button, just set `type`/`shape`/`size`/`loading`/`disabled`.
 | OnClick | set the handler to handle `click` event | `EventCallback` | - |  |
 | Block | option to fit button width to its parent width | `boolean` | `false` |  |
 | Danger | set the danger status of button | `boolean` | `false` |  |
-| Style | Style of the html `button` or `a` element | `string` | - |  |
 | Class | Additional classes for the html `button` or `a` element | `string` | - |  |
-
-It accepts all props which native buttons support.
 
 ## FAQ
 > Ask your questions on Github, they might end up here.

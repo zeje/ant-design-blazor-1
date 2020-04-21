@@ -18,3 +18,6 @@
 | ShowIcon | Whether to show the icon on the left.| boolean | true |
 | Type | Type of Alert styles, options: `success`, `info`, `warning`, `error` | AlertType | AlertType.Info |
 | OnClose | Called when the close animation is finished | Eventcallback | - |
+
+## FAQ
+> Ask your questions on Github, they might end up here.
