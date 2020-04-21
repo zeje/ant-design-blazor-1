@@ -10,7 +10,6 @@
   <span>A Blazor Component Library based on Ant Design</span>
   <br/>
 <img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor">
-<img alt="Nuget" src="https://img.shields.io/nuget/dt/Append.AntDesign">
 <img alt="Nuget" src="https://img.shields.io/nuget/v/Append.AntDesign">
 </div>
 
