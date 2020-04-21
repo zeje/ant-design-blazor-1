@@ -47,8 +47,6 @@ WebAssembly static hosting examples on GitHub Pages:
 
 - [GitHub](https://append-it.github.io/ant-design-blazor)
 
-## Version
-- Install-Package Append.AntDesign -Version 1.0.0
 ## Installation
 
 - Install [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) 3.1.201 or later
@@ -79,13 +77,16 @@ WebAssembly static hosting examples on GitHub Pages:
   ```
 
 - Link the static files in `wwwroot/index.html` (WebAssembly) or `Pages/_Host.razor` (Server)
-
-  ```html
-    <link rel="stylesheet" href="_content/Append.AntDesign.Documentation/css/documentation-styles.min.css" />
-    <script type="text/javascript" src="_content/Append.AntDesign/js/scripts.min.js"></script>
-    <!-- Blazor Framework Script Here -->
-  ```
-  > Later we'll compress and package the js files.
+    - CSS - In the `head` element
+    ```html
+        <link rel="stylesheet" href="_content/Append.AntDesign/css/ant-design-blazor.min.css" />
+    ```
+    - JavaScript - In the `body` element (at the end before the Blazor script).
+    ```html
+        <script type="text/javascript" src="_content/Append.AntDesign/js/ant-design-blazor.min.js"></script>
+        <!-- Blazor Framework Script Here -->
+    ```
+    > Note that JavaScript is kept to a bare minimum, but some actions cannot simply not be done without it.
 
 - Add namespace in `_Imports.razor`
 
