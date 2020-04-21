@@ -8,11 +8,12 @@
   <img src="https://github.com/Append-IT/ant-design-blazor/blob/master/infrastructure/ant-design-blazor-logo.svg">
   <h3>Ant Design Blazor</h3>
   <span>A Blazor Component Library based on Ant Design</span>
+<img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor">
+<img alt="Nuget" src="https://img.shields.io/nuget/dt/Append.AntDesign">
+<img alt="Nuget" src="https://img.shields.io/nuget/v/Append.AntDesign">
 </div>
 
-<img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor">
 
-<img alt="Nuget" src="https://img.shields.io/nuget/dt/Append.AntDesign">
 
 ![](https://github.com/actions/append-it/ant-design-blazor/[BOT]%20Icon%20Sync/badge.svg)
 
