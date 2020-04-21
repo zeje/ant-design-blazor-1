@@ -8,8 +8,8 @@
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 <div align="center">
  <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
- <img width="150" src="https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2019/04/BrandBlazor_nohalo_1000x.png" />
- <img width="150" src="https://avatars2.githubusercontent.com/in/16706?v=4" />
+ <img width="160" src="https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2019/04/BrandBlazor_nohalo_1000x.png" />
+ <img width="160" src="https://avatars2.githubusercontent.com/in/16706?v=4" />
 </div>
 
 <br/>
