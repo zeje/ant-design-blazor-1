@@ -21,7 +21,7 @@ namespace Append.AntDesign.Components
         public class Filled : IconType
         {
             public override IconTheme Theme { get; protected set; } = IconTheme.Filled;
-            private Filled(string name, int value) : base(name, value)
+            private Filled(string name, int value) : base("filled_" + name, value)
             {
             }
             public static Filled Account_Book = new Filled(nameof(Account_Book).ToLower(), 1000);
@@ -248,7 +248,7 @@ namespace Append.AntDesign.Components
         {
             public override IconTheme Theme { get; protected set; } = IconTheme.Outlined;
 
-            private Outlined(string name, int value) : base(name, value)
+            private Outlined(string name, int value) : base("outlined_" + name, value)
             {
             }
             public static Outlined Account_Book = new Outlined(nameof(Account_Book).ToLower(), 2000);
@@ -671,6 +671,7 @@ namespace Append.AntDesign.Components
             public static Outlined Zhihu = new Outlined(nameof(Zhihu).ToLower(), 2417);
             public static Outlined Zoom_In = new Outlined(nameof(Zoom_In).ToLower(), 2418);
             public static Outlined Zoom_Out = new Outlined(nameof(Zoom_Out).ToLower(), 2419);
+            public static Outlined Ant_Design_Blazor = new Outlined(nameof(Ant_Design_Blazor).ToLower(), 2420);
 
 
         }
@@ -681,7 +682,7 @@ namespace Append.AntDesign.Components
             public static string DefaultPrimaryColor { get; set; } = "#1890ff";
             public static string DefaultSecondaryColor { get; set; } = "#e6f7ff";
 
-            private TwoTone(string name, int value) : base(name, value)
+            private TwoTone(string name, int value) : base("twotone_" + name, value)
             {
             }
             public static TwoTone Account_Book = new TwoTone(nameof(Account_Book).ToLower(), 3000);
