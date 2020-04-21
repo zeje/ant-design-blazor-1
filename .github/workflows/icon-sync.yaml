@@ -1,5 +1,4 @@
-name: BOT Icon Sync
-
+name: Synchronization Icons
 on:
   schedule:
   - cron: "0 2 * * 1-5"
