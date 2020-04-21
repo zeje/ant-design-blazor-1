@@ -9,7 +9,12 @@
   <h3>Ant Design Blazor</h3>
   <span>A Blazor Component Library based on Ant Design</span>
 </div>
-![GitHub](https://img.shields.io/github/license/append-it/ant-design-blazor)
+
+<img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor">
+
+<img alt="Nuget" src="https://img.shields.io/nuget/dt/Append.AntDesign">
+
+![](https://github.com/actions/append-it/ant-design-blazor/[BOT]%20Icon%20Sync/badge.svg)
 
 <br/>
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
