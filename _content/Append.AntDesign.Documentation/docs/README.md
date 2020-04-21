@@ -4,11 +4,12 @@
   "title": "Ant Design - Blazor"
 }
 -->
+<div align="center">
+  <img src="./infrastructure/ant-design-blazor-logo.svg">
+</div>
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
-<div align="center">
-<img src="./infrastructure/ant-design-blazor-logo.svg">
-</div<
+
 
 <hr/>
 
