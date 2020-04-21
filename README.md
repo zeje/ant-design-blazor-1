@@ -6,10 +6,9 @@
 -->
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
-<img src="https://github.com/Append-IT/ant-design-blazor/blob/master/infrastructure/ant-design-blazor-logo.svg">
-![Ant Design Blazor Logo]()
+<img src="./infrastructure/ant-design-blazor-logo.svg">
 
-<br/>
+<hr/>
 
 ---
 
