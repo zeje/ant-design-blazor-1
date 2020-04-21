@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -24,22 +25,34 @@ namespace Append.AntDesign.Services
             if (SvgCache.TryGetValue(iconType, out var xdoc))
                 return xdoc;
 
-            xdoc = await ReadVectorGraphicFile(iconType);
+            xdoc = await ReadIconTemplateFile(iconType);
             SvgCache.TryAdd(iconType, xdoc);
             return xdoc;
         }
 
-        private async Task<XDocument> ReadVectorGraphicFile(IconType iconType)
+        private async Task<XDocument> ReadIconTemplateFile(IconType iconType)
         {
             try
             {
-                var svgString = await Client.GetStringAsync($"_content/Append.AntDesign/icons/{iconType.Theme}/{iconType.NormalisedIconFileName}.svg");
+                var svgString = await Client.GetStringAsync($"_content/Append.AntDesign/icons/{iconType.NormalisedIconFileName}.svg");
                 return XDocument.Parse(svgString);
             }
             catch (Exception ex)
             {
-                throw new ArgumentOutOfRangeException($"Icon file '{iconType.Theme}/{iconType.NormalisedIconFileName}.svg' was not found.", ex);
+                throw new ArgumentOutOfRangeException($"Icon file '{iconType.NormalisedIconFileName}.svg' was not found.", ex);
             }
+        }
+
+        public async Task PreloadIconsAsync(IEnumerable<IconType> iconsToPreload)
+        {
+            foreach (var item in iconsToPreload)
+            {
+                await GetVectorGraphicTemplateAsync(item);
+            }
+        }
+        public Task PreloadIconsAsync()
+        {
+            return PreloadIconsAsync(IconType.List);
         }
     }
 }

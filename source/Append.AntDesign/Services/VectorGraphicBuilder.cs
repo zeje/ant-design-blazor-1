@@ -14,9 +14,9 @@ namespace Append.AntDesign.Components.Services
             this.iconType = iconType ?? throw new ArgumentNullException(nameof(iconType));
         }
 
-        public static VectorGraphicBuilder Create(XDocument xmlDocument, IconType iconType)
+        public static VectorGraphicBuilder Create(XDocument iconTemplate, IconType iconType)
         {
-            return new VectorGraphicBuilder(xmlDocument, iconType);
+            return new VectorGraphicBuilder(iconTemplate, iconType);
         }
 
         public VectorGraphicBuilder SetWidth(string width)
@@ -85,7 +85,7 @@ namespace Append.AntDesign.Components.Services
 
         public VectorGraphicBuilder SetTwoToneColors(string color1, string color2)
         {
-            if (iconType.Theme != IconTheme.TwoTone)
+            if (iconType.GetType() != typeof(IconType.TwoTone))
                 return this;
 
             var primaryColor = DeterminePrimaryColor(color1);

@@ -1,13 +1,13 @@
 ﻿@inherits LayoutComponentBase
 @using Append.AntDesign.Components
-
+@inject IIconService IconService
 <div class="page-wrapper">
     <header id="header" class="clearfix">
         <div class="ant-row" style="flex-flow: nowrap;">
             <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
                 <h1>
                     <a id="logo" href="">
-                        <img alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">Ant Design
+                        <img alt="logo" src="https://raw.githubusercontent.com/Append-IT/ant-design-blazor/master/source/Append.AntDesign/wwwroot/icons/outlined/ant-design-blazor.svg">Ant Design Blazor
                     </a>
                 </h1>
             </div>
@@ -43,9 +43,9 @@
                     <MenuItem Key="resources">
                         <a href="https://ant.design/docs/resources" target="_blank">Resources</a>
                     </MenuItem>
-                        <a href="https://github.com/Append-IT/ant-design-blazor" target="_blank">
-                            <Icon Type="IconType.Outlined.Github" Width="2em" Height="2em" />
-                        </a>
+                    <a href="https://github.com/Append-IT/ant-design-blazor" target="_blank">
+                        <Icon Type="IconType.Outlined.Github" Width="2em" Height="2em" />
+                    </a>
                 </Menu>
             </div>
         </div>
@@ -66,4 +66,13 @@
     </div>
 </div>
 
-<TooltipContainer/>
+<TooltipContainer />
+
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await IconService.PreloadIconsAsync();
+    }
+}
