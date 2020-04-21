@@ -1,18 +1,20 @@
-name: Icon Sync Bot
+name: [BOT] Icon Sync
 
 on:
   schedule:
   - cron: "0 2 * * 1-5"
 
 jobs:
-    style-sync:
+    icon-sync:
         runs-on: ubuntu-latest
-
+        
         steps:
             - name: Sync icons from ant-design-icons
               shell: bash
               env:
                   GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+                  ANT_DESIGN_SOURCE_PATH: ./packages/icons-svg/svg/.
+                  ANT_DESIGN_BLAZOR_DESTINATION_PATH: ../ant-design-blazor/source/Append.AntDesign/wwwroot/icons
               run: |
                   git clone https://github.com/ant-design/ant-design-icons.git
                   git clone https://github.com/Append-IT/ant-design-blazor.git
@@ -30,8 +32,10 @@ jobs:
                   git checkout -b ${BRANCH_NAME}
                   cd ../ant-design-icons
                   echo "Synchronizing the SVG icon files to ant-design-blazor..."
-                  rsync -av ./packages/icons-svg/svg/. ../ant-design-blazor/source/AntDesign.Components/wwwroot/icons
-                  cd ../ant-design-blazor/source/AntDesign.Components/wwwroot/icons
+                  echo "Source     : ${ANT_DESIGN_SOURCE_PATH}"
+                  echo "Destination: ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
+                  rsync -av ${ANT_DESIGN_SOURCE_PATH} ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
+                  cd ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
                   TOTAL_MODIFIED=$(git status -s | wc -l)
                   if [ "$TOTAL_MODIFIED" -eq "0" ]; then 
                     echo "nothing modified" 
