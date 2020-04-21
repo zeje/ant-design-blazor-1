@@ -17,7 +17,6 @@
 
 ![](https://github.com/actions/append-it/ant-design-blazor/[BOT]%20Icon%20Sync/badge.svg)
 
-<br/>
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 
 ## ✨ Features
