@@ -1,4 +1,4 @@
-name: Build, Pack and Deploy
+name: Build
 on: 
     push:
         branches: 
