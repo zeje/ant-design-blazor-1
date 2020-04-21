@@ -12,5 +12,7 @@
 | Dashed | whether the line is dashed or not | boolean | false |  |
 | Orientation | position of the  `label \| text` inside the divider | `DividerOrientation` | `center` |  |
 | Direction | direction of the divider | `horizontal` \| `vertical` | `DividerDirection`   |  |
-| Style | Style of the html main `div` element | `string` | - |  |
 | Class | Additional classes for the html `div` element | `string` | - |  |
+
+## FAQ
+> Ask your questions on Github, they might end up here.

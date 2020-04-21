@@ -32,4 +32,6 @@ The following APIs are shared by Tooltip, Popconfirm, Popover.
 | Triggers  | The tooltip trigger mode. Could be multiple by passing an array | `hover` \| `focus` \| `click` \| `contextMenu` \| `IEnumerable\<TooltipTrigger\>` | `TooltipTrigger.Hover` |
 | OnVisibilityChanged | Callback executed when visibility of the tooltip card is changed | EventCallback\<bool\> | - |
 | Class | Addtional class name of the tooltip card | string | - |
-| Style | Addtional style of the tooltip card  | string | - |
+
+## FAQ
+> Ask your questions on Github, they might end up here.

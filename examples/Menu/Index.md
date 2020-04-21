@@ -45,7 +45,6 @@ Navigation is an important part of any website, as a good navigation setup allow
 | Theme | Color theme of the menu | MenuTheme | MenuTheme.Light |  |
 | OnMenuItemClicked | Called when a menu item is clicked | EventHandler\<MenuItem\> | - |  |
 | OnSubmenuClicked | Called when sub-menus are opened or closed | EventHandler\<SubMenu\> | noop |  |
-| Style | Style of the root node | string |  |  |
 | Class | Class of the root node | string |  |  |
 
 
@@ -74,3 +73,6 @@ Navigation is an important part of any website, as a good navigation setup allow
 | -------- | ------------------ | ----------------- | ------------- | ------- |
 | Children | sub-menu items     | RenderFragment  |               |         |
 | Title    | title of the group | RenderFragment  |               |         |
+
+## FAQ
+> Ask your questions on Github, they might end up here.
