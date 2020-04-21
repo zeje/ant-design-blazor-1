@@ -1,4 +1,4 @@
-name: [BOT] Icon Sync
+name: BOT Icon Sync
 
 on:
   schedule:
@@ -33,7 +33,7 @@ jobs:
                   cd ../ant-design-icons
                   echo "Synchronizing the SVG icon files to ant-design-blazor..."
                   echo "Source     : ${ANT_DESIGN_SOURCE_PATH}"
-                  echo "Destination: ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
+                  echo "Destination: ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}"
                   rsync -av ${ANT_DESIGN_SOURCE_PATH} ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
                   cd ${ANT_DESIGN_BLAZOR_DESTINATION_PATH}
                   TOTAL_MODIFIED=$(git status -s | wc -l)
