@@ -54,7 +54,7 @@
     </ItemGroup>
 
     <!-- Write the result to a single file. -->
-    <WriteLinesToFile File="wwwroot\js\scripts.min.js" Lines="@(FileContents)" Overwrite="true" />
+    <WriteLinesToFile File="wwwroot\js\ant-design-blazor.min.js" Lines="@(FileContents)" Overwrite="true" />
   </Target>
 
 </Project>

@@ -32,7 +32,7 @@
     </ItemGroup>
     
     <Message Text="Copying the README.md file to the wwwroot/docs folder." Importance="High" />
-    <Copy SourceFiles="@(Readme)" DestinationFolder="$(ProjectDir)\wwwroot\docs" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(Readme)" DestinationFolder="$(ProjectDir)\wwwroot\docs" />
     
     <Message Text="Copying the example files to the wwwroot/examples folder." Importance="High" />
     <Copy SourceFiles="@(Examples)" DestinationFiles="$(ProjectDir)wwwroot\examples\%(RecursiveDir)%(Filename).md" />

@@ -352,12 +352,8 @@ docs/Append.AntDesign.Documentation/wwwroot/examples/
 
 docs/Append.AntDesign.Documentation/wwwroot/docs/
 
-
 *.css
-
 source/Append.AntDesign/wwwroot/js/interop.min.js
-
-source/Append.AntDesign/wwwroot/js/scripts.min.js
 source/Append.AntDesign/wwwroot/js/interop.es5.js
-
 source/Append.AntDesign/wwwroot/js/interop.es5.min.js
+source/Append.AntDesign/wwwroot/js/ant-design-blazor.min.js
