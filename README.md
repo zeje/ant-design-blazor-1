@@ -9,8 +9,7 @@
   <h3>Ant Design Blazor</h3>
   <span>A Blazor Component Library based on Ant Design</span>
 </div>
-
-<h1>&nbsp;</h1>
+<br/>
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
 
 ## ✨ Features
