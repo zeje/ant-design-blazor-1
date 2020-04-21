@@ -9,7 +9,7 @@
   <h3>Ant Design Blazor</h3>
   <span>A Blazor Component Library based on Ant Design</span>
 </div>
-[![AntBlazor](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/append-it/ant-design-blazor/blob/master/LICENSE)
+![GitHub](https://img.shields.io/github/license/append-it/ant-design-blazor)
 
 <br/>
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
