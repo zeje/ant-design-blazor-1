@@ -15,6 +15,7 @@ jobs:
         - name: Publish with dotnet
           run: |
                   xcopy /s /y infrastructure .\docs\Append.AntDesign.Documentation.Standalone\wwwroot
+                  dotnet build
                   dotnet publish -c Release -o build
         - name: Deploy to Github Pages
           uses: JamesIves/github-pages-deploy-action@3.4.8
