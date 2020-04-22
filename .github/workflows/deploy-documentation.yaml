@@ -5,7 +5,7 @@ on:
         - master
 jobs:
     build-and-deploy:
-        runs-on: ubuntu-latest    
+        runs-on: windows-latest    
         steps:
         - uses: actions/checkout@v1
         - name: Setup .NET Core
@@ -14,10 +14,8 @@ jobs:
             dotnet-version: 3.1.200
         - name: Publish with dotnet
           run: |
-                  cp -rfv infrastructure/. ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
-                  dotnet build
+                  xcopy /s /y infrastructure .\docs\Append.AntDesign.Documentation.Standalone\wwwroot
                   dotnet publish -c Release -o build
-
         - name: Deploy to Github Pages
           uses: JamesIves/github-pages-deploy-action@3.4.8
           with:
