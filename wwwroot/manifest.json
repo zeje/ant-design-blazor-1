@@ -1,0 +1,20 @@
+{
+  "name": "Ant Design Blazor - Documentation",
+  "short_name": "Ant Blazor",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "_content/Append.AntDesign.Documentation/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "_content/Append.AntDesign.Documentation/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
