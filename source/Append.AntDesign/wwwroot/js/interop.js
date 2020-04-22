@@ -27,7 +27,12 @@
     },
     clipboard: {
         copy: function (text) {
-            navigator.clipboard.writeText(text);
+            try {
+                navigator.clipboard.writeText(text);
+            } catch (e) {
+                console.error("Ant Design - Text could not be copied.");
+                console.log(e);
+            }
         }
     }
 }

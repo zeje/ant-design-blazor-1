@@ -4,12 +4,8 @@
     "inputFile": "wwwroot/js/interop.js"
   },
   {
-    "outputFile": "wwwroot/css/ant-design-blazor.css",
+    "outputFile": "wwwroot/css/ant-design-blazor.min.css",
     "inputFile": "wwwroot/css/ant-design-blazor.less"
-  },
-  {
-    "outputFile": "../../docs/wwwroot/css/documentation-styles.css",
-    "inputFile": "../../docs/Append.AntDesign.Documentation/style/index.less"
   }
 
 ]
