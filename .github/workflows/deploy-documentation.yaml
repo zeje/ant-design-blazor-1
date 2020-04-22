@@ -13,7 +13,7 @@ jobs:
           with:
             dotnet-version: 3.1.200
         - name: Publish with dotnet
-          run: |
+          run: | 
                   xcopy /s /y infrastructure .\docs\Append.AntDesign.Documentation.Standalone\wwwroot
                   dotnet build
                   dotnet publish -c Release -o build
