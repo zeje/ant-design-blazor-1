@@ -67,12 +67,3 @@
 </div>
 
 <TooltipContainer />
-
-
-@code{
-    protected override async Task OnInitializedAsync()
-    {
-        base.OnInitialized();
-        await IconService.PreloadIconsAsync();
-    }
-}
