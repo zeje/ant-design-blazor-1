@@ -21,6 +21,7 @@
   
   <ItemGroup>
     <Folder Include="Docs\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
