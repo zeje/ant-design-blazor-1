@@ -1,0 +1,8 @@
+﻿@inherits AntComponent
+@namespace Append.AntDesign.Components
+
+<section class="@classes" @attributes="@Attributes">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</section>
