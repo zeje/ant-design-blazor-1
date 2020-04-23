@@ -41,6 +41,6 @@ jobs:
             with:
               ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
               BRANCH: gh-pages
-              FOLDER: "documentation" # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'documentation' must be placed here.
+              FOLDER: "documentation/wwwroot" # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'documentation' must be placed here.
              
  
