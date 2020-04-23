@@ -1,36 +1,20 @@
 ﻿@page "/experiment"
-@inject IClipboardService Service
-    <Tooltip Visible="@visible" OnVisibilityChanged="HandleVisibilityChanged">
-        <Title>@text</Title>
-        <ChildContent>
-            <Button OnClick="Copy">
-                @if (text.Equals("Copy code"))
-                {
-                    <Icon Type="IconType.Outlined.Copy" />
-                }
-                else
-                {
-                    <Icon Type="IconType.Outlined.Check" Fill="green" />
-                }
-            </Button>
-        </ChildContent>
-    </Tooltip>
+
+<Button Label="Red" OnClick="@(_ => ToggleColor(TimelineColor.Red))" />
+<Button Label="Green" OnClick="@(_ => ToggleColor(TimelineColor.Green))" />
+<br />
+
+<Timeline>
+    <TimelineItem Label="@DateTime.UtcNow.ToShortDateString()">Create a services</TimelineItem>
+    <TimelineItem Label="@DateTime.UtcNow.ToLongTimeString()">Solve initial network problems</TimelineItem>
+    <TimelineItem>Technical testing</TimelineItem>
+    <TimelineItem Color="color" Label="@DateTime.UtcNow.ToLongTimeString()">Network problems being solved</TimelineItem>
+</Timeline>
+
 @code{
-
-
-    string text = "Copy code";
-    bool visible = false;
-    public async Task Copy()
+    private TimelineColor color = TimelineColor.Blue;
+    private void ToggleColor(TimelineColor newColor)
     {
-        await Service.Copy("Your code to copy!");
-        text = "Copied!";
-    }
-    public void HandleVisibilityChanged(bool newVisibility)
-    {
-        visible = newVisibility;
-        if (!visible)
-        {
-            text = "Copy code";
-        }
+        color = newColor;
     }
 }

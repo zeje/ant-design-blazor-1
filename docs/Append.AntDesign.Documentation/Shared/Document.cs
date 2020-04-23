@@ -35,7 +35,7 @@ namespace Append.AntDesign.Documentation.Shared
             Examples = examples;
         }
     }
-    public class Example
+    public class Example : ComponentBase
     {
         public string ComponentName { get; set; }
         public Type SampleComponent { get; set; }

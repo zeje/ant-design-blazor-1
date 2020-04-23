@@ -1,4 +1,4 @@
-﻿Vertical display timeline.
+﻿Vertically displayed timeline.
 
 ## When To Use
 
@@ -22,10 +22,7 @@ Timeline
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| pending | Set the last ghost node's existence or its content | boolean\|string\|ReactNode | `false` |
-| pendingDot | Set the dot of the last ghost node when pending is true | string\|ReactNode | `<LoadingOutlined />` |
-| reverse | reverse nodes or not | boolean | false |
-| mode | By sending `alternate` the timeline will distribute the nodes to the left and right. | `left` \| `alternate` \| `right` | - |
+| Mode | `Left`, `Right` and `Alternate` forces the timeline to render at the position,  The timeline will distribute the nodes to the left and right when it's set to `Alternate` | TimelineMode | TimelineMode.Left |
 
 ### Timeline.Item
 
@@ -33,7 +30,8 @@ Node of timeline
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| color | Set the circle's color to `blue`, `red`, `green`, `gray` or other custom colors | string | `blue` |
-| dot | Customize timeline dot | string\|ReactNode | - |
-| position | Customize node position | `left` \| `right` | - |
-| label | Set the label | ReactNode | - |
+| Color | Set the circle's color to `blue`, `red`, `green`, `gray`. | TimelineColor | `TimelineColor.Blue` |
+| Dot | Customize the circle in anything you'd like | RenderFragment | - |
+| ChildContent | Markup of the item. | RenderFragment | - |
+| Position | Customize the position, by default the `Timeline` will calculate this based on the `TimelineMode` | TimelinePosition | - |
+| Label | Set the label | string | - |
