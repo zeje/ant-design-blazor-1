@@ -1,0 +1,30 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+@using Microsoft.AspNetCore.Components.Routing
+
+<div class="@classes" @attributes="Attributes">
+    <CascadingValue Value="this">
+        @ChildContent
+        @for (int i = 0; i < items.Count; i++)
+        {
+            var item = items[i];
+            <span @key="item">
+                @if (item.Href != null)
+                {
+                    <span class="@item.Classes" @attributes="item.Attributes" @onclick="@item.OnClick">
+                        <NavLink href="@item.Href">@item.ChildContent</NavLink>
+                    </span>
+                }
+                else
+                {
+                    <span class="@item.Classes" @attributes="item.Attributes" @onclick="@item.OnClick">@item.ChildContent</span>
+                }
+
+                @if (i != items.Count - 1)
+                {
+                    <span class="ant-breadcrumb-separator">@separator</span>
+                }
+            </span>
+        }
+    </CascadingValue>
+</div>
