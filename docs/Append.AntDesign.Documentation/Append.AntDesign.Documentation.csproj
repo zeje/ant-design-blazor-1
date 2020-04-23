@@ -12,6 +12,7 @@
   
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.5.180" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="15.5.180" PrivateAssets="All" />
     <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="Markdig" Version="0.20.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.3" />
