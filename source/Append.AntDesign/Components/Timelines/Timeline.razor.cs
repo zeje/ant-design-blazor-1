@@ -85,9 +85,6 @@ namespace Append.AntDesign.Components
             if (Mode == TimelineMode.Right)
                 return TimelinePosition.Right;
 
-            if (Mode != TimelineMode.Alternate)
-                return item.Position;
-
             if(currentItemPosition == null)
             {
                 currentItemPosition = TimelinePosition.Left;

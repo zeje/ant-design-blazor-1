@@ -15,11 +15,12 @@ namespace Append.AntDesign.Components
         [Parameter] public TimelinePosition Position { get; set; }
         [Parameter] public TimelineColor Color { get; set; } = TimelineColor.Blue;
         [CascadingParameter] public Timeline Parent { get; set; }
-        public bool IsLast { get; set; }
+        public bool IsLast { get; private set; }
+        private TimelinePosition position;
 
         public string ItemCssClasses =>
             ItemPrefix
-            .AddClassWhen($"{ItemPrefix}-{Position}", Position != null)
+            .AddClassWhen($"{ItemPrefix}-{position}", position != null)
             .AddClassWhen($"{ItemPrefix}-last", IsLast)
             .AddCssClass(Class);
 
@@ -34,13 +35,19 @@ namespace Append.AntDesign.Components
                 throw new ArgumentException($"A {nameof(TimelineItem)} has to be contained in a ${nameof(Timeline)}.");
 
             Parent.Subscribe(this);
-            if(Position == null) 
-                UpdatePosition();
+            UpdatePosition();
         }
 
         internal void UpdatePosition()
         {
-            Position = Parent.DetermineItemPosition(this);
+            if(Position == null)
+            {
+                position = Parent.DetermineItemPosition(this);
+            }
+            else
+            {
+                position = Position;
+            }
         }
 
         internal void UpdateIsLast(bool isLast)
@@ -51,6 +58,7 @@ namespace Append.AntDesign.Components
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
+            UpdatePosition();
         }
 
         public void Dispose()
