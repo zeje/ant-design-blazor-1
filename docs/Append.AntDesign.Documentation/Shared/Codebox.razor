@@ -1,5 +1,5 @@
 ﻿@inject IClipboardService Clipboard
-<section class="code-box" id="@($"components-{Example.ComponentName}-demo-{Example.SampleComponent.Name}")" @attributes="@Attributes">
+<section class="code-box" id="@($"components-{Example.ComponentName.ToLower()}-demo-{Example.SampleComponent.Name.ToLower()}")" @attributes="@Attributes">
     <section class="code-box-demo @(isExpanded ? "expand" : null)">
         @Demo
     </section>
