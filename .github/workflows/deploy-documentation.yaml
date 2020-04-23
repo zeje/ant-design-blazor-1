@@ -4,8 +4,8 @@ on:
         branches: 
         - master
 jobs:
-    build:
-        runs-on: windows-latest    
+    build-and-deploy:
+        runs-on: ubuntu-latest    
         steps:
         - uses: actions/checkout@v1
         - name: Setup .NET Core
@@ -13,34 +13,17 @@ jobs:
           with:
             dotnet-version: 3.1.200
         - name: Publish with dotnet
-          run: | 
-                  xcopy /s /y infrastructure .\docs\Append.AntDesign.Documentation.Standalone\wwwroot
+          env:
+              MSBUILDDISABLENODEREUSE: 1
+          run: |
+                  cp -rfv infrastructure/. ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
                   dotnet build
                   dotnet publish -c Release -o build
-        - name: Upload Artifacts
-          uses: actions/upload-artifact@v1
+
+        - name: Deploy to Github Pages
+          uses: JamesIves/github-pages-deploy-action@3.4.8
           with:
-              name: documentation
-              path: build
-    deploy:
-        needs: [build] # The second job must depend on the first one to complete before running, and uses ubuntu-latest instead of windows.
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout 🛎️
-            uses: actions/checkout@v2
-            with:
-              persist-credentials: false
-
-          - name: Download Artifacts 🔻 # The built project is downloaded into the 'documentation' folder.
-            uses: actions/download-artifact@v1
-            with:
-              name: documentation
-
-          - name: Deploy 🚀
-            uses: JamesIves/github-pages-deploy-action@releases/v3
-            with:
-              ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
-              BRANCH: gh-pages
-              FOLDER: "documentation/wwwroot" # The deployment folder should match the name of the artifact. Even though our project builds into the 'build' folder the artifact name of 'documentation' must be placed here.
-             
- 
+            ACCESS_TOKEN: ${{secrets.GH_TOKEN}}
+            BASE_BRANCH: master
+            BRANCH: gh-pages
+            FOLDER: build/wwwroot
