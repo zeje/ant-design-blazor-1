@@ -1,7 +1,7 @@
 ﻿@inherits AntComponent
 @namespace Append.AntDesign.Components
 
-<aside class="@classes" style="@styles" @attributes="@Attributes">
+<aside @attributes="@Attributes" class="@classes" style="@styles">
     <CascadingValue Value="this">
         <div class="ant-layout-sider-children">
             @if (Collapsed && CollapsedWidth == 0)

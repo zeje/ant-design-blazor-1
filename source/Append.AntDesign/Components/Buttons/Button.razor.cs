@@ -7,21 +7,20 @@ namespace Append.AntDesign.Components
 {
     public partial class Button
     {
-        private const string buttonPrefix = "ant-btn";
+        private static readonly string prefix = "ant-btn";
         /// <summary>
         /// The actual css classes, combining Ant Design classes with the classes of the client.
         /// </summary>
-        private string classes => 
-            buttonPrefix
-            .AddClassWhen($"{buttonPrefix}-{Type}", Type != ButtonType.Default)
-            .AddClassWhen($"{buttonPrefix}-{Size}", Size != ButtonSize.Default)
-            .AddClassWhen($"{buttonPrefix}-{Shape}", Shape != ButtonShape.Default)
-            .AddClassWhen($"{buttonPrefix}-loading", Loading)
-            .AddClassWhen($"{buttonPrefix}-background-ghost", Ghost)
-            .AddClassWhen($"{buttonPrefix}-dangerous", Danger)
-            .AddClassWhen($"{buttonPrefix}-block", Block)
-            .AddClassWhen($"{buttonPrefix}-icon-only", string.IsNullOrEmpty(Label) && ChildContent != null)
-            + Class;
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClassWhen($"{prefix}-{Type}", Type != ButtonType.Default)
+                .AddClassWhen($"{prefix}-{Size}", Size != ButtonSize.Default)
+                .AddClassWhen($"{prefix}-{Shape}", Shape != ButtonShape.Default)
+                .AddClassWhen($"{prefix}-loading", Loading)
+                .AddClassWhen($"{prefix}-background-ghost", Ghost)
+                .AddClassWhen($"{prefix}-dangerous", Danger)
+                .AddClassWhen($"{prefix}-block", Block)
+                .AddClassWhen($"{prefix}-icon-only", string.IsNullOrEmpty(Label) && ChildContent != null);
 
         [Parameter] public string Label { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
@@ -34,7 +33,6 @@ namespace Append.AntDesign.Components
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public bool Danger { get; set; }
         [Parameter] public string Href { get; set; }
-        [Parameter] public string Target { get; set; }
         [Parameter] public string HtmlType { get; set; } = "button";
         [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
 

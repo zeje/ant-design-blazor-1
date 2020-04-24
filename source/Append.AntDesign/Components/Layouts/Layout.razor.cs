@@ -5,11 +5,10 @@ namespace Append.AntDesign.Components
 {
     public partial class Layout
     {
-        private const string prefix = "ant-layout";
-        private string classes =>
-            prefix
-            .AddClassWhen($"{prefix}-has-sider", hasSider)
-            .AddCssClass(Class);
+        private static readonly string prefix = "ant-layout";
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClassWhen($"{prefix}-has-sider", hasSider);
 
         [Parameter] public RenderFragment ChildContent { get; set; }
         private bool hasSider;

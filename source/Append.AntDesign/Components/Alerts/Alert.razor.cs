@@ -6,19 +6,18 @@ namespace Append.AntDesign.Components
 {
     public partial class Alert
     {
-        private const string alertPrefix = "ant-alert";
+        private static readonly string prefix = "ant-alert";
         private bool isClosing;
 
-        private string classes =>
-            alertPrefix
-            .AddCssClass($"{alertPrefix}-{Type}")
-            .AddClassWhen($"{alertPrefix}-no-icon", !ShowIcon)
-            .AddClassWhen($"{alertPrefix}-closable", Closable)
-            .AddClassWhen($"{alertPrefix}-with-description", Description != null)
-            .AddClassWhen($"{alertPrefix}-banner", Banner)
-            .AddClassWhen($"{alertPrefix}-closing", isClosing)
-            .AddClassWhen($"{alertPrefix}-slide-up-leave", isClosing)
-            .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClass($"{prefix}-{Type}")
+                .AddClassWhen($"{prefix}-no-icon", !ShowIcon)
+                .AddClassWhen($"{prefix}-closable", Closable)
+                .AddClassWhen($"{prefix}-with-description", Description != null)
+                .AddClassWhen($"{prefix}-banner", Banner)
+                .AddClassWhen($"{prefix}-closing", isClosing)
+                .AddClassWhen($"{prefix}-slide-up-leave", isClosing);
 
         [Parameter] public AlertType Type { get; set; } = AlertType.Info;
         [Parameter] public RenderFragment Message { get; set; }

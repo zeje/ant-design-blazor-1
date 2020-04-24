@@ -3,22 +3,20 @@ using Append.AntDesign.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
     public partial class Sider
     {
-        private const string prefix = "ant-layout-sider";
+        private static readonly string prefix = "ant-layout-sider";
 
-        private string classes =>
-            prefix
-            .AddCssClass($"{prefix}-{Theme}")
-            .AddClassWhen($"{prefix}-has-trigger", Collapsible)
-            .AddClassWhen($"{prefix}-collapsed", Collapsed)
-            .AddClassWhen($"{prefix}-zero-width", CollapsedWidth == 0 && Collapsed)
-            .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClass($"{prefix}-{Theme}")
+                .AddClassWhen($"{prefix}-has-trigger", Collapsible)
+                .AddClassWhen($"{prefix}-collapsed", Collapsed)
+                .AddClassWhen($"{prefix}-zero-width", CollapsedWidth == 0 && Collapsed);
 
         private string styles =>
             string.Empty
@@ -26,7 +24,7 @@ namespace Append.AntDesign.Components
             .AddStyle($"max-width: {width}px")
             .AddStyle($"min-width: {width}px")
             .AddStyle($"width: {width}px")
-            .AddStyle(Attributes.GetStyles());
+            .AddStyle(Attributes.GetStyle());
 
         [Inject] public IWindowService WindowService { get; set; }
         [Parameter] public bool Collapsible { get; set; }

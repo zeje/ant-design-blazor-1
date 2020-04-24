@@ -12,15 +12,14 @@ namespace Append.AntDesign.Components
 {
     public partial class Tooltip : IDisposable
     {
-        public ElementReference tooltipElementReference { get; set; }
-        public ElementReference childElementReference { get; set; }
-        private const string tooltipPrefix = "ant-tooltip";
+        public ElementReference TooltipElementReference { get; set; }
+        public ElementReference ChildElementReference { get; set; }
+        private static readonly string prefix = "ant-tooltip";
 
-        public string Classes =>
-            tooltipPrefix
-            .AddCssClass($"{tooltipPrefix}-placement-{Placement}")
-            .AddClassWhen($"{tooltipPrefix}-hidden", !Visible || !isInitialized)
-            .AddCssClass(Class);
+        public ClassBuilder Classes => ClassBuilder.Create(Class)
+            .AddClass(prefix)
+            .AddClass($"{prefix}-placement-{Placement}")
+            .AddClassWhen($"{prefix}-hidden", !Visible || !isInitialized);
 
         [Inject] public IJSRuntime JSRuntime { get; set; }
         [Inject] public TooltipService TooltipService { get; set; }
@@ -103,7 +102,7 @@ namespace Append.AntDesign.Components
         }
         public async Task HandleFocusOut(FocusEventArgs args)
         {
-            if (Triggers.Contains(TooltipTrigger.Focus) ||  Triggers.Contains(TooltipTrigger.Click))
+            if (Triggers.Contains(TooltipTrigger.Focus) || Triggers.Contains(TooltipTrigger.Click))
             {
                 await Hide();
             }
@@ -132,9 +131,9 @@ namespace Append.AntDesign.Components
             if (isInitialized)
             {
                 if (Visible)
-                    await Show(notify:false);
+                    await Show(notify: false);
                 else
-                    await Hide(notify:false);
+                    await Hide(notify: false);
             }
         }
 

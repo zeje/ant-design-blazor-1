@@ -8,20 +8,19 @@ namespace Append.AntDesign.Components
 {
     public partial class Menu : IDisposable
     {
-        private const string menuPrefix = "ant-menu";
+        private static readonly string prefix = "ant-menu";
         /// <summary>
         /// The actual css classes, combining Ant Design classes with the classes of the client.
         /// </summary>
-        private string classes =>
-            menuPrefix
-            .AddCssClass($"{menuPrefix}-root")
-            .AddCssClass($"{menuPrefix}-{Theme}")
-            .AddCssClass($"{menuPrefix}-{InternalMode}")
-            .AddClassWhen($"{menuPrefix}-inline-collapsed",collapsed)
-            .AddClassWhen($"{menuPrefix}-unselectable",!Selectable)
-            .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClass($"{prefix}-root")
+                .AddClass($"{prefix}-{Theme}")
+                .AddClass($"{prefix}-{InternalMode}")
+                .AddClassWhen($"{prefix}-inline-collapsed", collapsed)
+                .AddClassWhen($"{prefix}-unselectable", !Selectable);
 
-        [CascadingParameter] public Sider Parent{ get; set; }
+        [CascadingParameter] public Sider Parent { get; set; }
 
         [Parameter] public MenuTheme Theme { get; set; } = MenuTheme.Light;
         [Parameter] public MenuMode Mode { get; set; } = MenuMode.Inline;
@@ -59,7 +58,7 @@ namespace Append.AntDesign.Components
                 item.Select();
             }
 
-            if(OnMenuItemClicked.HasDelegate)
+            if (OnMenuItemClicked.HasDelegate)
                 OnMenuItemClicked.InvokeAsync(item);
 
             StateHasChanged();
@@ -98,7 +97,7 @@ namespace Append.AntDesign.Components
 
             initialMode = Mode;
             InternalMode = Mode;
-            if(Parent != null)
+            if (Parent != null)
             {
                 Parent.OnCollapsed += Update;
             }
@@ -107,7 +106,7 @@ namespace Append.AntDesign.Components
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            if(Parent == null)
+            if (Parent == null)
             {
                 this.collapsed = Collapsed;
             }
@@ -133,7 +132,7 @@ namespace Append.AntDesign.Components
 
         public void Dispose()
         {
-            if(Parent != null)
+            if (Parent != null)
             {
                 Parent.OnCollapsed -= Update;
             }

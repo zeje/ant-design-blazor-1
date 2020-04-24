@@ -6,7 +6,7 @@
     </Description>
     <Demo>
         <Layout>
-            <Header Class="header">
+            <Header class="header">
                 <div class="logo" />
                 <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedItems="@(new[] {"2"})">
                     <MenuItem Key="1">nav 1</MenuItem>

@@ -9,16 +9,15 @@ namespace Append.AntDesign.Components
 {
     public partial class MenuItem
     {
-        private const string menuItemPrefix = "ant-menu-item";
+        private static readonly string prefix = "ant-menu-item";
         /// <summary>
         /// The actual css classes, combining Ant Design classes with the classes of the client.
         /// </summary>
-        private string classes =>
-            menuItemPrefix
-            .AddClassWhen($"{menuItemPrefix}-selected", IsSelected)
-            .AddClassWhen($"{menuItemPrefix}-disabled", Disabled)
-            .AddCssClass(Class);
-
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClassWhen($"{prefix}-selected", IsSelected)
+                .AddClassWhen($"{prefix}-disabled", Disabled);
+        
         [CascadingParameter] public Menu RootMenu { get; set; }
         [CascadingParameter] public SubMenu ParentMenu { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }

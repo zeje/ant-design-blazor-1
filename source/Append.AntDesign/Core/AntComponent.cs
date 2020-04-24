@@ -1,8 +1,6 @@
 ﻿using Append.AntDesign.Core;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Append.AntDesign.Components
 {
@@ -10,8 +8,8 @@ namespace Append.AntDesign.Components
     {
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();
-        [Parameter] public string Class { get; set; }
-        public string Styles => Attributes.GetStyles();
-        //public string Classes => Attributes.getcl();
+        protected string Style => Attributes.GetStyle();
+        protected string Class => Attributes.GetClass();
+
     }
 }

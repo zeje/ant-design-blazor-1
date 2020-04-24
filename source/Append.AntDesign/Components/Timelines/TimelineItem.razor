@@ -1,12 +1,12 @@
 ﻿@inherits AntComponent
 @namespace Append.AntDesign.Components
 
-<li class="@ItemCssClasses" @key="this" @attributes="@Attributes">
+<li @attributes="@Attributes" class="@itemCssClasses" @key="this">
     @if (Label != null)
     {
         <div class="ant-timeline-item-label">@Label</div>
     }
     <div class="ant-timeline-item-tail"></div>
-    <div class="@DotCssClasses">@Dot</div>
+    <div class="@dotCssClasses">@Dot</div>
     <div class="ant-timeline-item-content">@ChildContent</div>
 </li>

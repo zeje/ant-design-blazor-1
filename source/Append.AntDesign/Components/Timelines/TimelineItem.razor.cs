@@ -6,8 +6,8 @@ namespace Append.AntDesign.Components
 {
     public partial class TimelineItem : IDisposable
     {
-        public const string ItemPrefix = "ant-timeline-item";
-        public const string DotPrefix = "ant-timeline-item-head";
+        public static readonly string itemPrefix = "ant-timeline-item";
+        public static readonly string dotPrefix = "ant-timeline-item-head";
 
         [Parameter] public RenderFragment Dot { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
@@ -18,16 +18,14 @@ namespace Append.AntDesign.Components
         public bool IsLast { get; private set; }
         private TimelinePosition position;
 
-        public string ItemCssClasses =>
-            ItemPrefix
-            .AddClassWhen($"{ItemPrefix}-{position}", position != null)
-            .AddClassWhen($"{ItemPrefix}-last", IsLast)
-            .AddCssClass(Class);
+        public ClassBuilder itemCssClasses => ClassBuilder.Create(Class)
+               .AddClass(itemPrefix)
+               .AddClassWhen($"{itemPrefix}-{position}", position != null)
+               .AddClassWhen($"{itemPrefix}-last", IsLast);
 
-        public string DotCssClasses =>
-            DotPrefix
-            .AddClassWhen($"{DotPrefix}-custom", Dot != null)
-            .AddCssClass($"{DotPrefix}-{Color}");
+        public ClassBuilder dotCssClasses => ClassBuilder.Create(dotPrefix)
+            .AddClass($"{dotPrefix}-{Color}")
+            .AddClassWhen($"{dotPrefix}-custom", Dot != null);
 
         protected override void OnInitialized()
         {

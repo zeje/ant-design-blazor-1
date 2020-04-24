@@ -48,7 +48,7 @@ namespace Append.AntDesign.Components
         }
         private ValueTask CreatePopper(Tooltip tooltip)
         {
-            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.create", tooltip.tooltipElementReference, tooltip.childElementReference, tooltip.Placement.PopperName, tooltip.Key);
+            return JSRuntime.InvokeVoidAsync("antdesign.tooltip.create", tooltip.TooltipElementReference, tooltip.ChildElementReference, tooltip.Placement.PopperName, tooltip.Key);
         }
         private ValueTask DestroyPopper(Tooltip tooltip)
         {

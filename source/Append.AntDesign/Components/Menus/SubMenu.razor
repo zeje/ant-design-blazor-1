@@ -1,7 +1,7 @@
 ﻿@inherits AntComponent
 @namespace Append.AntDesign.Components
 
-<li class="@classes" role="menuitem" @key="Key" @onmouseover="HandleMouseOver" @onmouseout="HandleMouseOut" style="position:relative;">
+<li @attributes="@Attributes" class="@classes" role="menuitem" @key="Key" @onmouseover="HandleMouseOver" @onmouseout="HandleMouseOut" style="position:relative;">
     <div class="ant-menu-submenu-title" role="button"
          @onclick="HandleOnTitleClick"
          aria-haspopup="true">

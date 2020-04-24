@@ -8,12 +8,13 @@ namespace Append.AntDesign.Components
 {
     public partial class Breadcrumb
     {
+        private static readonly string prefix = "ant-breadcrumb";
+
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public string Separator { get; set; }
 
-        private string classes =>
-            "ant-breadcrumb"
-            .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix);
 
         private List<BreadcrumbItem> items = new List<BreadcrumbItem>();
         private string separator = "/";

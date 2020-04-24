@@ -20,7 +20,6 @@ There are 3 themes you can choose from:
 | Width | The width of the `svg` element | `string` | '1em' |  |
 | Height | The height of the `svg` element | `string` | '1em' |  |
 | Fill | Define the color used to paint the `svg` element | `string` | 'currentColor' |  |
-| Class | className of the `svg` element  | `string` | - |  |
 | Style | Style properties of the `svg` element, like `fontSize` and `color` | CSSProperties | - |  |
 | Spin | Rotates the icon with a spinnig animation | boolean | false |  |
 | Rotate | Rotate by n degrees (not working in IE9) | number | - |  |

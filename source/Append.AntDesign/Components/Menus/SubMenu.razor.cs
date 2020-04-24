@@ -9,23 +9,21 @@ namespace Append.AntDesign.Components
 {
     public partial class SubMenu 
     {
-        private const string submenuPrefix = "ant-menu-submenu";
+        private static readonly string menuPrefix = "ant-menu";
+        private static readonly string submenuPrefix = "ant-menu-submenu";
         /// <summary>
         /// The actual css classes, combining Ant Design classes with the classes of the client.
         /// </summary>
-        private string classes =>
-            submenuPrefix
-            .AddCssClass($"{submenuPrefix}-{RootMenu.InternalMode}")
-            .AddClassWhen($"{submenuPrefix}-open", IsOpen)
-            .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(submenuPrefix)
+                .AddClass($"{submenuPrefix}-{RootMenu.InternalMode}")
+                .AddClassWhen($"{submenuPrefix}-open", IsOpen);
 
-        private string subMenuClasses =>
-            "ant-menu"
-            .AddCssClass("ant-menu-sub")
-            .AddCssClass($"ant-menu-{(RootMenu.InternalMode == MenuMode.Horizontal ? MenuMode.Vertical : RootMenu.InternalMode)}")
-            .AddClassWhen($"ant-menu-submenu-popup", RootMenu.InternalMode != MenuMode.Inline)
-            .AddClassWhen($"ant-menu-hidden", !IsOpen);
-
+        private ClassBuilder subMenuClasses => ClassBuilder.Create(menuPrefix)
+                .AddClass("ant-menu-sub")
+                .AddClass($"ant-menu-{(RootMenu.InternalMode == MenuMode.Horizontal ? MenuMode.Vertical : RootMenu.InternalMode)}")
+                .AddClassWhen($"ant-menu-submenu-popup", RootMenu.InternalMode != MenuMode.Inline)
+                .AddClassWhen($"ant-menu-hidden", !IsOpen);
 
         [CascadingParameter] public Menu RootMenu { get; set; }
         [CascadingParameter] public SubMenu Parent { get; set; }

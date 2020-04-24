@@ -7,12 +7,11 @@ namespace Append.AntDesign.Components
 {
     public partial class Timeline
     {
-        private const string prefix = "ant-timeline";
-        private string classes =>
-            prefix
+        private static readonly string prefix = "ant-timeline";
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+            .AddClass(prefix)
             .AddClassWhen($"{prefix}-{Mode}", Mode != null && !hasLabels)
-            .AddClassWhen($"{prefix}-label", hasLabels)
-            .AddCssClass(Class);
+            .AddClassWhen($"{prefix}-label", hasLabels);
 
         /// <summary>
         /// Is needed to make it possible to put TimelineItems in the Timeline,
