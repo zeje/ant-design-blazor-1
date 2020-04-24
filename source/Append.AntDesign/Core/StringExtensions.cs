@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
+using System.Collections.Generic;
 
 namespace Append.AntDesign.Core
 {
@@ -15,6 +16,19 @@ namespace Append.AntDesign.Core
         public static string AddCssClass(this string value, string cssClass)
         {
             return $"{value} {cssClass}";
+        }
+        public static string AddStyle(this string value, string style)
+        {
+            if(string.IsNullOrEmpty(value))
+                return $"{style}";
+            return $"{value};{style}";
+        }
+        internal static string GetStyles(this Dictionary<string,object> attributes)
+        {
+            var styles = attributes.GetValueOrDefault("style");
+            if (styles is null)
+                return string.Empty;
+            return styles.ToString();
         }
         public static RenderFragment AsRenderFragment(this string value)
         {

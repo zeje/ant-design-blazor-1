@@ -1,4 +1,4 @@
-﻿<Codebox Title="Casual">
+﻿<Codebox Title="Header-Content-Footer">
     <Description>
         <p>
             The most basic <code>header-content-footer</code> layout.
@@ -21,11 +21,11 @@
                 </Menu>
             </Header>
             <Content style="padding: 0 50px">
-                @*<Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>*@
+                <Breadcrumb style="margin: 16px 0">
+                        <BreadcrumbItem>Home</BreadcrumbItem>
+                        <BreadcrumbItem>List</BreadcrumbItem>
+                        <BreadcrumbItem>App</BreadcrumbItem>
+                </Breadcrumb>
                 <div class="site-layout-content">Content</div>
             </Content>
             <Footer style="text-align:center">Ant Design ©2018 Created by Ant UED</Footer>

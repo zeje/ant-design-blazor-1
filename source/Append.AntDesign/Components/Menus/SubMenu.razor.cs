@@ -15,15 +15,15 @@ namespace Append.AntDesign.Components
         /// </summary>
         private string classes =>
             submenuPrefix
-            .AddCssClass($"{submenuPrefix}-{RootMenu.Mode}")
+            .AddCssClass($"{submenuPrefix}-{RootMenu.InternalMode}")
             .AddClassWhen($"{submenuPrefix}-open", IsOpen)
             .AddCssClass(Class);
 
         private string subMenuClasses =>
             "ant-menu"
             .AddCssClass("ant-menu-sub")
-            .AddCssClass($"ant-menu-{(RootMenu.Mode == MenuMode.Horizontal ? MenuMode.Vertical : RootMenu.Mode)}")
-            .AddClassWhen($"ant-menu-submenu-popup", RootMenu.Mode != MenuMode.Inline)
+            .AddCssClass($"ant-menu-{(RootMenu.InternalMode == MenuMode.Horizontal ? MenuMode.Vertical : RootMenu.InternalMode)}")
+            .AddClassWhen($"ant-menu-submenu-popup", RootMenu.InternalMode != MenuMode.Inline)
             .AddClassWhen($"ant-menu-hidden", !IsOpen);
 
 
@@ -43,14 +43,14 @@ namespace Append.AntDesign.Components
         }
         private void HandleMouseOver(MouseEventArgs args)
         {
-            if (RootMenu.Mode == MenuMode.Inline)
+            if (RootMenu.InternalMode == MenuMode.Inline)
                 return;
 
             IsOpen = true;
         }
         private void HandleMouseOut(MouseEventArgs args)
         {
-            if (RootMenu.Mode == MenuMode.Inline)
+            if (RootMenu.InternalMode == MenuMode.Inline)
                 return;
 
             IsOpen = false;

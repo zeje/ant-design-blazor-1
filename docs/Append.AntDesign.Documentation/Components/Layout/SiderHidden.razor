@@ -1,8 +1,19 @@
-﻿@page "/experiment"
-    <button @onclick="Toggle">Do something</button>
+﻿<Codebox Title="Sider">
+    <Description>
+        <p>
+            Two-columns layout. The sider menu can be collapsed when horizontal space is limited.
+        </p>
+        <p>
+            Generally, the mainnav is placed on the left side of the page, and the secondary menu is placed on the top of the working area. Contents will adapt the layout to the viewing area to improve the horizontal space usage, while the layout of the whole page is not stable.
+        </p>
+        <p>
+            The level of the aside navigation is scalable. The first, second, and third level navigations could be present more fluently and relevantly, and aside navigation can be fixed, allowing the user to quickly switch and spot the current position, improving the user experience. However, this navigation occupies some horizontal space of the contents
+        </p>
+    </Description>
+    <Demo>
         <BrowserMockup style="height:360px;overflow:auto;" WithUrl>
             <Layout style="min-height:100vh">
-                <Sider Collapsible @bind-Collapsed="@isCollapsed" Breakpoint="SiderBreakpoint.Md">
+                <Sider Collapsible Collapsed="isCollapsed" OnCollapse="HandleCollapsed">
                     <div class="logo" />
                     <Menu Theme="MenuTheme.Dark" DefaultSelectedItems="@(new[] { "1"})" Mode="MenuMode.Inline">
                         <MenuItem Key="1">
@@ -55,22 +66,24 @@
                 </Layout>
             </Layout>
         </BrowserMockup>
+    </Demo>
+</Codebox>
 @code{
     private bool isCollapsed = false;
-    private void Toggle()
+    private void HandleCollapsed(bool newState)
     {
-        isCollapsed = !isCollapsed;
+        Console.WriteLine($"New state is : {(newState ? "closed" : "open")}");
     }
 }
 
 <style>
-     .logo {
+    #components-layout-demo-siderhidden .logo {
         height: 32px;
         background: rgba(255, 255, 255, 0.2);
         margin: 16px;
     }
 
-    .ant-layout-sider-trigger {
+    #components-layout-demo-siderhidden .ant-layout-sider-trigger {
         /* Else the nav trigger will move with the entire page...*/
         position: sticky;
     }

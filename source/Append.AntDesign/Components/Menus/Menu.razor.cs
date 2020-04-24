@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Append.AntDesign.Components
 {
-    public partial class Menu
+    public partial class Menu : IDisposable
     {
         private const string menuPrefix = "ant-menu";
         /// <summary>
@@ -14,11 +14,14 @@ namespace Append.AntDesign.Components
         /// </summary>
         private string classes =>
             menuPrefix
+            .AddCssClass($"{menuPrefix}-root")
             .AddCssClass($"{menuPrefix}-{Theme}")
-            .AddCssClass($"{menuPrefix}-{Mode}")
-            .AddClassWhen($"{menuPrefix}-inline-collapsed",Collapsed)
+            .AddCssClass($"{menuPrefix}-{InternalMode}")
+            .AddClassWhen($"{menuPrefix}-inline-collapsed",collapsed)
             .AddClassWhen($"{menuPrefix}-unselectable",!Selectable)
             .AddCssClass(Class);
+
+        [CascadingParameter] public Sider Parent{ get; set; }
 
         [Parameter] public MenuTheme Theme { get; set; } = MenuTheme.Light;
         [Parameter] public MenuMode Mode { get; set; } = MenuMode.Inline;
@@ -30,7 +33,12 @@ namespace Append.AntDesign.Components
         [Parameter] public bool Accordion { get; set; }
         [Parameter] public bool Selectable { get; set; } = true;
         [Parameter] public bool Collapsed { get; set; }
+
+
+
         private MenuMode initialMode;
+        internal MenuMode InternalMode { get; private set; }
+        private bool collapsed;
 
         public List<SubMenu> Submenus { get; set; } = new List<SubMenu>();
         public List<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
@@ -85,17 +93,33 @@ namespace Append.AntDesign.Components
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            if (Mode != MenuMode.Inline && Collapsed)
+            if (InternalMode != MenuMode.Inline && collapsed)
                 throw new ArgumentException($"{nameof(Menu)} in the {Mode} mode cannot be {nameof(Collapsed)}");
+
             initialMode = Mode;
+            InternalMode = Mode;
+            if(Parent != null)
+            {
+                Parent.OnCollapsed += Update;
+            }
         }
 
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            if (Collapsed)
+            if(Parent == null)
             {
-                Mode = MenuMode.Vertical;
+                this.collapsed = Collapsed;
+            }
+            Update(collapsed);
+        }
+
+        public void Update(bool collapsed)
+        {
+            this.collapsed = collapsed;
+            if (collapsed)
+            {
+                InternalMode = MenuMode.Vertical;
                 foreach (var item in Submenus)
                 {
                     item.Close();
@@ -103,7 +127,15 @@ namespace Append.AntDesign.Components
             }
             else
             {
-                Mode = initialMode;
+                InternalMode = initialMode;
+            }
+        }
+
+        public void Dispose()
+        {
+            if(Parent != null)
+            {
+                Parent.OnCollapsed -= Update;
             }
         }
     }

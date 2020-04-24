@@ -1,6 +1,8 @@
-﻿<Codebox Title="Sider">
+﻿<Codebox Title="Side Fluid">
     <Description>
-        <p>Classic page layouts.</p>
+        <p>
+            Both the top navigation and the sidebar, commonly used in application site.
+        </p>    
     </Description>
     <Demo>
         <Layout>
@@ -13,10 +15,10 @@
                 </Menu>
             </Header>
             <Layout>
-                <Sider width={200}>
+                <Sider>
                     <Menu Mode="MenuMode.Inline"
                           DefaultSelectedItems="@(new[] {"1"})"
-                          DefaultOpenSubMenus="@(new[] {"sub2"})"
+                          DefaultOpenSubMenus="@(new[] {"sub1"})"
                           style="height:100%;border-right:0;background: #fff;">
                         <SubMenu Key="sub1">
                             <Title>
@@ -57,11 +59,11 @@
                     </Menu>
                 </Sider>
                 <Layout style="padding:0 24px 24px">
-                    @*<Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>*@
+                    <Breadcrumb style="margin: 16px 0">
+                        <BreadcrumbItem>Home</BreadcrumbItem>
+                        <BreadcrumbItem>List</BreadcrumbItem>
+                        <BreadcrumbItem>App</BreadcrumbItem>
+                    </Breadcrumb>
                     <Content style="padding:24px;margin:0;min-height:280px;background:#fff">
                         Content
                     </Content>
@@ -72,7 +74,7 @@
 </Codebox>
 
 <style>
-    #components-layout-demo-sider1 .logo {
+    #components-layout-demo-side .logo {
         width: 120px;
         height: 31px;
         background: rgba(255, 255, 255, 0.2);
