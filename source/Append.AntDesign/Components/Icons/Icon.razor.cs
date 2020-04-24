@@ -1,4 +1,5 @@
 ﻿using Append.AntDesign.Components.Services;
+using Append.AntDesign.Core;
 using Append.AntDesign.Services;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -9,6 +10,10 @@ namespace Append.AntDesign.Components
 {
     public partial class Icon
     {
+        private static string prefix = "anticon";
+        private ClassBuilder classes => ClassBuilder.Create(prefix)
+                                                    .AddClass(Class);
+
         [Inject] public IIconService IconService { get; set; }
         [Parameter] public string Width { get; set; } = "1em";
         [Parameter] public string Height { get; set; } = "1em";

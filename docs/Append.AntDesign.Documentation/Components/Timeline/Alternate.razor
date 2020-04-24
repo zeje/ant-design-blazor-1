@@ -21,5 +21,5 @@
 </Codebox>
 
 @code{
-    private RenderFragment clock =@<Icon Type="IconType.Outlined.Clock_Circle" Style="font-size:16px" />;
+    private RenderFragment clock =@<Icon Type="IconType.Outlined.Clock_Circle" style="font-size:16px" />;
 }

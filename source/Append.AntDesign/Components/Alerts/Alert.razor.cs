@@ -36,11 +36,11 @@ namespace Append.AntDesign.Components
                 return;
 
             IconType iconType = DetermineIconType();
+            ClassBuilder classes = ClassBuilder.Create("ant-alert-icon");
 
-            var additionalIconClasses = $"ant-alert-icon";
             builder.OpenComponent<Icon>(1);
             builder.AddAttribute(2, "Type", iconType);
-            builder.AddAttribute(3, "Class", additionalIconClasses);
+            builder.AddAttribute(3, "class", classes);
             builder.CloseComponent();
         };
 
