@@ -31,12 +31,10 @@ To get a customized button, just set `type`/`shape`/`size`/`loading`/`disabled`.
 | Loading | set the loading status of button | boolean | `false` |  |
 | Shape | can be set to `circle`, `round` or omitted | `ButtonShape` | - |  |
 | Size | set the size of button | `ButtonSize` | `middle` |  |
-| Target | same as target attribute of a, works when href is specified | `string` | - |  |
 | Type | can be set to `primary` `ghost` `dashed` `link` or omitted (meaning `default`) | `ButtonType` | `default` |  |
 | OnClick | set the handler to handle `click` event | `EventCallback` | - |  |
 | Block | option to fit button width to its parent width | `boolean` | `false` |  |
 | Danger | set the danger status of button | `boolean` | `false` |  |
-| Class | Additional classes for the html `button` or `a` element | `string` | - |  |
 
 ## FAQ
 > Ask your questions on Github, they might end up here.

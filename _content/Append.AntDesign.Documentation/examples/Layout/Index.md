@@ -62,47 +62,35 @@ Style of a navigation should conform to its level.
 </Layout>
 ```
 
-### Layout
+### Layout, Header, Content, Footer
 
-The wrapper.
+Have no parameters.
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| Class | container className | string | - |
-
-> APIs of `Layout.Header` `Layout.Footer` `Layout.Content` are the same as that of `Layout`.
-
-### Layout.Sider
+### Sider
 
 The sidebar.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| breakpoint | [breakpoints](/components/grid#Col) of the responsive layout | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `xxl` } | - |
-| className | container className | string | - |
-| collapsed | to set the current status | boolean | - |
-| collapsedWidth | width of the collapsed sidebar, by setting to `0` a special trigger will appear | number | 80 |
-| collapsible | whether can be collapsed | boolean | false |
-| defaultCollapsed | to set the initial status | boolean | false |
-| reverseArrow | reverse direction of arrow, for a sider that expands from the right | boolean | false |
-| style | to customize the styles | object | - |
-| theme | color theme of the sidebar | `light` \| `dark` | `dark` |
-| trigger | specify the customized trigger, set to null to hide the trigger | string\|ReactNode | - |
-| width | width of the sidebar | number\|string | 200 |
-| onCollapse | the callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} | - |
-| onBreakpoint | the callback function, executed when [breakpoints](/components/grid#API) changed | (broken) => {} | - |
-| zeroWidthTriggerStyle | to customize the styles of the special trigger that appears when `collapsedWidth` is 0 | object | - |
+| Breakpoint | breakpoints of the responsive layout | Sider.Breakpoint | - |
+| Collapsed | to set the current status | boolean | - |
+| CollapsedWidth | width of the collapsed sidebar, by setting to `0` a special trigger will appear | int | 80 |
+| Collapsible | toggle to show a Trigger to open/close the sider | boolean | false |
+| Theme | color theme of the sidebar | SiderTheme | SiderTheme.Dark |
+| Trigger | specify the customized trigger| RenderFragment | - |
+| Width | width of the sidebar | int | 200 |
+| OnCollapse | the callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} | - |
 
 #### breakpoint width
 
 ```js
 {
-  xs: '480px',
-  sm: '576px',
-  md: '768px',
-  lg: '992px',
-  xl: '1200px',
-  xxl: '1600px',
+  Xs: '480px',
+  Sm: '576px',
+  Md: '768px',
+  Lg: '992px',
+  Xl: '1200px',
+  Xxl: '1600px',
 }
 ```
 
