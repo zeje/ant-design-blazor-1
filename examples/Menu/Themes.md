@@ -8,7 +8,7 @@
         <div style="display:flex; justify-content:space-around;">
             <div>
                 <p>Light</p>
-                <Menu Style="width:256px;" Mode="MenuMode.Inline" Theme="MenuTheme.Light">
+                <Menu style="width:256px;" Mode="MenuMode.Inline" Theme="MenuTheme.Light">
                     <MenuItem Key="1">
                         <Icon Type="IconType.Outlined.Pie_Chart" />
                         <span>Option 1</span>
@@ -54,7 +54,7 @@
             </div>
             <div>
                 <p>Dark</p>
-                <Menu Style="width:256px;" Mode="MenuMode.Inline" Theme="MenuTheme.Dark">
+                <Menu style="width:256px;" Mode="MenuMode.Inline" Theme="MenuTheme.Dark">
                     <MenuItem Key="1">
                         <Icon Type="IconType.Outlined.Pie_Chart" />
                         <span>Option 1</span>

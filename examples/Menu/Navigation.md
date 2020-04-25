@@ -6,7 +6,7 @@
         </p>
     </Description>
     <Demo>
-        <Menu Style="width:256px;" Mode="MenuMode.Inline" Selectable="false">
+        <Menu style="width:256px;" Mode="MenuMode.Inline" Selectable="false">
             <NavLink href="/" Match="NavLinkMatch.All">
                 <MenuItem Key="Home">
 

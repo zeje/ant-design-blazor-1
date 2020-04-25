@@ -5,7 +5,7 @@
         </p>
     </Description>
     <Demo>
-        <Menu Style="width:256px;" Mode="MenuMode.Inline" DefaultOpenSubMenus="OpenSubmenus" Accordion >
+        <Menu style="width:256px;" Mode="MenuMode.Inline" DefaultOpenSubMenus="OpenSubmenus" Accordion >
             <SubMenu Key="sub1">
                 <Title>
                     <Icon Type="IconType.Outlined.Mail" />
