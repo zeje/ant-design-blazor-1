@@ -18,13 +18,11 @@ namespace Append.AntDesign.Components
                 .AddClassWhen($"{prefix}-collapsed", Collapsed)
                 .AddClassWhen($"{prefix}-zero-width", CollapsedWidth == 0 && Collapsed);
 
-        private string styles =>
-            string.Empty
-            .AddStyle($"flex: 0 0 {width}px")
-            .AddStyle($"max-width: {width}px")
-            .AddStyle($"min-width: {width}px")
-            .AddStyle($"width: {width}px")
-            .AddStyle(Attributes.GetStyle());
+        private StyleBuilder styles => StyleBuilder.Create(Style)
+                .AddStyle($"flex: 0 0 {width}px")
+                .AddStyle($"max-width: {width}px")
+                .AddStyle($"min-width: {width}px")
+                .AddStyle($"width: {width}px");
 
         [Inject] public IWindowService WindowService { get; set; }
         [Parameter] public bool Collapsible { get; set; }

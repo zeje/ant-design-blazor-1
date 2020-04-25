@@ -9,9 +9,9 @@ namespace Append.AntDesign.Components
 {
     public class BreadcrumbItem : AntComponent, IDisposable
     {
-        internal string Classes => 
-            "ant-breadcrumb-item"
-            .AddCssClass(Class);
+        private static readonly string prefix = "ant-breadcrumb-item";
+        internal ClassBuilder Classes => ClassBuilder.Create(Class)
+                                         .AddClass(prefix);
             
         [CascadingParameter] public Breadcrumb Parent { get; set; }
         [Parameter] public string Href { get; set; }

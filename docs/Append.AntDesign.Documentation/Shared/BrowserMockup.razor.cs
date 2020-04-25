@@ -10,9 +10,9 @@ namespace Append.AntDesign.Documentation.Shared
 {
     public partial class BrowserMockup
     {
-        private string classes => "browser-mockup"
-                                  .AddClassWhen($"with-url",WithUrl)
-                                  .AddCssClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass("browser-mockup")
+                .AddClassWhen($"with-url", WithUrl);
 
         [Parameter] public string Height { get; set; }
         [Parameter] public bool WithUrl { get; set; }
