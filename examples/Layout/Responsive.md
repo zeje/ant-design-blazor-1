@@ -5,7 +5,7 @@
     </Description>
     <Demo>
         <Layout>
-            <Sider Breakpoint="SiderBreakpoint.Md" Collapsible
+            <Sider Breakpoint="BreakpointType.Md" Collapsible
                    CollapsedWidth="0">
                 <div class="logo" />
                 <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Inline" DefaultSelectedItems="@(new[] { "4"})">
