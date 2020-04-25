@@ -29,7 +29,7 @@ namespace Append.AntDesign.Components
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public RenderFragment Trigger { get; set; }
         [CascadingParameter] public Layout Parent { get; set; }
-        [Parameter] public SiderBreakpoint Breakpoint { get; set; }
+        [Parameter] public BreakpointType Breakpoint { get; set; }
         [Parameter] public SiderTheme Theme { get; set; } = SiderTheme.Dark;
         [Parameter] public bool ShowTrigger { get; set; } = true;
         [Parameter] public int Width { get; set; } = 200;

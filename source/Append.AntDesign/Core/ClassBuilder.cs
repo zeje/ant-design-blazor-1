@@ -13,7 +13,7 @@ namespace Append.AntDesign.Core
             builder = new StringBuilder(initialValue);
         }
 
-        public static ClassBuilder Create(string initialValue)
+        public static ClassBuilder Create(string initialValue = "")
         {
             return new ClassBuilder(initialValue);
         }
