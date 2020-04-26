@@ -8,12 +8,12 @@ namespace Append.AntDesign.Core
         private StringBuilder builder;
         private static char separator = ' ';
 
-        private ClassBuilder(string initialValue)
+        private ClassBuilder(string initialValue = null)
         {
             builder = new StringBuilder(initialValue);
         }
 
-        public static ClassBuilder Create(string initialValue = "")
+        public static ClassBuilder Create(string initialValue = null)
         {
             return new ClassBuilder(initialValue);
         }
@@ -44,6 +44,8 @@ namespace Append.AntDesign.Core
 
         public override string ToString()
         {
+            if (builder.Length == 0)
+                return null;
             return builder.ToString();
         }
 

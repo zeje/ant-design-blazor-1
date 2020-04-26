@@ -9,14 +9,12 @@ namespace Append.AntDesign.Core
         private StringBuilder builder;
         private static char separator = ';';
 
-
-
-        private StyleBuilder(string initialValue = "")
+        private StyleBuilder(string initialValue = null)
         {
             builder = new StringBuilder(initialValue);
         }
 
-        public static StyleBuilder Create(string initialValue = "")
+        public static StyleBuilder Create(string initialValue = null)
         {
             return new StyleBuilder(initialValue);
         }
@@ -47,6 +45,8 @@ namespace Append.AntDesign.Core
 
         public override string ToString()
         {
+            if (builder.Length == 0)
+                return null;
             return builder.ToString();
         }
 
