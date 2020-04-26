@@ -17,6 +17,7 @@ jobs:
               MSBUILDDISABLENODEREUSE: 1
           run: |
                   cp -rfv infrastructure/. ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
+                  dotnet test
                   dotnet build
                   dotnet publish -c Release -o build
 
