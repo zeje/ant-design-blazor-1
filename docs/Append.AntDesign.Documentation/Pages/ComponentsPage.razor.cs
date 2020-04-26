@@ -23,9 +23,13 @@ namespace Append.AntDesign.Documentation.Pages
 
         protected override async Task OnParametersSetAsync()
         {
-            base.OnInitialized();
-            document = await DocumentationService.GetComponentDocumentation(ComponentName);
+            await base.OnParametersSetAsync();
+
             examples.Clear();
+            StateHasChanged();
+
+            document = await DocumentationService.GetComponentDocumentation(ComponentName);
+
             await foreach (var example in document.Examples)
             {
                 examples.Add(example);
