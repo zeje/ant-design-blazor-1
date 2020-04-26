@@ -16,6 +16,7 @@ namespace Append.AntDesign.Components
         internal void Subscribe(Sider sider)
         {
             hasSider = true;
+            StateHasChanged();
         }
 
         protected override void OnParametersSet()

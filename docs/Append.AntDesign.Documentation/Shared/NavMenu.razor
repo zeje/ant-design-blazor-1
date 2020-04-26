@@ -1,243 +1,241 @@
 ﻿@using Append.AntDesign.Components
 @using Microsoft.AspNetCore.Components.Routing
 
-<section class="main-menu-inner" style="max-height:calc(100vh - 64px);margin-top:-40px;">
-    <Menu class="aside-container" style="padding-top:20px;padding-bottom:20px;" Selectable="false">
-        <MenuItemGroup>
-            <Title>General</Title>
+<Menu Selectable="false" Theme="MenuTheme.Light" Mode="MenuMode.Inline">
+    <MenuItemGroup>
+        <Title>General</Title>
+        <Children>
+            <NavLink href="experiment">
+                <MenuItem Key="Experiment">Experiment</MenuItem>
+            </NavLink>
+            <NavLink href="components/Button">
+                <MenuItem Key="Button">Button</MenuItem>
+            </NavLink>
+            <NavLink href="components/Icon">
+                <MenuItem Key="Icon">Icon</MenuItem>
+            </NavLink>
+            @*<NavLink href="components/Typography">
+                    <MenuItem Key="Typography">Typography</MenuItem>
+                </NavLink>*@
+        </Children>
+    </MenuItemGroup>
+
+    <MenuItemGroup>
+        <Title>Layout</Title>
+        <Children>
+            <NavLink href="components/Grid">
+                <MenuItem Key="Grid">Grid</MenuItem>
+            </NavLink>
+            <NavLink href="components/Layout">
+                <MenuItem Key="Layout">Layout</MenuItem>
+            </NavLink>
+            @*<NavLink href="components/Space">
+                    <MenuItem Key="Space">Space</MenuItem>
+                </NavLink>*@
+        </Children>
+    </MenuItemGroup>
+
+    <MenuItemGroup>
+        <Title>Navigation</Title>
+        <Children>
+            @*<NavLink href="components/Affix">
+                    <MenuItem Key="Affix">Affix</MenuItem>
+                </NavLink>*@
+            <NavLink href="components/Breadcrumb">
+                <MenuItem Key="Breadcrumb">Breadcrumb</MenuItem>
+            </NavLink>
+            @*<NavLink href="components/Dropdown">
+                    <MenuItem Key="Dropdown">Dropdown</MenuItem>
+                </NavLink>*@
+            <NavLink href="components/Menu">
+                <MenuItem Key="Menu">Menu</MenuItem>
+            </NavLink>
+            @*<NavLink href="components/Pagination">
+                    <MenuItem Key="pagination">Pagination</MenuItem>
+                </NavLink>
+                <NavLink href="components/PageHeader">
+                    <MenuItem Key="PageHeader">PageHeader</MenuItem>
+                </NavLink>
+                <NavLink href="components/Steps">
+                    <MenuItem Key="Steps">Steps</MenuItem>
+                </NavLink>*@
+        </Children>
+    </MenuItemGroup>
+
+    @*<MenuItemGroup>
+            <Title>Data Entry</Title>
             <Children>
-                <NavLink href="experiment">
-                    <MenuItem Key="Experiment">Experiment</MenuItem>
+                <NavLink href="components/AutoComplete">
+                    <MenuItem Key="AutoComplete">AutoComplete</MenuItem>
                 </NavLink>
-                <NavLink href="components/Button">
-                    <MenuItem Key="Button">Button</MenuItem>
+                <NavLink href="components/Checkbox">
+                    <MenuItem Key="Checkbox">Checkbox</MenuItem>
                 </NavLink>
-                <NavLink href="components/Icon">
-                    <MenuItem Key="Icon">Icon</MenuItem>
+                <NavLink href="components/Cascader">
+                    <MenuItem Key="Cascader">Cascader</MenuItem>
                 </NavLink>
-                @*<NavLink href="components/Typography">
-                        <MenuItem Key="Typography">Typography</MenuItem>
-                    </NavLink>*@
-            </Children>
-        </MenuItemGroup>
-
-        <MenuItemGroup>
-            <Title>Layout</Title>
-            <Children>
-                <NavLink href="components/Grid">
-                        <MenuItem Key="Grid">Grid</MenuItem>
-                    </NavLink>
-                <NavLink href="components/Layout">
-                    <MenuItem Key="Layout">Layout</MenuItem>
+                <NavLink href="components/DatePicker">
+                    <MenuItem Key="DatePicker">DatePicker</MenuItem>
                 </NavLink>
-                @*<NavLink href="components/Space">
-                        <MenuItem Key="Space">Space</MenuItem>
-                    </NavLink>*@
-            </Children>
-        </MenuItemGroup>
-
-        <MenuItemGroup>
-            <Title>Navigation</Title>
-            <Children>
-                @*<NavLink href="components/Affix">
-                        <MenuItem Key="Affix">Affix</MenuItem>
-                    </NavLink>*@
-                <NavLink href="components/Breadcrumb">
-                    <MenuItem Key="Breadcrumb">Breadcrumb</MenuItem>
+                <NavLink href="components/TimePicker">
+                    <MenuItem Key="TimePicker">TimePicker</MenuItem>
                 </NavLink>
-                @*<NavLink href="components/Dropdown">
-                        <MenuItem Key="Dropdown">Dropdown</MenuItem>
-                    </NavLink>*@
-                <NavLink href="components/Menu">
-                    <MenuItem Key="Menu">Menu</MenuItem>
+                <NavLink href="components/Form">
+                    <MenuItem Key="Form">Form</MenuItem>
                 </NavLink>
-                @*<NavLink href="components/Pagination">
-                        <MenuItem Key="pagination">Pagination</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/PageHeader">
-                        <MenuItem Key="PageHeader">PageHeader</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Steps">
-                        <MenuItem Key="Steps">Steps</MenuItem>
-                    </NavLink>*@
-            </Children>
-        </MenuItemGroup>
-
-        @*<MenuItemGroup>
-                <Title>Data Entry</Title>
-                <Children>
-                    <NavLink href="components/AutoComplete">
-                        <MenuItem Key="AutoComplete">AutoComplete</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Checkbox">
-                        <MenuItem Key="Checkbox">Checkbox</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Cascader">
-                        <MenuItem Key="Cascader">Cascader</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/DatePicker">
-                        <MenuItem Key="DatePicker">DatePicker</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/TimePicker">
-                        <MenuItem Key="TimePicker">TimePicker</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Form">
-                        <MenuItem Key="Form">Form</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/InputNumber">
-                        <MenuItem Key="InputNumber">InputNumber</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Input">
-                        <MenuItem Key="Input">Input</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Mentions">
-                        <MenuItem Key="Mentions">Mentions</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Rate">
-                        <MenuItem Key="Rate">Rate</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Radio">
-                        <MenuItem Key="Radio">Radio</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Switch">
-                        <MenuItem Key="Switch">Switch</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Slider">
-                        <MenuItem Key="Slider">Slider</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Select">
-                        <MenuItem Key="Select">Select</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/TreeSelect">
-                        <MenuItem Key="TreeSelect">TreeSelect</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Transfer">
-                        <MenuItem Key="Transfer">Transfer</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Upload">
-                        <MenuItem Key="Upload">Upload</MenuItem>
-                    </NavLink>
-                </Children>
-            </MenuItemGroup>*@
-
-        <MenuItemGroup>
-            <Title>Data Display</Title>
-            <Children>
-                @*<NavLink href="components/Avatar">
-                            <MenuItem Key="avatar">Avatar</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Badge">
-                            <MenuItem Key="Badge">Badge</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Comment">
-                            <MenuItem Key="Comment">Comment</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Collapse">
-                            <MenuItem Key="Collapse">Collapse</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Carousel">
-                            <MenuItem Key="Carousel">Carousel</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Card">
-                            <MenuItem Key="Card">Card</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Calendar">
-                            <MenuItem Key="Calendar">Calendar</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Descriptions">
-                            <MenuItem Key="Descriptions">Descriptions</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Empty">
-                            <MenuItem Key="Empty">Empty</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/List">
-                            <MenuItem Key="List">List</MenuItem>
-                        </NavLink>
-                    <NavLink href="components/Popover">
-                        <MenuItem Key="Popover">Popover</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Statistic">
-                            <MenuItem Key="Statistic">Statistic</MenuItem>
-                        </NavLink>
-                        <NavLink href="components/Tree">
-                            <MenuItem Key="Tree">Tree</MenuItem>
-                        </NavLink>*@
-                <NavLink href="components/Tooltip">
-                    <MenuItem Key="Tooltip">Tooltip</MenuItem>
+                <NavLink href="components/InputNumber">
+                    <MenuItem Key="InputNumber">InputNumber</MenuItem>
                 </NavLink>
-                <NavLink href="components/Timeline">
-                    <MenuItem Key="Timeline">Timeline</MenuItem>
-                </NavLink>@*
-                    <NavLink href="components/Tag">
-                        <MenuItem Key="Tag">Tag</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Tabs">
-                        <MenuItem Key="Tabs">Tabs</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Table">
-                        <MenuItem Key="Table">Table</MenuItem>
-                    </NavLink>*@
-            </Children>
-        </MenuItemGroup>
-
-        <MenuItemGroup>
-            <Title>Feedback</Title>
-            <Children>
-                <NavLink href="components/Alert">
-                    <MenuItem Key="Alert">Alert</MenuItem>
+                <NavLink href="components/Input">
+                    <MenuItem Key="Input">Input</MenuItem>
                 </NavLink>
-                @*
-                    <NavLink href="components/Drawer">
-                        <MenuItem Key="Drawer">Drawer</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Modal">
-                        <MenuItem Key="Modal">Modal</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Message">
-                        <MenuItem Key="Message">Message</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Notification">
-                        <MenuItem Key="Notification">Notification</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Progress">
-                        <MenuItem Key="Progress">Progress</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Popconfirm">
-                        <MenuItem Key="Popconfirm">Popconfirm</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Result">
-                        <MenuItem Key="Result">Result</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Spin">
-                        <MenuItem Key="Spin">Spin</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/Skeleton">
-                        <MenuItem Key="Skeleton">Skeleton</MenuItem>
-                    </NavLink>
-                *@
-            </Children>
-        </MenuItemGroup>
-
-
-        <MenuItemGroup>
-            <Title>Other</Title>
-            <Children>
-                @*<NavLink href="components/Anchor">
-                        <MenuItem Key="Anchor">Anchor</MenuItem>
-                    </NavLink>
-                    <NavLink href="components/BackTop">
-                        <MenuItem Key="BackTop">BackTop</MenuItem>
-                    </NavLink>*@
-                <NavLink href="components/Divider">
-                    <MenuItem Key="Divider">Divider</MenuItem>
+                <NavLink href="components/Mentions">
+                    <MenuItem Key="Mentions">Mentions</MenuItem>
+                </NavLink>
+                <NavLink href="components/Rate">
+                    <MenuItem Key="Rate">Rate</MenuItem>
+                </NavLink>
+                <NavLink href="components/Radio">
+                    <MenuItem Key="Radio">Radio</MenuItem>
+                </NavLink>
+                <NavLink href="components/Switch">
+                    <MenuItem Key="Switch">Switch</MenuItem>
+                </NavLink>
+                <NavLink href="components/Slider">
+                    <MenuItem Key="Slider">Slider</MenuItem>
+                </NavLink>
+                <NavLink href="components/Select">
+                    <MenuItem Key="Select">Select</MenuItem>
+                </NavLink>
+                <NavLink href="components/TreeSelect">
+                    <MenuItem Key="TreeSelect">TreeSelect</MenuItem>
+                </NavLink>
+                <NavLink href="components/Transfer">
+                    <MenuItem Key="Transfer">Transfer</MenuItem>
+                </NavLink>
+                <NavLink href="components/Upload">
+                    <MenuItem Key="Upload">Upload</MenuItem>
                 </NavLink>
             </Children>
-        </MenuItemGroup>
-    </Menu>
-</section>
+        </MenuItemGroup>*@
 
-<style>
+    <MenuItemGroup>
+        <Title>Data Display</Title>
+        <Children>
+            @*<NavLink href="components/Avatar">
+                        <MenuItem Key="avatar">Avatar</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Badge">
+                        <MenuItem Key="Badge">Badge</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Comment">
+                        <MenuItem Key="Comment">Comment</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Collapse">
+                        <MenuItem Key="Collapse">Collapse</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Carousel">
+                        <MenuItem Key="Carousel">Carousel</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Card">
+                        <MenuItem Key="Card">Card</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Calendar">
+                        <MenuItem Key="Calendar">Calendar</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Descriptions">
+                        <MenuItem Key="Descriptions">Descriptions</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Empty">
+                        <MenuItem Key="Empty">Empty</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/List">
+                        <MenuItem Key="List">List</MenuItem>
+                    </NavLink>
+                <NavLink href="components/Popover">
+                    <MenuItem Key="Popover">Popover</MenuItem>
+                </NavLink>
+                <NavLink href="components/Statistic">
+                        <MenuItem Key="Statistic">Statistic</MenuItem>
+                    </NavLink>
+                    <NavLink href="components/Tree">
+                        <MenuItem Key="Tree">Tree</MenuItem>
+                    </NavLink>*@
+            <NavLink href="components/Tooltip">
+                <MenuItem Key="Tooltip">Tooltip</MenuItem>
+            </NavLink>
+            <NavLink href="components/Timeline">
+                <MenuItem Key="Timeline">Timeline</MenuItem>
+            </NavLink>@*
+                <NavLink href="components/Tag">
+                    <MenuItem Key="Tag">Tag</MenuItem>
+                </NavLink>
+                <NavLink href="components/Tabs">
+                    <MenuItem Key="Tabs">Tabs</MenuItem>
+                </NavLink>
+                <NavLink href="components/Table">
+                    <MenuItem Key="Table">Table</MenuItem>
+                </NavLink>*@
+        </Children>
+    </MenuItemGroup>
+
+    <MenuItemGroup>
+        <Title>Feedback</Title>
+        <Children>
+            <NavLink href="components/Alert">
+                <MenuItem Key="Alert">Alert</MenuItem>
+            </NavLink>
+            @*
+                <NavLink href="components/Drawer">
+                    <MenuItem Key="Drawer">Drawer</MenuItem>
+                </NavLink>
+                <NavLink href="components/Modal">
+                    <MenuItem Key="Modal">Modal</MenuItem>
+                </NavLink>
+                <NavLink href="components/Message">
+                    <MenuItem Key="Message">Message</MenuItem>
+                </NavLink>
+                <NavLink href="components/Notification">
+                    <MenuItem Key="Notification">Notification</MenuItem>
+                </NavLink>
+                <NavLink href="components/Progress">
+                    <MenuItem Key="Progress">Progress</MenuItem>
+                </NavLink>
+                <NavLink href="components/Popconfirm">
+                    <MenuItem Key="Popconfirm">Popconfirm</MenuItem>
+                </NavLink>
+                <NavLink href="components/Result">
+                    <MenuItem Key="Result">Result</MenuItem>
+                </NavLink>
+                <NavLink href="components/Spin">
+                    <MenuItem Key="Spin">Spin</MenuItem>
+                </NavLink>
+                <NavLink href="components/Skeleton">
+                    <MenuItem Key="Skeleton">Skeleton</MenuItem>
+                </NavLink>
+            *@
+        </Children>
+    </MenuItemGroup>
+
+
+    <MenuItemGroup>
+        <Title>Other</Title>
+        <Children>
+            @*<NavLink href="components/Anchor">
+                    <MenuItem Key="Anchor">Anchor</MenuItem>
+                </NavLink>
+                <NavLink href="components/BackTop">
+                    <MenuItem Key="BackTop">BackTop</MenuItem>
+                </NavLink>*@
+            <NavLink href="components/Divider">
+                <MenuItem Key="Divider">Divider</MenuItem>
+            </NavLink>
+        </Children>
+    </MenuItemGroup>
+</Menu>
+
+@*<style>
     .aside-container .ant-menu-item-group-list {
         padding-left: 30px;
     }
-</style>
+</style>*@
