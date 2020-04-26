@@ -1,4 +1,6 @@
-﻿All icons are **S**emantic **V**ector **G**raphics. There is no need to install them since they are contained in the package.
+> Please note that this page can take some time to load, since we're downloading **all** the icons for Ant Design to show them to you.
+
+All icons are **S**emantic **V**ector **G**raphics. There is no need to install them since they are contained in the package.
 
 ## About SVG Icons
 Using SVG icons has has the following benefits:
