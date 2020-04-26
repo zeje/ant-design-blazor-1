@@ -74,7 +74,7 @@
 </Codebox>
 
 <style>
-    #components-layout-demo-side .logo {
+    #components-layout-demo-sidefluid .logo {
         width: 120px;
         height: 31px;
         background: rgba(255, 255, 255, 0.2);
