@@ -2,6 +2,8 @@
 
 All icons are **S**emantic **V**ector **G**raphics. There is no need to install them since they are contained in the package.
 
+
+
 ## About SVG Icons
 Using SVG icons has has the following benefits:
 
