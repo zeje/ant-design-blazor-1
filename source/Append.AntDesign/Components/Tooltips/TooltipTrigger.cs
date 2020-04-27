@@ -12,6 +12,7 @@ namespace Append.AntDesign.Components
         public static TooltipTrigger Hover = new TooltipTrigger(nameof(Hover).ToLower(), 1);
         public static TooltipTrigger Focus = new TooltipTrigger(nameof(Focus).ToLower(), 2);
         public static TooltipTrigger Click = new TooltipTrigger(nameof(Click).ToLower(), 3);
+        public static TooltipTrigger ContextMenu = new TooltipTrigger(nameof(ContextMenu).ToLower(), 4);
 
         private TooltipTrigger(string name, int value ) : base(name, value)
         {

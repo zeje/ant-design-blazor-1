@@ -17,7 +17,6 @@ namespace Append.AntDesign.Components
 
         public ClassBuilder Classes => ClassBuilder.Create(Class)
                .AddClass(prefix)
-               //.AddClass($"{prefix}-placement-{Placement}")
                .AddClassWhen($"{prefix}-hidden", !IsVisible);
 
         [Inject] public TooltipService TooltipService { get; set; }
@@ -125,6 +124,16 @@ namespace Append.AntDesign.Components
         public Task HandleClick(MouseEventArgs args)
         {
             if (!Triggers.Contains(TooltipTrigger.Click))
+                return Task.CompletedTask;
+
+            if (IsVisible)
+                return Hide();
+            else
+                return Show();
+        }
+        public Task HandleContextMenu(MouseEventArgs args)
+        {
+            if(!Triggers.Contains(TooltipTrigger.ContextMenu))
                 return Task.CompletedTask;
 
             if (IsVisible)

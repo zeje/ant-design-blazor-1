@@ -9,6 +9,8 @@
      @onmouseenter="HandleMouseEnter"
      @onmouseleave="HandleMouseLeave"
      @onclick="HandleClick"
+     @oncontextmenu="HandleContextMenu"
+     @oncontextmenu:preventDefault="@Triggers.Contains(TooltipTrigger.ContextMenu)"
      @onfocusin="HandleFocusIn"
      @onfocusout="HandleFocusOut">
     @ChildContent
