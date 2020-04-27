@@ -16,6 +16,7 @@ namespace Append.AntDesign.Components
                 .AddClassWhen($"{prefix}-offset-{Offset}", Offset != null)
                 .AddClassWhen($"{prefix}-push-{Push}", Push != null)
                 .AddClassWhen($"{prefix}-pull-{Pull}", Pull != null)
+                .AddClassWhen($"{prefix}-order-{Order}", Order != null)
                 .AddClassWhen($"{Xs?.ToClasses(BreakpointType.Xs, prefix)}", Xs != null)
                 .AddClassWhen($"{Sm?.ToClasses(BreakpointType.Sm, prefix)}", Sm != null)
                 .AddClassWhen($"{Md?.ToClasses(BreakpointType.Md, prefix)}", Md != null)

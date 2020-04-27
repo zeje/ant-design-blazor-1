@@ -1,63 +1,43 @@
 ﻿@inherits TestComponentBase
-@*<Fixture Test="ShouldContainPrefix">
-            <ComponentUnderTest>
-                <Row />
-            </ComponentUnderTest>
-        </Fixture>
-
-    <Fixture Test="ShouldContainExternalClasses">
-        <ComponentUnderTest>
-            <Row class="abc" />
-        </ComponentUnderTest>
-    </Fixture>
-
-    <Fixture Test="ShouldContainExternalStyles">
-        <ComponentUnderTest>
-            <Row style="background:yellow;" />
-        </ComponentUnderTest>
-    </Fixture>
-*@
-<SnapshotTest Description="ShouldRenderWith1ColumnAndSpan">
+<SnapshotTest Description="Basic Grid">
     <TestInput>
         <Row>
             <Column Span="24">col</Column>
+        </Row>
+        <Row>
+            <Column Span="12">col-12</Column>
+            <Column Span="12">col-12</Column>
+        </Row>
+        <Row>
+            <Column Span="8">col-8</Column>
+            <Column Span="8">col-8</Column>
+            <Column Span="8">col-8</Column>
+        </Row>
+        <Row>
+            <Column Span="6">col-6</Column>
+            <Column Span="6">col-6</Column>
+            <Column Span="6">col-6</Column>
+            <Column Span="6">col-6</Column>
         </Row>
     </TestInput>
     <ExpectedOutput>
         <div class="ant-row">
             <div class="ant-col ant-col-24">col</div>
         </div>
-    </ExpectedOutput>
-</SnapshotTest>
-
-<SnapshotTest Description="ShouldRenderWith2ColumnsAndSpan">
-    <TestInput>
-        <Row>
-            <Column Span="12">col-12</Column>
-            <Column Span="12">col-12</Column>
-        </Row>
-    </TestInput>
-    <ExpectedOutput>
         <div class="ant-row">
             <div class="ant-col ant-col-12">col-12</div>
             <div class="ant-col ant-col-12">col-12</div>
         </div>
-    </ExpectedOutput>
-</SnapshotTest>
-
-<SnapshotTest Description="ShouldRenderWith3ColumnsAndSpan">
-    <TestInput>
-        <Row>
-            <Column Span="8">col-8</Column>
-            <Column Span="8">col-8</Column>
-            <Column Span="8">col-8</Column>
-        </Row>
-    </TestInput>
-    <ExpectedOutput>
         <div class="ant-row">
             <div class="ant-col ant-col-8">col-8</div>
             <div class="ant-col ant-col-8">col-8</div>
             <div class="ant-col ant-col-8">col-8</div>
+        </div>
+        <div class="ant-row">
+            <div class="ant-col ant-col-6">col-6</div>
+            <div class="ant-col ant-col-6">col-6</div>
+            <div class="ant-col ant-col-6">col-6</div>
+            <div class="ant-col ant-col-6">col-6</div>
         </div>
     </ExpectedOutput>
 </SnapshotTest>
@@ -102,53 +82,224 @@
             </Column>
         </Row>
     </TestInput>
-<ExpectedOutput>
-    <div class="ant-row">
-        <div class="ant-col ant-col-18 ant-col-push-6">col-18 col-push-6</div>
-        <div class="ant-col ant-col-6 ant-col-pull-18">col-6 col-pull-18</div>
-    </div>
-</ExpectedOutput>
-</SnapshotTest>
-
-<SnapshotTest Description="Grid Sort">
-    <TestInput>
-        <Row>
-            <Column Xs="2" Sm="4" Md="6" Lg="8" Xl="10">Col</Column>
-            <Column Xs="20" Sm="16" Md="12" Lg="8" Xl="4">Col</Column>
-            <Column Xs="2" Sm="4" Md="6" Lg="8" Xl="10">Col</Column>
-        </Row>
-    </TestInput>
     <ExpectedOutput>
         <div class="ant-row">
-            <div class="ant-col ant-col-xs-2 ant-col-sm-4 ant-col-md-6 ant-col-lg-8 ant-col-xl-10">Col</div>
-            <div class="ant-col ant-col-xs-20 ant-col-sm-16 ant-col-md-12 ant-col-lg-8 ant-col-xl-4">Col</div>
-            <div class="ant-col ant-col-xs-2 ant-col-sm-4 ant-col-md-6 ant-col-lg-8 ant-col-xl-10">Col</div>
+            <div class="ant-col ant-col-18 ant-col-push-6">col-18 col-push-6</div>
+            <div class="ant-col ant-col-6 ant-col-pull-18">col-6 col-pull-18</div>
         </div>
     </ExpectedOutput>
 </SnapshotTest>
 
-@code {
+<SnapshotTest Description="Typesetting">
+    <TestInput>
+        <Row Justify="Justification.Start">
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+        </Row>
 
-    void ShouldContainPrefix()
-    {
-        var cut = GetComponentUnderTest();
+        <Row Justify="Justification.Center">
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+        </Row>
 
-        var elm = cut.Find("div");
-        elm.ClassList.ShouldContain("ant-row");
-    }
-    void ShouldContainExternalClasses()
-    {
-        var cut = GetComponentUnderTest();
+        <Row Justify="Justification.End">
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+        </Row>
 
-        var elm = cut.Find("div");
-        elm.ClassList.ShouldContain("abc");
-    }
-    void ShouldContainExternalStyles()
-    {
-        var cut = GetComponentUnderTest();
+        <Row Justify="Justification.Space_Between">
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+        </Row>
 
-        var elm = cut.Find("div");
-        elm.GetAttribute("style").ShouldContain("background:yellow");
-    }
+        <Row Justify="Justification.Space_Around">
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+            <Column Span="4">col-4</Column>
+        </Row>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-row ant-row-start">
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+        </div>
+        <div class="ant-row ant-row-center">
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+        </div>
+        <div class="ant-row ant-row-end">
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+        </div>
+        <div class="ant-row ant-row-space-between">
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+        </div>
+        <div class="ant-row ant-row-space-around">
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+            <div class="ant-col ant-col-4">col-4</div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
 
-}
+<SnapshotTest Description="Alignment">
+    <TestInput>
+        <Row Justify="Justification.Center" Align="Alignment.Top">
+            <Column Span="4">
+                <p style="height:100px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:50px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:120px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:80px;">col-4</p>
+            </Column>
+        </Row>
+        <Row Justify="Justification.Space_Around" Align="Alignment.Middle">
+            <Column Span="4">
+                <p style="height:100px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:50px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:120px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:80px;">col-4</p>
+            </Column>
+        </Row>
+
+        <Row Justify="Justification.Space_Between" Align="Alignment.Bottom">
+            <Column Span="4">
+                <p style="height:100px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:50px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:120px;">col-4</p>
+            </Column>
+            <Column Span="4">
+                <p style="height:80px;">col-4</p>
+            </Column>
+        </Row>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-row ant-row-center ant-row-top">
+            <div class="ant-col ant-col-4">
+                <p style="height:100px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:50px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:120px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:80px">col-4</p>
+            </div>
+        </div>
+        <div class="ant-row ant-row-space-around ant-row-middle">
+            <div class="ant-col ant-col-4">
+                <p style="height:100px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:50px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:120px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:80px">col-4</p>
+            </div>
+        </div>
+        <div class="ant-row ant-row-space-between ant-row-bottom">
+            <div class="ant-col ant-col-4">
+                <p style="height:100px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:50px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:120px">col-4</p>
+            </div>
+            <div class="ant-col ant-col-4">
+                <p style="height:80px">col-4</p>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Order">
+    <TestInput>
+        <Row>
+            <Column Span="6" Order="4">
+                1 col-order-4
+            </Column>
+            <Column Span="6" Order="3">
+                2 col-order-3
+            </Column>
+            <Column Span="6" Order="2">
+                3 col-order-2
+            </Column>
+            <Column Span="6" Order="1">
+                4 col-order-1
+            </Column>
+        </Row>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-row">
+            <div class="ant-col ant-col-6 ant-col-order-4">1 col-order-4</div>
+            <div class="ant-col ant-col-6 ant-col-order-3">2 col-order-3</div>
+            <div class="ant-col ant-col-6 ant-col-order-2">3 col-order-2</div>
+            <div class="ant-col ant-col-6 ant-col-order-1">4 col-order-1</div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Flex Stretch">
+    <TestInput>
+        <Row>
+            <Column Xs="@(new ResponsiveOptions { Span=5,Offset=1 })" Lg="@(new ResponsiveOptions { Span=6,Offset=2 })">
+                col
+            </Column>
+            <Column Xs="@(new ResponsiveOptions { Span=11,Offset=1 })" Lg="@(new ResponsiveOptions { Span=6,Offset=2 })">
+                col
+            </Column>
+            <Column Xs="@(new ResponsiveOptions { Span=5,Offset=1 })" Lg="@(new ResponsiveOptions { Span=6,Offset=2 })">
+                col
+            </Column>
+        </Row>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-row">
+            <div class="ant-col ant-col-xs-5 ant-col-xs-offset-1 ant-col-lg-6 ant-col-lg-offset-2">col</div>
+            <div class="ant-col ant-col-xs-11 ant-col-xs-offset-1 ant-col-lg-6 ant-col-lg-offset-2">col</div>
+            <div class="ant-col ant-col-xs-5 ant-col-xs-offset-1 ant-col-lg-6 ant-col-lg-offset-2">col</div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
