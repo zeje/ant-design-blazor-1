@@ -24,23 +24,19 @@ namespace Append.AntDesign.Documentation.Pages
         protected override async Task OnParametersSetAsync()
         {
             await base.OnParametersSetAsync();
-
             examples.Clear();
-            StateHasChanged();
-
+            await InvokeAsync(StateHasChanged);
             document = await DocumentationService.GetComponentDocumentation(ComponentName);
-
             await foreach (var example in document.Examples)
             {
                 examples.Add(example);
-                StateHasChanged();
+                await InvokeAsync(StateHasChanged);
             }
         }
 
         private RenderFragment BuildExample(Example example) => builder =>
         {
             builder.OpenComponent(0, example.SampleComponent);
-            builder.SetKey(example);
             builder.CloseComponent();
         };
     }
