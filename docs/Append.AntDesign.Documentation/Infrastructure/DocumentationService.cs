@@ -1,4 +1,4 @@
-﻿using Append.AntDesign.Documentation.Pages;
+using Append.AntDesign.Documentation.Pages;
 using Append.AntDesign.Documentation.Shared;
 using Markdig;
 using Microsoft.AspNetCore.Components;
@@ -98,7 +98,6 @@ namespace Append.AntDesign.Documentation.Infrastructure
         private async IAsyncEnumerable<Example> GetAllExamplesForComponent(string componentName)
         {
             var namespaceOfTheExamples = $"Append.AntDesign.Documentation.Components.{componentName}";
-            List<Example> examples = new List<Example>();
             foreach (var type in GetTypesInNamespace(Assembly.GetExecutingAssembly(), namespaceOfTheExamples))
             {
                 yield return new Example()

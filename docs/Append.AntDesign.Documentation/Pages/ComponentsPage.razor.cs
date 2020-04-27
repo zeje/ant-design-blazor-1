@@ -25,18 +25,21 @@ namespace Append.AntDesign.Documentation.Pages
         {
             await base.OnParametersSetAsync();
             examples.Clear();
-            await InvokeAsync(StateHasChanged);
             document = await DocumentationService.GetComponentDocumentation(ComponentName);
             await foreach (var example in document.Examples)
             {
-                examples.Add(example);
-                await InvokeAsync(StateHasChanged);
+                if(ComponentName == example.ComponentName)
+                {
+                    examples.Add(example);
+                    StateHasChanged();
+                }
             }
         }
 
         private RenderFragment BuildExample(Example example) => builder =>
         {
             builder.OpenComponent(0, example.SampleComponent);
+            builder.SetKey(example.SampleComponent);
             builder.CloseComponent();
         };
     }
