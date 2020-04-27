@@ -30,7 +30,7 @@
                 </Tooltip>
             </span>
             <span class="code-box-code-action code-box-code-copy" @onclick="CopyCode">
-                <Tooltip Visible="@visible" OnVisibilityChanged="HandleVisibilityChanged">
+                <Tooltip Visible="@visible" VisibleChanged="HandleVisibilityChanged">
                     <Title>@text</Title>
                     <ChildContent>
                         @if (text.Equals("Copy code"))

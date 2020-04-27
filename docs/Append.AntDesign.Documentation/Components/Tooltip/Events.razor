@@ -1,12 +1,12 @@
 ﻿<Codebox Title="Events" id="components-tooltip-demo-events">
     <Description>
         <p>
-            You can listen to the <code>OnVisibilityChanged</code> event, whenever the visibility is changed.
+            You can listen to the <code>VisibleChanged</code> event, whenever the visibility is changed.
         </p>
     </Description>
     <Demo>
         <p>Is Visible: @visibility</p>
-        <Tooltip OnVisibilityChanged="HandleVisibilityChanged"
+        <Tooltip VisibleChanged="HandleVisibilityChanged"
                  Placement="TooltipPlacement.Bottom"
                  Triggers="@(new[] { TooltipTrigger.Click})">
             <Title>prompt text</Title>

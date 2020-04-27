@@ -4,7 +4,7 @@
         <p>A more advanced concept to copy code, which uses the <code>IClipboardService</code> to copy text.</p>
     </Description>
     <Demo>
-        <Tooltip Visible="@visible" OnVisibilityChanged="HandleVisibilityChanged">
+        <Tooltip Visible="@visible" VisibleChanged="HandleVisibilityChanged">
             <Title>@text</Title>
             <ChildContent>
                 <Button OnClick="CopyCode">
@@ -25,14 +25,18 @@
 @code{
     string text = "Copy code";
     bool visible = false;
-    public async Task CopyCode()
+    private async Task CopyCode()
     {
         await Clipboard.Copy("Your code to copy!");
         text = "Copied!";
     }
-    public void HandleVisibilityChanged(bool newVisibility)
+    private void HandleVisibilityChanged(bool newVisibility)
     {
         visible = newVisibility;
+        ResetTooltip();
+    }
+    private void ResetTooltip()
+    {
         if (!visible)
             text = "Copy code";
     }
