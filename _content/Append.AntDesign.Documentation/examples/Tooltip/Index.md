@@ -29,7 +29,7 @@ The following APIs are shared by Tooltip, Popconfirm, Popover.
 | ShowDelay | Delay in milliseconds, before the tooltip is shown | int | 100 |
 | HideDelay | Delay in milliseconds, before the tooltip is hidden | int | 100 |
 | Placement | The position of the tooltip relative to the target, which can be one of `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | TooltipPlacement | `TooltipPlacement.Top` |
-| Triggers  | The tooltip trigger mode. Could be multiple by passing an array | `hover` \| `focus` \| `click` \| `contextMenu` \| `IEnumerable\<TooltipTrigger\>` | `TooltipTrigger.Hover` |
+| Triggers  | The tooltip trigger mode, `Hover, Click, ContextMenu, Focus` Could be multiple by passing an array | `IEnumerable\<TooltipTrigger\>` | `TooltipTrigger.Hover` |
 | VisibleChanged | Callback executed when Visible of the tooltip card is changed | EventCallback\<bool\> | - |
 
 ## FAQ
