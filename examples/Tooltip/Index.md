@@ -25,12 +25,12 @@ The following APIs are shared by Tooltip, Popconfirm, Popover.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| Visible | Wether or not to show the tooltip, optional if the component is uncontrolled. | bool | false |
 | ShowDelay | Delay in milliseconds, before the tooltip is shown | int | 100 |
 | HideDelay | Delay in milliseconds, before the tooltip is hidden | int | 100 |
 | Placement | The position of the tooltip relative to the target, which can be one of `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | TooltipPlacement | `TooltipPlacement.Top` |
 | Triggers  | The tooltip trigger mode. Could be multiple by passing an array | `hover` \| `focus` \| `click` \| `contextMenu` \| `IEnumerable\<TooltipTrigger\>` | `TooltipTrigger.Hover` |
-| OnVisibilityChanged | Callback executed when visibility of the tooltip card is changed | EventCallback\<bool\> | - |
-| Class | Addtional class name of the tooltip card | string | - |
+| VisibleChanged | Callback executed when Visible of the tooltip card is changed | EventCallback\<bool\> | - |
 
 ## FAQ
 > Ask your questions on Github, they might end up here.

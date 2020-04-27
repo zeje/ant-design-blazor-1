@@ -1,4 +1,4 @@
-﻿<Codebox Title="Basic" id="components-tooltip-demo-basic">
+﻿<Codebox Title="Basic">
     <Description>
         <p>The simplest usage.</p>
     </Description>
