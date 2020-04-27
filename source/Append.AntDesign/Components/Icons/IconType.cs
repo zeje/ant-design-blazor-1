@@ -11,6 +11,7 @@ namespace Append.AntDesign.Components
         {
         }
         public string NormalisedIconFileName => $"{Name.Replace('_', '-')}";
+        public string IconNameWithoutPrefix => $"{Name.Split('/')[1]}";
 
         public string UnnormalisedName =>
                string.Join("", Name.Split('_')

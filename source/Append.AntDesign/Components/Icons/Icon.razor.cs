@@ -11,8 +11,9 @@ namespace Append.AntDesign.Components
     public partial class Icon
     {
         private static string prefix = "anticon";
-        private ClassBuilder classes => ClassBuilder.Create(prefix)
-                                                    .AddClass(Class);
+        private ClassBuilder classes => ClassBuilder.Create(Class)
+                .AddClass(prefix)
+                .AddClass($"{prefix}-{Type.IconNameWithoutPrefix}");
 
         [Inject] public IIconService IconService { get; set; }
         [Parameter] public string Width { get; set; } = "1em";

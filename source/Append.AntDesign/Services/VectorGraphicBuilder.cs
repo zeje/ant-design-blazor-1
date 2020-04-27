@@ -37,7 +37,7 @@ namespace Append.AntDesign.Components.Services
         public VectorGraphicBuilder SetSpinning(bool spin)
         {
             if (spin || iconType == IconType.Outlined.Loading)
-                xdoc.Root.SetAttributeValue("class", $"{GetRootClassAttributeValue()} anticon-spin");
+                xdoc.Root.SetAttributeValue("class", $"anticon-spin");
             return this;
         }
         public VectorGraphicBuilder SetRotation(int rotation)
@@ -69,15 +69,12 @@ namespace Append.AntDesign.Components.Services
                 xdoc.Root.SetAttributeValue("viewBox", "64 64 896 896");
             }
 
+            xdoc.Root.SetAttributeValue("data-icon", iconType.IconNameWithoutPrefix);
             xdoc.Root.SetAttributeValue("focusable", false);
             xdoc.Root.SetAttributeValue("aria-hidden", true);
             return this;
         }
 
-        private string GetRootClassAttributeValue()
-        {
-            return xdoc.Root.Attribute("class")?.Value;
-        }
         private string GetRootStyleAttributeValue()
         {
             return xdoc.Root.Attribute("style")?.Value;

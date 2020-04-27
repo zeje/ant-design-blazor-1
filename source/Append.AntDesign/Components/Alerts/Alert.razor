@@ -2,7 +2,10 @@
 @inherits AntComponent
 
 <div @attributes="@Attributes" class="@classes">
-    @BuildIcon
+    @if (ShowIcon)
+    {
+        @BuildIcon
+    }
     <span class="ant-alert-message">
         @Message
     </span>
@@ -11,10 +14,10 @@
     </span>
     @if (Closable)
     {
-        <button class="ant-alert-close-icon" tabindex="0" @onclick="HandleClose">
+        <button class="ant-alert-close-icon" type="button" tabindex="0" @onclick="HandleClose">
             @if (CloseText != null)
             {
-                @CloseText
+                <span class="ant-alert-close-text">@CloseText</span>
             }
             else
             {

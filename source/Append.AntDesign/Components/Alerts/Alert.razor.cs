@@ -24,7 +24,7 @@ namespace Append.AntDesign.Components
         [Parameter] public RenderFragment Description { get; set; }
         [Parameter] public IconType Icon { get; set; }
         [Parameter] public RenderFragment CloseText { get; set; }
-        [Parameter] public bool ShowIcon { get; set; } = true;
+        [Parameter] public bool ShowIcon { get; set; }
         [Parameter] public bool Closable { get; set; }
         [Parameter] public bool Banner { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnClose { get; set; }
@@ -46,7 +46,6 @@ namespace Append.AntDesign.Components
 
         private IconType DetermineIconType()
         {
-
             if (Icon != null)
                 return Icon; // Custom icon by the user
 
