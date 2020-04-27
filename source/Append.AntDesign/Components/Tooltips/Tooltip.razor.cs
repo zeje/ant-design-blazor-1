@@ -17,7 +17,7 @@ namespace Append.AntDesign.Components
 
         public ClassBuilder Classes => ClassBuilder.Create(Class)
                .AddClass(prefix)
-               .AddClass($"{prefix}-placement-{Placement}")
+               //.AddClass($"{prefix}-placement-{Placement}")
                .AddClassWhen($"{prefix}-hidden", !IsVisible);
 
         [Inject] public TooltipService TooltipService { get; set; }
