@@ -1,7 +1,7 @@
 ﻿<Codebox Title="Unselectable" id="components-menu-unselectable">
     <Description>
         <p>
-            A basic <code>Inline</code> menu, where all each <code>MenuItem</code> is not <code>Selectable</code>. Notice that the <code>Submenu's</code are selectable and it's possible to set <code>DefaultSelectedItems</code>.
+            A basic <code>Inline</code> menu, where all each <code>MenuItem</code> is not <code>Selectable</code>. Notice that the <code>Submenu's</code> are selectable and it's possible to set <code>DefaultSelectedItems</code>.
         </p>
     </Description>
     <Demo>
