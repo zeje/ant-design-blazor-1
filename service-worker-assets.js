@@ -21,7 +21,7 @@
       "url": "_content\/Append.AntDesign.Documentation\/css\/documentation-styles.min.css"
     },
     {
-      "hash": "sha256-zMGnpivQVA6lfL5XCCdyRSNM20p3pm3i8peNpDfMyzY=",
+      "hash": "sha256-sYWx+2bl8Uv3rXEP3w2ssseZiHe38tZNtwwmhXvIopg=",
       "url": "_content\/Append.AntDesign.Documentation\/docs\/README.md"
     },
     {
@@ -3585,7 +3585,7 @@
       "url": "_framework\/_bin\/Append.AntDesign.Documentation.dll"
     },
     {
-      "hash": "sha256-xjQYCQr45murog8br0x3p0YvAB3bCkPK6YhhX\/scqhQ=",
+      "hash": "sha256-REnFTT+TjkOyw+tjiG5qQGJbjxMRsamUSAJiUK6rRT4=",
       "url": "_framework\/_bin\/Append.AntDesign.Documentation.Standalone.dll"
     },
     {
@@ -3601,15 +3601,15 @@
       "url": "_framework\/_bin\/Markdig.dll"
     },
     {
-      "hash": "sha256-OvSBmkpWFp5fE10cV32B8s+9Dk1J86Lx3Q25HcLStP4=",
+      "hash": "sha256-xKNeM+z65pO4Cp18omo+85IcplHRwu72+wS11S3j7Bc=",
       "url": "_framework\/_bin\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-nvlVH3kcW2xsQDHYN3\/ztmbGePFHJlykJ+9uxu3cKfE=",
+      "hash": "sha256-BZS5VaausU4ipF06UoaQSWYVLN4Iz0Qpas3uq9eUE8w=",
       "url": "_framework\/_bin\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-T\/oJxrLwKAeBY0vDiC1yzZAOF\/DKG6meBudOvPxEzcE=",
+      "hash": "sha256-WqVqxTtHQ2jeLestcX1SFLjcAjSRPEWBTeqQw+rQfkM=",
       "url": "_framework\/_bin\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -3617,43 +3617,43 @@
       "url": "_framework\/_bin\/Microsoft.Bcl.AsyncInterfaces.dll"
     },
     {
-      "hash": "sha256-E8sFUlYaFSTYwntHZqVFT7YcK7GnPJeHL5Q5VgOfo3E=",
+      "hash": "sha256-hrn\/X5VzrM1CGt6v8lW0Jfpxo0OxM3OZIBvxKEYaX9Y=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Configuration.Abstractions.dll"
     },
     {
-      "hash": "sha256-G6ig7Mpk3sflYS7f1c4ZpUUe+KlCVSk6sT9uziWE+aI=",
+      "hash": "sha256-zIJrAlHUeQVCy5+\/cNapM2v3QsqtY45pVwLXwL0QyHc=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Configuration.dll"
     },
     {
-      "hash": "sha256-tq0lJCEnfQ1TIIU\/YrCqBc7k\/YOtvAopzHn71kTNZ40=",
+      "hash": "sha256-DdxlaaHVEqe8l1X28Ok2lRI2yGtfCAABKqkLqWiEQIY=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Configuration.Json.dll"
     },
     {
-      "hash": "sha256-N07zu+JoGenDYsWWTWnNUmP8ohk2558FfTuGy7dHwx0=",
+      "hash": "sha256-9LzQv5nPkycP4S1SZUN55XiOm+CT6fpfFs\/sp+wg0Fk=",
       "url": "_framework\/_bin\/Microsoft.Extensions.DependencyInjection.Abstractions.dll"
     },
     {
-      "hash": "sha256-uvg94ZsM8mhqTQtbgzvq4hqrFFHnCM78tliJKkarxrk=",
+      "hash": "sha256-8ADH7j8ajUham0LA96LGgMXvv+v9X6m2n4jQNcTyibg=",
       "url": "_framework\/_bin\/Microsoft.Extensions.DependencyInjection.dll"
     },
     {
-      "hash": "sha256-J7hB1XCDmXJcOKYVMFW02y5naYTcNMbc1IqguP88I7M=",
+      "hash": "sha256-\/BpDDfd1qeq5yL0afq2jCVVUBEebK2Lwajkx\/yIZhJU=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Http.dll"
     },
     {
-      "hash": "sha256-e0CHfiFMxhtTmJBachkrSpu3dWUDy2DlYRfTvf8dAXk=",
+      "hash": "sha256-BQ1s5+WNcsuwNdYokVqnIVVD2L0dxj9KWQkUN5xuTwI=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
-      "hash": "sha256-gWjJy++wSoeOi1HJV+MgNo5Yh\/Ynri6OdMlsRBy1rIE=",
+      "hash": "sha256-RCzsDBMGdvCl2cSe3batsrziARJKxZ9sFYFMZg4cnyk=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Logging.dll"
     },
     {
-      "hash": "sha256-jwvLfw8Nj+UMuks6dOvE5wukwP9FA4bCMiVO8rIgm1g=",
+      "hash": "sha256-2NAdxTmnIETgYmrH8D15C9ZOSeHESLyrekj4v45gwRs=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Options.dll"
     },
     {
-      "hash": "sha256-LEgUbUOuKW3TKgwhirzVl\/c93JqmkzgRp8mxSqpIFGQ=",
+      "hash": "sha256-2F6HgLOyJJJmtXM5CXrRhlWH\/4Ea7+c4hl6ivV0msIE=",
       "url": "_framework\/_bin\/Microsoft.Extensions.Primitives.dll"
     },
     {
@@ -3665,51 +3665,51 @@
       "url": "_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-nDnFBdSI1k7vsQKbNrBxRsihBeYSD4\/OaMl4hM\/L1Sg=",
+      "hash": "sha256-0OHVj86CYPpeDzyQl5B82dvgCu16Jzpl6\/ovilHaV\/Q=",
       "url": "_framework\/_bin\/Mono.Security.dll"
     },
     {
-      "hash": "sha256-q1xleoyZYUFf4aRQgc0m6RHeYEZ69JUVUkdkkVVTDCg=",
+      "hash": "sha256-+aE34lC6TaYtNXOakuqs3jmMvQVpb3gNs7ktZPkxgks=",
       "url": "_framework\/_bin\/mscorlib.dll"
     },
     {
-      "hash": "sha256-ApxkGpvkvHtU73dsle+4wGtSfdXz2SH3utJC1\/ZuiZc=",
+      "hash": "sha256-p6bLICFkwkBGaKTVOqkeIAnG8xIfHKMK8eXqXP1g0qs=",
       "url": "_framework\/_bin\/System.Core.dll"
     },
     {
-      "hash": "sha256-uaD7PISf6KU2FAuoqSsbgJgFkAL2EuUjetN4Vp0\/MVY=",
+      "hash": "sha256-w\/4O3sIz2RkpWIQrTRolxRP78Pgbyuv6dhXHKbAmaRk=",
       "url": "_framework\/_bin\/System.dll"
     },
     {
-      "hash": "sha256-9EzwaAtXWngsRwYeEjtNAtTfBFZ7tZ6F7SoAcdzMAok=",
+      "hash": "sha256-PEUof0ihoPp2JVrl+ENfsP+CSO2bk0UPfQ0erIXJnjw=",
       "url": "_framework\/_bin\/System.Net.Http.dll"
     },
     {
-      "hash": "sha256-abEx424MaV7FJ\/Dr1VPR\/STghFZfmY3XYPBmo\/hBr+s=",
+      "hash": "sha256-FV\/lXLO\/Wxtyz9i43Gand3K38nnyRCqvJxtLVlVhlqk=",
       "url": "_framework\/_bin\/System.Runtime.CompilerServices.Unsafe.dll"
     },
     {
-      "hash": "sha256-lGoDuDeB9II8jk5FiKvINq9+h3KsuYNlpoyqhUmtWtU=",
+      "hash": "sha256-DK4CX9LNk1mabQ40q2q7L\/4Qia98U1OZlAFqfaQthhE=",
       "url": "_framework\/_bin\/System.Text.Encodings.Web.dll"
     },
     {
-      "hash": "sha256-YbTK6b826iflNLRTRywapJUw7DFD6DRYKc72RBCSjMc=",
+      "hash": "sha256-kulk1GYx1rosjSlWty6WahCEOlz5nmtr6oxD+WBpxeY=",
       "url": "_framework\/_bin\/System.Text.Json.dll"
     },
     {
-      "hash": "sha256-f0lWU3vuUP3nsPSM\/GnLpmbQMlC4WaBHrH7PkXEU+84=",
+      "hash": "sha256-LJFyGBm8rnuM71mvEFee4sP88Z8gDsmTzEv9HN7zG1E=",
       "url": "_framework\/_bin\/System.Xml.dll"
     },
     {
-      "hash": "sha256-p7HGTev1uGLViyhSR9foA6MLy\/l0Wi5F8HwWt1x4FI0=",
+      "hash": "sha256-bU\/5Nv9PoPZrrRIJFIcaIq6wtT9FQnC5rKhi52L5pjk=",
       "url": "_framework\/_bin\/System.Xml.Linq.dll"
     },
     {
-      "hash": "sha256-BnW0ncXe6cp4ab+H\/uofVegWZHmrcNMDzuA8pPkDYVY=",
+      "hash": "sha256-MAPiUHdalo3Ib7IOlQ36Qa3ZZ+EKB+oQ\/RkR2SIjRFw=",
       "url": "_framework\/_bin\/WebAssembly.Bindings.dll"
     },
     {
-      "hash": "sha256-pHf\/T\/OtuAkARXffAtjX85OwcT1ikFY9DdpzWlHmByA=",
+      "hash": "sha256-qItIIi9NfdEGtEl3O2Qd5cItIsSnHGumYgftvEt2b50=",
       "url": "_framework\/_bin\/WebAssembly.Net.Http.dll"
     },
     {
@@ -3725,7 +3725,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-c\/itdmMDXEdvueHOycLLHaOkYhLFfv0Fclj0QOURWwk=",
+      "hash": "sha256-bgyJ17yskDSXK2w3GhysKnvAUL9TPQ+hjw5ZPz60tkQ=",
       "url": "_framework\/blazor.boot.json"
     }
   ],

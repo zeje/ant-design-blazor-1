@@ -11,9 +11,13 @@
   <br/>
   <br/>
   <img alt="GitHub" src="https://img.shields.io/github/license/append-it/ant-design-blazor"/>
-  <img alt="Nuget" src="https://img.shields.io/nuget/v/Append.AntDesign"/>
+  <a href="https://www.nuget.org/packages/Append.AntDesign/">
+    <img alt="Nuget" src="https://img.shields.io/nuget/v/Append.AntDesign"/>
+  </a>
   <img alt="Build" src="https://github.com/Append-IT/ant-design-blazor/workflows/Build%20and%20Deploy/badge.svg"/>
-  <img alt="Gitter" src="https://badges.gitter.im/Append-IT/ant-design-blazor.svg"/>
+  <a href="https://gitter.im/Append-IT/ant-design-blazor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+    <img alt="Gitter" src="https://badges.gitter.im/Append-IT/ant-design-blazor.svg"/>
+  </a>
 </div>
 
 Following the Ant Design specification, we developed a Blazor component library `ant-design-blazor` that contains a set of high quality components and demos for building rich, interactive user interfaces.
