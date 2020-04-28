@@ -1,1 +1,1 @@
-﻿///<binding ProjectOpened='LESS, .JS' />
+﻿///<binding BeforeBuild='wwwroot/js/interop.js, wwwroot/css/ant-design-blazor.less' ProjectOpened='LESS, .JS' />
