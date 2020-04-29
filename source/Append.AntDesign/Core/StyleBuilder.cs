@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Append.AntDesign.Core
 {
     public class StyleBuilder
     {
-        private StringBuilder builder;
-        private static char separator = ';';
+        private readonly StringBuilder builder;
+        private static readonly char separator = ';';
 
         private StyleBuilder(string initialValue = null)
         {
@@ -27,6 +26,7 @@ namespace Append.AntDesign.Core
             builder.Append(cssClass);
             return this;
         }
+
         public StyleBuilder AddStyleWhen(string cssClass, bool isValid)
         {
             if (!isValid)

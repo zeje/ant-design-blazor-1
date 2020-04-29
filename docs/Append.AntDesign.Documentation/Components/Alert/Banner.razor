@@ -14,13 +14,16 @@
                 <Message>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, commodi ipsum! Dolore molestiae quos repellat rerum, eligendi culpa dignissimos? Ab illo, voluptas numquam exercitationem tempora corporis suscipit praesentium quidem? Laborum.</Message>
             </Alert>
 
-            <Alert Type="AlertType.Warning" ShowIcon="false" Banner >
+            <Alert Type="AlertType.Warning" ShowIcon="false" Banner>
                 <Message>Warning without icon.</Message>
             </Alert>
 
             <Alert Type="AlertType.Error" Banner ShowIcon>
                 <Message>Error text</Message>
             </Alert>
+            <Alert Type="AlertType.Error" Banner ShowIcon>
+            </Alert>
         </BrowserMockup>
     </Demo>
 </Codebox>
+
