@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Append.AntDesign.Components
 {
-    internal abstract class AntComponent : ComponentBase
+    public abstract class AntComponent : ComponentBase
     {
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();

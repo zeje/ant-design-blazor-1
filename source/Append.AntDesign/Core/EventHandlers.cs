@@ -7,7 +7,7 @@ namespace Append.AntDesign.Core
     [EventHandler("onmouseleave", typeof(MouseEventArgs))]
     [EventHandler("onmouseenter", typeof(MouseEventArgs))]
 
-    internal static class EventHandlers
+    public static class EventHandlers
     {
     }
 }
