@@ -61,5 +61,18 @@
                 reference.invokeMethodAsync('OnWindowResize', window.innerWidth)
                 , 200, false), false);
         }
-    }
+    },
+    element: {
+        getDimension: function (element) {
+            var test = element.offsetWidth;
+            console.log(test);
+            return {
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            };
+        },
+        focus: function (element) {
+            element.focus();
+        }
+    },
 }
