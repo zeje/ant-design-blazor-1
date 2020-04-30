@@ -98,4 +98,5 @@
         width: 70px;
         text-align: center;
         padding: 0;
+    }
 </style>
