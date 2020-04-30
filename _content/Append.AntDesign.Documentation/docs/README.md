@@ -34,7 +34,7 @@ Following the Ant Design specification, we developed a Blazor component library 
 ## Environment Support
 
 - .NET Core 3.1
-- Blazor WebAssembly 3.2 Preview 4.
+- Blazor WebAssembly 3.2 Release Candidate.
 - Support for server-side environments.
 - Support for WebAssembly static file deployments.
 - Support for 4 major browsers engines, and Internet Explorer 11+ ([Blazor server-side](https://docs.microsoft.com/en-us/aspnet/core/blazor/supported-platforms?view=aspnetcore-3.1) only).
@@ -59,7 +59,7 @@ WebAssembly static hosting examples on GitHub Pages:
 - Install the Blazor WebAssembly Templates
 
   ```bash
-  $ dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview4.20210.8
+  $ dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-rc1.20223.4
   ```
 
 - Create a Blazor WebAssembly Project
@@ -112,6 +112,7 @@ WebAssembly static hosting examples on GitHub Pages:
 ## Local Development
 
 - Install [.NET Core SDK](https://dotnet.microsoft.com/download) 3.1.102 or later.
+- Make sure you're using Visual Studio 16.6+
 - Clone to local development
 
 
