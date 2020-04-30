@@ -96,6 +96,7 @@ WebAssembly static hosting examples on GitHub Pages:
 - Add namespace in `_Imports.razor`
 
   ```razor
+  @using Append.AntDesign.Core
   @using Append.AntDesign.Components
   @using Append.AntDesign.Services
   ```
