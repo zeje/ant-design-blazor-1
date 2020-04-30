@@ -21,8 +21,6 @@
             <Alert Type="AlertType.Error" Banner ShowIcon>
                 <Message>Error text</Message>
             </Alert>
-            <Alert Type="AlertType.Error" Banner ShowIcon>
-            </Alert>
         </BrowserMockup>
     </Demo>
 </Codebox>
