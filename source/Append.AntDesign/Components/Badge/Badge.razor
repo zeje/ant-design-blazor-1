@@ -1,0 +1,28 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<span class="@Classes">
+    @ChildContent
+
+    @if(Icon != null)
+    {
+        <Icon Type="Icon"  class="ant-scroll-number-custom-component" style="@Style"/>
+    } 
+
+    @if (Status != null || !string.IsNullOrEmpty(Color))
+    {
+        <span style="@Styles" class="@dotClasses"></span>
+        <span class="ant-badge-status-text">@Text</span>
+    }
+    else if (BadgeHasContentOrDotShouldOverride)
+    {
+        <sup style="@Styles" data-show="true" class="ant-scroll-number ant-badge-@(Dot ? "dot" : "count")" title="@TitleString">
+            @if (!Dot)
+            {
+                <span class="ant-scroll-number-only">
+                    <p class="ant-scroll-number-only-unit current">@CountString()</p>
+                </span>
+            }
+        </sup>
+    }
+</span>
