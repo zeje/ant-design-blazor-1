@@ -30,7 +30,7 @@ To get a customized button, just set `type`/`shape`/`size`/`loading`/`disabled`.
 | Icon | set the icon component of button | RenderFragment | - |  |
 | Loading | set the loading status of button | boolean | `false` |  |
 | Shape | can be set to `circle`, `round` or omitted | `ButtonShape` | - |  |
-| Size | set the size of button | `ButtonSize` | `middle` |  |
+| Size | set the size of button | `Size` | `middle` |  |
 | Type | can be set to `primary` `ghost` `dashed` `link` or omitted (meaning `default`) | `ButtonType` | `default` |  |
 | OnClick | set the handler to handle `click` event | `EventCallback` | - |  |
 | Block | option to fit button width to its parent width | `boolean` | `false` |  |

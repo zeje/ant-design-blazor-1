@@ -14,7 +14,7 @@ namespace Append.AntDesign.Components
         private ClassBuilder classes => ClassBuilder.Create(Class)
                 .AddClass(prefix)
                 .AddClassWhen($"{prefix}-{Type}", Type != ButtonType.Default)
-                .AddClassWhen($"{prefix}-{Size}", Size != ButtonSize.Default)
+                .AddClassWhen($"{prefix}-{Size}", Size != Size.Default)
                 .AddClassWhen($"{prefix}-{Shape}", Shape != ButtonShape.Default)
                 .AddClassWhen($"{prefix}-loading", Loading)
                 .AddClassWhen($"{prefix}-background-ghost", Ghost)
@@ -25,7 +25,7 @@ namespace Append.AntDesign.Components
         [Parameter] public string Label { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public ButtonType Type { get; set; } = ButtonType.Default;
-        [Parameter] public ButtonSize Size { get; set; } = ButtonSize.Default;
+        [Parameter] public Size Size { get; set; } = Size.Default;
         [Parameter] public ButtonShape Shape { get; set; } = ButtonShape.Default;
         [Parameter] public bool Ghost { get; set; }
         [Parameter] public bool Loading { get; set; }

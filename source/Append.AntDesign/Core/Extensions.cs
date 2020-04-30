@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Append.AntDesign.Core
 {
@@ -11,7 +13,7 @@ namespace Append.AntDesign.Core
             var styles = attributes.GetValueOrDefault("style");
 
             if (styles is null)
-                return string.Empty;
+                return null;
 
             return styles.ToString();
         }
@@ -21,9 +23,17 @@ namespace Append.AntDesign.Core
             var classes = attributes.GetValueOrDefault("class");
 
             if (classes is null)
-                return string.Empty;
+                return null;
 
             return classes.ToString();
+        }
+        internal static ValueTask<Dimension> GetDimension (this ElementReference element, IJSRuntime jsRuntime)
+        {
+            return jsRuntime.InvokeAsync<Dimension>("antdesign.element.getDimension",element);
+        }
+        internal static ValueTask Focus(this ElementReference element, IJSRuntime jsRuntime)
+        {
+            return jsRuntime.InvokeVoidAsync("antdesign.element.focus", element);
         }
     }
 }

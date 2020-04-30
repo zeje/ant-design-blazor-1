@@ -1,44 +1,6 @@
 ﻿@page "/experiment"
 @inject IClipboardService Clipboard
 
-
-<Tooltip @bind-Visible="isVisible" Triggers="@(new[] { TooltipTrigger.Click})">
-    <Title>prompt text</Title>
-    <ChildContent>
-        <span>The tooltip is shown by default.</span>
-    </ChildContent>
-</Tooltip>
-
-@code{
-    private bool isVisible = true;
-}
-
-@*<Tooltip OnVisibleChanged="ResetText">
-        <Title>@text</Title>
-        <ChildContent>
-            <Button OnClick="CopyCode">
-                @if (text.Equals("Copy code"))
-                {
-                    <Icon Type="IconType.Outlined.Copy" />
-                }
-                else
-                {
-                    <Icon Type="IconType.Outlined.Check" Fill="green" />
-                }
-            </Button>
-        </ChildContent>
-    </Tooltip>
-
-    @code{
-        string text = "Copy code";
-        public async Task CopyCode()
-        {
-            await Clipboard.Copy("Your code to copy!");
-            text = "Copied!";
-        }
-        public void ResetText(bool visibility)
-        {
-            if (!visibility)
-                text = "Copy code";
-        }
-    }*@
+<Avatar>
+    Benjamin
+</Avatar>

@@ -1,0 +1,17 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<span @attributes="@Attributes" @ref="avatarRef" class="@classes" style="@Style">
+    @if (Icon != null)
+    {
+        <Icon Type="Icon" />
+    }
+    @if (ChildContent != null)
+    {
+        <span @ref="textRef" style="@textStyles" class="@textClasses">@ChildContent</span>
+    }
+    @if (!string.IsNullOrEmpty(ImageSource))
+    {
+        <img src="@ImageSource" @onerror="@OnImageLoadError" alt="@ImageAlt" srcset="@ImageSourceSet">
+    }
+</span>

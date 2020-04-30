@@ -1,4 +1,5 @@
 ﻿using Append.AntDesign.Components;
+using Append.AntDesign.Core;
 using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
@@ -13,9 +14,9 @@ namespace Append.AntDesign.Services
             this.jsRuntime = jsRuntime;
         }
 
-        public ValueTask<WindowDimension> GetDimensions()
+        public ValueTask<Dimension> GetDimensions()
         {
-            return jsRuntime.InvokeAsync<WindowDimension>("antdesign.window.getDimensions");
+            return jsRuntime.InvokeAsync<Dimension>("antdesign.window.getDimensions");
         }
 
         public ValueTask RegisterOnWindowResizeHandler(AntComponent component)
@@ -24,11 +25,5 @@ namespace Append.AntDesign.Services
             return jsRuntime.InvokeVoidAsync("antdesign.window.registerOnResizeHandler", objRef);
         }
 
-    }
-
-    public class WindowDimension
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
     }
 }

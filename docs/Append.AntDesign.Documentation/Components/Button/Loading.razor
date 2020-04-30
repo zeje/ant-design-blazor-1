@@ -4,7 +4,7 @@
     </Description>
     <Demo>
         <Button Type="ButtonType.Primary" Loading Label="Loading" />
-        <Button Type="ButtonType.Primary" Size="ButtonSize.Small" Loading Label="Loading" />
+        <Button Type="ButtonType.Primary" Size="Size.Small" Loading Label="Loading" />
         <br />
         <br />
         <Button Type="ButtonType.Primary" Loading="isLoading1" OnClick="startLoading1" Label="Click Me!" />
