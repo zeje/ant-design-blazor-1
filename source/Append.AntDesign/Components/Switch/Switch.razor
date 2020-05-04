@@ -1,0 +1,20 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+
+<button @attributes="Attributes" type="button" disabled="@Disabled"
+        role="switch" aria-checked="@_checked" class="@classes" ant-click-animating="true" 
+        @onclick="OnClicked" 
+        @onchange="OnChanged">
+    @if (Loading)
+    {
+        <Icon Type="IconType.Outlined.Loading" class="ant-switch-loading-icon"></Icon>
+    }
+    <span class="ant-switch-inner">
+        @childText
+        @if (childIconType != null)
+        {
+            <Icon Type="childIconType" />
+        }
+    </span>
+</button>

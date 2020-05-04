@@ -1,0 +1,83 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="BasicSwitchDefaultChecked">
+    <TestInput>
+        <Switch DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked:ignore="true" class="ant-switch ant-switch-checked" ant-click-animating="true">
+            <span class="ant-switch-inner"></span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Disabled">
+    <TestInput>
+        <Switch Disabled DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked="" class="ant-switch ant-switch-checked ant-switch-disabled" ant-click-animating="true" disabled="">
+            <span class="ant-switch-inner">
+            </span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="LoadingState" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Switch Loading DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked="" class="ant-switch ant-switch-loading ant-switch-checked ant-switch-disabled" ant-click-animating="true" disabled="">
+            <span role="img" aria-label="loading" class="ant-switch-loading-icon anticon anticon-loading">
+                <svg diff:ignore>
+                </svg>
+            </span>
+            <span class="ant-switch-inner">
+            </span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="ChildText">
+    <TestInput>
+        <Switch CheckedChildText="1" UnCheckedChildText="0" DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked="" class="ant-switch ant-switch-checked" ant-click-animating="true">
+            <span class="ant-switch-inner">1</span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="ChildIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Switch CheckedChildIconType="IconType.Outlined.Check" UnCheckedChildIconType="IconType.Outlined.Close" DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked="" class="ant-switch ant-switch-checked" ant-click-animating="true">
+            <span class="ant-switch-inner">
+                <span role="img" aria-label="check" class="anticon anticon-check">
+                    <svg diff:ignore>
+                    </svg>
+                </span>
+            </span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="SmallSize">
+    <TestInput>
+        <Switch Size="SwitchSize.Small" DefaultChecked />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" role="switch" aria-checked="" class="ant-switch ant-switch-small ant-switch-checked" ant-click-animating="true">
+            <span class="ant-switch-inner">
+            </span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+
+
