@@ -4,42 +4,38 @@
     </Description>
     <Demo>
         <Button Type="ButtonType.Primary" Shape="ButtonShape.Circle">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Type="ButtonType.Primary" Shape="ButtonShape.Circle" Label="A" />
 
         <Button Type="ButtonType.Primary" Label="Search">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Shape="ButtonShape.Circle">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Label="Search">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <br />
         <Button Shape="ButtonShape.Circle">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Label="Search">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Type="ButtonType.Dashed" Shape="ButtonShape.Circle">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
 
         <Button Type="ButtonType.Dashed" Label="Search">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
-        </Button>
-
-        <Button Type="ButtonType.Dashed" Label="Search">
-            <Append.AntDesign.Components.Icon Type="IconType.Outlined.Search" />
+            <Icon Type="IconType.Outlined.Search" />
         </Button>
     </Demo>
 </Codebox>

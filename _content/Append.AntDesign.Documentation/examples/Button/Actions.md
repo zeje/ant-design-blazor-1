@@ -23,7 +23,6 @@
         <Button Label="Count Down Async" OnClick="CountDownAsync" Loading="isLoading">
             <Icon Type="IconType.Outlined.Minus" />
         </Button>
-
     </Demo>
 </Codebox>
 

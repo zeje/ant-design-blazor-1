@@ -6,6 +6,6 @@
         <Button Type="@ButtonType.Primary" Label="Primary"/>
         <Button Label="Default"/>
         <Button Type="@ButtonType.Dashed" Label="Dashed"/>
-        <Button Type="@ButtonType.Link" Label="Link" class="abc"/>
+        <Button Type="@ButtonType.Link" Label="Link"/>
     </Demo>
 </Codebox>
