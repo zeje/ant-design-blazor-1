@@ -1,0 +1,545 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Button Type="@ButtonType.Primary" Label="Primary" />
+        <Button Label="Default" />
+        <Button Type="@ButtonType.Dashed" Label="Dashed" />
+        <Button Type="@ButtonType.Link" Label="Link" />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary"><span>Primary</span></button>
+        <button type="button" class="ant-btn"><span>Default</span></button>
+        <button type="button" class="ant-btn ant-btn-dashed"><span>Dashed</span></button>
+        <button type="button" class="ant-btn ant-btn-link"><span>Link</span></button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Actions" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <p>Current Count: @counter</p>
+        <Button Type="@ButtonType.Primary" Label="Count Up" OnClick="CountUp" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Plus" />
+        </Button>
+
+        <Button Label="Count Down" OnClick="CountDown" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Minus" />
+        </Button>
+
+        <br />
+
+        <Button Type="@ButtonType.Primary" Label="Count Up Async" OnClick="CountUpAsync" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Plus" />
+        </Button>
+
+        <Button Label="Count Down Async" OnClick="CountDownAsync" Loading="isLoading">
+            <Icon Type="IconType.Outlined.Minus" />
+        </Button>
+        @code{
+            private int counter;
+            private bool isLoading;
+            private void CountUp()
+            {
+                counter++;
+            }
+            private void CountDown()
+            {
+                counter--;
+            }
+            private async Task CountUpAsync()
+            {
+                isLoading = true;
+                await Task.Delay(1000);
+                counter++;
+                isLoading = false;
+            }
+            private async Task CountDownAsync()
+            {
+                isLoading = true;
+                await Task.Delay(1000);
+                counter--;
+                isLoading = false;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <p>Current Count: 0</p>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span role="img" aria-label="plus" class="anticon anticon-plus">
+                <svg t="1551322312294" class="icon" style="" viewBox="64 64 896 896" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10297" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" fill="currentColor" data-icon="plus" focusable="false" aria-hidden="true">
+                    <defs>
+                        <style type="text/css"></style>
+                    </defs>
+                    <path d="M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z" p-id="10298"></path>
+                    <path d="M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z" p-id="10299"></path>
+                </svg>
+            </span>
+            <span>Count Up</span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span role="img" aria-label="minus" class="anticon anticon-minus">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="minus" focusable="false" aria-hidden="true">
+                    <path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+            <span>Count Down</span>
+        </button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span role="img" aria-label="plus" class="anticon anticon-plus">
+                <svg t="1551322312294" class="icon" style="" viewBox="64 64 896 896" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10297" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" fill="currentColor" data-icon="plus" focusable="false" aria-hidden="true">
+                    <defs>
+                        <style type="text/css"></style>
+                    </defs>
+                    <path d="M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z" p-id="10298"></path>
+                    <path d="M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z" p-id="10299"></path>
+                </svg>
+            </span>
+            <span>Count Up Async</span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span role="img" aria-label="minus" class="anticon anticon-minus">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="minus" focusable="false" aria-hidden="true">
+                    <path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+            <span>Count Down Async</span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Block">
+    <TestInput>
+        <Button Block Type="ButtonType.Primary" Label="Primary" />
+        <Button Block Type="ButtonType.Primary" Danger Label="Danger" />
+        <Button Block Label="Default" />
+        <Button Block Type="ButtonType.Dashed" Label="Dashed" />
+        <Button Block Type="ButtonType.Link" Label="Link" />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-block"><span>Primary</span></button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-dangerous ant-btn-block"><span>Danger</span></button>
+        <button type="button" class="ant-btn ant-btn-block"><span>Default</span></button>
+        <button type="button" class="ant-btn ant-btn-dashed ant-btn-block"><span>Dashed</span></button>
+        <button type="button" class="ant-btn ant-btn-link ant-btn-block"><span>Link</span></button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Danger">
+    <TestInput>
+        <Button Type="@ButtonType.Primary" Label="Primary" Danger />
+        <Button Label="Default" Danger />
+        <Button Type="@ButtonType.Dashed" Label="Dashed" Danger />
+        <Button Type="@ButtonType.Link" Label="Link" Danger />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-dangerous"><span>Primary</span></button>
+        <button type="button" class="ant-btn ant-btn-dangerous"><span>Default</span></button>
+        <button type="button" class="ant-btn ant-btn-dashed ant-btn-dangerous"><span>Dashed</span></button>
+        <button type="button" class="ant-btn ant-btn-link ant-btn-dangerous"><span>Link</span></button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Disabled">
+    <TestInput>
+        <Button Type="@ButtonType.Primary" Label="Primary" />
+        <Button Type="@ButtonType.Primary" Label="Primary (disabled)" Disabled />
+        <br />
+        <Button Label="Default" />
+        <Button Label="Default (disabled)" Disabled />
+        <br />
+        <Button Type="@ButtonType.Dashed" Label="Dashed" />
+        <Button Type="@ButtonType.Dashed" Label="Dashed (disabled)" Disabled />
+        <br />
+        <Button Type="@ButtonType.Link" Label="Link" />
+        <Button Type="@ButtonType.Link" Label="Link (disabled)" Disabled />
+        <br />
+        <Button Type="@ButtonType.Link" Label="Danger Link" Danger />
+        <Button Type="@ButtonType.Link" Label="Danger Link (disabled)" Danger Disabled />
+        <br />
+        <Button Label="Danger Default" Danger />
+        <Button Label="Danger Default (disabled)" Danger Disabled />
+        <br />
+        <div class="site-button-ghost-wrapper">
+            <Button Label="Ghost" Ghost />
+            <Button Label="Ghost (disabled)" Ghost Disabled />
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary"><span>Primary</span></button>
+        <button disabled="" type="button" class="ant-btn ant-btn-primary"><span>Primary (disabled)</span></button>
+        <br>
+        <button type="button" class="ant-btn"><span>Default</span></button>
+        <button disabled="" type="button" class="ant-btn"><span>Default (disabled)</span></button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-dashed"><span>Dashed</span></button>
+        <button disabled="" type="button" class="ant-btn ant-btn-dashed"><span>Dashed (disabled)</span></button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-link"><span>Link</span></button>
+        <button disabled="" type="button" class="ant-btn ant-btn-link"><span>Link (disabled)</span></button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-link ant-btn-dangerous"><span>Danger Link</span></button>
+        <button disabled="" type="button" class="ant-btn ant-btn-link ant-btn-dangerous"><span>Danger Link (disabled)</span></button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-dangerous"><span>Danger Default</span></button>
+        <button disabled="" type="button" class="ant-btn ant-btn-dangerous"><span>Danger Default (disabled)</span></button>
+        <br>
+        <div class="site-button-ghost-wrapper">
+            <button type="button" class="ant-btn ant-btn-background-ghost"><span>Ghost</span></button>
+            <button disabled="" type="button" class="ant-btn ant-btn-background-ghost"><span>Ghost (disabled)</span></button>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Ghost">
+    <TestInput>
+        <div class="site-button-ghost-wrapper">
+            <Button Type="@ButtonType.Primary" Ghost Label="Primary" />
+            <Button Ghost Label="Default" />
+            <Button Type="@ButtonType.Dashed" Ghost Label="Dashed" />
+            <Button Type="@ButtonType.Link" Ghost Label="Link" />
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="site-button-ghost-wrapper">
+            <button type="button" class="ant-btn ant-btn-primary ant-btn-background-ghost"><span>Primary</span></button>
+            <button type="button" class="ant-btn ant-btn-background-ghost"><span>Default</span></button>
+            <button type="button" class="ant-btn ant-btn-dashed ant-btn-background-ghost"><span>Dashed</span></button>
+            <button type="button" class="ant-btn ant-btn-link ant-btn-background-ghost"><span>Link</span></button>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Icons" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Button Type="ButtonType.Primary" Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Type="ButtonType.Primary" Shape="ButtonShape.Circle" Label="A" />
+
+        <Button Type="ButtonType.Primary" Label="Search">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Label="Search">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <br />
+        <Button Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Label="Search">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Type="ButtonType.Dashed" Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+
+        <Button Type="ButtonType.Dashed" Label="Search">
+            <Icon Type="IconType.Outlined.Search" />
+        </Button>
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-circle ant-btn-icon-only">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-circle">
+            <span>A</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+            <span>Search</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-circle ant-btn-icon-only">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span><span>Search</span>
+        </button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-circle ant-btn-icon-only">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+            <span>Search</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-dashed ant-btn-circle ant-btn-icon-only">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-dashed">
+            <span role="img" aria-label="search" class="anticon anticon-search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896" focusable="false" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+                </svg>
+            </span>
+            <span>Search</span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Loading" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Button Type="ButtonType.Primary" Loading Label="Loading" />
+        <Button Type="ButtonType.Primary" Size="Size.Small" Loading Label="Loading" />
+        <Button Type="ButtonType.Primary" Loading>
+            <Icon Type="IconType.Outlined.Poweroff" />
+        </Button>
+        <br />
+        <Button Type="ButtonType.Primary" Loading="isLoading1" OnClick="startLoading1" Label="Click me!" />
+        <Button Type="ButtonType.Primary" Loading="isLoading2" OnClick="startLoading2" Label="Click me!">
+            <Icon Type="IconType.Outlined.Poweroff" />
+        </Button>
+        <Button Type="ButtonType.Primary" Loading="isLoading3" OnClick="startLoading3">
+            <Icon Type="IconType.Outlined.Poweroff" />
+        </Button>
+        @code{
+            bool isLoading1 = false;
+            bool isLoading2 = false;
+            bool isLoading3 = false;
+            async Task startLoading1()
+            {
+                isLoading1 = true;
+                await Task.Delay(3000);
+                isLoading1 = false;
+            }
+            async Task startLoading2()
+            {
+                isLoading2 = true;
+                await Task.Delay(3000);
+                isLoading2 = false;
+            }
+            async Task startLoading3()
+            {
+                isLoading3 = true;
+                await Task.Delay(3000);
+                isLoading3 = false;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-loading">
+            <span class="ant-btn-loading-icon">
+                <span role="img" aria-label="loading" class="anticon anticon-loading">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="1em" width="1em" fill="currentColor" class="anticon-spin" data-icon="loading" focusable="false" aria-hidden="true">
+                        <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>
+                    </svg>
+                </span>
+            </span>
+            <span>Loading</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-sm ant-btn-loading">
+            <span class="ant-btn-loading-icon">
+                <span role="img" aria-label="loading" class="anticon anticon-loading">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="1em" width="1em" fill="currentColor" class="anticon-spin" data-icon="loading" focusable="false" aria-hidden="true">
+                        <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>
+                    </svg>
+                </span>
+            </span>
+            <span>Loading</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-icon-only ant-btn-loading">
+            <span class="ant-btn-loading-icon">
+                <span role="img" aria-label="loading" class="anticon anticon-loading">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="1em" width="1em" fill="currentColor" class="anticon-spin" data-icon="loading" focusable="false" aria-hidden="true">
+                        <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>
+                    </svg>
+                </span>
+            </span>
+        </button>
+        <br>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span>Click me!</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span role="img" aria-label="poweroff" class="anticon anticon-poweroff">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="poweroff" focusable="false" aria-hidden="true">
+                    <path d="M705.6 124.9a8 8 0 0 0-11.6 7.2v64.2c0 5.5 2.9 10.6 7.5 13.6a352.2 352.2 0 0 1 62.2 49.8c32.7 32.8 58.4 70.9 76.3 113.3a355 355 0 0 1 27.9 138.7c0 48.1-9.4 94.8-27.9 138.7a355.92 355.92 0 0 1-76.3 113.3 353.06 353.06 0 0 1-113.2 76.4c-43.8 18.6-90.5 28-138.5 28s-94.7-9.4-138.5-28a353.06 353.06 0 0 1-113.2-76.4A355.92 355.92 0 0 1 184 650.4a355 355 0 0 1-27.9-138.7c0-48.1 9.4-94.8 27.9-138.7 17.9-42.4 43.6-80.5 76.3-113.3 19-19 39.8-35.6 62.2-49.8 4.7-2.9 7.5-8.1 7.5-13.6V132c0-6-6.3-9.8-11.6-7.2C178.5 195.2 82 339.3 80 506.3 77.2 745.1 272.5 943.5 511.2 944c239 .5 432.8-193.3 432.8-432.4 0-169.2-97-315.7-238.4-386.7zM480 560h64c4.4 0 8-3.6 8-8V88c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8z"></path>
+                </svg>
+            </span>
+            <span>Click me!</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-icon-only">
+            <span role="img" aria-label="poweroff" class="anticon anticon-poweroff">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="poweroff" focusable="false" aria-hidden="true">
+                    <path d="M705.6 124.9a8 8 0 0 0-11.6 7.2v64.2c0 5.5 2.9 10.6 7.5 13.6a352.2 352.2 0 0 1 62.2 49.8c32.7 32.8 58.4 70.9 76.3 113.3a355 355 0 0 1 27.9 138.7c0 48.1-9.4 94.8-27.9 138.7a355.92 355.92 0 0 1-76.3 113.3 353.06 353.06 0 0 1-113.2 76.4c-43.8 18.6-90.5 28-138.5 28s-94.7-9.4-138.5-28a353.06 353.06 0 0 1-113.2-76.4A355.92 355.92 0 0 1 184 650.4a355 355 0 0 1-27.9-138.7c0-48.1 9.4-94.8 27.9-138.7 17.9-42.4 43.6-80.5 76.3-113.3 19-19 39.8-35.6 62.2-49.8 4.7-2.9 7.5-8.1 7.5-13.6V132c0-6-6.3-9.8-11.6-7.2C178.5 195.2 82 339.3 80 506.3 77.2 745.1 272.5 943.5 511.2 944c239 .5 432.8-193.3 432.8-432.4 0-169.2-97-315.7-238.4-386.7zM480 560h64c4.4 0 8-3.6 8-8V88c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8z"></path>
+                </svg>
+            </span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Multiple">
+    <TestInput>
+        <Button Type="@ButtonType.Primary" Label="Primary" />
+        <Button Label="Secondary" />
+        <Button Label="Dropdown" Disabled />
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span>Primary</span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span>Secondary</span>
+        </button>
+        <button disabled="" type="button" class="ant-btn">
+            <span>Dropdown</span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Sizes" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Button Type="ButtonType.Primary" Size="Size.Large" Label="Large Primary" />
+        <Button Type="ButtonType.Default" Size="Size.Large" Label="Large Default" />
+        <Button Type="ButtonType.Dashed" Size="Size.Large" Label="Large Dashed" />
+        <Button Type="ButtonType.Link" Size="Size.Large" Label="Large Link" />
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="Size.Default" Label="Default Primary" />
+        <Button Type="ButtonType.Default" Size="Size.Default" Label="Default Default" />
+        <Button Type="ButtonType.Dashed" Size="Size.Default" Label="Default Dashed" />
+        <Button Type="ButtonType.Link" Size="Size.Default" Label="Default Link" />
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="Size.Small" Label="Small Primary" />
+        <Button Type="ButtonType.Default" Size="Size.Small" Label="Small Default" />
+        <Button Type="ButtonType.Dashed" Size="Size.Small" Label="Small Dashed" />
+        <Button Type="ButtonType.Link" Size="Size.Small" Label="Small Link" />
+        <br />
+        <br />
+        <Button Type="ButtonType.Primary" Size="Size.Large">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="Size.Large" Shape="ButtonShape.Circle">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="Size.Large" Shape="ButtonShape.Round">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="Size.Large" Shape="ButtonShape.Round" Label="Download">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+        <Button Type="ButtonType.Primary" Size="Size.Large" Label="Download">
+            <Icon Type="IconType.Outlined.Download" />
+        </Button>
+    </TestInput>
+    <ExpectedOutput>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg">
+            <span>Large Primary</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-lg">
+            <span>Large Default</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-dashed ant-btn-lg">
+            <span>Large Dashed</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-link ant-btn-lg">
+            <span>Large Link</span>
+        </button>
+        <br>
+        <br>
+        <button type="button" class="ant-btn ant-btn-primary">
+            <span>Default Primary</span>
+        </button>
+        <button type="button" class="ant-btn">
+            <span>Default Default</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-dashed">
+            <span>Default Dashed</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-link">
+            <span>Default Link</span>
+        </button>
+        <br>
+        <br>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-sm">
+            <span>Small Primary</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-sm">
+            <span>Small Default</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-dashed ant-btn-sm">
+            <span>Small Dashed</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-link ant-btn-sm">
+            <span>Small Link</span>
+        </button>
+        <br>
+        <br>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-icon-only">
+            <span role="img" aria-label="download" class="anticon anticon-download">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="download" focusable="false" aria-hidden="true">
+                    <path d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-circle ant-btn-icon-only">
+            <span role="img" aria-label="download" class="anticon anticon-download">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="download" focusable="false" aria-hidden="true">
+                    <path d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-round ant-btn-icon-only">
+            <span role="img" aria-label="download" class="anticon anticon-download">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="download" focusable="false" aria-hidden="true">
+                    <path d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-round">
+            <span role="img" aria-label="download" class="anticon anticon-download">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="download" focusable="false" aria-hidden="true">
+                    <path d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+            <span>Download</span>
+        </button>
+        <button type="button" class="ant-btn ant-btn-primary ant-btn-lg">
+            <span role="img" aria-label="download" class="anticon anticon-download">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="64 64 896 896" height="1em" width="1em" fill="currentColor" data-icon="download" focusable="false" aria-hidden="true">
+                    <path d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+            </span>
+            <span>Download</span>
+        </button>
+    </ExpectedOutput>
+</SnapshotTest>

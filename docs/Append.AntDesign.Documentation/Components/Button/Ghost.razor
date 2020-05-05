@@ -9,7 +9,6 @@
             <Button Type="@ButtonType.Dashed" Ghost Label="Dashed" />
             <Button Type="@ButtonType.Link" Ghost Label="Link" />
             <br />
-            <br />
         </div>
     </Demo>
 </Codebox>
