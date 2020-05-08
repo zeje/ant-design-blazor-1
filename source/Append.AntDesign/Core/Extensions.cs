@@ -35,5 +35,9 @@ namespace Append.AntDesign.Core
         {
             return jsRuntime.InvokeVoidAsync("antdesign.element.focus", element);
         }
+        internal static RenderFragment AsRenderFragment(this string content) => builder =>
+        {
+            builder.AddContent(1, content);
+        };
     }
 }
