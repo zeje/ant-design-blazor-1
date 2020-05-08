@@ -837,5 +837,18 @@ namespace Append.AntDesign.Components
             public static TwoTone Wallet = new TwoTone(nameof(Wallet).ToLower(), 3148);
             public static TwoTone Warning = new TwoTone(nameof(Warning).ToLower(), 3149);
         }
+
+        public class Internal : IconType
+        {
+            public override IconTheme Theme { get; protected set; } = IconTheme.Internal;
+
+            private Internal(string name, int value) : base("internal/" + name, value)
+            {
+
+            }
+            public static Internal Not_Found = new Internal(nameof(Not_Found).ToLower(), 4000);
+            public static Internal Bad_Request = new Internal(nameof(Bad_Request).ToLower(), 4001);
+            public static Internal Unauthorized = new Internal(nameof(Unauthorized).ToLower(), 4002);
+        }
     }
 }

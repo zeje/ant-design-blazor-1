@@ -1,0 +1,20 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<div @attributes="@Attributes" class="@classes">
+    <div class="@iconClasses">
+        @if (isImage)
+        {
+            @svgImage;
+        }
+        else
+        {
+            @BuildIcon
+        }
+    </div>
+    <div class="ant-result-title">@Title</div>
+    <div class="ant-result-subtitle">@Subtitle</div>
+    <div class="ant-result-extra">
+        @ChildContent
+    </div>
+</div>

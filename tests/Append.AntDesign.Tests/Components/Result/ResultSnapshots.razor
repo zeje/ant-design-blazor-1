@@ -1,0 +1,56 @@
+﻿@inherits TestComponentBase
+<SnapshotTest Description="Success" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Result Status="ResultStatus.Success">
+            <Title>Successfully Purchased Cloud Server ECS!</Title>
+            <Subtitle>Order number: 2017182818828182881 Cloud server configuration takes 1-5minutes, please wait.</Subtitle>
+            <ChildContent>
+                <Button Type="ButtonType.Primary" Label="Go Console" />
+                <Button Label="Buy Again" />
+            </ChildContent>
+        </Result>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-result ant-result-success">
+            <div class="ant-result-icon">
+                <span role="img" diff:ignore>
+                </span>
+            </div>
+            <div class="ant-result-title">Successfully Purchased Cloud Server ECS!</div>
+            <div class="ant-result-subtitle">Order number: 2017182818828182881 Cloud server configuration takes 1-5minutes, please wait.</div>
+            <div class="ant-result-extra">
+                <button type="button" class="ant-btn ant-btn-primary">
+                    <span>Go Console</span>
+                </button>
+                <button type="button" class="ant-btn">
+                    <span>Buy Again</span>
+                </button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="500" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Result Status="ResultStatus.BadRequest_500">
+            <Title>500</Title>
+            <Subtitle>Sorry, something went wrong.</Subtitle>
+            <ChildContent>
+                <Button Type="ButtonType.Primary" Label="Back Home" />
+            </ChildContent>
+        </Result>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-result ant-result-500">
+            <div class="ant-result-icon ant-result-image">
+                <svg diff:ignore>
+                </svg>
+            </div>
+            <div class="ant-result-title">500</div>
+            <div class="ant-result-subtitle">Sorry, something went wrong.</div>
+            <div class="ant-result-extra">
+                <button type="button" class="ant-btn ant-btn-primary"><span>Back Home</span></button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
