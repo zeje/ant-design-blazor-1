@@ -4,45 +4,55 @@
 @input-affix-margin: 4px;
 
 .@{ant-prefix}-input {
-    &-affix-wrapper {
-        .input();
-        display: inline-flex;
+  &-affix-wrapper {
+    .input();
+    display: inline-flex;
+    max-height: @input-height-base;
 
-        &-disabled {
-            .@{ant-prefix}-input[disabled] {
-                background: transparent;
-            }
-        }
-
-        > input.@{ant-prefix}-input {
-            padding: 0;
-            border: none;
-            outline: none;
-
-            &:focus {
-                box-shadow: none;
-            }
-        }
-
-        &::before {
-            width: 0;
-            visibility: hidden;
-            content: '\a0';
-        }
+    &-lg {
+      max-height: @input-height-lg;
     }
 
-    &-prefix,
-    &-suffix {
-        display: flex;
-        flex: none;
-        align-items: center;
+    &-sm {
+      max-height: @input-height-sm;
     }
 
-    &-prefix {
-        margin-right: @input-affix-margin;
+    &-disabled {
+      .@{ant-prefix}-input[disabled] {
+        background: transparent;
+      }
     }
 
-    &-suffix {
-        margin-left: @input-affix-margin;
+    > input.@{ant-prefix}-input {
+      padding-right: 0;
+      padding-left: 0;
+      border: none;
+      outline: none;
+
+      &:focus {
+        box-shadow: none;
+      }
     }
+
+    &::before {
+      width: 0;
+      visibility: hidden;
+      content: '\a0';
+    }
+  }
+
+  &-prefix,
+  &-suffix {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+
+  &-prefix {
+    margin-right: @input-affix-margin;
+  }
+
+  &-suffix {
+    margin-left: @input-affix-margin;
+  }
 }
