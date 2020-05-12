@@ -63,8 +63,9 @@
     </MenuItemGroup>
 
     <MenuItemGroup>
-            <Title>Data Entry</Title>
-            <Children>@*
+        <Title>Data Entry</Title>
+        <Children>
+            @*
                 <NavLink href="components/AutoComplete">
                     <MenuItem Key="AutoComplete">AutoComplete</MenuItem>
                 </NavLink>
@@ -120,16 +121,16 @@
     </Children>
 </MenuItemGroup>
 
-    <MenuItemGroup>
-        <Title>Data Display</Title>
-        <Children>
-            <NavLink href="components/Avatar">
-                <MenuItem Key="avatar">Avatar</MenuItem>
-            </NavLink>
-            <NavLink href="components/Badge">
-                <MenuItem Key="Badge">Badge</MenuItem>
-            </NavLink>
-            @*
+<MenuItemGroup>
+    <Title>Data Display</Title>
+    <Children>
+        <NavLink href="components/Avatar">
+            <MenuItem Key="avatar">Avatar</MenuItem>
+        </NavLink>
+        <NavLink href="components/Badge">
+            <MenuItem Key="Badge">Badge</MenuItem>
+        </NavLink>
+        @*
             <NavLink href="components/Comment">
                 <MenuItem Key="Comment">Comment</MenuItem>
             </NavLink>
@@ -163,31 +164,31 @@
             <NavLink href="components/Tree">
                 <MenuItem Key="Tree">Tree</MenuItem>
             </NavLink>*@
-            <NavLink href="components/Tooltip">
-                <MenuItem Key="Tooltip">Tooltip</MenuItem>
-            </NavLink>
-            <NavLink href="components/Timeline">
-                <MenuItem Key="Timeline">Timeline</MenuItem>
-            </NavLink>@*
+        <NavLink href="components/Tooltip">
+            <MenuItem Key="Tooltip">Tooltip</MenuItem>
+        </NavLink>
+        <NavLink href="components/Timeline">
+            <MenuItem Key="Timeline">Timeline</MenuItem>
+        </NavLink>
         <NavLink href="components/Tag">
             <MenuItem Key="Tag">Tag</MenuItem>
-        </NavLink>
-        <NavLink href="components/Tabs">
-            <MenuItem Key="Tabs">Tabs</MenuItem>
-        </NavLink>
-        <NavLink href="components/Table">
-            <MenuItem Key="Table">Table</MenuItem>
-        </NavLink>*@
-        </Children>
-    </MenuItemGroup>
-
-    <MenuItemGroup>
-        <Title>Feedback</Title>
-        <Children>
-            <NavLink href="components/Alert">
-                <MenuItem Key="Alert">Alert</MenuItem>
+        </NavLink>@*
+            <NavLink href="components/Tabs">
+                <MenuItem Key="Tabs">Tabs</MenuItem>
             </NavLink>
-            @*<NavLink href="components/Drawer">
+            <NavLink href="components/Table">
+                <MenuItem Key="Table">Table</MenuItem>
+            </NavLink>*@
+    </Children>
+</MenuItemGroup>
+
+<MenuItemGroup>
+    <Title>Feedback</Title>
+    <Children>
+        <NavLink href="components/Alert">
+            <MenuItem Key="Alert">Alert</MenuItem>
+        </NavLink>
+        @*<NavLink href="components/Drawer">
                 <MenuItem Key="Drawer">Drawer</MenuItem>
             </NavLink>
             <NavLink href="components/Modal">
@@ -205,39 +206,39 @@
             <NavLink href="components/Popconfirm">
                 <MenuItem Key="Popconfirm">Popconfirm</MenuItem>
             </NavLink>*@
-            <NavLink href="components/Result">
-                <MenuItem Key="Result">Result</MenuItem>
-            </NavLink>
-            @*
+        <NavLink href="components/Result">
+            <MenuItem Key="Result">Result</MenuItem>
+        </NavLink>
+        @*
             <NavLink href="components/Spin">
                 <MenuItem Key="Spin">Spin</MenuItem>
             </NavLink>
             <NavLink href="components/Skeleton">
                 <MenuItem Key="Skeleton">Skeleton</MenuItem>
             </NavLink>
-            *@
-        </Children>
-    </MenuItemGroup>
+        *@
+    </Children>
+</MenuItemGroup>
 
 
-    <MenuItemGroup>
-        <Title>Other</Title>
-        <Children>
-            @*<NavLink href="components/Anchor">
-                    <MenuItem Key="Anchor">Anchor</MenuItem>
-                </NavLink>
-                <NavLink href="components/BackTop">
-                    <MenuItem Key="BackTop">BackTop</MenuItem>
-                </NavLink>*@
-            <NavLink href="components/Divider">
-                <MenuItem Key="Divider">Divider</MenuItem>
+<MenuItemGroup>
+    <Title>Other</Title>
+    <Children>
+        @*<NavLink href="components/Anchor">
+                <MenuItem Key="Anchor">Anchor</MenuItem>
             </NavLink>
-        </Children>
-    </MenuItemGroup>
+            <NavLink href="components/BackTop">
+                <MenuItem Key="BackTop">BackTop</MenuItem>
+            </NavLink>*@
+        <NavLink href="components/Divider">
+            <MenuItem Key="Divider">Divider</MenuItem>
+        </NavLink>
+    </Children>
+</MenuItemGroup>
 </Menu>
 
 @*<style>
-    .aside-container .ant-menu-item-group-list {
-        padding-left: 30px;
-    }
-</style>*@
+        .aside-container .ant-menu-item-group-list {
+            padding-left: 30px;
+        }
+    </style>*@

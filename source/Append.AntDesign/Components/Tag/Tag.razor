@@ -1,0 +1,10 @@
+﻿@namespace Append.AntDesign.Components
+@inherits TagBase
+
+<span @attributes="Attributes" class="@classes" style="@styles">
+    @ChildContent
+    @if (Closable)
+    {
+        <Icon Type="IconType.Outlined.Close" @onclick="HideCloseIcon" />
+    }
+</span>

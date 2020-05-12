@@ -1,0 +1,101 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Tag>
+            Tag 1
+        </Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag">
+            Tag 1
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Checkable">
+    <TestInput>
+        <CheckableTag Checked>
+            Sports
+        </CheckableTag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag-checkable ant-tag-checkable-checked ant-tag">
+            Sports
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Colorful">
+    <TestInput>
+        <Tag Color="magenta">magenta</Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag ant-tag-magenta">
+            magenta
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="ColorfulCustom">
+    <TestInput>
+        <Tag Color="#f50">#f50</Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag ant-tag-has-color" style="background-color: #f50">
+            #f50
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="LoadingState" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Tag Color="#55acee">
+            <Icon Type="IconType.Outlined.Twitter" />
+            Twitter
+        </Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag ant-tag-has-color" style="background-color: #55acee">
+            <span diff:ignore role="img" aria-label="twitter" class="anticon anticon-twitter">
+                <svg diff:ignore>
+                </svg>
+            </span>
+            Twitter
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="StatusWithoutIcon">
+    <TestInput>
+        <Tag Color="success">success</Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag ant-tag-success">
+            success
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="StatusWithIcon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Tag Color="processing">
+            <Icon Type="IconType.Outlined.Sync" Spin />
+            processing
+        </Tag>
+    </TestInput>
+    <ExpectedOutput>
+        <span class="ant-tag ant-tag-processing">
+            <span role="img" aria-label="sync" class="anticon anticon-sync">
+                <svg diff:ignore>
+                </svg>
+            </span>
+            processing
+        </span>
+    </ExpectedOutput>
+</SnapshotTest>
+
