@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Append.AntDesign.Components
 {
@@ -13,7 +14,8 @@ namespace Append.AntDesign.Components
         private string _format;
         private static readonly string prefix = "ant-input-number";
 
-        [Parameter] public double? DefaultValue { get; set; }
+        [Parameter] public string DecimalSeparator { get; set; }= ",";
+        [Parameter] public double DefaultValue { get; set; }
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public Func<double, string> Formatter { get; set; }
         [Parameter] public double Max { get; set; } = double.PositiveInfinity;
@@ -38,7 +40,17 @@ namespace Append.AntDesign.Components
                 }
             }
         }
-        [Parameter] public double Value { get; set; }
+        public double _value;
+        [Parameter]
+        public double Value
+        {
+            get { return _value; }
+            set
+            {
+                _value = value;
+                DisplayString = DisplayValue();
+            }
+        }
 
         private ClassBuilder classes => ClassBuilder.Create(Class)
                 .AddClass(prefix)
@@ -65,10 +77,9 @@ namespace Append.AntDesign.Components
         {
             base.OnInitialized();
 
-            if (DefaultValue.HasValue)
-            {
-                Value = DefaultValue.Value;
-            }
+            Value = DefaultValue;
+            DisplayString = DefaultValue.ToString(_format);
+            
         }
 
         private void Decrease()
@@ -79,9 +90,14 @@ namespace Append.AntDesign.Components
         {
             OnInput(new ChangeEventArgs() { Value = Value + Step });
         }
-
+        
         private void OnInput(ChangeEventArgs args)
         {
+            var regex = new Regex($"[0-9]|[{DecimalSeparator}]|[-]");
+            if (!regex.Match(args.Value.ToString().Substring(args.Value.ToString().Length - 1)).Success)
+            {
+                return;
+            }
             double num;
             if (Parser != null)
             {
@@ -101,6 +117,16 @@ namespace Append.AntDesign.Components
             } else if(num > Max)
             {
                 Value = Max;
+            }
+        }
+        private string _displayString;
+
+        public string DisplayString
+        {
+            get { return DisplayValue(); }
+            set
+            {
+                _displayString = DisplayValue();
             }
         }
 

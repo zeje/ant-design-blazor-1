@@ -12,7 +12,7 @@
 
     </div>
     <div class="ant-input-number-input-wrap">
-        <input role="spinbutton" aria-valuemin="@Min" aria-valuemax="@Max" aria-valuenow="@Value.ToString(_format)" class="ant-input-number-input" @oninput="(e) => OnInput(e)" autocomplete="off" max="@Max" min="@Min" step="@Step" value="@DisplayValue()" disabled="@Disabled"/>
+        <input role="spinbutton" aria-valuemin="@Min" aria-valuemax="@Max" aria-valuenow="@Value.ToString(_format)" class="ant-input-number-input" @oninput="OnInput" autocomplete="off" max="@Max" min="@Min" step="@Step" @bind="DisplayString" disabled="@Disabled"/>
     </div>
 </div>
 @code{
