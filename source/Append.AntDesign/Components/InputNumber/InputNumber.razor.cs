@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
@@ -14,7 +15,7 @@ namespace Append.AntDesign.Components
         private string _format;
         private static readonly string prefix = "ant-input-number";
 
-        [Parameter] public string DecimalSeparator { get; set; }= ",";
+        [Parameter] public string DecimalSeparator { get; set; }= ".";
         [Parameter] public double DefaultValue { get; set; }
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public Func<double, string> Formatter { get; set; }
@@ -81,7 +82,18 @@ namespace Append.AntDesign.Components
             DisplayString = DefaultValue.ToString(_format);
             
         }
-
+        private StringBuilder _keys = new StringBuilder("");
+        private void HandleKeyDown(KeyboardEventArgs args)
+        {
+            if (args.Key == "ArrowDown")
+            {
+                Decrease();
+            }
+            else if (args.Key == "ArrowUp")
+            {
+                Increase();
+            }
+        }
         private void Decrease()
         {
             OnInput(new ChangeEventArgs() { Value = Value - Step });
@@ -123,7 +135,7 @@ namespace Append.AntDesign.Components
 
         public string DisplayString
         {
-            get { return DisplayValue(); }
+            get { return DisplayValue().Replace(".", DecimalSeparator); }
             set
             {
                 _displayString = DisplayValue();
