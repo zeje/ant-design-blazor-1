@@ -1,0 +1,59 @@
+﻿@inherits TestComponentBase
+<SnapshotTest Description="Basic">
+    <TestInput>
+        <Spin />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin ant-spin-spinning">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+            </span>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Customized Description">
+    <TestInput>
+        <Spin Label="Loading..." />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin ant-spin-spinning ant-spin-show-text">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+                <i class="ant-spin-dot-item"></i>
+            </span>
+            <div class="ant-spin-text">Loading...</div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="With ChildContent">
+    <TestInput>
+        <Spin>
+            <p>Some Child Content here.</p>
+        </Spin>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-spin-nested-loading">
+            <div>
+                <div class="ant-spin ant-spin-spinning">
+                    <span class="ant-spin-dot ant-spin-dot-spin">
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                        <i class="ant-spin-dot-item"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="ant-spin-container ant-spin-blur">
+                <p>Some Child Content here.</p>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+

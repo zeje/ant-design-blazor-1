@@ -1,0 +1,24 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+@if (ChildContent == null)
+{
+    <div @attributes="@Attributes" class="@classes">
+        @BuildDot
+        @BuildLabel
+    </div>
+}
+else
+{
+    <div class="ant-spin-nested-loading">
+        <div>
+            <div @attributes="@Attributes" class="@classes">
+                @BuildDot
+                @BuildLabel
+            </div>
+        </div>
+        <div class="ant-spin-container ant-spin-blur">
+            @ChildContent
+        </div>
+    </div>
+}
