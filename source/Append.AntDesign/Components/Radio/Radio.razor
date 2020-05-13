@@ -1,0 +1,22 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<label class="@wrapperClasses" @onclick="OnRadioClicked">
+
+    <span @attributes="Attributes" class="@classes">
+        @if (radioGroupNameDefined)
+        {
+            <input name="@RadioGroup.Name" type="radio" class="ant-radio-input" value="@Value">
+        }
+        else
+        {
+            <input type="radio" class="ant-radio-input" value="@Value">
+        }
+        <span class="ant-radio-inner"></span>
+    </span>
+
+    @if (ChildContent != null)
+    {
+        <span>@ChildContent</span>
+    }
+</label>

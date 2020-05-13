@@ -1,0 +1,12 @@
+﻿@namespace Append.AntDesign.Components
+@inherits AntComponent
+
+<CascadingValue Value="@this">
+    <div @attributes="Attributes" style="@Style" class="@classes">
+        @ChildContent
+        @foreach (var option in Options)
+        {
+            @BuildRadio(option);
+        }
+    </div>
+</CascadingValue>
