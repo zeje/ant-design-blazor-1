@@ -2,11 +2,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
@@ -15,14 +12,13 @@ namespace Append.AntDesign.Components
         private string _format;
         private static readonly string prefix = "ant-input-number";
 
-        [Parameter] public string DecimalSeparator { get; set; }= ".";
+        [Parameter] public string DecimalSeparator { get; set; } = ".";
         [Parameter] public double DefaultValue { get; set; }
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public Func<double, string> Formatter { get; set; }
         [Parameter] public double Max { get; set; } = double.PositiveInfinity;
         [Parameter] public double Min { get; set; } = double.NegativeInfinity;
         [Parameter] public Func<string, double> Parser { get; set; }
-
         [Parameter] public InputSize Size { get; set; } = InputSize.Middle;
         private double _step = 1;
         [Parameter]
@@ -37,7 +33,7 @@ namespace Append.AntDesign.Components
                 _step = value;
                 if (string.IsNullOrEmpty(_format))
                 {
-                    _format = string.Join('.', _step.ToString().Split('.').Select(n => new string('0', n.Length)));
+                    _format = string.Join(DecimalSeparator, _step.ToString().Split(DecimalSeparator).Select(n => new string('0', n.Length)));
                 }
             }
         }
@@ -53,13 +49,15 @@ namespace Append.AntDesign.Components
             }
         }
 
-        private ClassBuilder classes => ClassBuilder.Create(Class)
-                .AddClass(prefix)
+        private ClassBuilder classes => ClassBuilder.Create(prefix)
                 .AddClassWhen($"{prefix}-disabled", Disabled)
                 .AddClassWhen($"{prefix}-lg", Size == InputSize.Large)
                 .AddClassWhen($"{prefix}-sm", Size == InputSize.Small);
 
-        protected string inputHandlerPrefix = $"{prefix}-handler"; 
+        private ClassBuilder inputClasses => ClassBuilder.Create(Class)
+                .AddClass($"{prefix}-input");
+
+        protected string inputHandlerPrefix = $"{prefix}-handler";
 
         private ClassBuilder iconClassesUp => ClassBuilder.Create(Class)
                 .AddClass(inputHandlerPrefix)
@@ -80,9 +78,8 @@ namespace Append.AntDesign.Components
 
             Value = DefaultValue;
             DisplayString = DefaultValue.ToString(_format);
-            
+
         }
-        private StringBuilder _keys = new StringBuilder("");
         private void HandleKeyDown(KeyboardEventArgs args)
         {
             if (args.Key == "ArrowDown")
@@ -102,10 +99,17 @@ namespace Append.AntDesign.Components
         {
             OnInput(new ChangeEventArgs() { Value = Value + Step });
         }
-        
+
         private void OnInput(ChangeEventArgs args)
         {
+            if (string.IsNullOrWhiteSpace(args.Value.ToString()))
+            {
+                Value = 0;
+                return;
+            }
+
             var regex = new Regex($"[0-9]|[{DecimalSeparator}]|[-]");
+
             if (!regex.Match(args.Value.ToString().Substring(args.Value.ToString().Length - 1)).Success)
             {
                 return;
@@ -123,10 +127,12 @@ namespace Append.AntDesign.Components
             if (num >= Min && num <= Max)
             {
                 Value = num;
-            } else if(num < Min)
+            }
+            else if (num < Min)
             {
                 Value = Min;
-            } else if(num > Max)
+            }
+            else if (num > Max)
             {
                 Value = Max;
             }
