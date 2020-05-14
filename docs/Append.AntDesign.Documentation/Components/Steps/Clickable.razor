@@ -1,0 +1,32 @@
+﻿<Codebox Title="Clickable">
+    <Description>
+        <p>
+            Setting <code>onChange</code> makes Steps clickable.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <Steps Current=@current OnChange=this.onChange>
+                <Step Title="Step 1" Description="This is a description." />
+                <Step Title="Step 2" Description="This is a description." />
+                <Step Title="Step 3" Description="This is a description." />
+            </Steps>
+
+            <Divider />
+
+            <Steps Current=@current OnChange=this.onChange Direction=StepsDirection.Vertical>
+                <Step Title="Step 1" Description="This is a description." />
+                <Step Title="Step 2" Description="This is a description." />
+                <Step Title="Step 3" Description="This is a description." />
+            </Steps>
+        </div>
+    </Demo>
+</Codebox>
+@code{
+    private int current = 0;
+    private void onChange(int Current)
+    {
+        Console.Write("onChange:", current);
+        this.current = Current;
+    }
+}

@@ -1,2 +1,8 @@
 ﻿@namespace Append.AntDesign.Components
 @inherits AntComponent
+
+<CascadingValue Value="this">
+    <div class="@classes" style="@Style">
+        @ChildContent
+    </div>
+</CascadingValue>
