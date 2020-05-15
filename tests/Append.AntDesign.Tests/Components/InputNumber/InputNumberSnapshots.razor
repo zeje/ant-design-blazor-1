@@ -1,0 +1,250 @@
+﻿@inherits TestComponentBase
+
+<SnapshotTest Description="Basic" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <InputNumber Min=1 Max=10 DefaultValue=3 />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-input-number">
+            <div class="ant-input-number-handler-wrap">
+                <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                    <span role="img" aria-label="up" class="ant-input-number-handler-up-inner anticon anticon-up">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+                <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                    <span role="img" aria-label="down" class="ant-input-number-handler-down-inner anticon anticon-down">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+            </div>
+            <div class="ant-input-number-input-wrap">
+                <input role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="10" min="1" step="1" value="3">
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Decimals" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <InputNumber Min=0 Max=10 Step=0.1 />
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-input-number">
+            <div class="ant-input-number-handler-wrap">
+                <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                    <span role="img" aria-label="up" class="ant-input-number-handler-up-inner anticon anticon-up">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+                <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-down-disabled">
+                    <span role="img" aria-label="down" class="ant-input-number-handler-down-inner anticon anticon-down">
+                        <svg diff:ignore>
+                        </svg>
+                    </span>
+                </span>
+            </div>
+            <div class="ant-input-number-input-wrap">
+                <input role="spinbutton" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0.0" class="ant-input-number-input" autocomplete="off" max="10" min="0" step="0.1" value="0.0">
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Disabled" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <div>
+            <InputNumber Min=1 Max=10 Disabled=@disabled DefaultValue=3 />
+            <div style="margin-top: 20px;">
+                <Button OnClick="Toggle" Type=@ButtonType.Primary Label="Toggle disabled" />
+            </div>
+        </div>
+        @code{
+            public bool disabled = true;
+
+            public void Toggle()
+            {
+                disabled = !disabled;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-input-number ant-input-number-disabled">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-up-disabled">
+                        <span role="img" aria-label="up" class="ant-input-number-handler-up-inner anticon anticon-up">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-down-disabled">
+                        <span role="img" aria-label="down" class="ant-input-number-handler-down-inner anticon anticon-down">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" disabled="" max="10" min="1" step="1" value="3">
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <button type="button" class="ant-btn ant-btn-primary"><span>Toggle disabled</span></button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Formatter" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        @using System.Text.RegularExpressions;
+
+        <div>
+            <InputNumber DefaultValue=1000 Formatter=Formatter1 Parser=Parser1 />
+            <InputNumber DefaultValue=100 Min=0 Max=100 Formatter=Formatter2 Parser=Parser2 />
+        </div>
+
+        @code{
+
+            private string Formatter1(double value)
+            {
+                return "$ " + value.ToString("n0");
+            }
+
+            private double Parser1(string value)
+            {
+                double val = double.Parse(Regex.Replace(value, @"\$\s?|(,*)", ""));
+
+                return val;
+            }
+
+            private string Formatter2(double value)
+            {
+                return value.ToString() + "%";
+            }
+
+            private double Parser2(string value)
+            {
+                return double.Parse(value.Replace("%", ""));
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-input-number">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                        <span role="img" aria-label="up" class="anticon anticon-up ant-input-number-handler-up-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                        <span role="img" aria-label="down" class="anticon anticon-down ant-input-number-handler-down-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="-∞" aria-valuemax="∞" aria-valuenow="1000" class="ant-input-number-input" autocomplete="off" min="-∞" max="∞" step="1" value="$ 1,000">
+                </div>
+            </div>
+            <div class="ant-input-number">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-up-disabled">
+                        <span role="img" aria-label="up" class="anticon anticon-up ant-input-number-handler-up-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                        <span role="img" aria-label="down" class="anticon anticon-down ant-input-number-handler-down-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="ant-input-number-input" autocomplete="off" max="100" min="0" step="1" value="100%">
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Sizes" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <div class="site-input-number-wrapper">
+            <InputNumber DefaultValue=3 Min=1 Max=100000 Size=@InputSize.Large />
+            <InputNumber DefaultValue=3 Min=1 Max=100000 />
+            <InputNumber DefaultValue=3 Min=1 Max=100000 Size=@InputSize.Small />
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="site-input-number-wrapper">
+            <div class="ant-input-number ant-input-number-lg">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                        <span role="img" aria-label="up" class="anticon anticon-up ant-input-number-handler-up-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                        <span role="img" aria-label="down" class="anticon anticon-down ant-input-number-handler-down-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="100000" min="1" step="1" value="3">
+                </div>
+            </div>
+            <div class="ant-input-number">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                        <span role="img" aria-label="up" class="anticon anticon-up ant-input-number-handler-up-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                        <span role="img" aria-label="down" class="anticon anticon-down ant-input-number-handler-down-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="100000" min="1" step="1" value="3">
+                </div>
+            </div>
+            <div class="ant-input-number ant-input-number-sm">
+                <div class="ant-input-number-handler-wrap">
+                    <span unselectable="unselectable" role="button" aria-label="Increase Value" class="ant-input-number-handler ant-input-number-handler-up">
+                        <span role="img" aria-label="up" class="anticon anticon-up ant-input-number-handler-up-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                    <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="ant-input-number-handler ant-input-number-handler-down">
+                        <span role="img" aria-label="down" class="anticon anticon-down ant-input-number-handler-down-inner">
+                            <svg diff:ignore>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
+                <div class="ant-input-number-input-wrap">
+                    <input role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" class="ant-input-number-input" autocomplete="off" max="100000" min="1" step="1" value="3">
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
