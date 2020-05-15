@@ -48,7 +48,7 @@
                 </span>
             </div>
             <div class="ant-input-number-input-wrap">
-                <input role="spinbutton" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0.0" class="ant-input-number-input" autocomplete="off" max="10" min="0" step="0.1" value="0.0">
+                <input role="spinbutton" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0,0" class="ant-input-number-input" autocomplete="off" max="10" min="0" step="0,1" value="0.0">
             </div>
         </div>
     </ExpectedOutput>
@@ -112,7 +112,7 @@
 
             private string Formatter1(double value)
             {
-                return "$ " + value.ToString("n0");
+                return "$ " + Regex.Replace(value.ToString(), @"\B(?=(\d{3})+(?!\d))", ",") ;
             }
 
             private double Parser1(string value)
