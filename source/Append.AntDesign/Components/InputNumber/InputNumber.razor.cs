@@ -33,7 +33,7 @@ namespace Append.AntDesign.Components
                 _step = value;
                 if (string.IsNullOrEmpty(_format))
                 {
-                    _format = string.Join(DecimalSeparator, _step.ToString().Split(DecimalSeparator).Select(n => new string('0', n.Length)));
+                    _format = string.Join('.', _step.ToString().Split(',').Select(n => new string('0', n.Length)));
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace Append.AntDesign.Components
 
         public string DisplayString
         {
-            get { return DisplayValue().Replace(".", DecimalSeparator); }
+            get { return DisplayValue().Replace(",", DecimalSeparator); }
             set
             {
                 _displayString = DisplayValue();
