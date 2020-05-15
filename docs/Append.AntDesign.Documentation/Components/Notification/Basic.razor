@@ -1,0 +1,20 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Basic">
+    <Description>
+        <p>
+            The simplest usage that close the notification box after 4.5s.
+        </p>
+    </Description>
+    <Demo>
+        <Button />
+    </Demo>
+</Codebox>
+@code{
+
+    private void showNotification()
+    {
+        NotificationService.Open();
+    }
+
+}

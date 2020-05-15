@@ -1,4 +1,5 @@
 ﻿using Append.AntDesign.Services;
+using Append.AntDesign.Services.Notifications;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Append.AntDesign.Core
@@ -10,7 +11,8 @@ namespace Append.AntDesign.Core
             services.AddHttpClient<IIconService, IconService>();
             services.AddScoped<IClipboardService, ClipboardService>();
             services.AddScoped<TooltipService>();
-            services.AddScoped<IWindowService,WindowService>();
+            services.AddScoped<NotificationService>();
+            services.AddScoped<IWindowService, WindowService>();
             return services;
         }
     }
