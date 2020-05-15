@@ -17,7 +17,7 @@
 @code{
     private string Formatter1(double value)
     {
-        return "$ " + value.ToString("n0");
+        return "$ " + Regex.Replace(value.ToString(), @"\B(?=(\d{3})+(?!\d))", ",");
     }
 
     private double Parser1(string value)

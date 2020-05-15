@@ -141,7 +141,12 @@ namespace Append.AntDesign.Components
 
         public string DisplayString
         {
-            get { return DisplayValue().Replace(",", DecimalSeparator); }
+            get {
+                if (Formatter != null)
+                {
+                    return DisplayValue();
+                }
+                return DisplayValue().Replace(",", DecimalSeparator); }
             set
             {
                 _displayString = DisplayValue();
