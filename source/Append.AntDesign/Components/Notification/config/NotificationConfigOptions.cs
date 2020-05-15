@@ -16,14 +16,14 @@ namespace Append.AntDesign.Components
         public RenderFragment CloseIcon { get; set; }
         public string Key { get; set; }
         public RenderFragment Message { get; set; }
-        public string Placement { get; set; }// = "topRight";
+        public NotificationPlacement Placement { get; set; }// = "topRight";
         public string Style { get; set; }
         public double? Top { get; set; }// = 24;
 
         public EventCallback OnClose { get; set; }
         public EventCallback OnClick { get; set; }
 
-        internal NotificationConfigOptions() { }
+        private NotificationConfigOptions() { }
 
         internal NotificationConfigOptions GetConfigWithGlobalConfigValues(NotificationGlobalConfigOptions notificationGlobalConfig)
         {
@@ -33,6 +33,11 @@ namespace Append.AntDesign.Components
             Placement ??= notificationGlobalConfig.Placement;
             Top ??= notificationGlobalConfig.Top;
             return this;
+        }
+
+        public static NotificationConfigOptions DefaultInstance()
+        {
+            return new NotificationConfigOptions();
         }
 
     }

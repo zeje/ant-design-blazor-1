@@ -7,14 +7,12 @@
         </p>
     </Description>
     <Demo>
-        <Button />
+        <Button OnClick="showNotification" Label="Show notification" />
     </Demo>
 </Codebox>
 @code{
-
     private void showNotification()
     {
-        NotificationService.Open();
+        NotificationService.Open(NotificationConfigOptions.DefaultInstance());
     }
-
 }
