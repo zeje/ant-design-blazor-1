@@ -1,4 +1,5 @@
-﻿using Append.AntDesign.Services.Notifications;
+﻿using Append.AntDesign.Core;
+using Append.AntDesign.Services.Notifications;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Append.AntDesign.Components
 
         internal void OpenNotification(NotificationConfigOptions options, NotificationType notificationType)
         {
+
             Guid notificationGuid = Guid.NewGuid();
             RenderFragment notificationRenderFragment = builder =>
             {
@@ -32,6 +34,7 @@ namespace Append.AntDesign.Components
                 builder.AddAttribute(2, "NotificationType", notificationType);
                 builder.AddComponentReferenceCapture(3, (__value) =>
                 {
+                    // reference to component when rendered (when StateHasChanged() is called)
                     notifications.Update(notificationGuid, (Notification)__value);
                 });
                 builder.CloseComponent();
@@ -39,28 +42,22 @@ namespace Append.AntDesign.Components
 
             if (!string.IsNullOrEmpty(options.Key))
                 notificationKeys.Add(options.Key, notificationGuid);
-            notifications.Add(new NotificationListItem(notificationGuid, null, notificationRenderFragment));
-
+            notifications.Add(new NotificationListItem(notificationGuid, notificationRenderFragment, options));
             StateHasChanged();
         }
-        private void AddComponentToLists(Notification notification)
-        {
-            Debug.WriteLine("hi");
-
-        }
-
 
 
         internal void CloseNotification(string key)
         {
             try
             {
-                // notificationKeys.TryGetValue(key, out Notification value);
-                // GetNotificationByReference(value).Item3.CloseNotification();
+                notificationKeys.TryGetValue(key, out Guid value);
+                notifications.Remove(value);
             }
             catch { throw new ArgumentException("This key does not exist"); }
-
         }
+
 
     }
 }
+

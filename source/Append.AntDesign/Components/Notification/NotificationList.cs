@@ -8,34 +8,19 @@ namespace Append.AntDesign.Components
 {
     internal class NotificationList
     {
-        public List<NotificationListItem> notificationList = new List<NotificationListItem>();
+        internal List<NotificationListItem> notificationList = new List<NotificationListItem>();
 
-        public NotificationList()
+        internal NotificationList()
         {
         }
 
-        public void Add(NotificationListItem notificationListItem) => notificationList.Add(notificationListItem);
-        public void Update(Guid guid, Notification notification) => notificationList.FirstOrDefault(g => g.Guid.Equals(guid)).Notification = notification;
+        internal void Add(NotificationListItem notificationListItem) => notificationList.Add(notificationListItem);
+        internal void Update(Guid guid, Notification notification) => notificationList.FirstOrDefault(g => g.Guid.Equals(guid)).Notification = notification;
+        internal void Remove(Guid guid) => notificationList.FirstOrDefault(g => g.Guid.Equals(guid)).Inactive = true;
 
-        public List<NotificationListItem> GetTopLeftNotifications()
-        {
-            return notificationList.Where(g => g.Notification.Options.Placement == NotificationPlacement.TopLeft).ToList();
-        }
-
-        public List<NotificationListItem> GetTopRightNotifications()
-        {
-            return notificationList.Where(g => g.Notification.Options.Placement == NotificationPlacement.TopRight).ToList();
-        }
-
-        public List<NotificationListItem> GetBottomLeftNotifications()
-        {
-            return notificationList.Where(g => g.Notification.Options.Placement == NotificationPlacement.BottomLeft).ToList();
-        }
-
-        public List<NotificationListItem> GetBottomRightNotifications()
-        {
-            return notificationList.Where(g => g.Notification.Options.Placement == NotificationPlacement.BottomRight).ToList();
-        }
-
+        internal List<NotificationListItem> GetTopLeftNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.TopLeft).ToList();
+        internal List<NotificationListItem> GetTopRightNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.TopRight).ToList();
+        internal List<NotificationListItem> GetBottomLeftNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.BottomLeft).ToList();
+        internal List<NotificationListItem> GetBottomRightNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.BottomRight).ToList();
     }
 }

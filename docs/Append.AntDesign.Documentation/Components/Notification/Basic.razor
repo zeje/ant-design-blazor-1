@@ -13,6 +13,9 @@
 @code{
     private void showNotification()
     {
-        NotificationService.Open(NotificationConfigOptions.DefaultInstance());
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+                                        .Build());
     }
 }
