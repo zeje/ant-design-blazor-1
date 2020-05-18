@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,6 @@ namespace Append.AntDesign.Components
     public class NotificationConfigOptions
     {
         public double? Bottom { get; set; }// = 24;
-        public string ClassName { get; set; }
         public RenderFragment Description { get; set; }
         public double? Duration { get; set; }// = 4.5;
         public RenderFragment Icon { get; set; }
@@ -16,17 +16,16 @@ namespace Append.AntDesign.Components
         public string Key { get; set; }
         public RenderFragment Message { get; set; }
         public NotificationPlacement Placement { get; set; }// = "topRight";
-        public string Style { get; set; }
         public double? Top { get; set; }// = 24;
 
-        public EventCallback OnClose { get; set; }
-        public EventCallback OnClick { get; set; }
+        public EventCallback<MouseEventArgs> OnClose { get; set; }
+        public EventCallback<MouseEventArgs> OnClick { get; set; }
 
         private NotificationConfigOptions() { }
-        private NotificationConfigOptions(double? bottom, string className, RenderFragment description, double? duration, RenderFragment icon, RenderFragment closeIcon, string key, RenderFragment message, NotificationPlacement placement, string style, double? top, EventCallback onClose, EventCallback onClick)
+        private NotificationConfigOptions(double? bottom, RenderFragment description, double? duration, RenderFragment icon, RenderFragment closeIcon, string key, RenderFragment message,
+            NotificationPlacement placement, double? top, EventCallback<MouseEventArgs> onClose, EventCallback<MouseEventArgs> onClick)
         {
             Bottom = bottom;
-            ClassName = className;
             Description = description;
             Duration = duration;
             Icon = icon;
@@ -34,7 +33,6 @@ namespace Append.AntDesign.Components
             Key = key;
             Message = message;
             Placement = placement;
-            Style = style;
             Top = top;
             OnClose = onClose;
             OnClick = onClick;
@@ -60,7 +58,6 @@ namespace Append.AntDesign.Components
         public class NotificationConfigOptionsBuilder
         {
             private double? _bottom;// = 24;
-            private string _className { get; set; }
             private RenderFragment _description { get; set; }
             private double? _duration { get; set; }// = 4.5;
             private RenderFragment _icon { get; set; }
@@ -68,20 +65,14 @@ namespace Append.AntDesign.Components
             private string _key;
             private RenderFragment _message { get; set; }
             private NotificationPlacement _placement { get; set; }// = "topRight";
-            private string _style { get; set; }
             private double? _top { get; set; }// = 24;
 
-            private EventCallback _onClose { get; set; }
-            private EventCallback _onClick { get; set; }
+            private EventCallback<MouseEventArgs> _onClose { get; set; }
+            private EventCallback<MouseEventArgs> _onClick { get; set; }
 
             public NotificationConfigOptionsBuilder SetBottom(double bottom)
             {
                 _bottom = bottom;
-                return this;
-            }
-            public NotificationConfigOptionsBuilder SetClassName(string className)
-            {
-                _className = className;
                 return this;
             }
 
@@ -135,22 +126,17 @@ namespace Append.AntDesign.Components
                 _placement = placement;
                 return this;
             }
-            public NotificationConfigOptionsBuilder SetStyle(string style)
-            {
-                _style = style;
-                return this;
-            }
-            public NotificationConfigOptionsBuilder SetPlacement(double top)
+            public NotificationConfigOptionsBuilder SetTop(double top)
             {
                 _top = top;
                 return this;
             }
-            public NotificationConfigOptionsBuilder SetOnClose(EventCallback onClose)
+            public NotificationConfigOptionsBuilder SetOnClose(EventCallback<MouseEventArgs> onClose)
             {
                 _onClose = onClose;
                 return this;
             }
-            public NotificationConfigOptionsBuilder SetOnClick(EventCallback onClick)
+            public NotificationConfigOptionsBuilder SetOnClick(EventCallback<MouseEventArgs> onClick)
             {
                 _onClick = onClick;
                 return this;
@@ -158,7 +144,7 @@ namespace Append.AntDesign.Components
 
             public NotificationConfigOptions Build()
             {
-                return new NotificationConfigOptions(_bottom, _className, _description, _duration, _icon, _closeIcon, _key, _message, _placement, _style, _top, _onClose, _onClick);
+                return new NotificationConfigOptions(_bottom, _description, _duration, _icon, _closeIcon, _key, _message, _placement, _top, _onClose, _onClick);
             }
         }
     }

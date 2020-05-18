@@ -1,25 +1,27 @@
 ﻿@namespace Append.AntDesign.Components
 @inherits AntComponent
 
-@if (!_hide)
-{
-    <div class="@combinedClassBuilders">
-        <div class="ant-notification-notice-content">
-            <div class="@ContentTypeClasses">
-                @if (Type != NotificationType.None)
-                {
-                    <Icon class="@GetIconTypeWithExtraCssClasses().Item2" Type="GetIconTypeWithExtraCssClasses().Item1" />
-                }
-                <div class="ant-notification-notice-message">@Options.Message</div>
-                <div class="ant-notification-notice-description">@Options.Description</div>
-            </div>
-        </div>
+<div @attributes="Attributes" class="@combinedClassBuilders" @onclick="Options.OnClick">
+    <div class="ant-notification-notice-content">
+        <div class="@ContentTypeClasses">
 
-        <a class="ant-notification-notice-close">
-            <span class="ant-notification-close-x">
-                <Icon Type="IconType.Outlined.Close" @onclick="CloseNotification"></Icon>
-            </span>
-        </a>
+
+            @if (Type != NotificationType.None)
+            {
+                <Icon class="@GetIconTypeWithExtraCssClasses().Item2" Type="GetIconTypeWithExtraCssClasses().Item1" />
+            }
+            <div class="ant-notification-notice-message">@Options.Message</div>
+            <div class="ant-notification-notice-description">@Options.Description</div>
+        </div>
     </div>
-}
+
+    <a class="ant-notification-notice-close">
+        <span class="ant-notification-close-x">
+            <Icon Type="IconType.Outlined.Close" @onclick="(e) => { CloseNotification(); Options.OnClose.InvokeAsync(e); }"></Icon>
+        </span>
+    </a>
+</div>
+
+
+
 

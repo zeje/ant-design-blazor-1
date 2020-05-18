@@ -8,28 +8,22 @@ using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
-    public partial class Notification
+    public partial class Notification : IDisposable
     {
         private static readonly string baseClass = "ant-notification";
 
         private string dynamicClasses;
-        private ClassBuilder classes => ClassBuilder.Create()
+        private ClassBuilder classes => ClassBuilder.Create(Class)
             .AddClass("ant-notification-notice")
             .AddClass("ant-notification-notice-closable");
-
 
         private ClassBuilder ContentTypeClasses => ClassBuilder.Create()
             .AddClassWhen("ant-notification-notice-with-icon", Type != NotificationType.None);
 
-
         private string combinedClassBuilders => classes + " " + dynamicClasses;
 
-        private StyleBuilder styles => StyleBuilder.Create();
-
-        // bad
-        private bool _hide;
-
         [CascadingParameter] private NotificationContainer notificationContainer { get; set; }
+        [Parameter] public Guid Guid { get; set; }
         [Parameter] public NotificationConfigOptions Options { get; set; }
         [Parameter] public NotificationType Type { get; set; } = NotificationType.None;
 
@@ -42,25 +36,20 @@ namespace Append.AntDesign.Components
         private async void AddOpenAndCloseAnimations()
         {
             dynamicClasses = $"{baseClass}-fade-enter {baseClass}-fade-enter-active";
-            StateHasChanged();
-            await Task.Delay(new TimeSpan(0, 0, 0, 0, 500));
+            await InvokeAsync(() =>
+             {
+                 InvokeAsync(StateHasChanged);
+
+             });
+            await Task.Delay(500);
             dynamicClasses = "";
 
             if (Options.Duration != 0)
             {
-                await Task.Delay(new TimeSpan(0, 0, 0, 0, Options.GetDurationInMilliseconds()));
+
+                await Task.Delay(Options.GetDurationInMilliseconds());
                 CloseNotification();
             }
-        }
-
-        internal async void CloseNotification()
-        {
-            dynamicClasses = $"{baseClass}-fade-leave {baseClass}-fade-leave-active";
-            StateHasChanged();
-            await Task.Delay(new TimeSpan(0, 0, 0, 0, 500));
-            // bad
-            _hide = true;
-            StateHasChanged();
         }
 
         private ValueTuple<IconType, string> GetIconTypeWithExtraCssClasses()
@@ -86,5 +75,18 @@ namespace Append.AntDesign.Components
                 return (IconType.Outlined.Exclamation_Circle, "ant-notification-notice-icon ant-notification-notice-icon-info");
             }
         }
+
+        internal async void CloseNotification()
+        {
+            dynamicClasses = $"{baseClass}-fade-leave {baseClass}-fade-leave-active";
+            await InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+            await Task.Delay(500);
+            Dispose();
+        }
+
+        public void Dispose() => notificationContainer.CloseNotification(Guid);
     }
 }

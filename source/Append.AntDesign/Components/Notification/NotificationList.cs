@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -15,12 +16,37 @@ namespace Append.AntDesign.Components
         }
 
         internal void Add(NotificationListItem notificationListItem) => notificationList.Add(notificationListItem);
-        internal void Update(Guid guid, Notification notification) => notificationList.FirstOrDefault(g => g.Guid.Equals(guid)).Notification = notification;
-        internal void Remove(Guid guid) => notificationList.FirstOrDefault(g => g.Guid.Equals(guid)).Inactive = true;
+        internal void Remove(Guid guid) => notificationList.Remove(notificationList.FirstOrDefault(g => g.Guid.Equals(guid)));
+        internal List<NotificationListItem> GetNotificationsByPlacementType(NotificationPlacement notificationPlacement) => notificationList.Where(g => g.Options.Placement == notificationPlacement).ToList();
 
-        internal List<NotificationListItem> GetTopLeftNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.TopLeft).ToList();
-        internal List<NotificationListItem> GetTopRightNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.TopRight).ToList();
-        internal List<NotificationListItem> GetBottomLeftNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.BottomLeft).ToList();
-        internal List<NotificationListItem> GetBottomRightNotifications() => notificationList.Where(g => g.Options.Placement == NotificationPlacement.BottomRight).ToList();
+        internal double GetOptionsTop(NotificationGlobalConfigOptions notificationGlobalConfigOptions)
+        {
+            try
+            {
+                return notificationList.Where(g => g.Options.Placement == NotificationPlacement.TopLeft || g.Options.Placement == NotificationPlacement.TopRight).First().Options.Top.Value;
+            }
+            catch (Exception ex)
+            {
+                if (ex is InvalidOperationException || ex is ArgumentNullException || ex is InvalidOperationException)
+                    return notificationGlobalConfigOptions.Top;
+                throw ex;
+            }
+
+        }
+
+        internal double GetOptionsBottom(NotificationGlobalConfigOptions notificationGlobalConfigOptions)
+        {
+            try
+            {
+                return notificationList.Where(g => g.Options.Placement == NotificationPlacement.BottomLeft || g.Options.Placement == NotificationPlacement.BottomRight).First().Options.Bottom.Value;
+            }
+            catch (Exception ex)
+            {
+                if (ex is InvalidOperationException || ex is ArgumentNullException || ex is InvalidOperationException)
+                    return notificationGlobalConfigOptions.Bottom;
+                throw ex;
+            }
+        }
+
     }
 }

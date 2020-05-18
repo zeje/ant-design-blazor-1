@@ -1,0 +1,22 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Notification with icon">
+    <Description>
+        <p>
+            The icon can be customized to any <code>RenderFragment</code> .
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+        .SetMessage("Notification Title")
+        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+        .SetIcon(@<Icon Type="IconType.Outlined.Smile" style="color:#108ee9"></Icon>)
+.Build());
+}
+}

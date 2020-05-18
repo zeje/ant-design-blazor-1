@@ -4,62 +4,16 @@
 <span id="notificationBox">
     <CascadingValue Value="this">
 
-
-
-
-
-        <div class="ant-notification ant-notification-topRight" style="right: 0px; top: 30px; bottom: auto;">
-            <span>
-                @foreach (var item in notifications.GetTopRightNotifications())
-                {
-                    if (!item.Inactive)
+        @foreach (var classs in notificationContainerClasses)
+        {
+            <div class="@classs.Item2" style="@GenerateNotificationContainerStyle(classs.Item1)">
+                <span>
+                    @foreach (var notification in notifications.GetNotificationsByPlacementType(classs.Item1))
                     {
-                        @item.RenderFragment
+                        <Notification @key="notification.Guid" Type="notification.NotificationType" Options="notification.Options" Guid="notification.Guid" />
                     }
-
-                }
-            </span>
-        </div>
-
-        <div class="ant-notification ant-notification-topLeft" style="left: 0px; top: 30px; bottom: auto;">
-            <span>
-                @foreach (var item in notifications.GetTopLeftNotifications())
-                {
-                    if (!item.Inactive)
-                    {
-                        @item.RenderFragment
-                    }
-                }
-            </span>
-        </div>
-
-        <div class="ant-notification ant-notification-bottomLeft" style="left: 0px; top: auto; bottom: 24px;">
-            <span>
-                @foreach (var item in notifications.GetBottomLeftNotifications())
-                {
-
-                    if (!item.Inactive)
-                    {
-                        @item.RenderFragment
-                    }
-
-                }
-            </span>
-        </div>
-
-        <div class="ant-notification ant-notification-bottomRight" style="right: 0px; top: auto; bottom: 24px;">
-            <span>
-                @foreach (var item in notifications.GetBottomRightNotifications())
-                {
-
-                    if (!item.Inactive)
-                    {
-                        @item.RenderFragment
-                    }
-
-                }
-            </span>
-        </div>
-
+                </span>
+            </div>
+        }
     </CascadingValue>
 </span>

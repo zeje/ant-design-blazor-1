@@ -1,0 +1,22 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Duration after which the notification box is closed">
+    <Description>
+        <p>
+            how long the notification stays open. After the duration time elapses, the notification closes automatically. If not specified, the default value is 4.5 seconds. If you set the value to 0, the notification box will never close automatically.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("I will never close automatically. This is a purposely very very long description that has many many characters and words.")
+                                        .SetDuration(0)
+                                        .Build());
+    }
+}
