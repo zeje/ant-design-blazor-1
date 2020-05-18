@@ -11,6 +11,7 @@ namespace Append.AntDesign.Components
         public Guid Guid { get; set; }
         public NotificationConfigOptions Options { get; set; }
         public NotificationType NotificationType { get; set; }
+        public Notification Notification { get; set; }
 
         internal NotificationListItem(Guid guid, NotificationConfigOptions options, NotificationType notificationType)
         {

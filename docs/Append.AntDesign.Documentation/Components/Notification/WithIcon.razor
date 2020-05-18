@@ -1,0 +1,34 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Notification with icon">
+    <Description>
+        <p>
+            A notification box with a icon at the left side.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="() => showNotification(NotificationType.Success)" Label="Success" />
+        <Button OnClick="() => showNotification(NotificationType.Info)" Label="Info" />
+        <Button OnClick="() => showNotification(NotificationType.Warning)" Label="Warning" />
+        <Button OnClick="() => showNotification(NotificationType.Error)" Label="Error" />
+    </Demo>
+</Codebox>
+
+@code{
+    private void showNotification(NotificationType notificationType)
+    {
+        var options = NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+                                        .Build();
+
+        if (notificationType == NotificationType.Success)
+            NotificationService.Success(options);
+        else if (notificationType == NotificationType.Info)
+            NotificationService.Info(options);
+        else if (notificationType == NotificationType.Warning)
+            NotificationService.Warning(options);
+        else if (notificationType == NotificationType.Error)
+            NotificationService.Error(options);
+    }
+}

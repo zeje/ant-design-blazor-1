@@ -1,9 +1,9 @@
 ﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
 
-<Codebox Title="Basic">
+<Codebox Title="Customized style">
     <Description>
         <p>
-            The simplest usage that close the notification box after 4.5s.
+            The <code>Style</code> and <code>ClassName</code> parameters are available to customize a notification.
         </p>
     </Description>
     <Demo>
@@ -14,9 +14,10 @@
     private void showNotification()
     {
         NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetDuration(200)
                                         .SetMessage("Notification Title")
                                         .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
-                                        .SetOnClick(() => System.Diagnostics.Debug.WriteLine("The notification has been clicked."))
+                                        .SetStyle($"width: 600px; margin-left: {335 - 600}px;")
                                         .Build());
     }
 }

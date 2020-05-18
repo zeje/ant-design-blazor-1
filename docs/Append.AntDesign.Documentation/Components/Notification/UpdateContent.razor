@@ -1,0 +1,29 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Update Message Content">
+    <Description>
+        <p>
+            Update the notification content with the unique <code>Key</code>.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+    private async void showNotification()
+    {
+        var uniqueKey = Guid.NewGuid();
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetKey(uniqueKey.ToString())
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("Description.")
+                                        .Build());
+        await Task.Delay(2000);
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetKey(uniqueKey.ToString())
+                                        .SetMessage("New Title")
+                                        .SetDescription("New description.")
+                                        .Build());
+    }
+}

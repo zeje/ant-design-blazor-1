@@ -4,24 +4,31 @@
 <div @attributes="Attributes" class="@combinedClassBuilders" @onclick="Options.OnClick">
     <div class="ant-notification-notice-content">
         <div class="@ContentTypeClasses">
-
-
-            @if (Type != NotificationType.None)
+            @if (Type == NotificationType.None || Options.Icon != null)
             {
-                <Icon class="@GetIconTypeWithExtraCssClasses().Item2" Type="GetIconTypeWithExtraCssClasses().Item1" />
+                <span class="ant-notification-notice-icon">
+                    @Options.Icon
+                </span>
             }
+            else
+            {
+                <Icon class="@GetIconTypeWithExtraCssClasses().Item2" Type="@GetIconTypeWithExtraCssClasses().Item1" />
+            }
+
             <div class="ant-notification-notice-message">@Options.Message</div>
             <div class="ant-notification-notice-description">@Options.Description</div>
+            @if (Options.Btn != null)
+            {
+                <span class="ant-notification-notice-btn">
+                    @Options.Btn
+                </span>
+            }
         </div>
     </div>
 
     <a class="ant-notification-notice-close">
         <span class="ant-notification-close-x">
-            <Icon Type="IconType.Outlined.Close" @onclick="(e) => { CloseNotification(); Options.OnClose.InvokeAsync(e); }"></Icon>
+            <Icon Type="IconType.Outlined.Close" @onclick="() => notificationContainer.CloseNotification(Guid)"></Icon>
         </span>
     </a>
 </div>
-
-
-
-

@@ -1,0 +1,50 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Placement
+">
+    <Description>
+        <p>
+            A notification box can appear from the <code>NotificationPlacement.TopLeft</code>, <code>NotificationPlacement.TopRight</code>, <code>NotificationPlacement.BottomLeft</code> or <code>NotificationPlacement.BottomRight</code> of the viewport.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="() => ShowNotification(NotificationPlacement.TopLeft)" Label="TopLeft" />
+        <Button OnClick="() => ShowNotification(NotificationPlacement.TopRight)" Label="TopRight" />
+        <br />
+        <br />
+        <Button OnClick="() => ShowNotification(NotificationPlacement.BottomLeft)" Label="BottomLeft" />
+        <Button OnClick="() => ShowNotification(NotificationPlacement.BottomRight)" Label="BottomRight" />
+    </Demo>
+</Codebox>
+@code{
+
+    private void ShowNotification(NotificationPlacement notificationPlacement)
+    {
+        var options = NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+                                        .Build();
+
+        if (notificationPlacement == NotificationPlacement.TopLeft)
+        {
+            options.Placement = NotificationPlacement.TopLeft;
+            NotificationService.Info(options);
+        }
+        else if (notificationPlacement == NotificationPlacement.TopRight)
+        {
+            options.Placement = NotificationPlacement.TopRight;
+            NotificationService.Info(options);
+        }
+        else if (notificationPlacement == NotificationPlacement.BottomLeft)
+        {
+            options.Placement = NotificationPlacement.BottomLeft;
+            NotificationService.Info(options);
+        }
+        else if (notificationPlacement == NotificationPlacement.BottomRight)
+        {
+            options.Placement = NotificationPlacement.BottomRight;
+            NotificationService.Info(options);
+        }
+    }
+
+}

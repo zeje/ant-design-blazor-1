@@ -1,0 +1,34 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Custom close button">
+    <Description>
+        <p>
+            You can set a custom close button via the <code>Btn</code> parameter.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+    </Demo>
+</Codebox>
+@code{
+
+    private void CallbackOnClose(MouseEventArgs mouseEventArgs)
+    {
+        System.Diagnostics.Debug.WriteLine("The notification has closed.");
+    }
+
+    //private EventCallback onClose = () =>
+
+
+    private string key = Guid.NewGuid().ToString();
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetMessage("Notification Title")
+                                        .SetKey(key)
+                                        .SetDescription("A function will be be called after the notification is closed (automatically after the \"duration\" time has expired or manually by clicking the close button).")
+                                        .SetOnClose(() => System.Diagnostics.Debug.WriteLine("Notification has closed"))
+                                        .SetBtn(@<Button Type="ButtonType.Primary" Size="Size.Small" OnClick="() => NotificationService.Close(key)" Label="Confirm" />)
+.Build());
+}
+}

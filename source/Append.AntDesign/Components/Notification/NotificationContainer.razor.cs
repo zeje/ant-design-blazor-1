@@ -17,24 +17,37 @@ namespace Append.AntDesign.Components
         private Dictionary<string, Guid> notificationKeys { get; set; } = new Dictionary<string, Guid>();
         private NotificationList notifications { get; set; } = new NotificationList();
         private List<(NotificationPlacement, string)> notificationContainerClasses { get; set; } = new List<(NotificationPlacement, string)>() {
-                                                                          (NotificationPlacement.TopRight, "ant-notification ant-notification-topRight"),/*, "right: 0px; top: 30px; bottom: auto;")*/
-                                                                          (NotificationPlacement.TopLeft, "ant-notification ant-notification-topLeft"),/*, "left: 0px; top: 30px; bottom: auto;")*/
-                                                                          (NotificationPlacement.BottomLeft, "ant-notification ant-notification-bottomLeft"),/*, "left: 0px; top: auto; bottom: 24px;")*/
-                                                                          (NotificationPlacement.BottomRight, "ant-notification ant-notification-bottomRight") };/*, "right: 0px; top: auto; bottom: 24px;") }*/
+                                                                          (NotificationPlacement.TopRight, "ant-notification ant-notification-topRight"),
+                                                                          (NotificationPlacement.TopLeft, "ant-notification ant-notification-topLeft"),
+                                                                          (NotificationPlacement.BottomLeft, "ant-notification ant-notification-bottomLeft"),
+                                                                          (NotificationPlacement.BottomRight, "ant-notification ant-notification-bottomRight") };
 
         protected override void OnInitialized()
         {
             notificationService.NotificationContainer = this;
         }
 
+        internal void AddNotificationReference(Notification notification)
+        {
+            notifications.Get(notification.Guid).Notification = notification;
+        }
+
         internal void OpenNotification(NotificationConfigOptions options, NotificationType notificationType)
         {
+            if (options.Key == null ? false : notificationKeys.ContainsKey(options.Key))
+            {
+                notificationKeys.TryGetValue(options.Key, out Guid value);
+                InvokeAsync(() =>
+                {
+                    notifications.Update(value, options, notificationType);
+                    StateHasChanged();
+                });
+                return;
+            }
 
             Guid notificationGuid = Guid.NewGuid();
-            Debug.WriteLine($"add: {notificationGuid}");
             if (!string.IsNullOrEmpty(options.Key))
                 notificationKeys.Add(options.Key, notificationGuid);
-
             InvokeAsync(() =>
             {
                 notifications.Add(new NotificationListItem(notificationGuid, options, notificationType));
@@ -48,6 +61,7 @@ namespace Append.AntDesign.Components
             {
                 notificationKeys.TryGetValue(key, out Guid value);
                 CloseNotification(value);
+                notificationKeys.Remove(key);
             }
             catch { throw new ArgumentException("This key does not exist"); }
         }
@@ -56,6 +70,7 @@ namespace Append.AntDesign.Components
         {
             InvokeAsync(() =>
             {
+                notifications.Get(guid).Notification.CloseNotification();
                 notifications.Remove(guid);
                 StateHasChanged();
             });
@@ -63,7 +78,6 @@ namespace Append.AntDesign.Components
 
         private string GenerateNotificationContainerStyle(NotificationPlacement notificationPlacement)
         {
-
             return StyleBuilder.Create()
                 .AddStyleWhen("right: 0px", notificationPlacement == NotificationPlacement.TopRight || notificationPlacement == NotificationPlacement.BottomRight)
                 .AddStyleWhen("left: 0px", notificationPlacement == NotificationPlacement.TopLeft || notificationPlacement == NotificationPlacement.BottomLeft)
@@ -74,7 +88,5 @@ namespace Append.AntDesign.Components
                 .AddStyleWhen($"bottom: {notifications.GetOptionsBottom(notificationService.GlobalConfigOptions)}px", notificationPlacement == NotificationPlacement.BottomRight || notificationPlacement == NotificationPlacement.BottomLeft)
                 .ToString();
         }
-
     }
 }
-

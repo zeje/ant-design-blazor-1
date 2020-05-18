@@ -10,7 +10,7 @@
                 <span>
                     @foreach (var notification in notifications.GetNotificationsByPlacementType(classs.Item1))
                     {
-                        <Notification @key="notification.Guid" Type="notification.NotificationType" Options="notification.Options" Guid="notification.Guid" />
+                        <Notification @key="notification.Guid" class="@notification.Options.ClassName" style="@notification.Options.Style" Type="notification.NotificationType" Options="notification.Options" Guid="notification.Guid" />
                     }
                 </span>
             </div>
