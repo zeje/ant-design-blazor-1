@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Append.AntDesign.Components
 {
-    public partial class Step : IDisposable
+    public partial class Step
     {
         [Parameter] public string Description { get; set; } = string.Empty;
         [Parameter] public IconType Icon { get; set; }
@@ -23,10 +23,22 @@ namespace Append.AntDesign.Components
         [Parameter] public string Title { get; set; } = string.Empty;
         [Parameter] public string SubTitle { get; set; } = string.Empty;
         [Parameter] public bool Disabled { get; set; }
-        [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+        protected EventCallback<MouseEventArgs> OnClick { get; set; }
         [CascadingParameter] public Steps Parent { get; set; }
         private readonly Dictionary<string, object> _containerAttributes = new Dictionary<string, object>();
-        internal bool Clickable { get; set; }
+        private bool _clickable;
+        internal bool Clickable
+        { 
+            get => _clickable;
+            set
+            {
+                _clickable = value;
+                if (_clickable && !Disabled)
+                {
+                    _containerAttributes["role"] = "button";
+                }
+            } 
+        }
         internal bool Last { get; set; }
         internal bool ShowProcessDot { get; set; }
         internal RenderFragment ProgressDot { get; set; }
@@ -72,11 +84,12 @@ namespace Append.AntDesign.Components
                 _containerAttributes["role"] = "button";
             }
         }
-
-        public void Dispose()
+        protected void onClick(MouseEventArgs args) 
         {
-            Parent._children.Remove(this);
-            Parent.AdjustChildrenSteps();
+            if(!Disabled && Clickable)
+            {
+                Parent.onStepClick(Index);
+            }
         }
     }
 }

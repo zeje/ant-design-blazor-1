@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Append.AntDesign.Components
 {
-    public partial class Steps : IDisposable
+    public partial class Steps
     {
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public string ClassName { get; set; }
@@ -81,13 +81,13 @@ namespace Append.AntDesign.Components
             }
         }
 
-        public void Dispose()
+        internal void onStepClick(int index)
         {
-            foreach (Step step in _children)
+            if(OnChange != null && Current != index)
             {
-                step.Dispose();
+                Current = index;
+                AdjustChildrenSteps();
             }
-            _children.Clear();
         }
     }
 }
