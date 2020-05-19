@@ -1,0 +1,12 @@
+﻿<Codebox Title="Decimals">
+    <Description>
+        <p>
+            A numeric-only input box whose values can be increased or decreased using a decimal step. The number of decimals (also known as precision) is determined by the step prop. With the property <code>DecimalSeparator</code> the decimal separator can be changed, for example to ":".
+        </p>
+    </Description>
+    <Demo>
+        <InputNumber Min=0 Max=10 Step=0.1 />
+        <br/>
+        <InputNumber Min=0 Max=10 Step=0.1 DecimalSeparator=":"/>
+    </Demo>
+</Codebox>
