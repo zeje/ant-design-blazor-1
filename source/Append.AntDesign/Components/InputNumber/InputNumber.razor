@@ -1,24 +1,25 @@
 ﻿@namespace Append.AntDesign.Components
 @inherits AntComponent
+@using System.Globalization;
 
 <div class="@classes">
     <div class="ant-input-number-handler-wrap">
-        <span unselectable="unselectable" role="button" aria-label="Increase Value"  class="@iconClassesUp">
+        <span unselectable="unselectable" role="button" aria-label="Increase Value" class="@iconClassesUp">
             <Icon Type="IconType.Outlined.Up" @onclick="@Increase" class="ant-input-number-handler-up-inner"/>
         </span>
-        <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="@iconClassesDown" >
+        <span unselectable="unselectable" role="button" aria-label="Decrease Value" class="@iconClassesDown">
             <Icon Type="IconType.Outlined.Down" @onclick="@Decrease" class="ant-input-number-handler-down-inner"/>
         </span>
 
     </div>
     <div class="ant-input-number-input-wrap">
-        <input @attributes="Attributes" 
-               class="@inputClasses" 
-               role="spinbutton" aria-valuemin="@Min" aria-valuemax="@Max" aria-valuenow="@Value.ToString(_format)" 
-               @oninput="OnInput" 
-               @onkeydown="HandleKeyDown" 
-               autocomplete="off" 
-               max="@Max" min="@Min" step="@Step" 
-               @bind="DisplayString" disabled="@Disabled"/>
+        <input @attributes="Attributes"
+               class="@inputClasses"
+               role="spinbutton" aria-valuemin="@Min" aria-valuemax="@Max" aria-valuenow="@Value.ToString(_format, CultureInfo.InvariantCulture)"
+               @oninput="OnInput"
+               @onkeydown="HandleKeyDown"
+               autocomplete="off"
+               max="@Max" min="@Min" step="@StepString"
+               @bind="DisplayString" disabled="@Disabled" />
     </div>
 </div>

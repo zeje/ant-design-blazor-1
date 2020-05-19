@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -21,6 +22,9 @@ namespace Append.AntDesign.Components
         [Parameter] public Func<string, double> Parser { get; set; }
         [Parameter] public InputSize Size { get; set; } = InputSize.Middle;
         private double _step = 1;
+        private string _currentSeperator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        private string _invariantSeperator = CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator;
+        protected string StepString = "1";
         [Parameter]
         public double Step
         {
@@ -30,10 +34,11 @@ namespace Append.AntDesign.Components
             }
             set
             {
+                StepString = value.ToString().Replace(_currentSeperator, _invariantSeperator);
                 _step = value;
                 if (string.IsNullOrEmpty(_format))
                 {
-                    _format = string.Join('.', _step.ToString().Split(',').Select(n => new string('0', n.Length)));
+                    _format = string.Join(_invariantSeperator, StepString.Split(_invariantSeperator).Select(n => new string('0', n.Length)));
                 }
             }
         }
@@ -77,7 +82,7 @@ namespace Append.AntDesign.Components
             base.OnInitialized();
 
             Value = DefaultValue;
-            DisplayString = DefaultValue.ToString(_format);
+            DisplayString = DefaultValue.ToString(_format, CultureInfo.InvariantCulture);
 
         }
         private void HandleKeyDown(KeyboardEventArgs args)
@@ -141,12 +146,14 @@ namespace Append.AntDesign.Components
 
         public string DisplayString
         {
-            get {
+            get 
+            {
                 if (Formatter != null)
                 {
                     return DisplayValue();
                 }
-                return DisplayValue().Replace(",", DecimalSeparator); }
+                return DisplayValue().Replace(_invariantSeperator, DecimalSeparator); 
+            }
             set
             {
                 _displayString = DisplayValue();
@@ -160,7 +167,7 @@ namespace Append.AntDesign.Components
                 return Formatter(Value);
             }
 
-            return Value.ToString(_format);
+            return Value.ToString(_format, CultureInfo.InvariantCulture);
         }
     }
 }
