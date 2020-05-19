@@ -1,0 +1,24 @@
+﻿<Codebox Title="Dot Style">
+    <Description>
+        <p>
+            Steps with progress dot style.
+        </p>
+    </Description>
+    <Demo>
+        <div>
+            <Steps ShowProgressDot Current=1>
+                <Step Title="Finished" Description="This is a description." />
+                <Step Title="In Progress" Description="This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+            </Steps>
+            <Divider />
+            <Steps ShowProgressDot Current=1 Direction=StepsDirection.Vertical>
+                <Step Title="Finished" Description="This is a description. This is a description." />
+                <Step Title="Finished" Description="This is a description. This is a description." />
+                <Step Title="In Progress" Description="This is a description. This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+            </Steps>
+        </div>
+    </Demo>
+</Codebox>

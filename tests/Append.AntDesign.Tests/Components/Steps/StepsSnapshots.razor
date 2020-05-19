@@ -1,10 +1,930 @@
 ﻿@inherits TestComponentBase
 
-<SnapshotTest Description="Basic">
+<SnapshotTest Description="Basic" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
     <TestInput>
-        
+        <Steps Current=1>
+            <Step Title="Finished" Description="This is a description." />
+            <Step Title="In Progress" SubTitle="Left 00:00:08" Description="This is a description." />
+            <Step Title="Waiting" Description="This is a description." />
+        </Steps>
     </TestInput>
     <ExpectedOutput>
-        
+        <div class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+            <div class="ant-steps-item ant-steps-item-finish">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span diff:ignore>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">2</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">
+                            In Progress
+                            <div title="Left 00:00:08" class="ant-steps-item-subtitle">Left 00:00:08</div>
+                        </div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">3</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Clickable">
+    <TestInput>
+        <div>
+            <Steps Current=@current OnChange=OnChange>
+                <Step Title="Step 1" Description="This is a description." />
+                <Step Title="Step 2" Description="This is a description." />
+                <Step Title="Step 3" Description="This is a description." />
+            </Steps>
+
+            <Divider />
+
+            <Steps Current=@current OnChange=OnChange Direction=StepsDirection.Vertical>
+                <Step Title="Step 1" Description="This is a description." />
+                <Step Title="Step 2" Description="This is a description." />
+                <Step Title="Step 3" Description="This is a description." />
+            </Steps>
+        </div>
+
+        @code{
+            private int current = 0;
+            private void OnChange(int number)
+            {
+                current = number;
+                //StateHasChanged();
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+                <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">1</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 1</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">2</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 2</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 3</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-divider ant-divider-horizontal" role="separator"></div>
+            <div class="ant-steps ant-steps-vertical">
+                <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">1</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 1</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">2</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 2</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 3</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Customized Dot Style" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps Current=1>
+            <ProgressDot>
+                <Append.AntDesign.Components.Icon Type=IconType.Filled.Cloud />
+            </ProgressDot>
+            <ChildContent>
+                <Step Title=" Finished" Description="You can hover on the icon." />
+                <Step Title="In Progress" Description="You can hover on the icon." />
+                <Step Title="Waiting" Description="You can hover on the icon." />
+                <Step Title="Waiting" Description="You can hover on the icon." />
+            </ChildContent>
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-horizontal ant-steps-label-vertical ant-steps-dot">
+            <div class="ant-steps-item ant-steps-item-finish">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore><span class="ant-steps-icon-dot"></span></span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                        <div class="ant-steps-item-description">You can hover on the icon.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore><span class="ant-steps-icon-dot"></span></span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">In Progress</div>
+                        <div class="ant-steps-item-description">You can hover on the icon.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore><span class="ant-steps-icon-dot"></span></span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">You can hover on the icon.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore><span class="ant-steps-icon-dot"></span></span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">You can hover on the icon.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Dot Style">
+    <TestInput>
+        <div>
+            <Steps ShowProgressDot Current=1>
+                <Step Title="Finished" Description="This is a description." />
+                <Step Title="In Progress" Description="This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+            </Steps>
+            <Divider />
+            <Steps ShowProgressDot Current=1 Direction=StepsDirection.Vertical>
+                <Step Title="Finished" Description="This is a description. This is a description." />
+                <Step Title="Finished" Description="This is a description. This is a description." />
+                <Step Title="In Progress" Description="This is a description. This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+                <Step Title="Waiting" Description="This is a description." />
+            </Steps>
+        </div>
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-steps ant-steps-horizontal ant-steps-label-vertical ant-steps-dot">
+                <div class="ant-steps-item ant-steps-item-finish">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Finished</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">In Progress</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Waiting</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-divider ant-divider-horizontal" role="separator"></div>
+            <div class="ant-steps ant-steps-vertical ant-steps-dot">
+                <div class="ant-steps-item ant-steps-item-finish">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Finished</div>
+                            <div class="ant-steps-item-description">This is a description. This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Finished</div>
+                            <div class="ant-steps-item-description">This is a description. This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">In Progress</div>
+                            <div class="ant-steps-item-description">This is a description. This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Waiting</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon"><span class="ant-steps-icon-dot"></span></span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Waiting</div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+
+<SnapshotTest Description="Error" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps Status=StepsStatus.Error Current=1>
+            <Step Title="Finished" Description="This is a description." />
+            <Step Title="In Progress" Description="This is a description." />
+            <Step Title="Waiting" Description="This is a description." />
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+            <div class="ant-steps-item ant-steps-item-finish ant-steps-next-error">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore></span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-error ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon" diff:ignore> </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">In Progress</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">3</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Icon" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps>
+            <Step Status=StepsStatus.Finish Title="Login" Icon=IconType.Outlined.User />
+            <Step Status=StepsStatus.Finish Title="Verification" Icon=IconType.Outlined.Solution />
+            <Step Status=StepsStatus.Process Title="Pay" Icon=IconType.Outlined.Loading />
+            <Step Status=StepsStatus.Wait Title="Done" Icon=IconType.Outlined.Smile />
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+            <div class="ant-steps-item ant-steps-item-finish ant-steps-item-custom ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span role="img" aria-label="user" class="anticon anticon-user" diff:ignore></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Login</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-finish ant-steps-item-custom">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span role="img" aria-label="solution" class="anticon anticon-solution" diff:ignore></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Verification</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-custom">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span role="img" aria-label="loading" class="anticon anticon-loading" diff:ignore></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Pay</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait ant-steps-item-custom">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span role="img" aria-label="smile" class="anticon anticon-smile" diff:ignore></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Done</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Navigation steps" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <div>
+            <Steps Type=StepsType.Navigation
+                   Size=StepsSize.Small
+                   Current=@thisCurrent
+                   OnChange=ThisOnChange
+                   ClassName="site-navigation-steps">
+                <Step Title="Step 1"
+                      SubTitle="00:00:05"
+                      Status=StepsStatus.Finish
+                      Description="This is a description." />
+                <Step Title="Step 2"
+                      SubTitle="00:01:02"
+                      Status=StepsStatus.Process
+                      Description="This is a description." />
+                <Step Title="Step 3"
+                      SubTitle="waiting for longlong time"
+                      Status=StepsStatus.Wait
+                      Description="This is a description." />
+            </Steps>
+            <Steps Type=StepsType.Navigation
+                   Current=@thisCurrent
+                   OnChange=ThisOnChange
+                   ClassName="site-navigation-steps">
+                <Step Status=StepsStatus.Finish Title="Step 1" />
+                <Step Status=StepsStatus.Process Title="Step 2" />
+                <Step Status=StepsStatus.Wait Title="Step 3" />
+                <Step Status=StepsStatus.Wait Title="Step 4" />
+            </Steps>
+            <Steps Type=StepsType.Navigation
+                   Size=StepsSize.Small
+                   Current=@thisCurrent
+                   OnChange=ThisOnChange
+                   ClassName="site-navigation-steps">
+                <Step Status=StepsStatus.Finish Title="finish 1" />
+                <Step Status=StepsStatus.Finish Title="finish 2" />
+                <Step Status=StepsStatus.Process Title="current process" />
+                <Step Status=StepsStatus.Wait Title=wait Disabled />
+            </Steps>
+        </div>
+        @code{
+            private int thisCurrent { get; set; } = 0;
+            private void ThisOnChange(int current)
+            {
+                thisCurrent = current;
+            }
+        }
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-steps ant-steps-horizontal site-navigation-steps ant-steps-small ant-steps-label-horizontal ant-steps-navigation">
+                <div class="ant-steps-item ant-steps-item-finish ant-steps-item-active">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">
+                                <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                            </span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">
+                                Step 1
+                                <div title="00:00:05" class="ant-steps-item-subtitle">00:00:05</div>
+                            </div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-process">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">2</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">
+                                Step 2
+                                <div title="00:01:02" class="ant-steps-item-subtitle">00:01:02</div>
+                            </div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">
+                                Step 3
+                                <div title="waiting for longlong time" class="ant-steps-item-subtitle">waiting for longlong time</div>
+                            </div>
+                            <div class="ant-steps-item-description">This is a description.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps ant-steps-horizontal site-navigation-steps ant-steps-label-horizontal ant-steps-navigation">
+                <div class="ant-steps-item ant-steps-item-finish ant-steps-item-active">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">
+                                <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                            </span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-process">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">2</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">4</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Step 4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps ant-steps-horizontal site-navigation-steps ant-steps-small ant-steps-label-horizontal ant-steps-navigation">
+                <div class="ant-steps-item ant-steps-item-finish ant-steps-item-active">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">
+                                <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                            </span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">finish 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-finish">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">
+                                <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                            </span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">finish 2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-process">
+                    <div role="button" tabindex="0" class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">current process</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait ant-steps-item-disabled">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">4</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">wait</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Mini Version" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps Size=StepsSize.Small Current=1>
+            <Step Title="Finished" />
+            <Step Title="In Progress" />
+            <Step Title="Waiting" />
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-horizontal ant-steps-small ant-steps-label-horizontal">
+            <div class="ant-steps-item ant-steps-item-finish">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">2</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">In Progress</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">3</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Switch Step"  >
+    <TestInput>
+        <div>
+            <Steps Current=@stepCurrent>
+                @foreach (KeyValuePair<int, string> item in stepsTitle)
+                {
+                    <Step Title=@item.Value SubTitle=@doneString />
+                }
+            </Steps>
+            <div class="steps-content">@steps[stepCurrent]</div>
+            <div class="steps-action">
+                @if (stepCurrent < steps.Count - 1)
+                {
+                    <Button Type=ButtonType.Primary OnClick=Next Label="Next" />
+                }
+                @if (stepCurrent == steps.Count - 1)
+                {
+                    <Button Type=ButtonType.Primary OnClick=OnClick Label="Done" />
+                }
+                @if (stepCurrent > 0)
+                {
+                    <Button Style="margin: 0 8px" OnClick=Prev Label="Previous" />
+                }
+            </div>
+        </div>
+        @code{
+            private IDictionary<int, string> steps = new Dictionary<int, string>()
+                                                    {
+                                                {0,"First-content"},
+                                                {1, "Second-content"},
+                                                {2,"Last-content"}
+                                            };
+            private IDictionary<int, string> stepsTitle = new Dictionary<int, string>()
+                                                    {
+                                                {0,"First"},
+                                                {1, "Second"},
+                                                {2,"Last"}
+                                            };
+
+            private int stepCurrent = 0;
+            private string doneString = string.Empty;
+            private void Next()
+            {
+                stepCurrent = stepCurrent + 1;
+            }
+
+            private void Prev()
+            {
+                stepCurrent = stepCurrent - 1;
+                if (!string.IsNullOrEmpty(doneString))
+                {
+                    doneString = string.Empty;
+                }
+            }
+            private void OnClick()
+            {
+                //show notification that processing is complete!
+                //wait until notification component is done
+                //for now just add subtitle
+                doneString = "Processing complete!";
+            }
+        }
+
+    </TestInput>
+    <ExpectedOutput>
+        <div>
+            <div class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+                <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">1</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">First</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-tail"></div>
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">2</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Second</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-steps-item ant-steps-item-wait">
+                    <div class="ant-steps-item-container">
+                        <div class="ant-steps-item-icon">
+                            <span class="ant-steps-icon">3</span>
+                        </div>
+                        <div class="ant-steps-item-content">
+                            <div class="ant-steps-item-title">Last</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="steps-content">First-content</div>
+            <div class="steps-action">
+                <button type="button" class="ant-btn ant-btn-primary"><span>Next</span></button>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+
+<SnapshotTest Description="Vertical"  Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps Direction=StepsDirection.Vertical Current=1>
+            <Step Title="Finished" Description="This is a description." />
+            <Step Title="In Progress" Description="This is a description." />
+            <Step Title="Waiting" Description="This is a description." />
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-vertical">
+            <div class="ant-steps-item ant-steps-item-finish">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">2</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">In Progress</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">3</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ExpectedOutput>
+</SnapshotTest>
+
+<SnapshotTest Description="Vertical mini version" Setup="() => Services.AddSingleton<IIconService,IconServiceMock>()">
+    <TestInput>
+        <Steps Current=1 Direction=StepsDirection.Vertical Size=StepsSize.Small>
+            <Step Title="Finished" Description="This is a description." />
+            <Step Title="In Progress" Description="This is a description." />
+            <Step Title="Waiting" Description="This is a description." />
+        </Steps>
+    </TestInput>
+    <ExpectedOutput>
+        <div class="ant-steps ant-steps-vertical  ant-steps-small">
+            <div class="ant-steps-item ant-steps-item-finish">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">
+                            <span diff:ignore role="img" aria-label="check" class="anticon anticon-check ant-steps-finish-icon"></span>
+                        </span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Finished</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-tail"></div>
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">2</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">In Progress</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-steps-item ant-steps-item-wait">
+                <div class="ant-steps-item-container">
+                    <div class="ant-steps-item-icon">
+                        <span class="ant-steps-icon">3</span>
+                    </div>
+                    <div class="ant-steps-item-content">
+                        <div class="ant-steps-item-title">Waiting</div>
+                        <div class="ant-steps-item-description">This is a description.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ExpectedOutput>
 </SnapshotTest>

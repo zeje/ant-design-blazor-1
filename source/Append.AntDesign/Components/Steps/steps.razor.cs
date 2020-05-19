@@ -43,7 +43,7 @@ namespace Append.AntDesign.Components
         private ClassBuilder classes => ClassBuilder.Create(prefix)
             .AddClass(ClassName)
             .AddClass($"{prefix}-{Direction}")
-            .AddClassWhen($"{prefix}-label-horizontal", Direction == StepsDirection.Horizontal)
+            .AddClassWhen($"{prefix}-label-horizontal", Direction == StepsDirection.Horizontal && (!_showProgressDot && LabelPlacement != StepsDirection.Vertical))
             .AddClassWhen($"{prefix}-label-vertical", Direction == StepsDirection.Horizontal && (_showProgressDot || LabelPlacement == StepsDirection.Vertical))
             .AddClassWhen($"{prefix}-dot", _showProgressDot)
             .AddClassWhen($"{prefix}-small", () => Size == StepsSize.Small)

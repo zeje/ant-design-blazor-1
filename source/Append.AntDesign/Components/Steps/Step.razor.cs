@@ -55,7 +55,7 @@ namespace Append.AntDesign.Components
                 _groupCurrent = value;
                 if (!_isCustomStatus)
                 {
-                    this._status = value > this.Index ? StepsStatus.Finish : value == this.Index ? GroupStatus ?? null : StepsStatus.Wait;
+                    _status = value > this.Index ? StepsStatus.Finish : (value == this.Index ? GroupStatus ?? StepsStatus.Wait : StepsStatus.Wait);
                 }
             }
         }
@@ -82,6 +82,7 @@ namespace Append.AntDesign.Components
             {
                 _containerAttributes["role"] = "button";
             }
+            Parent.AdjustChildrenSteps();
         }
         protected void OnClick(MouseEventArgs args) 
         {
