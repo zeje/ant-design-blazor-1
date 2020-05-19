@@ -1,19 +1,17 @@
 ﻿@namespace Append.AntDesign.Components
 @inherits AntComponent
 
-<span id="notificationBox">
-    <CascadingValue Value="this">
-
-        @foreach (var classs in notificationContainerClasses)
-        {
-            <div class="@classs.Item2" style="@GenerateNotificationContainerStyle(classs.Item1)">
-                <span>
-                    @foreach (var notification in notifications.GetNotificationsByPlacementType(classs.Item1))
-                    {
-                        <Notification @key="notification.Guid" class="@notification.Options.ClassName" style="@notification.Options.Style" Type="notification.NotificationType" Options="notification.Options" Guid="notification.Guid" />
-                    }
-                </span>
-            </div>
-        }
-    </CascadingValue>
-</span>
+@foreach (var layourParams in positionalCssClasses)
+{
+    <div class="@layourParams.cssClass" style="@notificationContainerStyles(layourParams.placement)">
+        <span>
+            @foreach (var notificationItem in notificationService.Notifications.GetNotificationsByPlacementType(layourParams.placement))
+            {
+                <Notification @key="notificationItem.Options.Guid"
+                              Options="notificationItem.Options"
+                              class="@notificationItem.Options.ClassName"
+                              style="@notificationItem.Options.Style" />
+            }
+        </span>
+    </div>
+}

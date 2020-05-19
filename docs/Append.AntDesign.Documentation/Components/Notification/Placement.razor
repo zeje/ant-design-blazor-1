@@ -1,7 +1,6 @@
 ﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
 
-<Codebox Title="Placement
-">
+<Codebox Title="Placement">
     <Description>
         <p>
             A notification box can appear from the <code>NotificationPlacement.TopLeft</code>, <code>NotificationPlacement.TopRight</code>, <code>NotificationPlacement.BottomLeft</code> or <code>NotificationPlacement.BottomRight</code> of the viewport.
@@ -17,7 +16,6 @@
     </Demo>
 </Codebox>
 @code{
-
     private void ShowNotification(NotificationPlacement notificationPlacement)
     {
         var options = NotificationConfigOptions.Builder()
@@ -46,5 +44,4 @@
             NotificationService.Info(options);
         }
     }
-
 }

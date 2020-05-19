@@ -3,7 +3,7 @@
 <Codebox Title="Custom close button">
     <Description>
         <p>
-            You can set a custom close button via the <code>Btn</code> parameter.
+            You can add a custom close button by setting the <code>CloseButton</code> parameter.
         </p>
     </Description>
     <Demo>
@@ -11,15 +11,6 @@
     </Demo>
 </Codebox>
 @code{
-
-    private void CallbackOnClose(MouseEventArgs mouseEventArgs)
-    {
-        System.Diagnostics.Debug.WriteLine("The notification has closed.");
-    }
-
-    //private EventCallback onClose = () =>
-
-
     private string key = Guid.NewGuid().ToString();
     private void showNotification()
     {
@@ -28,7 +19,7 @@
                                         .SetKey(key)
                                         .SetDescription("A function will be be called after the notification is closed (automatically after the \"duration\" time has expired or manually by clicking the close button).")
                                         .SetOnClose(() => System.Diagnostics.Debug.WriteLine("Notification has closed"))
-                                        .SetBtn(@<Button Type="ButtonType.Primary" Size="Size.Small" OnClick="() => NotificationService.Close(key)" Label="Confirm" />)
+                                        .SetCloseButton(@<Button Type="ButtonType.Primary" Size="Size.Small" OnClick="() => NotificationService.Close(key)" Label="Confirm" />)
 .Build());
 }
 }

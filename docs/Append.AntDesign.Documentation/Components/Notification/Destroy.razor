@@ -1,0 +1,23 @@
+﻿@inject Append.AntDesign.Services.Notifications.NotificationService NotificationService
+
+<Codebox Title="Destroy notifications">
+    <Description>
+        <p>
+            <code>NotificationService.Destroy()</code> closes all notifications.
+        </p>
+    </Description>
+    <Demo>
+        <Button OnClick="showNotification" Label="Open the notification box" />
+        <Button OnClick="NotificationService.Destroy" Label="Close all notifications" />
+    </Demo>
+</Codebox>
+@code{
+    private void showNotification()
+    {
+        NotificationService.Open(NotificationConfigOptions.Builder()
+                                        .SetDuration(30)
+                                        .SetMessage("Notification Title")
+                                        .SetDescription("This is the content of the notification. This is the content of the notification. This is the content of the notification.")
+                                        .Build());
+    }
+}

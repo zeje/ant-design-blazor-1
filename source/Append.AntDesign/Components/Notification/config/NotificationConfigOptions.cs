@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Append.AntDesign.Components
 {
@@ -19,14 +16,20 @@ namespace Append.AntDesign.Components
         public double? Top { get; set; }
         public string Style { get; set; }
         public string ClassName { get; set; }
-        public RenderFragment Btn { get; set; }
+        public RenderFragment CloseButton { get; set; }
 
         public Action OnClose { get; set; }
         public Action OnClick { get; set; }
 
+        internal NotificationType Type { get; set; } = NotificationType.None;
+        internal Guid Guid { get; set; } = Guid.NewGuid();
+
+        internal int GetDurationInMilliseconds() => Convert.ToInt32(Duration * 1000);
+
         private NotificationConfigOptions() { }
+
         private NotificationConfigOptions(double? bottom, RenderFragment description, double? duration, RenderFragment icon, RenderFragment closeIcon, string key, RenderFragment message,
-            NotificationPlacement placement, double? top, Action onClose, Action onClick, string style, string className, RenderFragment btn)
+            NotificationPlacement placement, double? top, Action onClose, Action onClick, string style, string className, RenderFragment closeButton)
         {
             Bottom = bottom;
             Description = description;
@@ -41,10 +44,14 @@ namespace Append.AntDesign.Components
             OnClick = onClick;
             Style = style;
             ClassName = className;
-            Btn = btn;
+            CloseButton = closeButton;
         }
 
-        internal int GetDurationInMilliseconds() => Convert.ToInt32(Duration * 1000);
+        internal NotificationConfigOptions WithGuid(Guid guid)
+        {
+            Guid = guid;
+            return this;
+        }
 
         internal NotificationConfigOptions GetConfigWithGlobalConfigValues(NotificationGlobalConfigOptions notificationGlobalConfig)
         {
@@ -56,28 +63,25 @@ namespace Append.AntDesign.Components
             return this;
         }
 
-        public static NotificationConfigOptionsBuilder Builder()
-        {
-            return new NotificationConfigOptionsBuilder();
-        }
+        public static NotificationConfigOptionsBuilder Builder() => new NotificationConfigOptionsBuilder();
 
         public class NotificationConfigOptionsBuilder
         {
             private double? _bottom;
-            private RenderFragment _description { get; set; }
-            private double? _duration { get; set; }
-            private RenderFragment _icon { get; set; }
-            private RenderFragment _closeIcon { get; set; }
+            private RenderFragment _description;
+            private double? _duration;
+            private RenderFragment _icon;
+            private RenderFragment _closeIcon;
             private string _key;
-            private RenderFragment _message { get; set; }
-            private NotificationPlacement _placement { get; set; }
-            private double? _top { get; set; }
-            private string _style { get; set; }
-            private string _className { get; set; }
-            private RenderFragment _btn { get; set; }
+            private RenderFragment _message;
+            private NotificationPlacement _placement;
+            private double? _top;
+            private string _style;
+            private string _className;
+            private RenderFragment _closeButton;
 
-            private Action _onClose { get; set; }
-            private Action _onClick { get; set; }
+            private Action _onClose;
+            private Action _onClick;
 
             public NotificationConfigOptionsBuilder SetBottom(double bottom)
             {
@@ -99,6 +103,8 @@ namespace Append.AntDesign.Components
 
             public NotificationConfigOptionsBuilder SetDuration(double duration)
             {
+                if (duration < 0.5 && duration != 0)
+                    throw new ArgumentOutOfRangeException("Duration must be >= 0.5 seconds");
                 _duration = duration;
                 return this;
             }
@@ -150,9 +156,9 @@ namespace Append.AntDesign.Components
                 _className = className;
                 return this;
             }
-            public NotificationConfigOptionsBuilder SetBtn(RenderFragment btn)
+            public NotificationConfigOptionsBuilder SetCloseButton(RenderFragment closeButton)
             {
-                _btn = btn;
+                _closeButton = closeButton;
                 return this;
             }
 
@@ -166,11 +172,7 @@ namespace Append.AntDesign.Components
                 _onClick = onClick;
                 return this;
             }
-
-            public NotificationConfigOptions Build()
-            {
-                return new NotificationConfigOptions(_bottom, _description, _duration, _icon, _closeIcon, _key, _message, _placement, _top, _onClose, _onClick, _style, _className, _btn);
-            }
+            public NotificationConfigOptions Build() => new NotificationConfigOptions(_bottom, _description, _duration, _icon, _closeIcon, _key, _message, _placement, _top, _onClose, _onClick, _style, _className, _closeButton);
         }
     }
 }

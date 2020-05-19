@@ -4,7 +4,7 @@
 <div @attributes="Attributes" class="@combinedClassBuilders" @onclick="Options.OnClick">
     <div class="ant-notification-notice-content">
         <div class="@ContentTypeClasses">
-            @if (Type == NotificationType.None || Options.Icon != null)
+            @if (Options.Type == NotificationType.None || Options.Icon != null)
             {
                 <span class="ant-notification-notice-icon">
                     @Options.Icon
@@ -12,15 +12,15 @@
             }
             else
             {
-                <Icon class="@GetIconTypeWithExtraCssClasses().Item2" Type="@GetIconTypeWithExtraCssClasses().Item1" />
+                <Icon class="@GetIconTypeWithExtraCssClasses().cssClass" Type="@GetIconTypeWithExtraCssClasses().iconType" />
             }
 
             <div class="ant-notification-notice-message">@Options.Message</div>
             <div class="ant-notification-notice-description">@Options.Description</div>
-            @if (Options.Btn != null)
+            @if (Options.CloseButton != null)
             {
                 <span class="ant-notification-notice-btn">
-                    @Options.Btn
+                    @Options.CloseButton
                 </span>
             }
         </div>
@@ -28,7 +28,7 @@
 
     <a class="ant-notification-notice-close">
         <span class="ant-notification-close-x">
-            <Icon Type="IconType.Outlined.Close" @onclick="() => notificationContainer.CloseNotification(Guid)"></Icon>
+            <Icon Type="IconType.Outlined.Close" @onclick="() => notificationService.Unsubscribe(this)"></Icon>
         </span>
     </a>
 </div>
