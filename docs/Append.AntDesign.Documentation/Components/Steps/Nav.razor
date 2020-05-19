@@ -8,8 +8,8 @@
         <div>
             <Steps Type=StepsType.Navigation
                    Size=StepsSize.Small
-                   Current=@ThisCurrent
-                   OnChange=onChange
+                   Current=@thisCurrent
+                   OnChange=OnChange
                    ClassName="site-navigation-steps">
                 <Step Title="Step 1"
                       SubTitle="00:00:05"
@@ -25,8 +25,8 @@
                       Description="This is a description." />
             </Steps>
             <Steps Type=StepsType.Navigation
-                   Current=@ThisCurrent
-                   OnChange=onChange
+                   Current=@thisCurrent
+                   OnChange=OnChange
                    ClassName="site-navigation-steps">
                 <Step Status=StepsStatus.Finish Title="Step 1" />
                 <Step Status=StepsStatus.Process Title="Step 2" />
@@ -35,8 +35,8 @@
             </Steps>
             <Steps Type=StepsType.Navigation
                    Size=StepsSize.Small
-                   Current=@ThisCurrent
-                   OnChange=onChange
+                   Current=@thisCurrent
+                   OnChange=OnChange
                    ClassName="site-navigation-steps">
                 <Step Status=StepsStatus.Finish Title="finish 1" />
                 <Step Status=StepsStatus.Finish Title="finish 2" />
@@ -49,10 +49,10 @@
 
 
 @code{
-    private int ThisCurrent { get; set; } = 0;
-    private void onChange(int current)
+    private int thisCurrent { get; set; } = 0;
+    private void OnChange(int current)
     {
-        ThisCurrent = current;
-        //do something
+        thisCurrent = current;
+        StateHasChanged();
     }
 }

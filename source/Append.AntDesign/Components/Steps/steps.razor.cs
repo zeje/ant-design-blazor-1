@@ -54,14 +54,6 @@ namespace Append.AntDesign.Components
             base.OnParametersSet();
             AdjustChildrenSteps();
         }
-        protected override async Task OnParametersSetAsync()
-        {
-            await base.OnParametersSetAsync();
-            await Task.Run(() =>
-            {
-                AdjustChildrenSteps();
-            });
-        }
 
         internal void AdjustChildrenSteps()
         {
@@ -81,12 +73,13 @@ namespace Append.AntDesign.Components
             }
         }
 
-        internal void onStepClick(int index)
+        internal void OnStepClick(int index)
         {
             if(OnChange != null && Current != index)
             {
                 Current = index;
                 AdjustChildrenSteps();
+                OnChange?.Invoke(Current);
             }
         }
     }

@@ -23,7 +23,6 @@ namespace Append.AntDesign.Components
         [Parameter] public string Title { get; set; } = string.Empty;
         [Parameter] public string SubTitle { get; set; } = string.Empty;
         [Parameter] public bool Disabled { get; set; }
-        protected EventCallback<MouseEventArgs> OnClick { get; set; }
         [CascadingParameter] public Steps Parent { get; set; }
         private readonly Dictionary<string, object> _containerAttributes = new Dictionary<string, object>();
         private bool _clickable;
@@ -84,11 +83,11 @@ namespace Append.AntDesign.Components
                 _containerAttributes["role"] = "button";
             }
         }
-        protected void onClick(MouseEventArgs args) 
+        protected void OnClick(MouseEventArgs args) 
         {
             if(!Disabled && Clickable)
             {
-                Parent.onStepClick(Index);
+                Parent.OnStepClick(Index);
             }
         }
     }

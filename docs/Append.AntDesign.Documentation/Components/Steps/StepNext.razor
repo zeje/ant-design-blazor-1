@@ -9,41 +9,35 @@
             <Steps Current=@current>
                 @foreach (KeyValuePair<int, string> item in stepsTitle)
                 {
-                    <Step Title=@item.Value />
+                    <Step Title=@item.Value SubTitle=@doneString/>
                 }
             </Steps>
             <div class="steps-content">@steps[current]</div>
             <div class="steps-action">
                 @if (current < steps.Count - 1)
                 {
-                    <Button Type=ButtonType.Primary OnClick=this.next>
-                        Next
-                    </Button>
+                    <Button Type=ButtonType.Primary OnClick=Next Label="Next"/>
                 }
                 @if (current == steps.Count - 1)
                 {
-                    <Button Type=ButtonType.Primary OnClick=this.Onclick>
-                        Done
-                    </Button>
+                    <Button Type=ButtonType.Primary OnClick=OnClick Label="Done"/>
                 }
                 @if (current > 0)
                 {
-                    <Button Style="margin: 0 8px" OnClick=this.prev>
-                        Previous
-                    </Button>
+                    <Button Style="margin: 0 8px" OnClick=Prev Label="Previous"/>
                 }
             </div>
         </div>
     </Demo>
 </Codebox>
 @code{
-    public IDictionary<int, string> steps = new Dictionary<int, string>()
+    private IDictionary<int, string> steps = new Dictionary<int, string>()
                                     {
                                                 {0,"First-content"},
                                                 {1, "Second-content"},
                                                 {2,"Last-content"}
                                             };
-    public IDictionary<int, string> stepsTitle = new Dictionary<int, string>()
+    private IDictionary<int, string> stepsTitle = new Dictionary<int, string>()
                                     {
                                                 {0,"First"},
                                                 {1, "Second"},
@@ -51,18 +45,26 @@
                                             };
 
     private int current = 0;
-
-    private void next()
+    private string doneString = string.Empty;
+    private void Next()
     {
         current = current + 1;
     }
 
-    private void prev()
+    private void Prev()
     {
         current = current - 1;
+        if (!string.IsNullOrEmpty(doneString))
+        {
+            doneString = string.Empty;
+        }
     }
-    private void Onclick()
+    private void OnClick()
     {
-        //show notification that it's done
+        //show notification that processing is complete!
+        //wait until notification component is done
+        //for now just add subtitle
+        doneString = "Processing complete!";
+        StateHasChanged();
     }
 }
