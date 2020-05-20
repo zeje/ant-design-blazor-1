@@ -17,7 +17,7 @@ namespace Append.AntDesign.Services.Notifications
         private Func<NotificationConfigOptions, NotificationConfigOptions> useDefinedGlobalOptions => options => options.GetConfigWithGlobalConfigValues(GlobalConfigOptions);
         private Func<string, string, NotificationConfigOptions> buildOptionsWithMessageAndDescription => (message, description) => NotificationConfigOptions.Builder().SetMessage(message).SetDescription(description).Build();
 
-        internal async void Subscribe(Notification notification)
+        internal async Task Subscribe(Notification notification)
         {
             Notifications.Update(notification);
             await notification.ShowNotificationAnimation();
@@ -33,7 +33,7 @@ namespace Append.AntDesign.Services.Notifications
             OnNotificationContainerCallChanges.Invoke();
         }
 
-        internal async void Unsubscribe(Notification notification)
+        internal async Task Unsubscribe(Notification notification)
         {
             await notification.HideNotificationAnimation();
             notification.Options.OnClose?.Invoke();

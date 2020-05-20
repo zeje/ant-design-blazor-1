@@ -11,7 +11,7 @@
     </Demo>
 </Codebox>
 @code{
-    private async void showNotification()
+    private async Task showNotification()
     {
         var uniqueKey = Guid.NewGuid();
         NotificationService.Open(NotificationConfigOptions.Builder()
