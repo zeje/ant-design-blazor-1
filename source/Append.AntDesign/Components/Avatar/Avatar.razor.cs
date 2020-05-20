@@ -25,9 +25,11 @@ namespace Append.AntDesign.Components
                 .AddStyle($"transform: scale({scale}) translateX(-50%);");
 
         private ClassBuilder textClasses => ClassBuilder.Create($"{prefix}-string");
-
+        //suppress warning 0649 for avatarRef & textRef because blazor assigns these values in the razor page.
+#pragma warning disable 0649
         private ElementReference avatarRef;
         private ElementReference textRef;
+#pragma warning restore 0649
 
         private Dimension avatarDimension;
         private Dimension textDimension;
