@@ -1,0 +1,28 @@
+name: Test and Build
+on: 
+    pull_request:
+        branches: 
+        #run when a pr is made (target must be master branch)
+        - master
+    push:
+        branches-ignore:
+        #do not run on pushes to master and workflow branches, but run when there is a push to any other branch and pr
+        - master
+        - 'sync-style/*'
+        - 'sync-icon/*'
+jobs:
+    test-and-build:
+        runs-on: ubuntu-latest    
+        steps:
+        - uses: actions/checkout@v1
+        - name: Setup .NET Core
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 3.1.201
+        - name: Test/Build with dotnet
+          env:
+              MSBUILDDISABLENODEREUSE: 1
+          run: |
+                  cp -rfv infrastructure/. ./docs/Append.AntDesign.Documentation.Standalone/wwwroot
+                  dotnet test
+                  dotnet build
